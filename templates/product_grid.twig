@@ -1,0 +1,6 @@
+{% extends "include/base.twig" %}
+{% block main %}
+{% for article in articles %}
+	<a href="{{ base_path }}/pages/product.php?action=detail&article_id={{ article.article_id }}"><div class="card">{{ article.title }}</div></a>
+{% endfor %}
+{% endblock %}

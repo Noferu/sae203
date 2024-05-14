@@ -1,0 +1,37 @@
+{% extends "include/base.twig" %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_path }}/files/css/home.css">
+{% endblock %}
+
+{% block main %}
+	<div id="background-image"></div>
+	<section class="timeline">
+		<h1>Voyage dans le temps</h1>
+		<div id="timeline-container">
+			{% for category in categories %}
+				<div class="epoch" data-id="{{ category.category_id }}" data-name="{{ category.name }}" data-description="{{ category.description }}" data-image="{{ base_path }}/files/images/timeline_images/{{ category.tltn_image_filename }}"></div>
+			{% endfor %}
+		</div>
+		<a id="epoch-link" href="" class="button-19 join-button">Rejoindre</a>
+	</section>
+	<section class="featured-articles">
+		<h2>Nos articles phares</h2>
+		<ul>
+			{% for article in top_articles %}
+				<li>{{ article.title }}
+					- Note moyenne :
+					{{ article.moyenne_note | number_format(2) }}/5</li>
+			{% endfor %}
+		</ul>
+	</section>
+	<section class="about-us">
+		<h2>À propos de nous</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+	</section>
+	<audio id="carousel-sound" src=".mp3" preload="auto"></audio>
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_path }}/files/js/timeline.js"></script>
+{% endblock %}
