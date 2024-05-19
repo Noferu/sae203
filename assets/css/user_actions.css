@@ -1,0 +1,225 @@
+:root {
+  --brown: #ff6f29;
+  --gold: #ffd82a;
+  --gradient: linear-gradient(-135deg, #ffd82a, #ff6f29);
+}
+
+::selection {
+  background: #4c58cf;
+  color: white;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+}
+
+i.fa-times {
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  color: lightgrey;
+  font-size: 150%;
+  transform: rotate(0deg);
+  transition: all 0.4s;
+}
+
+i.fa-times:hover {
+  transform: rotate(90deg);
+  color: rgb(63, 63, 63);
+}
+
+@keyframes changeBackgroundColor {
+  0% { background-color: #ffd82a; }    /* Jaune */
+  5% { background-color: #ff9f50; }    /* Orange */
+  10% { background-color: #ff6f29; }   /* Orange foncé */
+  15% { background-color: #ffccb5; }   /* Pêche */
+  20% { background-color: #a8e6cf; }   /* Vert menthe */
+  25% { background-color: #96ceb4; }   /* Vert clair */
+  30% { background-color: #d6b1d2; }   /* Rose pastel */
+  35% { background-color: #ff6f69; }   /* Rouge */
+  40% { background-color: #ffd1e0; }   /* Rose clair */
+  45% { background-color: #ffcc5c; }   /* Jaune pâle */
+  50% { background-color: #0074D9; }   /* Bleu */
+  55% { background-color: #001f3f; }   /* Bleu foncé */
+  60% { background-color: #7FDBFF; }   /* Bleu ciel */
+  65% { background-color: #B10DC9; }   /* Violet */
+  70% { background-color: #F012BE; }   /* Magenta */
+  75% { background-color: #85144b; }   /* Bourgogne */
+  80% { background-color: #FF4136; }   /* Rouge vif */
+  85% { background-color: #FF851B; }   /* Orange vif */
+  90% { background-color: #2ECC40; }   /* Vert vif */
+  95% { background-color: #01FF70; }   /* Vert printemps */
+  100% { background-color: #ffd82a; }  /* Retour au jaune */
+}
+
+.slideshow-container {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px -20px 60px #00000033;  
+  animation: changeBackgroundColor 90s linear infinite alternate;
+}
+
+.wrapper-container {
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 380px;
+  border-radius: 30px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .title {
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: white;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: var(--gradient);
+}
+
+.wrapper form {
+  padding: 10px 30px 50px 30px;
+}
+
+.wrapper form .field {
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+.wrapper form .field input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  padding-left: 20px;
+  border: 1px solid lightgrey;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.wrapper form .field input:focus,
+.wrapper form .field input:valid {
+  border-color: var(--brown);
+}
+
+.wrapper form .field label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 17px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.wrapper form .field input:focus~label,
+.wrapper form .field input:valid~label {
+  top: 0%;
+  font-size: 16px;
+  color: var(--brown);
+  background: #fff;
+  transform: translateY(-50%);
+}
+
+.wrapper form .content {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.wrapper form .content .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper form .content input {
+  width: 15px;
+  height: 15%;
+}
+
+.wrapper form .content label {
+  color: #262626;
+  user-select: none;
+  padding-left: 5px;
+}
+
+.wrapper form .content .pass-link {
+  color: var(--brown);
+}
+
+.wrapper form .field input[type="submit"] {
+  color: #fff;
+  border: none;
+  padding-left: 0;
+  margin-top: -10px;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--gradient);
+  transition: all 0.3s ease;
+}
+
+.wrapper form .field input[type="submit"]:active {
+  transform: scale(0.95);
+}
+
+.wrapper form .signup-link {
+  color: #262626;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.wrapper form .pass-link a,
+.wrapper form .signup-link a {
+  color: var(--brown);
+  text-decoration: none;
+}
+
+.wrapper form .pass-link a:hover,
+.wrapper form .signup-link a:hover {
+  text-decoration: underline;
+}
+
+.field.button {
+  display: grid;
+  place-items: center;
+}
+
+button {
+  background: var(--brown);
+  background: var(--gradient);
+  border-radius: 100px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 110%;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+  box-shadow:  11px 11px 22px #c3c3c3,
+             -11px -11px 22px #fdfdfd;
+}

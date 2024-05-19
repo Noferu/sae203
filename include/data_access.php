@@ -1,7 +1,8 @@
 <?php
 
 // Cette fonction récupère toutes les lignes résultant d'une requête SQL donnée et les retourne sous forme d'un tableau associatif.
-function select_data(PDO $pdo, $sql, array $params = [], $fetchAll = true) {
+function select_data(PDO $pdo, $sql, array $params = [], $fetchAll = true)
+{
     $query = $pdo->prepare($sql);
 
     // Nous allons utiliser un compteur pour garantir que les indices numériques pour bindValue commencent à 1
@@ -101,7 +102,11 @@ function insert_data($pdo, $table, $data)
         $query->bindValue(":$key", $value);
     }
 
-    return $query->execute();
+    if ($query->execute()) {
+        return $pdo->lastInsertId(); // Retourne l'ID de la dernière insertion
+    }
+
+    return false; // Retourne false si l'insertion échoue
 }
 
 function validateAndClean(array $data)

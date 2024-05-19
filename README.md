@@ -1,8 +1,8 @@
 
-# SAE 203 - Era Explorer
+# SAE 203 - Voyage dans le Temps
 
 ## Description
-"Era Explorer" est un projet d'e-commerce scolaire réalisé dans le cadre de la troisième Situation d'Apprentissage et d'Évaluation (SAE) du deuxième semestre du BUT MMI à Haguenau. Le site propose une expérience immersive permettant aux utilisateurs de voyager à travers différentes époques historiques et d'explorer des produits typiques de chaque période. Ce projet utilise PHP, Twig, HTML, CSS, JavaScript et SQL pour créer un site web interactif et responsive.
+"Voyage dans le Temps" est un projet d'e-commerce scolaire réalisé dans le cadre de la troisième Situation d'Apprentissage et d'Évaluation (SAE) du deuxième semestre du BUT MMI à Haguenau. Le site propose une expérience immersive permettant aux utilisateurs de voyager à travers différentes époques historiques et d'explorer des produits typiques de chaque période. Ce projet utilise PHP, Twig, HTML, CSS, JavaScript et SQL pour créer un site web interactif et responsive.
 
 ## Objectifs
 L'objectif principal de ce projet est d'être évalué sur les compétences acquises durant l'année, notamment :
@@ -62,7 +62,7 @@ Ce projet est principalement un projet scolaire. Toutefois, les contributions so
 
 ## Arborescence des fichiers
 ```
-SAE203_EraExplorer/
+sae203/
 ├── assets/
 │   ├── audio/
 │   ├── css/
@@ -104,7 +104,7 @@ SAE203_EraExplorer/
 ## Modèle Conceptuel de Données (MCD)
 Voici le Modèle Conceptuel de Données utilisé pour ce projet :
 
-![Modèle Conceptuel de Données](./database/MCD_BDD.png)
+![Modèle Conceptuel de Données](database/MCD_BDD.png)
 
 ## Consignes et Objectifs Pédagogiques
 Ce projet vise à valider plusieurs compétences clés :
@@ -116,4 +116,4 @@ Ce projet vise à valider plusieurs compétences clés :
 Découvrez mes autres projets sur mon [portfolio](https://www.ida.etu.mmi-unistra.fr/).
 
 ## Licence
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.

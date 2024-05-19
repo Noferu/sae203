@@ -1,6 +1,6 @@
 <?php
-include '../include/connexion.php';
-include '../include/data_access.php';
+include 'connexion.php';
+include 'data_access.php';
 
 $pdo = connexion();
 

@@ -1,0 +1,72 @@
+<header>
+	<div
+		class="umc">
+
+		<!-- Boutons utilitaires -->
+		<ul class="control-icons">
+			<li class="home-icon">
+				<a href="{{ base_path }}/index.php" aria-label="Home">
+					<i class="fa-regular fa-house simple"></i>
+					<i class="fa-solid fa-house simple"></i>
+				</a>
+			</li>
+			<li class="volume-control">
+				<a href="#" aria-label="Toggle Sound">
+					<i class="fa-regular fa-volume-high"></i>
+					<i class="fa-solid fa-volume-high"></i>
+					<i class="fa-regular fa-volume-xmark"></i>
+					<i class="fa-solid fa-volume-xmark"></i>
+				</a>
+			</li>
+		</ul>
+
+		<!-- Barre de recherche -->
+		<form class="search-bar" action="{{ base_path }}/pages/product.php" method="GET">
+			<input type="hidden" name="action" value="searching">
+			<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Search">
+			<button type="submit">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
+		</form>
+
+		<!-- Boutons d'utilisateur -->
+		<ul class="user-interaction-icons">
+			{% set icons = [
+                {'url': '/pages/user_connexion.php', 'regular': 'fa-user', 'solid': 'fa-user'},
+                {'url': '/pages/checkout.php?action=favorites', 'regular': 'fa-heart', 'solid': 'fa-heart'},
+                {'url': '/pages/checkout.php?action=cart', 'regular': 'fa-cart-shopping', 'solid': 'fa-cart-shopping'}
+            ] %}
+			{% for icon in icons %}
+				<li>
+					<a class="otherPages" href="{{ base_path ~ icon.url }}" aria-label="{{ icon.regular | capitalize }}">
+                        {% if isLogged and icon.regular == 'fa-user' %}
+                            <i class="fa-regular fa-user-check simple logged-in"></i>
+                            <i class="fa-solid fa-user-check simple logged-in"></i>
+                        {% else %}
+                            <i class="fa-regular {{ icon.regular }} simple"></i>
+                            <i class="fa-solid {{ icon.solid }} simple"></i>
+                        {% endif %}
+                    </a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!-- Menu de navigation -->
+	<nav>
+		<ul>
+			{% for category in categories %}
+				<li class="dropdown">
+					<a href="{{ base_path }}/pages/product.php?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+					<div class="dropdown-content">
+						{% for subcategory in subcategories %}
+							{% if subcategory.category_id == category.category_id %}
+								<a href="{{ base_path }}/pages/product.php?action=list&category_id={{ category.category_id }}&subcategory_id={{ subcategory.subcategory_id }}">{{ subcategory.name }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+</header>

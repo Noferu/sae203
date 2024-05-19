@@ -1,0 +1,27 @@
+{% extends "includes/base.twig" %}
+{% block main %}
+	<div class="sheet">
+		<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
+		<h2>Nom :
+			{{ article.title }}</h2>
+		<p>Description :
+			{{ article.description }}</p>
+		<p>Prix :
+			{{ article.price }}
+			{{ article.price > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
+		<p>Mise en vente en :
+			{{ article.sale_year }}</p>
+		<p>Stock :
+			{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
+		<p>Crée le :
+			{{ article.created_at }}</p>
+		<p>Mise à jour le :
+			{{ article.updated_at }}</p>
+		<p>Vendu par :
+			{{ seller.name }}</p>
+	</div>
+	<div class="lower-part">
+		<div class="comment"></div>
+		<div class="suggested-articles"><div/>
+			<div/>
+		{% endblock %}

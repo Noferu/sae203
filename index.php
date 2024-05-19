@@ -1,16 +1,25 @@
 <?php
-include('include/connexion.php');
-include('include/data_access.php');
+
+include(__DIR__ . '/include/connexion.php');
+include(__DIR__ . '/include/data_access.php');
 
 // Initialise Twig
-include('include/twig.php');
+include(__DIR__ . '/include/twig.php');
 $twig = init_twig();
 
 $pdo = connexion();
 
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
-
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
+
+$login_msg = null;
+$username = null;
+
+if (isset($_SESSION['message']) && isset($_SESSION['username'])) {
+    $login_msg = $_SESSION['message'];
+    $username = $_SESSION['username'];
+    unset($_SESSION['message']);
+}
 
 // Requête pour obtenir les deux articles les mieux notés
 $top_articles = select_data($pdo, '
@@ -26,5 +35,7 @@ $top_articles = select_data($pdo, '
 echo $twig->render('home.twig', [
     'categories' => $categories,
     'subcategories' => $subcategories,
-    'top_articles' => $top_articles
+    'top_articles' => $top_articles,
+    'login_msg' => $login_msg,
+    'username' => $username
 ]);

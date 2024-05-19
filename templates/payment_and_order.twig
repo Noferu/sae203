@@ -1,0 +1,21 @@
+{% extends "includes/base.twig" %}
+
+{% block main %}
+    {% if step == 'basket' %}
+        <h1>Panier</h1>
+        {# Affichage des produits ici #}
+        {% for product in products %}
+            <p>{{ product.name }} - {{ product.price }}</p>
+        {% endfor %}
+    {% elseif step == 'payment' %}
+        <h1>Paiement</h1>
+        <p>Total à payer : {{ total }}</p>
+        {# Formulaire de paiement ou informations supplémentaires ici #}
+    {% elseif step == 'command_finished' %}
+        <h1>Commande terminée</h1>
+        <p>Votre commande numéro {{ order_id }} a été traitée avec succès.</p>
+    {% else %}
+        <h1>Erreur</h1>
+        <p>Étape inconnue. Veuillez vérifier votre requête.</p>
+    {% endif %}
+{% endblock %}

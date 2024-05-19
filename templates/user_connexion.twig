@@ -1,0 +1,95 @@
+{% set withHeader = false %}
+{% set withFooter = false %}
+
+{% extends 'includes/base.twig' %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_path }}/assets/css/user_actions.css">
+{% endblock %}
+
+{% set slides = [
+	'https://i.imgur.com/NOho5qq.jpg',
+	'https://i.imgur.com/qYk0C49.jpg', 
+	'https://i.imgur.com/xPUXGRT.jpg', 
+	'https://i.imgur.com/IZfe0T5.jpg' , 
+	'https://i.imgur.com/ZSECm9u.jpg',
+	'https://i.imgur.com/GViuh6q.jpg' ] %}
+
+{% block main %}
+	<a href="../index.php">
+		<i class="fa-regular fa-times"></i>
+	</a>
+	<div class="wrapper-container">
+		<div class="wrapper">
+
+			{% if error_message %}
+				<div class="message">Message :
+					{{ error_message }}
+				</div>
+			{% endif %}
+
+			{% if mode == 1 %}
+
+				<div class="title">Connexion</div>
+				<form action="{{ base_path }}/include/connexion_controller.php?action=handle_login" method="POST" autocomplete="off">
+					<div class="field">
+						<input type="text" id="username" name="username" required>
+						<label for="username">Nom d'utilisateur</label>
+					</div>
+					<div class="field">
+						<input type="password" id="password" name="password" required autocomplete="new-password">
+						<label for="password">Mot de passe</label>
+					</div>
+					<div class="field button">
+						<button type="submit" class="action-btn">Se connecter</button>
+					</div>
+					<div class="signup-link">
+						Pas de compte ?
+						<a href="user_connexion.php?action=show_register_form">Créer un compte</a>.
+					</div>
+				</form>
+
+			{% elseif mode == 2 %}
+
+				<div class="title">Inscription</div>
+				<form action="{{ base_path }}/include/connexion_controller.php?action=handle_register" method="POST" autocomplete="off">
+					<div class="field">
+						<input type="text" id="username" name="username" required>
+						<label for="username">Nom d'utilisateur</label>
+					</div>
+					<div class="field">
+						<input type="email" id="email" name="email" required>
+						<label for="email">Adresse mail</label>
+					</div>
+					<div class="field">
+						<input type="password" id="password" name="password" required autocomplete="new-password">
+						<label for="password">Mot de passe</label>
+					</div>
+					<div class="field button">
+						<button type="submit" class="action-btn">S'enregistrer</button>
+					</div>
+					<div class="signup-link">
+						Déjà un compte ?
+						<a href="user_connexion.php?action=show_login_form">Se connecter</a>.
+					</div>
+				</form>
+
+			{% elseif mode == 3 %}
+
+				<div class="title">Bonjour,
+					{{ username }}. Que souhaitez-vous faire ?</div>
+				<div class="field button">
+					<a href="checkout.php" class="action-btn">Voir le panier</a>
+					<a href="{{ base_path }}/include/connexion_controller.php?action=logout" class="action-btn">Se déconnecter</a>
+				</div>
+
+			{% endif %}
+
+		</div>
+	</div>
+	<div class="slideshow-container"></div>
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_path }}/assets/js/slideshow.js"></script>
+{% endblock %}
