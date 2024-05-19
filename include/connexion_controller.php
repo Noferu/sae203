@@ -72,6 +72,9 @@ switch ($action) {
             // Vérification des informations de connexion.
             $user = $userService->loginUser($username, $password);
             if ($user) {
+                // Mise à jour du champ last_connected
+                $userService->updateLastConnected($user['user_id']);
+
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];

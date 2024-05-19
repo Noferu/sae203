@@ -56,7 +56,7 @@ class UserService
         'shithead', 'shithole', 'slutass', 'smellass', 'suckass', 'suckfuck', 'titass', 'titfuck', 'twatass', 'twatfuck',
         'weirdass', 'weirdfuck', 'whoreass', 'whorefuck'
     ];
-    
+
     private $forbiddenChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '+', '=', '{', '}', '[', ']', '|', '\\', ':', ';', '"', "'", '<', '>', ',', '?', '/', '`', '~'];
 
     // Valide les données d'inscription de l'utilisateur.
@@ -112,5 +112,13 @@ class UserService
             return $user;
         }
         return false;
+    }
+
+    // Met à jour le champ last_connected de l'utilisateur
+    public function updateLastConnected($userId)
+    {
+        $data = ['last_connected' => date('Y-m-d H:i:s')];
+        $conditions = ['user_id' => $userId];
+        return update_data($this->pdo, 'users', $data, $conditions);
     }
 }

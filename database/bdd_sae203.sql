@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 19 mai 2024 à 14:04
+-- Généré le : dim. 19 mai 2024 à 19:24
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -20,76 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `bdd_sae203`
 --
-
-DELIMITER $$
---
--- Procédures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateArticlesDates` ()   BEGIN
-    DECLARE done INT DEFAULT 0;
-    DECLARE articleId INT;
-    DECLARE randDate DATETIME;
-
-    DECLARE cur1 CURSOR FOR SELECT article_id FROM articles;
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
-
-    OPEN cur1;
-
-    read_loop: LOOP
-        FETCH cur1 INTO articleId;
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-
-        -- Générer une date et heure aléatoires entre les limites spécifiées
-        SET randDate = '2024-05-13 14:55:00' + INTERVAL FLOOR(RAND() * 16) DAY + INTERVAL FLOOR(RAND() * 1444) MINUTE;
-
-        -- Mettre à jour les colonnes created_at et updated_at
-        UPDATE articles
-        SET created_at = randDate, updated_at = randDate
-        WHERE article_id = articleId;
-    END LOOP;
-
-    CLOSE cur1;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateArticlesDatesChronologically` ()   BEGIN
-    DECLARE done INT DEFAULT 0;
-    DECLARE articleId INT;
-    DECLARE randDate DATETIME;
-    DECLARE baseDate DATETIME;
-
-    DECLARE cur1 CURSOR FOR SELECT article_id FROM articles ORDER BY article_id;
-    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
-
-    OPEN cur1;
-
-    SET baseDate = '2024-05-13 14:55:00';
-
-    read_loop: LOOP
-        FETCH cur1 INTO articleId;
-        IF done THEN
-            LEAVE read_loop;
-        END IF;
-
-        -- Générer une date aléatoire proche de baseDate
-        SET randDate = baseDate + INTERVAL FLOOR(RAND() * 3) DAY + INTERVAL FLOOR(RAND() * 1440) MINUTE;
-
-        -- Mettre à jour les colonnes created_at et updated_at
-        UPDATE articles
-        SET created_at = randDate, updated_at = randDate
-        WHERE article_id = articleId;
-
-        -- Ajuster baseDate tous les 10 articles pour créer des paquets de dates proches
-        IF MOD(articleId, 10) = 0 THEN
-            SET baseDate = baseDate + INTERVAL 1 DAY;
-        END IF;
-    END LOOP;
-
-    CLOSE cur1;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -728,15 +658,16 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password_hash` char(255) NOT NULL,
   `created_at` datetime NOT NULL,
-  `is_admin` tinyint(1) NOT NULL
+  `is_admin` tinyint(1) NOT NULL,
+  `last_connexion` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1);
+INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, NULL);
 
 --
 -- Index pour les tables déchargées
