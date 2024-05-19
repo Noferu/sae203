@@ -1,8 +1,8 @@
 
-# SAE 203 - Voyage dans le Temps
+# SAE 203 - Era Explorer
 
 ## Description
-"Voyage dans le Temps" est un projet d'e-commerce scolaire réalisé dans le cadre de la troisième Situation d'Apprentissage et d'Évaluation (SAE) du deuxième semestre du BUT MMI à Haguenau. Le site propose une expérience immersive permettant aux utilisateurs de voyager à travers différentes époques historiques et d'explorer des produits typiques de chaque période. Ce projet utilise PHP, Twig, HTML, CSS, JavaScript et SQL pour créer un site web interactif et responsive.
+"Era Explorer" est un projet d'e-commerce scolaire réalisé dans le cadre de la troisième Situation d'Apprentissage et d'Évaluation (SAE) du deuxième semestre du BUT MMI à Haguenau. Le site propose une expérience immersive permettant aux utilisateurs de voyager à travers différentes époques historiques et d'explorer des produits typiques de chaque période. Ce projet utilise PHP, Twig, HTML, CSS, JavaScript et SQL pour créer un site web interactif et responsive.
 
 ## Objectifs
 L'objectif principal de ce projet est d'être évalué sur les compétences acquises durant l'année, notamment :
@@ -62,7 +62,7 @@ Ce projet est principalement un projet scolaire. Toutefois, les contributions so
 
 ## Arborescence des fichiers
 ```
-sae203/
+SAE203_EraExplorer/
 ├── assets/
 │   ├── audio/
 │   ├── css/
