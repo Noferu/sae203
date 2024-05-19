@@ -1,5 +1,9 @@
 <?php
 
+include(__DIR__ . '/include/security_gate.php');
+
+
+
 include(__DIR__ . '/include/connexion.php');
 include(__DIR__ . '/include/data_access.php');
 
