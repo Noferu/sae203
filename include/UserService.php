@@ -117,7 +117,7 @@ class UserService
     // Met à jour le champ last_connected de l'utilisateur
     public function updateLastConnected($userId)
     {
-        $data = ['last_connected' => date('Y-m-d H:i:s')];
+        $data = ['last_connexion' => date('Y-m-d H:i:s')];
         $conditions = ['user_id' => $userId];
         return update_data($this->pdo, 'users', $data, $conditions);
     }
