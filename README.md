@@ -79,6 +79,7 @@ sae203/
 ├── include/
 │   ├── connexion.php
 │   ├── connexion_controller.php
+│   ├── security_gate.php
 │   ├── data_access.php
 │   ├── fetch_articles.php
 │   ├── twig.php
@@ -96,6 +97,9 @@ sae203/
 ├── wireframes/
 │   └── *.png
 ├── .htaccess
+├── .gitignore
+├── README.md
+├── LICENSE
 ├── composer.json
 ├── composer.lock
 └── index.php
