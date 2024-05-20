@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case 'theme-antiquité':
             frames = [
+                `${basePath}/assets/images/icons/classical_building.ico`
                 `${basePath}/assets/images/icons/amphora.ico`,
                 `${basePath}/assets/images/icons/crossed_swords.ico`,
-                `${basePath}/assets/images/icons/classical_building.ico`
             ];
             break;
         case 'theme-moyen-âge':
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         default:
             frames = [
                 `${basePath}/assets/images/icons/ear_of_rice.ico`,
-                `${basePath}/assets/images/icons/amphora.ico`,
+                `${basePath}/assets/images/icons/classical_building.ico`,
                 `${basePath}/assets/images/icons/european_castle.ico`,
                 `${basePath}/assets/images/icons/art.ico`,
                 `${basePath}/assets/images/icons/bike.ico`,
@@ -70,5 +70,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, interval);
     }
 
-    animateFavicon(frames, 1000); // Change every 1000 ms (1 second)
+    animateFavicon(frames, 2000);
 });
