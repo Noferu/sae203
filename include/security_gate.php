@@ -4,18 +4,27 @@ session_start();
 // Code d'accès requis
 $access_code = '789123';
 
+// Fonction pour enregistrer les tentatives
+function log_attempt($status) {
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $time = date('Y-m-d H:i:s');
+    $log_entry = "$time - $ip - $status\n";
+    file_put_contents('access_log.txt', $log_entry, FILE_APPEND);
+}
+
 // Vérification du code
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['access_code']) && $_POST['access_code'] === $access_code) {
         $_SESSION['access_granted'] = true;
+        log_attempt('SUCCESS');
     } else {
         $error_msg = 'Code incorrect. Veuillez réessayer.';
+        log_attempt('FAIL');
     }
 }
 
 // Affichage du formulaire si l'accès n'est pas encore accordé
 if (!isset($_SESSION['access_granted'])) {
-    // Formulaire de saisie du code
     echo '<!DOCTYPE html>
     <html>
     <head>
