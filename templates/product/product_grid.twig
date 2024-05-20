@@ -2,6 +2,8 @@
 
 {% extends "includes/base.twig" %}
 
+{% block title %}{{ current_category.name }}{% endblock %}
+
 {% block css %}
 	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_grid.css">
 {% endblock %}

@@ -2,13 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var x = document.getElementById("toast-message");
   const title = document.querySelector("h1");
 
-  x.className = "show";
+  if (x) {  // Vérifie si l'élément existe
+    x.className = "show";
 
-  setTimeout(function () {
-    x.className = x.className.replace("show", "");
-  }, 3500);
+    setTimeout(function () {
+      x.className = x.className.replace("show", "");
+    }, 3500);
+  }
 
-  
   if (title) {
     const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
     title.innerHTML = letters
