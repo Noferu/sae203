@@ -29,71 +29,24 @@ i.fa-times:hover {
   color: rgb(63, 63, 63);
 }
 
-@keyframes changeBackgroundColor {
+ @keyframes color-change-5x {
   0% {
-    background-color: #ffd82a;
-  }
-  5% {
-    background-color: #ff9f50;
-  }
-  10% {
-    background-color: #ff6f29;
-  }
-  15% {
-    background-color: #ffccb5;
-  }
-  20% {
-    background-color: #a8e6cf;
+    background: #19dcea;
   }
   25% {
-    background-color: #96ceb4;
-  }
-  30% {
-    background-color: #d6b1d2;
-  }
-  35% {
-    background-color: #ff6f69;
-  }
-  40% {
-    background-color: #ffd1e0;
-  }
-  45% {
-    background-color: #ffcc5c;
+    background: #b22cff;
   }
   50% {
-    background-color: #0074d9;
-  }
-  55% {
-    background-color: #001f3f;
-  }
-  60% {
-    background-color: #7fdbff;
-  }
-  65% {
-    background-color: #b10dc9;
-  }
-  70% {
-    background-color: #f012be;
+    background: #ea2222;
   }
   75% {
-    background-color: #85144b;
-  }
-  80% {
-    background-color: #ff4136;
-  }
-  85% {
-    background-color: #ff851b;
-  }
-  90% {
-    background-color: #2ecc40;
-  }
-  95% {
-    background-color: #01ff70;
+    background: #f5be10;
   }
   100% {
-    background-color: #ffd82a;
+    background: #3bd80d;
   }
 }
+
 
 .slideshow-container {
   width: 50%;
@@ -101,7 +54,7 @@ i.fa-times:hover {
   position: relative;
   overflow: hidden;
   box-shadow: 0px -20px 60px #00000033;
-  animation: changeBackgroundColor 90s linear infinite alternate;
+  animation: color-change-5x 50s linear infinite alternate both;
 }
 
 .wrapper-container {

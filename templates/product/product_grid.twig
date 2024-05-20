@@ -11,7 +11,7 @@
 	<div class="grid-container">
 		<div class="grid">
 			{% for article in articles %}
-				<a href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
+				<a class="card-link" href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
 					<div class="card" data-tilt>
 						<img class="article" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
 						<div class="text">
