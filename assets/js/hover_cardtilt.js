@@ -1,6 +1,5 @@
 (function($) {
     "use strict";
-    console.log("hover_cardtilt.js loaded");
     $(".card").tilt({
         maxTilt: 15,
         perspective: 1400,
