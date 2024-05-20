@@ -30,27 +30,69 @@ i.fa-times:hover {
 }
 
 @keyframes changeBackgroundColor {
-  0% { background-color: #ffd82a; }    /* Jaune */
-  5% { background-color: #ff9f50; }    /* Orange */
-  10% { background-color: #ff6f29; }   /* Orange foncé */
-  15% { background-color: #ffccb5; }   /* Pêche */
-  20% { background-color: #a8e6cf; }   /* Vert menthe */
-  25% { background-color: #96ceb4; }   /* Vert clair */
-  30% { background-color: #d6b1d2; }   /* Rose pastel */
-  35% { background-color: #ff6f69; }   /* Rouge */
-  40% { background-color: #ffd1e0; }   /* Rose clair */
-  45% { background-color: #ffcc5c; }   /* Jaune pâle */
-  50% { background-color: #0074D9; }   /* Bleu */
-  55% { background-color: #001f3f; }   /* Bleu foncé */
-  60% { background-color: #7FDBFF; }   /* Bleu ciel */
-  65% { background-color: #B10DC9; }   /* Violet */
-  70% { background-color: #F012BE; }   /* Magenta */
-  75% { background-color: #85144b; }   /* Bourgogne */
-  80% { background-color: #FF4136; }   /* Rouge vif */
-  85% { background-color: #FF851B; }   /* Orange vif */
-  90% { background-color: #2ECC40; }   /* Vert vif */
-  95% { background-color: #01FF70; }   /* Vert printemps */
-  100% { background-color: #ffd82a; }  /* Retour au jaune */
+  0% {
+    background-color: #ffd82a;
+  }
+  5% {
+    background-color: #ff9f50;
+  }
+  10% {
+    background-color: #ff6f29;
+  }
+  15% {
+    background-color: #ffccb5;
+  }
+  20% {
+    background-color: #a8e6cf;
+  }
+  25% {
+    background-color: #96ceb4;
+  }
+  30% {
+    background-color: #d6b1d2;
+  }
+  35% {
+    background-color: #ff6f69;
+  }
+  40% {
+    background-color: #ffd1e0;
+  }
+  45% {
+    background-color: #ffcc5c;
+  }
+  50% {
+    background-color: #0074d9;
+  }
+  55% {
+    background-color: #001f3f;
+  }
+  60% {
+    background-color: #7fdbff;
+  }
+  65% {
+    background-color: #b10dc9;
+  }
+  70% {
+    background-color: #f012be;
+  }
+  75% {
+    background-color: #85144b;
+  }
+  80% {
+    background-color: #ff4136;
+  }
+  85% {
+    background-color: #ff851b;
+  }
+  90% {
+    background-color: #2ecc40;
+  }
+  95% {
+    background-color: #01ff70;
+  }
+  100% {
+    background-color: #ffd82a;
+  }
 }
 
 .slideshow-container {
@@ -58,7 +100,7 @@ i.fa-times:hover {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px -20px 60px #00000033;  
+  box-shadow: 0px -20px 60px #00000033;
   animation: changeBackgroundColor 90s linear infinite alternate;
 }
 
@@ -98,13 +140,14 @@ i.fa-times:hover {
   position: relative;
 }
 
-.field .fa-eye, .field .fa-eye-slash {
+.field .fa-eye,
+.field .fa-eye-slash {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  color:var(--brown);
+  color: var(--brown);
 }
 
 .wrapper form .field input {
@@ -135,8 +178,8 @@ i.fa-times:hover {
   transition: all 0.3s ease;
 }
 
-.wrapper form .field input:focus~label,
-.wrapper form .field input:valid~label {
+.wrapper form .field input:focus ~ label,
+.wrapper form .field input:valid ~ label {
   top: 0%;
   font-size: 16px;
   color: var(--brown);
@@ -212,7 +255,8 @@ i.fa-times:hover {
   place-items: center;
 }
 
-button {
+button,
+.logout-btn {
   background: var(--brown);
   background: var(--gradient);
   border-radius: 100px;
@@ -226,9 +270,22 @@ button {
   transition: all 300ms ease-in-out;
 }
 
-button:hover {
+button:hover,
+.logout-btn:hover {
   transform: scale(1.1);
   filter: brightness(1.1);
-  box-shadow:  11px 11px 22px #c3c3c3,
-             -11px -11px 22px #fdfdfd;
+  box-shadow: 11px 11px 22px #c3c3c3, -11px -11px 22px #fdfdfd;
+}
+
+.field.logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.logout-btn {
+  margin: 10px 0;
+  padding: 10px 20px;
+  text-decoration: none;
 }

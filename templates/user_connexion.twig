@@ -77,10 +77,10 @@
 			{% elseif mode == 3 %}
 
 				<div class="title">Bonjour,
-					{{ username }}. Que souhaitez-vous faire ?</div>
-				<div class="field button">
-					<a href="checkout" class="action-btn">Voir le panier</a>
-					<a href="{{ base_path }}/include/connexion_controller?action=logout" class="action-btn">Se déconnecter</a>
+					{{ username }}</div>
+				<div class="field logout">
+					<a href="checkout" class="logout-btn">Voir le panier</a>
+					<a href="{{ base_path }}/include/connexion_controller?action=logout" class="logout-btn">Se déconnecter</a>
 				</div>
 
 			{% endif %}

@@ -1,18 +1,31 @@
-{% set bodyclass = current_category.name|lower|replace({' ': '', '_': ''})|replace({'á': 'a', 'à': 'a', 'â': 'a', 'ä': 'a', 'ã': 'a', 'å': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e'}) %}
+{% set bodyclass = 'theme-' ~ current_category.name|lower|replace({' ': '', '_': ''}) %}
 
 {% extends "includes/base.twig" %}
 
+{% block css %}
+	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_grid.css">
+{% endblock %}
+
 {% block main %}
-	<div class="grid">
-		{% for article in articles %}
-			<a href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
-				<div class="card">
-					<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
-					<h2>{{ article.title }}</h2>
-					<p>{{ article.price * current_category.currency_rate }}</p>
-				</div>
-			</a>
-		{% endfor %}
+	<div id="background-image"></div>
+	<div class="grid-container">
+		<div class="grid">
+			{% for article in articles %}
+				<a href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
+					<div class="card" data-tilt>
+						<img class="article" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
+						<div class="text">
+							<div class="price-container">
+							<p>{{ article.price * current_category.currency_rate }}</p>
+							<img class="cur-icon" src="{{ base_path}}/assets/images/{{ current_category.currency_icon }}" alt="{{ current_category.currency_name }}">
+							</div>
+							<h2>{{ article.title }}</h2>							
+						</div>
+						<div class="bg"></div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
 	</div>
 	<div class="epoch-switch">
 		{% if previous_category.name %}
@@ -24,7 +37,12 @@
 		{% if next_category.name %}
 			<a href="product?action=grid&category_id={{ next_category.category_id }}">
 				{{ next_category.name }}</a>
-				<i class="fa-solid fa-arrow-right"></i>
+			<i class="fa-solid fa-arrow-right"></i>
 		{% endif %}
 	</div>
+{% endblock %}
+
+{% block js %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+	<script src="{{ base_path }}/assets/js/hover_cardtilt.js"></script>
 {% endblock %}

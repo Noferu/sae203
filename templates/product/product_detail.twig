@@ -12,8 +12,8 @@
 		<p>Description :
 			{{ article.description }}</p>
 		<p>Prix :
-			{{ article.price }}
-			{{ article.price > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
+			{{ article.price * current_category.currency_rate }}
+			{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
 		<p>Mise en vente en :
 			{{ article.sale_year }}</p>
 		<p>Stock :

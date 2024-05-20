@@ -36,8 +36,10 @@ switch ($action) {
 
     case 'show_logout_form':
         // Afficher le formulaire de déconnexion
+        $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'John Doe';
+
         $template = 'user_connexion.twig';
-        $data = array_merge($data, ['mode' => 3]);
+        $data = array_merge($data, ['mode' => 3, 'username' => $username]);
         break;
 
     default:
