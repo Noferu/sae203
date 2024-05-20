@@ -5,7 +5,7 @@
 {% block main %}
 	<div class="grid">
 		{% for article in articles %}
-			<a href="{{ base_path }}/pages/product.php?action=detail&article_id={{ article.article_id }}">
+			<a href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
 				<div class="card">
 					<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
 					<h2>{{ article.title }}</h2>
@@ -16,13 +16,13 @@
 	</div>
 	<div class="epoch-switch">
 		{% if previous_category.name %}
-			<a href="product.php?action=grid&category_id={{ previous_category.category_id }}">
+			<a href="product?action=grid&category_id={{ previous_category.category_id }}">
 				<i class="fa-solid fa-arrow-left"></i>
 				{{ previous_category.name }}</a>
 		{% endif %}
 		<p>{{ current_category.name }}</p>
 		{% if next_category.name %}
-			<a href="product.php?action=grid&category_id={{ next_category.category_id }}">
+			<a href="product?action=grid&category_id={{ next_category.category_id }}">
 				{{ next_category.name }}</a>
 				<i class="fa-solid fa-arrow-right"></i>
 		{% endif %}

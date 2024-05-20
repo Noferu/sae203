@@ -7,7 +7,7 @@ $(document).ready(function () {
 
   function loadFilters(preselectedCategoryId, preselectedSubcategoryId) {
     $.ajax({
-      url: "../include/fetch_articles.php",
+      url: "../include/fetch_articles",
       type: "GET",
       success: function (data) {
         const response = JSON.parse(data);
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
   function fetchAllData() {
     $.ajax({
-      url: "../include/fetch_articles.php",
+      url: "../include/fetch_articles",
       type: "GET",
       data: {
         category: getFilterValues('input[name="category"]'),

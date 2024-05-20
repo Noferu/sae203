@@ -74,7 +74,7 @@ function updateLinkAndTheme(epoch) {
 
   if (categoryId) {
     // Utiliser base_path pour construire correctement l'URL
-    link.href = `pages/product.php?action=grid&category_id=${epoch.dataset.id}`;
+    link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
   } else {
     console.error("Category ID is missing");
   }

@@ -5,7 +5,7 @@
 		<!-- Boutons utilitaires -->
 		<ul class="control-icons">
 			<li class="home-icon">
-				<a href="{{ base_path }}/index.php" aria-label="Home">
+				<a href="{{ base_path }}/index" aria-label="Home">
 					<i class="fa-regular fa-house simple"></i>
 					<i class="fa-solid fa-house simple"></i>
 				</a>
@@ -21,7 +21,7 @@
 		</ul>
 
 		<!-- Barre de recherche -->
-		<form class="search-bar" action="{{ base_path }}/pages/product.php" method="GET">
+		<form class="search-bar" action="{{ base_path }}/pages/product" method="GET">
 			<input type="hidden" name="action" value="searching">
 			<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Search">
 			<button type="submit">
@@ -32,9 +32,9 @@
 		<!-- Boutons d'utilisateur -->
 		<ul class="user-interaction-icons">
 			{% set icons = [
-                {'url': '/pages/user_connexion.php', 'regular': 'fa-user', 'solid': 'fa-user'},
-                {'url': '/pages/checkout.php?action=favorites', 'regular': 'fa-heart', 'solid': 'fa-heart'},
-                {'url': '/pages/checkout.php?action=cart', 'regular': 'fa-cart-shopping', 'solid': 'fa-cart-shopping'}
+                {'url': '/pages/user_connexion', 'regular': 'fa-user', 'solid': 'fa-user'},
+                {'url': '/pages/checkout?action=favorites', 'regular': 'fa-heart', 'solid': 'fa-heart'},
+                {'url': '/pages/checkout?action=cart', 'regular': 'fa-cart-shopping', 'solid': 'fa-cart-shopping'}
             ] %}
 			{% for icon in icons %}
 				<li>
@@ -57,11 +57,11 @@
 		<ul>
 			{% for category in categories %}
 				<li class="dropdown">
-					<a href="{{ base_path }}/pages/product.php?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+					<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
 					<div class="dropdown-content">
 						{% for subcategory in subcategories %}
 							{% if subcategory.category_id == category.category_id %}
-								<a href="{{ base_path }}/pages/product.php?action=list&category_id={{ category.category_id }}&subcategory_id={{ subcategory.subcategory_id }}">{{ subcategory.name }}</a>
+								<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}&subcategory_id={{ subcategory.subcategory_id }}">{{ subcategory.name }}</a>
 							{% endif %}
 						{% endfor %}
 					</div>

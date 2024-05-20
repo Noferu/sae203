@@ -16,7 +16,7 @@
 	'https://i.imgur.com/GViuh6q.jpg' ] %}
 
 {% block main %}
-	<a href="../index.php">
+	<a href="../index">
 		<i class="fa-regular fa-times"></i>
 	</a>
 	<div class="wrapper-container">
@@ -31,7 +31,7 @@
 			{% if mode == 1 %}
 
 				<div class="title">Connexion</div>
-				<form action="{{ base_path }}/include/connexion_controller.php?action=handle_login" method="POST" autocomplete="off">
+				<form action="{{ base_path }}/include/connexion_controller?action=handle_login" method="POST" autocomplete="off">
 					<div class="field">
 						<input type="text" id="username" name="username" required>
 						<label for="username">Nom d'utilisateur</label>
@@ -45,14 +45,14 @@
 					</div>
 					<div class="signup-link">
 						Pas de compte ?
-						<a href="user_connexion.php?action=show_register_form">Créer un compte</a>.
+						<a href="user_connexion?action=show_register_form">Créer un compte</a>.
 					</div>
 				</form>
 
 			{% elseif mode == 2 %}
 
 				<div class="title">Inscription</div>
-				<form action="{{ base_path }}/include/connexion_controller.php?action=handle_register" method="POST" autocomplete="off">
+				<form action="{{ base_path }}/include/connexion_controller?action=handle_register" method="POST" autocomplete="off">
 					<div class="field">
 						<input type="text" id="username" name="username" required>
 						<label for="username">Nom d'utilisateur</label>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="signup-link">
 						Déjà un compte ?
-						<a href="user_connexion.php?action=show_login_form">Se connecter</a>.
+						<a href="user_connexion?action=show_login_form">Se connecter</a>.
 					</div>
 				</form>
 
@@ -79,8 +79,8 @@
 				<div class="title">Bonjour,
 					{{ username }}. Que souhaitez-vous faire ?</div>
 				<div class="field button">
-					<a href="checkout.php" class="action-btn">Voir le panier</a>
-					<a href="{{ base_path }}/include/connexion_controller.php?action=logout" class="action-btn">Se déconnecter</a>
+					<a href="checkout" class="action-btn">Voir le panier</a>
+					<a href="{{ base_path }}/include/connexion_controller?action=logout" class="action-btn">Se déconnecter</a>
 				</div>
 
 			{% endif %}

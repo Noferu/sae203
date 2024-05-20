@@ -8,8 +8,7 @@ $access_code = '789123';
 function log_attempt($status) {
     $ip = $_SERVER['REMOTE_ADDR'];
     $time = date('Y-m-d H:i:s');
-    $log_entry = "$time - $ip - $status\n";
-    file_put_contents('access_log.txt', $log_entry, FILE_APPEND);
+    file_put_contents('access_log.txt', "$time - $ip - $status\n", FILE_APPEND);
 }
 
 // Vérification du code
