@@ -4,16 +4,9 @@
 {% extends 'includes/base.twig' %}
 
 {% block css %}
-	<link rel="stylesheet" href="{{ base_path }}/assets/css/user_actions.css">
+	<link rel="stylesheet" href="{{ base_path }}/assets/css/user_connexion.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock %}
-
-{% set slides = [
-	'https://i.imgur.com/NOho5qq.jpg',
-	'https://i.imgur.com/qYk0C49.jpg', 
-	'https://i.imgur.com/xPUXGRT.jpg', 
-	'https://i.imgur.com/IZfe0T5.jpg' , 
-	'https://i.imgur.com/ZSECm9u.jpg',
-	'https://i.imgur.com/GViuh6q.jpg' ] %}
 
 {% block main %}
 	<a href="../index">
@@ -39,6 +32,7 @@
 					<div class="field">
 						<input type="password" id="password" name="password" required autocomplete="new-password">
 						<label for="password">Mot de passe</label>
+						<i class="fa-regular fa-eye" id="togglePassword"></i>
 					</div>
 					<div class="field button">
 						<button type="submit" class="action-btn">Se connecter</button>
@@ -52,7 +46,7 @@
 			{% elseif mode == 2 %}
 
 				<div class="title">Inscription</div>
-				<form action="{{ base_path }}/include/connexion_controller?action=handle_register" method="POST" autocomplete="off">
+				<form id="registerForm" action="{{ base_path }}/include/connexion_controller?action=handle_register" method="POST" autocomplete="off">
 					<div class="field">
 						<input type="text" id="username" name="username" required>
 						<label for="username">Nom d'utilisateur</label>
@@ -64,6 +58,12 @@
 					<div class="field">
 						<input type="password" id="password" name="password" required autocomplete="new-password">
 						<label for="password">Mot de passe</label>
+						<i class="fa-regular fa-eye" id="togglePassword"></i>
+					</div>
+					<div class="field">
+						<input type="password" id="confirm_password" name="confirm_password" required autocomplete="new-password">
+						<label for="confirm_password">Confirmez le mot de passe</label>
+						<i class="fa-regular fa-eye" id="toggleConfirmPassword"></i>
 					</div>
 					<div class="field button">
 						<button type="submit" class="action-btn">S'enregistrer</button>
@@ -91,5 +91,5 @@
 {% endblock %}
 
 {% block js %}
-	<script src="{{ base_path }}/assets/js/slideshow.js"></script>
+	<script src="{{ base_path }}/assets/js/connexion_form.js"></script>
 {% endblock %}

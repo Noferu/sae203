@@ -1,6 +1,11 @@
+{% set bodyclass = current_category.name|lower|replace({' ': '', '_': ''})|replace({'á': 'a', 'à': 'a', 'â': 'a', 'ä': 'a', 'ã': 'a', 'å': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e'}) %}
+
 {% extends "includes/base.twig" %}
+
 {% block main %}
+
 	<div class="sheet">
+
 		<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
 		<h2>Nom :
 			{{ article.title }}</h2>

@@ -84,10 +84,10 @@ switch ($action) {
         echo $twig->render('product/product_grid.twig', [
             'articles' => $articles,
             'categories' => $categories,
-            'subcategories' => $subcategories, // Passe les catégories à Twig
-            'current_category' => $current_category, // Passe la catégorie actuelle à Twig
-            'previous_category' => $previous_category, // Passe la catégorie précédente à Twig
-            'next_category' => $next_category // Passe la catégorie suivante à Twig
+            'subcategories' => $subcategories,
+            'current_category' => $current_category,
+            'previous_category' => $previous_category,
+            'next_category' => $next_category
         ]);
         break;
 

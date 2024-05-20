@@ -98,6 +98,15 @@ i.fa-times:hover {
   position: relative;
 }
 
+.field .fa-eye, .field .fa-eye-slash {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color:var(--brown);
+}
+
 .wrapper form .field input {
   height: 100%;
   width: 100%;
