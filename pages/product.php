@@ -138,7 +138,7 @@ switch ($action) {
         $article = select_data($pdo, $sql, $params, false);
 
         if ($article) {
-            echo $twig->render('product_detail.twig', [
+            echo $twig->render('product/product_detail.twig', [
                 'article' => $article,
                 'categories' => $categories,
                 'subcategories' => $subcategories
