@@ -9,7 +9,7 @@ body {
   overflow: hidden;
 }
 
-#timeline-container, header, .footer-wrapped, a, .featured-articles, .about-us  {
+#timeline-container, header, .footer-wrapped, .btn-animation, .featured-articles, .about-us  {
   animation: fade-in-bck 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
 }
 
@@ -196,16 +196,19 @@ body {
   filter: brightness(0.2);
   opacity: 70%;
   transition: all 0.5s ease-in-out;
+  transform: scale(0.97);
 }
 
 .epoch.adjacent {
   filter: brightness(0.6);
   opacity: 70%;
+  transform: scale(0.97);
 }
 
 .epoch.center {
   filter: brightness(1);
   opacity: 100%;
+  transform: scale(1);
 }
 
 .epoch:first-child {
@@ -218,7 +221,7 @@ body {
 
 .button-19 {
   appearance: button;
-  background: var(--brown); /* Dégradé */
+  background: var(--brown);
   border: solid transparent;
   border-radius: 100px;
   border-width: 0 0 4px;

@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var x = document.getElementById("toast-message");
   const title = document.querySelector("h1");
 
-  if (x) {  // Vérifie si l'élément existe
+  // Message Toast
+  if (x) {
     x.className = "show";
 
     setTimeout(function () {
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3500);
   }
 
+  // Animtion du titre
   if (title) {
     const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
     title.innerHTML = letters
