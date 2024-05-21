@@ -9,6 +9,22 @@ body {
   overflow: hidden;
 }
 
+#timeline-container, header, .footer-wrapped, a, .featured-articles, .about-us  {
+  animation: fade-in-bck 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
+}
+
+@keyframes fade-in-bck {
+  0% {
+    transform: translateZ(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
 #toast-message {
   visibility: hidden;
   min-width: 250px;
@@ -73,6 +89,7 @@ body {
   z-index: -1;
   filter: blur(2px);
   transition: filter 1s, opacity 1s, background-image 0.5s ease-in-out;
+  background-image: url("https://i.imgur.com/xPUXGRT.jpg");
 }
 
 #background-image::before {
@@ -91,16 +108,16 @@ body {
   transition: opacity 0.7s;
 }
 
+.theme-moyen-âge #background-image {
+  background-image: url("https://i.imgur.com/xPUXGRT.jpg");
+}
+
 .theme-néolithique #background-image {
   background-image: url("https://i.imgur.com/NOho5qq.jpg");
 }
 
 .theme-antiquité #background-image {
   background-image: url("https://i.imgur.com/qYk0C49.jpg");
-}
-
-.theme-moyen-âge #background-image {
-  background-image: url("https://i.imgur.com/xPUXGRT.jpg");
 }
 
 .theme-renaissance #background-image {
