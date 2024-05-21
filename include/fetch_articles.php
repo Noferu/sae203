@@ -73,9 +73,26 @@ foreach ($articles as &$article) {
 }
 
 $categories = select_data($pdo, "SELECT category_id AS id, name FROM categories");
-$sellers = select_data($pdo, "SELECT seller_id AS id, name FROM sellers");
 $subcategories = select_data($pdo, "SELECT subcategory_id AS id, name FROM subcategories");
-$keywords = select_data($pdo, "SELECT keyword_id AS id, name FROM keywords");
+// $sellers = select_data($pdo, "SELECT seller_id AS id, name FROM sellers");
+// $keywords = select_data($pdo, "SELECT keyword_id AS id, name FROM keywords");
+
+$keywords = select_data($pdo, "
+    SELECT k.keyword_id AS id, k.name 
+    FROM keywords k 
+    JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id 
+    GROUP BY k.keyword_id, k.name 
+    HAVING COUNT(DISTINCT ak.article_id) >= 2
+");
+
+$sellers = select_data($pdo, "
+    SELECT s.seller_id AS id, s.name 
+    FROM sellers s 
+    JOIN articles a ON s.seller_id = a.seller_id 
+    GROUP BY s.seller_id, s.name 
+    HAVING COUNT(DISTINCT a.article_id) >= 2
+");
+
 $minPrice = select_data($pdo, "SELECT MIN(price) AS minPrice FROM articles")[0];
 $maxPrice = select_data($pdo, "SELECT MAX(price) AS maxPrice FROM articles")[0];
 $minYear = select_data($pdo, "SELECT MIN(sale_year) AS minYear FROM articles")[0];

@@ -10,7 +10,7 @@ body {
 }
 
 #timeline-container, header, .footer-wrapped, a, .featured-articles, .about-us  {
-  animation: fade-in-bck 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 3s both;
+  animation: fade-in-bck 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
 }
 
 @keyframes fade-in-bck {
