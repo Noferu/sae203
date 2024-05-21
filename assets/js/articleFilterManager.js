@@ -55,7 +55,10 @@ $(document).ready(function () {
 
       const label = $("<label>", { text: item.name, for: id });
 
-      container.append(checkbox).append(label);
+      const checkboxContainer = $("<div>", { class: "checkbox-container" });
+      checkboxContainer.append(checkbox).append(label);
+
+      container.append(checkboxContainer);
     });
   }
 
@@ -107,13 +110,27 @@ $(document).ready(function () {
       if (article.image_url && article.title) {
         const imageUrl = `../assets/images/articles/${article.image_url}`;
 
-        html += `<div class="article">
-                      <a href="${article.url}"><img src="${imageUrl}" alt="${article.title}" /></a>
-                      <a href="${article.url}"><h2>${article.title}</h2></a>
-                      <p>${article.description}</p>
-                      <p>Price: ${article.price}</p>
-                      <p>Year: ${article.sale_year}</p>
-                  </div>`;
+        html += `
+        <div class="article">
+    <a class="image" href="${article.url}">
+        <img src="${imageUrl}" alt="${article.title}"/>
+    </a>
+    <div class="right-part">
+        <div class="text-infos">
+            <a href="${article.url}">
+                <h2>${article.title}</h2>
+            </a>
+            <p>${article.description}</p>
+            <p>Prix : ${article.price} €</p>
+            <p>Année de vente : ${article.sale_year}</p>
+        </div>
+        <div class="btns">
+            <a class="learn-more" href="${article.url}">En savoir plus</a>
+            <a class="put-in-cart" href="#">Ajouter au panier</a>
+        </div>
+    </div>
+</div>
+        `;
       } else {
         console.warn(
           "L'article manque de propriétés 'image_url' ou 'title'",
@@ -122,7 +139,13 @@ $(document).ready(function () {
       }
     });
     $("#articles").html(html);
-    $("#article-count").html(articles.length + " article(s) trouvé(s)");
+    $("#article-count").html(
+      articles.length +
+        " article" +
+        (articles.length > 1 ? "s" : "") +
+        " trouvé" +
+        (articles.length > 1 ? "s" : "")
+    );
   }
 });
 

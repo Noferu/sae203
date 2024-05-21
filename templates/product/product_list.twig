@@ -4,57 +4,60 @@
 	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_list.css">
 {% endblock %}
 
-
 {% block main %}
+	<section>
+		<div id="article-count"></div>
+		<div id="articles"></div>
+	</section>
 	<aside id="filters">
 		<h3>Filtres</h3>
 		<div>
-			<label>Catégories:</label>
-			<div
-				id="category-checkboxes"><!-- Chargés via JavaScript -->
-			</div>
+			<label>Catégories</label>
+			<div id="category-checkboxes"></div>
 		</div>
-		<div>
-			<label>Prix minimum:</label>
+		<div class="pair-filter">
+			<label>Prix minimum</label>
 			<input type="number" id="minPrice" name="minPrice" min="0" placeholder="">
 		</div>
 		<div>
-			<label>Prix maximum:</label>
+			<label>Prix maximum</label>
 			<input type="number" id="maxPrice" name="maxPrice" min="0" placeholder="">
 		</div>
-		<div>
-			<label>Année minimum:</label>
+		<div class="pair-filter">
+			<label>Année minimum</label>
 			<input type="number" id="minYear" name="minYear" placeholder="">
-			à
-			<label>Année maximum:</label>
+		</div>
+		<div>
+			<label>Année maximum</label>
 			<input type="number" id="maxYear" name="maxYear" placeholder="">
 		</div>
 		<div>
-			<label>Sous-catégories:</label>
-			<div
-				id="subcategory-checkboxes" class="expandable"><!-- Chargés via JavaScript -->
-			</div>
-		</div>
-		<div >
-			<label>Vendeurs:</label>
-			<div
-				id="seller-checkboxes" class="expandable"><!-- Chargés via JavaScript -->
-			</div>
+			<label>Sous-catégories</label>
+			<div id="subcategory-checkboxes" class="expandable"></div>
 		</div>
 		<div>
-			<label>Mots-clés:</label>
-			<div
-				id="keyword-checkboxes" class="expandable"><!-- Chargés via JavaScript -->
-			</div>
+			<label>Vendeurs</label>
+			<div id="seller-checkboxes" class="expandable"></div>
+		</div>
+		<div>
+			<label>Mots-clés</label>
+			<div id="keyword-checkboxes" class="expandable"></div>
 		</div>
 	</aside>
-	<section id="articles-stats">
-		<div id="article-count"></div>
-	</section>
-	<section
-		id="articles"><!-- Les articles filtrés chargés via JavaScript -->
-	</section>
 {% endblock %}
+
 {% block js %}
 	<script src="{{ base_path }}/assets/js/articleFilterManager.js"></script>
+<script>
+	$(document).ready(function () {
+		const applyAnimationDelay = () => {
+			document.querySelectorAll("#articles .article").forEach((article, index) => {
+				article.style.animationDelay = `${index * 0.2}s`;
+			});
+		};
+		applyAnimationDelay();
+		$(document).on('ajaxComplete', applyAnimationDelay);
+	});
+</script>
+
 {% endblock %}
