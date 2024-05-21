@@ -52,6 +52,13 @@ body {
   overflow: hidden;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:5vh;
+}
+
 #background-image {
   position: absolute;
   top: -10px;
@@ -99,8 +106,10 @@ body {
 .grid {
   display: flex;
   gap: 1vw;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   min-width: 100%;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 .card-link {
@@ -195,4 +204,29 @@ body {
 
 .card .cur-icon {
   width: 60px;
+}
+
+.epoch-switch {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.epoch-switch h1 {
+  font-weight: 700;
+  font-size: 80px;
+}
+
+.epoch-switch a {
+  font-size: 100%;
+  color:inherit;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.epoch-switch a i {
+  padding:15px;
 }

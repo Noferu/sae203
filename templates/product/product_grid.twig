@@ -2,7 +2,9 @@
 
 {% extends "includes/base.twig" %}
 
-{% block title %}{{ current_category.name }}{% endblock %}
+{% block title %}
+	{{ current_category.name }}
+{% endblock %}
 
 {% block css %}
 	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_grid.css">
@@ -18,10 +20,10 @@
 						<img class="article" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
 						<div class="text">
 							<div class="price-container">
-							<p>{{ article.price * current_category.currency_rate }}</p>
-							<img class="cur-icon" src="{{ base_path}}/assets/images/{{ current_category.currency_icon }}" alt="{{ current_category.currency_name }}">
+								<p>{{ article.price * current_category.currency_rate }}</p>
+								<img class="cur-icon" src="{{ base_path}}/assets/images/{{ current_category.currency_icon }}" alt="{{ current_category.currency_name }}">
 							</div>
-							<h2>{{ article.title }}</h2>							
+							<h2>{{ article.title }}</h2>
 						</div>
 						<div class="bg"></div>
 					</div>
@@ -34,16 +36,19 @@
 			<a href="product?action=grid&category_id={{ previous_category.category_id }}">
 				<i class="fa-solid fa-arrow-left"></i>
 				{{ previous_category.name }}</a>
+		{% else %}
+			<div class="spacer"></div>
 		{% endif %}
-		<p>{{ current_category.name }}</p>
+		<h1 class="title-letter">{{ current_category.name|upper }}</h1>
 		{% if next_category.name %}
 			<a href="product?action=grid&category_id={{ next_category.category_id }}">
-				{{ next_category.name }}</a>
-			<i class="fa-solid fa-arrow-right"></i>
+				{{ next_category.name }}<i class="fa-solid fa-arrow-right"></i>
+			</a>
+		{% else %}
+			<div class="spacer"></div>
 		{% endif %}
 	</div>
 {% endblock %}
-
 {% block js %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 	<script src="{{ base_path }}/assets/js/cardHoverEffect.js"></script>
