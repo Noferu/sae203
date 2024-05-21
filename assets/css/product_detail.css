@@ -1,0 +1,119 @@
+body.bodyclass {
+    /* propriétés pour le body avec la classe dynamique */
+}
+
+.back-link {
+    /* propriétés pour le lien de retour */
+}
+
+.article-info {
+    /* propriétés pour la section d'information de l'article */
+}
+
+.article-info img {
+    /* propriétés pour l'image de l'article */
+}
+
+.article-details {
+    /* propriétés pour les détails de l'article */
+}
+
+.article-details h2 {
+    /* propriétés pour le nom de la catégorie */
+}
+
+.article-details h3 {
+    /* propriétés pour le titre de l'article */
+}
+
+.article-details p {
+    /* propriétés générales pour les paragraphes dans les détails de l'article */
+}
+
+.article-details .price {
+    /* propriétés pour le prix de l'article */
+}
+
+.buy-button {
+    /* propriétés pour le bouton acheter */
+}
+
+.heart-icon {
+    /* propriétés pour l'icône de cœur */
+}
+
+.additional-info {
+    /* propriétés pour la section d'information supplémentaire */
+}
+
+.additional-info p {
+    /* propriétés pour les paragraphes dans la section d'information supplémentaire */
+}
+
+.additional-info .tags {
+    /* propriétés pour le conteneur des tags */
+}
+
+.additional-info .tags span {
+    /* propriétés pour chaque tag */
+}
+
+.comments-section {
+    /* propriétés pour la section des commentaires */
+}
+
+.comments-section h3 {
+    /* propriétés pour le titre des commentaires */
+}
+
+.comments-section .comment {
+    /* propriétés pour chaque commentaire */
+}
+
+.comments-section .comment .username {
+    /* propriétés pour le nom d'utilisateur dans les commentaires */
+}
+
+.comments-section .comment .date {
+    /* propriétés pour la date des commentaires */
+}
+
+.add-comment {
+    /* propriétés pour la section d'ajout de commentaire */
+}
+
+.add-comment textarea {
+    /* propriétés pour la zone de texte pour ajouter un commentaire */
+}
+
+.add-comment button {
+    /* propriétés pour le bouton d'envoi de commentaire */
+}
+
+.suggested-articles {
+    /* propriétés pour la section des articles suggérés */
+}
+
+.suggested-articles h3 {
+    /* propriétés pour le titre des articles suggérés */
+}
+
+.suggested-articles .articles-grid {
+    /* propriétés pour le conteneur en grille des articles suggérés */
+}
+
+.suggested-articles .article-card {
+    /* propriétés pour chaque carte d'article suggéré */
+}
+
+.suggested-articles .article-card img {
+    /* propriétés pour les images des articles suggérés */
+}
+
+.suggested-articles .article-card h4 {
+    /* propriétés pour les titres des articles suggérés */
+}
+
+.suggested-articles .article-card p {
+    /* propriétés pour les descriptions courtes des articles suggérés */
+}

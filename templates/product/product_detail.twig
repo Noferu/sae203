@@ -2,33 +2,82 @@
 
 {% extends "includes/base.twig" %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_detail.css">
+{% endblock %}
 
 {% block main %}
 
-	<div class="sheet">
-
-		<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
-		<h2>Nom :
-			{{ article.title }}</h2>
-		<p>Description :
-			{{ article.description }}</p>
-		<p>Prix :
-			{{ article.price * current_category.currency_rate }}
-			{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
-		<p>Mise en vente en :
-			{{ article.sale_year }}</p>
-		<p>Stock :
-			{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
-		<p>Crée le :
-			{{ article.created_at }}</p>
-		<p>Mise à jour le :
-			{{ article.updated_at }}</p>
-		<p>Vendu par :
-			{{ seller.name }}</p>
+	<a class="back-link" href="#">Revenir</a>
+	<div class="article-info">
+		<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}">
+		<div class="article-details">
+			<h2>{{ current_category.name|upper }}</h2>
+			<h3>{{ article.title }}</h3>
+			<p>{{ article.description }}</p>
+			<p class="price">{{ article.price * current_category.currency_rate }}
+				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
+			<a class="buy-button" href="#">ACHETER</a>
+			<span class="heart-icon">&#9825;</span>
+			<p>Vendu par :
+				{{ seller.name }}</p>
+			<p>Mise en vente en :
+				{{ article.sale_year }}</p>
+			<p>Stock :
+				{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
+			<p>Crée le :
+				{{ article.created_at }}</p>
+			<p>Mise à jour le :
+				{{ article.updated_at }}</p>
+		</div>
 	</div>
-	<div class="lower-part">
-		<div class="comment"></div>
-		<div class="suggested-articles"><div/>
-			<div/>
-		{% endblock %}
+
+	<div class="additional-info">
+		<p>Date de création :
+			{{ article.created_at }}, date de modification :
+			{{ article.updated_at }}</p>
+		<div class="tags">
+			{% for tag in article.tags %}
+				<span>{{ tag.name }}</span>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="comments-section">
+		<h3>Commentaires</h3>
+		<div class="comment">
+			<p class="username">@username</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			<p class="date">Date de création</p>
+		</div>
+		<div class="add-comment">
+			<textarea placeholder="Ajouter un commentaire..."></textarea>
+			<button>Envoyer</button>
+		</div>
+	</div>
+
+	<div class="suggested-articles">
+		<h3>Autres articles pour vous</h3>
+		<div class="articles-grid">
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
+			</div>
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
+			</div>
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
+			</div>
+		</div>
+	</div>
+</main>{% endblock %}
