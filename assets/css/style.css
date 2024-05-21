@@ -1,15 +1,48 @@
 @font-face {
-  font-family: "Octopus";
-  src: url("../files/fonts/octopusBold.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Antiquite';
+  src: url('../fonts/antiquite.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: "Varien";
-  src: url("../files/fonts/varien.otf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'EpoqueModerne';
+  src: url('../fonts/epoque-moderne.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Futur';
+  src: url('../fonts/futur.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MoyenAge';
+  src: url('../fonts/moyen-age.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Neolithique';
+  src: url('../fonts/neolithique.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Renaissance';
+  src: url('../fonts/renaissance.TTF') format('truetype');
+}
+
+.title-letter {
+  display: inline-block;
+  animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 * {
@@ -38,8 +71,9 @@ header {
   justify-content: space-evenly;
   flex-direction: column;
   height: 25vh;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+  /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent); */
   color: white;
+  z-index: 999;
 }
 
 header a {
@@ -187,7 +221,7 @@ nav ul {
 }
 
 .wave-shape {
-  transform: rotate(180deg);
+  transform: rotate(180deg) translateY(-1px);
 }
 
 .wave-shape svg {
@@ -198,6 +232,22 @@ nav ul {
 
 .wave-shape .shape-fill {
   fill: rgb(202, 202, 202);
+}
+
+@keyframes waveAnimation {
+  0% {
+    d: path("M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z");
+  }
+  50% {
+    d: path("M321.39,51.44c58-5.79,114.16-25.13,172-36.86,82.39-11.72,168.19-12.73,250.45-0.39C823.78,26,906.67,67,985.66,87.83c70.05,13.48,146.53,21.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,51.44Z");
+  }
+  100% {
+    d: path("M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z");
+  }
+}
+
+.wave-shape path {
+  animation: waveAnimation 5s infinite ease-in-out;
 }
 
 .footer-wrapped {
