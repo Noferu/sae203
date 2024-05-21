@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 19 mai 2024 à 19:24
+-- Généré le : mar. 21 mai 2024 à 04:21
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -329,20 +329,21 @@ CREATE TABLE `categories` (
   `description` text DEFAULT NULL,
   `currency_name` varchar(255) NOT NULL,
   `currency_rate` double(8,2) NOT NULL,
-  `tltn_image_filename` varchar(255) DEFAULT NULL
+  `tltn_image_filename` varchar(255) DEFAULT NULL,
+  `currency_icon` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`, `currency_rate`, `tltn_image_filename`) VALUES
-(1, 'Néolithique', 'Marchez sur les traces de vos ancêtres du Néolithique, où la terre et la pierre façonnent notre quotidien. Venez échanger vos récits près des feux de camp et troquez vos coquillages contre nos haches taillées et nos poteries délicatement modelées. Découvrez les charmes simples mais essentiels de la vie sédentaire.', 'coquillage', 10.00, 'thumbnail-neolithique.webp'),
-(2, 'Antiquité', 'Plongez dans l\'éclat de l\'Antiquité où les philosophes, les poètes et les guerriers forgent l\'histoire. Avec quelques deniers, vous pouvez acquérir des amphores ornées des tuniques en lin fines ou même des armes dignes des grands héros de Rome et de Grèce. Rejoignez-nous dans les agoras et les forums pour célébrer les exploits et la sagesse de notre temps.', 'denier', 2.00, 'thumbnail-antiquite.webp'),
-(3, 'Moyen-Âge', 'Entrez dans le majestueux Moyen-Âge, une époque de nobles chevaliers et de mystérieuses légendes. Échangez vos écus contre des broches, ciselées, des capes brodées ou des manuscrits précieux. Chaque objet que vous acquérez est imprégné de l\'esprit chevaleresque et du savoir ancestral de nos artisans.', 'écu', 1.00, 'thumbnail-moyenage.webp'),
-(4, 'Renaissance', 'Vivez la splendeur de la Renaissance où l\'art et la découverte renaissent sous un jour nouveau. Venez échanger vos florins contre des œuvres d\'art, inestimables, des instruments scientifiques avancés ou des vêtements brodés de soie qui ont charmé les cours européennes. Laissez-vous séduire par le génie de notre époque et enrichissez votre monde avec nos trésors.', 'florin', 0.50, 'thumbnail-renaissance.webp'),
-(5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation et du progrès durant l\'Époque Moderne. Avec quelques livres, vous pouvez vous procurer des merveilles de la technologie comme des machines à écrire portables ou des bicyclettes qui ont révolutionné nos transports. Participez au grand élan vers la modernité et laissez-vous emporter par l\'élégance et le dynamisme de notre temps.', 'livre', 1.50, 'thumbnail-moderne.webp'),
-(6, 'Futur', 'Plongez dans le futur, un monde où la technologie et l\'innovation redéfinissent les limites du possible. Utilisez vos crédits pour acquérir des gadgets révolutionnaires tels que des smartwatches holographiques ou des robots assistants domestiques. Explorez avec nous les nouvelles frontières de l\'univers et les avancées qui transforment notre quotidien.', 'crédit', 0.20, 'thumbnail-futur.webp');
+INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`, `currency_rate`, `tltn_image_filename`, `currency_icon`) VALUES
+(1, 'Néolithique', 'Marchez sur les traces de vos ancêtres du Néolithique, où la terre et la pierre façonnent notre quotidien. Venez échanger vos récits près des feux de camp et troquez vos coquillages contre nos haches taillées et nos poteries délicatement modelées. Découvrez les charmes simples mais essentiels de la vie sédentaire.', 'coquillage', 10.00, 'thumbnail-neolithique.webp', 'currency_icons/coquillage.webp'),
+(2, 'Antiquité', 'Plongez dans l\'éclat de l\'Antiquité où les philosophes, les poètes et les guerriers forgent l\'histoire. Avec quelques deniers, vous pouvez acquérir des amphores ornées des tuniques en lin fines ou même des armes dignes des grands héros de Rome et de Grèce. Rejoignez-nous dans les agoras et les forums pour célébrer les exploits et la sagesse de notre temps.', 'denier', 2.00, 'thumbnail-antiquite.webp', 'currency_icons/denier.webp'),
+(3, 'Moyen-Âge', 'Entrez dans le majestueux Moyen-Âge, une époque de nobles chevaliers et de mystérieuses légendes. Échangez vos écus contre des broches, ciselées, des capes brodées ou des manuscrits précieux. Chaque objet que vous acquérez est imprégné de l\'esprit chevaleresque et du savoir ancestral de nos artisans.', 'écu', 1.00, 'thumbnail-moyenage.webp', 'currency_icons/ecu.webp'),
+(4, 'Renaissance', 'Vivez la splendeur de la Renaissance où l\'art et la découverte renaissent sous un jour nouveau. Venez échanger vos florins contre des œuvres d\'art, inestimables, des instruments scientifiques avancés ou des vêtements brodés de soie qui ont charmé les cours européennes. Laissez-vous séduire par le génie de notre époque et enrichissez votre monde avec nos trésors.', 'florin', 0.50, 'thumbnail-renaissance.webp', 'currency_icons/florin.webp'),
+(5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation et du progrès durant l\'Époque Moderne. Avec quelques livres, vous pouvez vous procurer des merveilles de la technologie comme des machines à écrire portables ou des bicyclettes qui ont révolutionné nos transports. Participez au grand élan vers la modernité et laissez-vous emporter par l\'élégance et le dynamisme de notre temps.', 'livre', 1.50, 'thumbnail-moderne.webp', 'currency_icons/livre.webp'),
+(6, 'Futur', 'Plongez dans le futur, un monde où la technologie et l\'innovation redéfinissent les limites du possible. Utilisez vos crédits pour acquérir des gadgets révolutionnaires tels que des smartwatches holographiques ou des robots assistants domestiques. Explorez avec nous les nouvelles frontières de l\'univers et les avancées qui transforment notre quotidien.', 'crédit', 0.20, 'thumbnail-futur.webp', 'currency_icons/credit.webp');
 
 -- --------------------------------------------------------
 
@@ -667,7 +668,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, NULL);
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-21 02:46:03'),
+(2, 'test', 'random@gmail.com', '$2y$10$sGqFX3ZiA0Gh/KUTI0DqN.wTbJvW.lYCcAumiSNuHVFGSzJp1zH3u', '2024-05-20 13:16:11', 0, NULL),
+(3, 'EZAEZA', 'nawfelejziao@jieza.fr', '$2y$10$RzBTHGNDNFLx6JhIs/zwBeeNtq/bYN/.wg4WIhPS6IkAXSpb8ZobG', '2024-05-20 13:17:53', 0, NULL),
+(4, '6-Tadelle', 'mohamed.idaali@free.fr', '$2y$10$KoYQ8E3QPkjC4/JcBVygEuemgEVfWDjPA6RG4fJVREMl/LGfZbcUO', '2024-05-20 23:07:23', 0, NULL);
 
 --
 -- Index pour les tables déchargées
@@ -804,7 +808,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
