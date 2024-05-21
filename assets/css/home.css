@@ -1,3 +1,9 @@
+:root {
+  --brown: #e75511;
+  --gold: #f1ab28;
+  --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
+}
+
 body {
   position: relative;
   overflow: hidden;
@@ -31,7 +37,6 @@ body {
   from {top: 50px; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
-
 
 .theme-néolithique {
   background-color: #3a4526;
@@ -118,10 +123,9 @@ body {
   margin: 3vw;
   font-size: 600%;
   user-select: none;
-	animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   animation-delay: 250ms;
 }
-
 
 @keyframes tracking-in-expand {
   0% {
@@ -161,7 +165,6 @@ body {
   margin: 5vh auto;
   position: relative;
   user-select: none;
-  /* box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); */
   overflow-y: hidden;
 }
 
@@ -171,9 +174,9 @@ body {
 
 .epoch {
   display: inline-block;
-  width:42%;
+  width: 42%;
   height: 100%;
-  filter:brightness(0.2);
+  filter: brightness(0.2);
   opacity: 70%;
   transition: all 0.5s ease-in-out;
 }
@@ -198,7 +201,7 @@ body {
 
 .button-19 {
   appearance: button;
-  background-color: #ff6f29;
+  background: var(--brown); /* Dégradé */
   border: solid transparent;
   border-radius: 100px;
   border-width: 0 0 4px;
@@ -221,7 +224,7 @@ body {
 
 .button-19:after {
   background-clip: padding-box;
-  background-color: #ffd82a;
+  background: var(--gradient); 
   border: solid transparent;
   border-radius: 100px;
   border-width: 0 0 4px;

@@ -1,7 +1,8 @@
 :root {
-  --brown: #ff6f29;
-  --gold: #ffd82a;
-  --gradient: linear-gradient(-135deg, #ffd82a, #ff6f29);
+  --brown: #e75511;
+  --gold: #f1ab28;
+  --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
+  --button-gradient: linear-gradient(135deg, #f1c40f, #e67e22);
 }
 
 ::selection {
@@ -12,12 +13,14 @@
 main {
   display: flex;
   height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 i.fa-times {
   position: absolute;
   top: 6%;
-  left: 6%;
+  left: 35%;
   color: lightgrey;
   font-size: 150%;
   transform: rotate(0deg);
@@ -29,44 +32,54 @@ i.fa-times:hover {
   color: rgb(63, 63, 63);
 }
 
- @keyframes color-change-5x {
-  0% {
-    background: #19dcea;
-  }
-  25% {
-    background: #b22cff;
-  }
-  50% {
-    background: #ea2222;
-  }
-  75% {
-    background: #f5be10;
-  }
-  100% {
-    background: #3bd80d;
-  }
-}
-
-
 .slideshow-container {
-  width: 50%;
+  width: 30%;
   height: 100vh;
   position: relative;
   overflow: hidden;
-  box-shadow: 0px -20px 60px #00000033;
-  animation: color-change-5x 50s linear infinite alternate both;
+  box-shadow: 0px -20px 60px #0000005b;
+}
+
+.slideshow {
+  display: flex;
+  width: 600%;
+  height: 105%;
+  margin: -2.5% 0; /* Correction des bords blancs */
+  animation: slide 30s infinite alternate;
+}
+
+.slide {
+  width: 16.66%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(10px);
+}
+
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  16.66% { transform: translateX(0%); }
+  33.32% { transform: translateX(-16.66%); }
+  49.98% { transform: translateX(-33.32%); }
+  66.64% { transform: translateX(-50%); }
+  83.30% { transform: translateX(-66.64%); }
+  100% { transform: translateX(-83.30%); }
 }
 
 .wrapper-container {
   display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  width: 40%;
+  padding: 0 2%;
 }
 
 .wrapper {
-  width: 380px;
+  width: 380px; /* Taille d'origine du formulaire */
   border-radius: 30px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
 }
@@ -171,18 +184,28 @@ i.fa-times:hover {
 }
 
 .wrapper form .field input[type="submit"] {
+  position: relative;
   color: #fff;
   border: none;
   padding-left: 0;
   margin-top: -10px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  background: var(--gradient);
-  transition: all 0.3s ease;
+  background: var(--button-gradient);
+  transition: all 0.4s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  border-radius: 100px;
+  padding: 10px 20px;
+}
+
+.wrapper form .field input[type="submit"]:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 
 .wrapper form .field input[type="submit"]:active {
+  border-width: 4px 0 0;
+  background: none;
   transform: scale(0.95);
 }
 
@@ -209,25 +232,41 @@ i.fa-times:hover {
 }
 
 button,
-.logout-btn {
-  background: var(--brown);
-  background: var(--gradient);
+.logout-btn,
+.wrapper form .field input[type="submit"] {
+  appearance: button;
+  background: var(--button-gradient);
+  border: solid transparent;
   border-radius: 100px;
-  padding: 10px 20px;
-  border: none;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
   color: white;
-  font-weight: 600;
-  font-size: 110%;
-  font-family: inherit;
   cursor: pointer;
-  transition: all 300ms ease-in-out;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  line-height: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  transform: translateZ(0);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 0.4s cubic-bezier(0.785, 0.135, 0.150, 0.860);
 }
 
-button:hover,
-.logout-btn:hover {
-  transform: scale(1.1);
-  filter: brightness(1.1);
-  box-shadow: 11px 11px 22px #c3c3c3, -11px -11px 22px #fdfdfd;
+button:hover:not(:disabled),
+.logout-btn:hover:not(:disabled),
+.wrapper form .field input[type="submit"]:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+button:active,
+.logout-btn:active,
+.wrapper form .field input[type="submit"]:active {
+  border-width: 4px 0 0;
+  background: none;
+  transform: scale(0.95);
 }
 
 .field.logout {
