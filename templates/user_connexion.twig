@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block main %}
-	<a href="../index">
+	<a id="back-link" href="../index">
 		<i class="fa-regular fa-times"></i>
 	</a>
 	{# <div class="slideshow-container">
@@ -104,4 +104,5 @@
 
 {% block js %}
 	<script src="{{ base_path }}/assets/js/loginFormHandler.js"></script>
+	<script src="{{ base_path }}/assets/js/backButton.js"></script>
 {% endblock %}

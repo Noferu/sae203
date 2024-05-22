@@ -1,18 +1,55 @@
-body.bodyclass {
-    /* propriétés pour le body avec la classe dynamique */
+#back-link {
+    background-color: var(--gold);
+    padding:10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    color:white;
+    font-weight: 600;
+    margin-left:5vw;
+    transition: all 0.3s ease-in-out;
 }
 
-.back-link {
-    /* propriétés pour le lien de retour */
+#back-link:hover {    
+    background-color: var(--brown);
+}
+
+h1 {
+    text-align: center;
+    font-size: 500%;
 }
 
 .article-info {
-    /* propriétés pour la section d'information de l'article */
+    background-color: red;
+    width: 70vw;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding:5vw;
+    box-sizing: border-box;
+    gap:3vw;
 }
 
-.article-info img {
-    /* propriétés pour l'image de l'article */
+.zoom-container {
+    width: 50%;
+    position: relative;
 }
+
+.zoom-image {
+    width: 100%;
+    filter:drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.342));
+}
+
+.zoom-lens {
+    position: absolute;
+    border: 3px solid #000;
+    background-color: white;
+    border-radius: 50%;
+    cursor: none;
+    width: 200px;
+    height: 200px;
+    cursor:none;
+    pointer-events: none;
+  }
 
 .article-details {
     /* propriétés pour les détails de l'article */
@@ -43,7 +80,9 @@ body.bodyclass {
 }
 
 .additional-info {
-    /* propriétés pour la section d'information supplémentaire */
+    background-color: blue;
+    width: 70vw;
+    margin: auto;
 }
 
 .additional-info p {
@@ -59,7 +98,7 @@ body.bodyclass {
 }
 
 .comments-section {
-    /* propriétés pour la section des commentaires */
+    background-color: greenyellow;
 }
 
 .comments-section h3 {
@@ -91,7 +130,7 @@ body.bodyclass {
 }
 
 .suggested-articles {
-    /* propriétés pour la section des articles suggérés */
+    background-color: orange;
 }
 
 .suggested-articles h3 {
@@ -116,4 +155,4 @@ body.bodyclass {
 
 .suggested-articles .article-card p {
     /* propriétés pour les descriptions courtes des articles suggérés */
-}
+}   

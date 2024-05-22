@@ -27,6 +27,13 @@ switch ($action) {
                 WHERE a.article_id = :article_id";
         $current_category = select_data($pdo, $sql, $params, false);
 
+        // Jointure pour récupérer la catégorie actuelle
+        $sql = "SELECT k.* FROM keywords k
+                JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id
+                JOIN articles a ON ak.article_id = a.article_id
+                WHERE a.article_id = :article_id";
+        $keywords = select_data($pdo, $sql, $params, true);
+
         $sql = "SELECT s.* FROM sellers s
                 JOIN articles a ON a.seller_id = s.seller_id
                 WHERE a.article_id = :article_id";
@@ -37,6 +44,7 @@ switch ($action) {
             'categories' => $categories,
             'subcategories' => $subcategories,
             'current_category' => $current_category,
+            'keywords' => $keywords,
             'seller' => $seller
         ]);
         break;

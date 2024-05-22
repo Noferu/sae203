@@ -12,15 +12,22 @@
 
 {% block main %}
 
-	<a class="back-link" href="#">Revenir</a>
+	<a id="back-link" href="#">
+		<i class="fa-solid fa-arrow-left"></i>
+		Revenir</a>
+	<h1>{{ current_category.name }}</h1>
 	<div class="article-info">
-		<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}">
+		<div class="zoom-container">
+			<img id="myimage" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}" class="zoom-image">
+			<div class="zoom-lens"></div>
+		</div>
 		<div class="article-details">
-			<h2>{{ current_category.name|upper }}</h2>
 			<h3>{{ article.title }}</h3>
 			<p>{{ article.description }}</p>
 			<p class="price">{{ article.price * current_category.currency_rate }}
-				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}</p>
+				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
+				({{ article.price }}
+				€)</p>
 			<a class="buy-button" href="#">ACHETER</a>
 			<span class="heart-icon">&#9825;</span>
 			<p>Vendu par :
@@ -29,10 +36,13 @@
 				{{ article.sale_year }}</p>
 			<p>Stock :
 				{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
-			<p>Crée le :
-				{{ article.created_at }}</p>
-			<p>Mise à jour le :
-				{{ article.updated_at }}</p>
+			<p>Mots-clés :
+				{% for keyword in keywords %}
+					{{ keyword.name }}<i class="fa-regular fa-xmark"></i>
+					{{ not loop.last ? ',' }}
+				{% endfor %}
+				<i class="fa-solid fa-plus"></i>
+			</p>
 		</div>
 	</div>
 
@@ -80,4 +90,7 @@
 			</div>
 		</div>
 	</div>
-</main>{% endblock %}
+</main>{% endblock %}{% block js %}
+<script src="{{ base_path }}/assets/js/backButton.js"></script>
+<script src="{{ base_path }}/assets/js/articleLens.js"></script>
+{% endblock %}

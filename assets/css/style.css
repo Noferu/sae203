@@ -1,31 +1,37 @@
-@font-face {
-  font-family: 'Antiquite';
-  src: url('../fonts/antiquite.ttf') format('truetype');
+:root {
+  --brown: #e75511;
+  --gold: #f1ab28;
+  --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
 }
 
 @font-face {
-  font-family: 'EpoqueModerne';
-  src: url('../fonts/epoque-moderne.otf') format('opentype');
+  font-family: "Antiquite";
+  src: url("../fonts/antiquite.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Futur';
-  src: url('../fonts/futur.ttf') format('truetype');
+  font-family: "EpoqueModerne";
+  src: url("../fonts/epoque-moderne.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'MoyenAge';
-  src: url('../fonts/moyen-age.ttf') format('truetype');
+  font-family: "Futur";
+  src: url("../fonts/futur.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Neolithique';
-  src: url('../fonts/neolithique.otf') format('opentype');
+  font-family: "MoyenAge";
+  src: url("../fonts/moyen-age.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Renaissance';
-  src: url('../fonts/renaissance.TTF') format('truetype');
+  font-family: "Neolithique";
+  src: url("../fonts/neolithique.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Renaissance";
+  src: url("../fonts/renaissance.TTF") format("truetype");
 }
 
 .title-letter {
@@ -177,7 +183,7 @@ header .umc ul li a {
 }
 
 .logged-in {
-  color:rgb(1, 206, 1);
+  color: rgb(1, 206, 1);
 }
 
 nav ul {
@@ -236,19 +242,29 @@ nav ul {
 
 @keyframes waveAnimation {
   0% {
-    d: path("M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z");
+    d: path(
+      "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+    );
   }
   25% {
-    d: path("M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z");
+    d: path(
+      "M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z"
+    );
   }
   50% {
-    d: path("M321.39,66.44c62-6.79,122.16-22.13,180-31.86,88.39-8.72,172.19-9.73,260.45,3.39C837.78,37,918.67,78,997.66,98.83c76.05,10.48,154.53,18.09,222.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,66.44Z");
+    d: path(
+      "M321.39,66.44c62-6.79,122.16-22.13,180-31.86,88.39-8.72,172.19-9.73,260.45,3.39C837.78,37,918.67,78,997.66,98.83c76.05,10.48,154.53,18.09,222.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,66.44Z"
+    );
   }
   75% {
-    d: path("M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z");
+    d: path(
+      "M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z"
+    );
   }
   100% {
-    d: path("M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z");
+    d: path(
+      "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+    );
   }
 }
 

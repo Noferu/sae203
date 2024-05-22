@@ -1,16 +1,15 @@
-:root {
-  --brown: #e75511;
-  --gold: #f1ab28;
-  --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
-}
-
 body {
   position: relative;
   overflow: hidden;
 }
 
-#timeline-container, header, .footer-wrapped, .btn-animation, .featured-articles, .about-us  {
-  animation: fade-in-bck 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+#timeline-container,
+header,
+.footer-wrapped,
+.btn-animation,
+.featured-articles,
+.about-us {
+  animation: fade-in-bck 2s cubic-bezier(0.39, 0.575, 0.565, 1) 2s both;
 }
 
 @keyframes fade-in-bck {
@@ -23,7 +22,6 @@ body {
     opacity: 1;
   }
 }
-
 
 #toast-message {
   visibility: hidden;
@@ -46,13 +44,25 @@ body {
 }
 
 @keyframes fadein {
-  from {top: 0; opacity: 0;}
-  to {top: 50px; opacity: 1;}
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 50px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadeout {
-  from {top: 50px; opacity: 1;}
-  to {top: 0; opacity: 0;}
+  from {
+    top: 50px;
+    opacity: 1;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+  }
 }
 
 .theme-néolithique {
@@ -141,7 +151,7 @@ body {
   margin: 3vw;
   font-size: 600%;
   user-select: none;
-  animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation-delay: 250ms;
 }
 
@@ -157,8 +167,6 @@ body {
     opacity: 1;
   }
 }
-
-
 
 #timeline-container {
   width: 1200px;
@@ -230,7 +238,7 @@ body {
 
 .button-19:after {
   background-clip: padding-box;
-  background: var(--gradient); 
+  background: var(--gradient);
   border: solid transparent;
   border-radius: 100px;
   border-width: 0 0 4px;
