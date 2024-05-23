@@ -1,1 +1,82 @@
 {% extends "includes/base.twig" %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ base_path }}/assets/css/file.css">
+{% endblock %}
+
+{% block main %}
+    {% if display == 'cart' %}
+        <div class="cart">  
+            <h1>Panier</h1>
+            <div class="items">
+                {% for item in cart_items %}
+                    <div class="item">
+                        <img src="{{ item.image }}" alt="{{ item.title }}">
+                        <div>
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.description }}</p>
+                            <p>Qté: {{ item.quantity }}</p>
+                            <p>Prix: {{ item.price }} €</p>
+                        </div>
+                        <button>Supprimer</button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="total">
+                <p>Total : {{ cart_total }} €</p>
+            </div>
+            <button>Continuer vos achats</button>
+            <button>Passer au paiement</button>
+        </div>
+    {% elseif display == 'favorites' %}
+        <div class="favorites">
+            <h1>Favoris</h1>
+            <div class="items">
+                {% for item in favorite_items %}
+                    <div class="item">
+                        <img src="{{ item.image }}" alt="{{ item.title }}">
+                        <div>
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.description }}</p>
+                            <p>Prix: {{ item.price }} €</p>
+                        </div>
+                        <button>Ajouter au panier</button>
+                        <button>Retirer des favoris</button>
+                    </div>
+                {% endfor %}
+            </div>
+            <button>Continuer vos recherches</button>
+            <button>Tout ajouter au panier</button>
+        </div>
+    {% elseif display == 'payment' %}
+        <div class="payment">
+            <h1>Paiement</h1>
+            <form action="process_payment.php" method="post">
+                <label>Nom</label>
+                <input type="text" name="nom">
+                <label>Prénom</label>
+                <input type="text" name="prenom">
+                <label>Adresse</label>
+                <input type="text" name="adresse">
+                <label>Code postal</label>
+                <input type="text" name="code_postal">
+                <label>Téléphone</label>
+                <input type="text" name="telephone">
+                <label>Méthode de paiement</label>
+                <input type="radio" name="payment_method" value="paypal"> Paypal
+                <input type="radio" name="payment_method" value="carte_bancaire"> Carte bancaire
+                <input type="radio" name="payment_method" value="paysafecard"> PaySafeCard
+                <button type="submit">Confirmer la commande</button>
+            </form>
+        </div>
+    {% elseif display == 'command_finished' %}
+        <div class="order-complete">
+            <h1>La commande a été réussie</h1>
+            <p>Date de livraison prévue : 29 février 2025</p>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ base_path }}/assets/js/file.js"></script>
+{% endblock %}

@@ -33,8 +33,8 @@
 		<ul class="user-interaction-icons">
 			{% set icons = [
                 {'url': '/pages/user_connexion', 'regular': 'fa-user', 'solid': 'fa-user'},
-                {'url': '/pages/checkout?action=favorites', 'regular': 'fa-heart', 'solid': 'fa-heart'},
-                {'url': '/pages/checkout?action=cart', 'regular': 'fa-cart-shopping', 'solid': 'fa-cart-shopping'}
+                {'url': '/pages/checkout?step=favorites', 'regular': 'fa-heart', 'solid': 'fa-heart'},
+                {'url': '/pages/checkout?step=cart', 'regular': 'fa-cart-shopping', 'solid': 'fa-cart-shopping'}
             ] %}
 			{% for icon in icons %}
 				<li>
