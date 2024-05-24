@@ -33,9 +33,10 @@ switch ($action) {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $confirmPassword = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Validation des données.
-            $validation_error = $userService->validateRegistration($username, $email, $password);
+            $validation_error = $userService->validateRegistration($username, $email, $password, $confirmPassword);
             if ($validation_error) {
                 header("Location: ../pages/user_connexion.php?action=show_register_form&error=" . urlencode($validation_error));
                 exit();
