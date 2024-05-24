@@ -13,9 +13,11 @@ $access_codes = [
 function log_attempt($status, $access_code) {
     global $access_codes;
     $ip = $_SERVER['REMOTE_ADDR'];
+    $hostname = gethostbyaddr($ip);
     $time = date('Y-m-d H:i:s');
     $names = isset($access_codes[$access_code]) ? $access_codes[$access_code] : 'Inconnu';
-    file_put_contents('access_log.txt', "$time - $ip - $access_code - $names - $status\n", FILE_APPEND);
+    $log_entry = sprintf("%s - %-15s - %-20s - %-30s - %-10s - %s\n", $time, $ip, $hostname, $names, $access_code, $status);
+    file_put_contents('access_log.txt', $log_entry, FILE_APPEND);
 }
 
 // Vérification du code
