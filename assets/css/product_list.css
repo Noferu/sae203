@@ -151,9 +151,9 @@ main {
   
   .article .btns a {
     text-decoration: none;
-    background-color: white;
+    background-color: var(--gold);
     border-radius: 100px;
-    color: black;
+    color: white;
     text-align: center;
     width: 150px;
     padding: 15px 20px;
@@ -162,7 +162,7 @@ main {
   }
   
   .article .btns a:hover {
-    background-color: black;
+    background-color: var(--brown);
     color: white;
   }
   
