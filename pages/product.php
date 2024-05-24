@@ -4,30 +4,34 @@ include('../include/connexion.php');
 include('../include/data_access.php');
 include('../include/twig.php');
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: user_connexion.php?action=show_login_form");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
 $pdo = connexion();
 $twig = init_twig();
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'list'; // Récupère l'action ou définit par défaut à 'list'
+$action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
+$favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], true);
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 switch ($action) {
     case 'detail':
-        // Afficher les détails d'un article
         $article_id = $_GET['article_id'];
         $sql = "SELECT * FROM articles WHERE article_id = :article_id";
         $params = [':article_id' => $article_id];
-        $article = select_data($pdo, $sql, $params, false); // Récupère les détails de l'article
+        $article = select_data($pdo, $sql, $params, false);
 
-        // Jointure pour récupérer la catégorie actuelle
         $sql = "SELECT c.* FROM categories c
                 JOIN subcategories s ON c.category_id = s.category_id
                 JOIN articles a ON s.subcategory_id = a.subcategory_id
                 WHERE a.article_id = :article_id";
         $current_category = select_data($pdo, $sql, $params, false);
 
-        // Jointure pour récupérer la catégorie actuelle
         $sql = "SELECT k.* FROM keywords k
                 JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id
                 JOIN articles a ON ak.article_id = a.article_id
@@ -45,7 +49,8 @@ switch ($action) {
             'subcategories' => $subcategories,
             'current_category' => $current_category,
             'keywords' => $keywords,
-            'seller' => $seller
+            'seller' => $seller,
+            'favorites' => $favorites
         ]);
         break;
 

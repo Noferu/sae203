@@ -21,6 +21,12 @@
 			<img id="myimage" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}" class="zoom-image">
 			<div class="zoom-lens"></div>
 		</div>
+		{% set is_favorite = false %}
+		{% for fav in favorites %}
+			{% if fav.article_id == article.article_id %}
+				{% set is_favorite = true %}
+			{% endif %}
+		{% endfor %}
 		<div class="article-details">
 			<h3>{{ article.title }}</h3>
 			<p>{{ article.description }}</p>
@@ -28,8 +34,21 @@
 				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
 				({{ article.price }}
 				€)</p>
-			<a class="buy-button" href="#">ACHETER</a>
-			<span class="heart-icon">&#9825;</span>
+			{% if is_favorite %}
+				<form action="{{ base_path }}/include/fav_cart_controller.php?action=remove_favorite" method="POST">
+					<input type="hidden" name="article_id" value="{{ article.article_id }}">
+					<button type="submit">Retirer des favoris</button>
+				</form>
+			{% else %}
+				<form action="{{ base_path }}/include/fav_cart_controller.php?action=add_favorite" method="POST">
+					<input type="hidden" name="article_id" value="{{ article.article_id }}">
+					<button type="submit">Ajouter aux favoris</button>
+				</form>
+			{% endif %}
+			<form action="{{ base_path }}/include/fav_cart_controller.php?action=add_to_cart" method="POST">
+				<input type="hidden" name="article_id" value="{{ article.article_id }}">
+				<button type="submit">Ajouter au panier</button>
+			</form>
 			<p>Vendu par :
 				{{ seller.name }}</p>
 			<p>Mise en vente en :
@@ -92,5 +111,4 @@
 	</div>
 </main>{% endblock %}{% block js %}
 <script src="{{ base_path }}/assets/js/backButton.js"></script>
-<script src="{{ base_path }}/assets/js/articleLens.js"></script>
-{% endblock %}
+<script src="{{ base_path }}/assets/js/articleLens.js"></script>{% endblock %}
