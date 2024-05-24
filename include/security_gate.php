@@ -1,11 +1,10 @@
 <?php
-session_start();
 
 // Tableau des codes d'accès
 $access_codes = [
     '789123', // Cazier, Robin, Lou et Marco
-    '456789', // Nolan
-    '123456'  // Personne
+    '192190', // Nolan
+    '939812'  // Personne
 ];
 
 // Fonction pour enregistrer les tentatives
