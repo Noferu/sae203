@@ -4,13 +4,15 @@ include('../include/connexion.php');
 include('../include/data_access.php');
 include('../include/twig.php');
 
-$user_id = $_SESSION['user_id'];
 $pdo = connexion();
 $twig = init_twig();
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
-$favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], true);
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+if ($user_id) {
+    $favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], true);
+}
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
@@ -68,7 +70,7 @@ switch ($action) {
                     WHERE category_id = :category_id
                 )";
         $params = [':category_id' => $category_id];
-        $articles = select_data($pdo, $sql, $params, true); 
+        $articles = select_data($pdo, $sql, $params, true);
 
         $sql = "SELECT * FROM categories WHERE category_id = :category_id";
         $current_category = select_data($pdo, $sql, $params, false);
