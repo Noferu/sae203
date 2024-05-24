@@ -1,15 +1,10 @@
 <?php
-// Démarrage de la session
-session_start();
 
-// Inclusion du fichier de vérification de sécurité
-include(__DIR__ . '/include/security_gate.php');
+// include(__DIR__ . '/include/security_gate.php');
 
-// Inclusion des autres fichiers nécessaires
 include(__DIR__ . '/include/connexion.php');
 include(__DIR__ . '/include/data_access.php');
 
-// Initialise Twig
 include(__DIR__ . '/include/twig.php');
 $twig = init_twig();
 
@@ -45,4 +40,3 @@ echo $twig->render('home.twig', [
     'login_msg' => $login_msg,
     'username' => $username
 ]);
-?>

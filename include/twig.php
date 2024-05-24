@@ -21,8 +21,7 @@ function init_twig()
     }
 
     // Vérification si l'utilisateur est connecté
-    $isLogged = isset($_SESSION['user_id']);
-    $twig->addGlobal('isLogged', $isLogged);
+    $twig->addGlobal('isLogged', isset($_SESSION['user_id']));
 
     return $twig;
 }

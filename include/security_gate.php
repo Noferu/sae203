@@ -54,4 +54,3 @@ if (!isset($_SESSION['access_granted'])) {
     </html>';
     exit;
 }
-?>

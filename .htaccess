@@ -1,10 +1,10 @@
 RewriteEngine On
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-ErrorDocument 404 /~ida/public_html/SAE203_EraExplorer/include/404.php
+# ErrorDocument 404 /~ida/public_html/SAE203_EraExplorer/include/404.php
+ErrorDocument 404 /SAE203_EraExplorer/include/404.php
 
 # Désactiver l'affichage du listing des répertoires
 Options All -Indexes
-

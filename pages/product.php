@@ -4,11 +4,6 @@ include('../include/connexion.php');
 include('../include/data_access.php');
 include('../include/twig.php');
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: user_connexion.php?action=show_login_form");
-    exit();
-}
-
 $user_id = $_SESSION['user_id'];
 $pdo = connexion();
 $twig = init_twig();
@@ -55,9 +50,7 @@ switch ($action) {
         break;
 
     case 'list':
-        // La séléction des articles est gérée par Javascript pour des filtres dynamiques
 
-        // Afficher la liste des catégories
         echo $twig->render('product/product_list.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories
@@ -65,7 +58,7 @@ switch ($action) {
         break;
 
     case 'grid':
-        // Afficher les articles dans une grille pour une catégorie spécifique
+
         $category_id = $_GET['category_id'];
         $sql = "SELECT * 
                 FROM articles 
@@ -75,18 +68,16 @@ switch ($action) {
                     WHERE category_id = :category_id
                 )";
         $params = [':category_id' => $category_id];
-        $articles = select_data($pdo, $sql, $params, true); // Récupère les articles de la catégorie
+        $articles = select_data($pdo, $sql, $params, true); 
 
-        // Récupère la catégorie actuelle
         $sql = "SELECT * FROM categories WHERE category_id = :category_id";
         $current_category = select_data($pdo, $sql, $params, false);
 
         if ($current_category) {
-            // Récupère la catégorie précédente
+
             $sql = "SELECT * FROM categories WHERE category_id < :category_id ORDER BY category_id DESC LIMIT 1";
             $previous_category = select_data($pdo, $sql, $params, false);
 
-            // Récupère la catégorie suivante
             $sql = "SELECT * FROM categories WHERE category_id > :category_id ORDER BY category_id ASC LIMIT 1";
             $next_category = select_data($pdo, $sql, $params, false);
         } else {
@@ -105,12 +96,12 @@ switch ($action) {
         break;
 
     case 'searching':
-        // Rechercher des articles
+
         $search = $_GET['search'] ?? '';
-        $search_safe = htmlspecialchars($search); // Sécurise la recherche
+        $search_safe = htmlspecialchars($search);
 
         if (empty($search_safe)) {
-            // Si la recherche est vide, afficher un message d'erreur
+
             echo $twig->render('error.twig', [
                 'message' => 'Veuillez entrer des mots-clés pour la recherche.',
                 'categories' => $categories,
@@ -119,11 +110,9 @@ switch ($action) {
             break;
         }
 
-        // Sépare les mots de recherche en un tableau et limite à 5 mots
         $search_terms = array_slice(explode(' ', $search_safe), 0, 5);
         $search_query = implode(' ', $search_terms);
 
-        // Requête SQL optimisée avec MATCH...AGAINST et LIKE
         $sql = "SELECT a.*, 
                        MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE) AS score_fulltext,
                        (CASE
@@ -147,7 +136,6 @@ switch ($action) {
             ':like_query' => '%' . $search_safe . '%'
         ];
 
-        // Exécute la requête avec les paramètres
         $article = select_data($pdo, $sql, $params, false);
 
         if ($article) {
@@ -164,7 +152,6 @@ switch ($action) {
         break;
 
     default:
-        // Action inconnue
         echo $twig->render('error.twig', [
             'message' => 'Action inconnue',
             'categories' => $categories,

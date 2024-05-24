@@ -1,6 +1,5 @@
 <?php
 
-
 include(__DIR__ . '/include/connexion.php');
 include(__DIR__ . '/include/data_access.php');
 include(__DIR__ . '/include/twig.php');

@@ -68,21 +68,19 @@ function updateCurrentEpoch(epochs, container) {
 function updateLinkAndTheme(epoch) {
   const link = document.getElementById("epoch-link");
   const categoryId = epoch.dataset.id;
-
-  // Log pour vérifier le category_id
-  console.log("Category ID:", categoryId);
+  console.log("Category ID:", categoryId); // Ajoutez ceci pour le débogage
 
   if (categoryId) {
-    // Utiliser base_path pour construire correctement l'URL
-    link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
+      // Utiliser base_path pour construire correctement l'URL
+      link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
   } else {
-    console.error("Category ID is missing");
+      console.error("Category ID is missing");
   }
 
   const body = document.body;
   body.className = "";
   body.classList.add(
-    `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`
+      `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`
   );
 }
 
