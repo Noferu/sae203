@@ -15,12 +15,9 @@ function log_attempt($status, $access_code) {
     file_put_contents('access_log.txt', "$time - $ip $access_code - $status\n", FILE_APPEND);
 }
 
-// Initialiser le message d'erreur
-$error_msg = '';
-
 // Vérification du code
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['access_code'])) {
+    if (isset($_POST['access_code'])) {
         $access_code = htmlspecialchars($_POST['access_code']);
 
         if (in_array($access_code, $access_codes)) {
@@ -58,3 +55,4 @@ if (!isset($_SESSION['access_granted'])) {
     </html>';
     exit;
 }
+?>
