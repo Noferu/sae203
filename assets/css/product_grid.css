@@ -32,6 +32,11 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 #background-image {
@@ -104,6 +109,7 @@ main {
     height: 7px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 100px;
+    display: initial;
 }
 
 .grid-container::-webkit-scrollbar-thumb {
