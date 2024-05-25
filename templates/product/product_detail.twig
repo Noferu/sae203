@@ -14,41 +14,59 @@
 
 	<a id="back-link" href="#">
 		<i class="fa-solid fa-arrow-left"></i>
-		Revenir</a>
+		Revenir
+	</a>
+
 	<h1>{{ current_category.name }}</h1>
+
 	<div class="article-info">
-		<div class="zoom-container">
+		<div
+			class="zoom-container">
+			<!-- Image de l'article avec effet zoom -->
 			<img id="myimage" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}" class="zoom-image">
 			<div class="zoom-lens"></div>
 		</div>
+
+		{# Vérification si l'article est dans les favoris #}
 		{% set is_favorite = false %}
 		{% for fav in favorites %}
 			{% if fav.article_id == article.article_id %}
 				{% set is_favorite = true %}
 			{% endif %}
 		{% endfor %}
+
+		{# Vérification si l'article est dans le panier #}
+		{% set in_cart = false %}
+		{% for item in cart %}
+			{% if item.article_id == article.article_id %}
+				{% set in_cart = true %}
+			{% endif %}
+		{% endfor %}
+
 		<div class="article-details">
 			<h3>{{ article.title }}</h3>
 			<p>{{ article.description }}</p>
-			<p class="price">{{ article.price * current_category.currency_rate }}
+			<p class="price">
+				{{ article.price * current_category.currency_rate }}
 				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
 				({{ article.price }}
-				€)</p>
+				€)
+			</p>
+
+			{# Formulaires pour ajouter/supprimer des favoris #}
 			{% if is_favorite %}
-				<form action="{{ base_path }}/include/fav_cart_controller.php?action=remove_favorite" method="POST">
-					<input type="hidden" name="article_id" value="{{ article.article_id }}">
-					<button type="submit">Retirer des favoris</button>
-				</form>
+				<button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ article.article_id }}">Retirer des favoris</button>
 			{% else %}
-				<form action="{{ base_path }}/include/fav_cart_controller.php?action=add_favorite" method="POST">
-					<input type="hidden" name="article_id" value="{{ article.article_id }}">
-					<button type="submit">Ajouter aux favoris</button>
-				</form>
+				<button class="favorite-btn" data-action="add_favorite" data-article-id="{{ article.article_id }}">Ajouter aux favoris</button>
 			{% endif %}
-			<form action="{{ base_path }}/include/fav_cart_controller.php?action=add_to_cart" method="POST">
-				<input type="hidden" name="article_id" value="{{ article.article_id }}">
-				<button type="submit">Ajouter au panier</button>
-			</form>
+
+			{# Formulaires pour ajouter au panier ou voir le panier #}
+			{% if in_cart %}
+				<a href="{{ base_path }}/pages/checkout" class="button">Voir le panier</a>
+			{% else %}
+				<button class="cart-btn" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</button>
+			{% endif %}
+
 			<p>Vendu par :
 				{{ seller.name }}</p>
 			<p>Mise en vente en :
@@ -109,5 +127,10 @@
 			</div>
 		</div>
 	</div>
-</main>{% endblock %}{% block js %}
-<script src="{{ base_path }}/assets/js/articleLens.js"></script>{% endblock %}
+
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_path }}/assets/js/articleLens.js"></script>
+	<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
+{% endblock %}

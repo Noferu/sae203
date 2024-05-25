@@ -18,7 +18,7 @@
                             <p>Qté: {{ item.quantity }}</p>
                             <p>Prix: {{ item.price }} €</p>
                         </div>
-                        <button>Supprimer</button>
+                        <button class="cart-btn" data-action="remove_from_cart" data-article-id="{{ item.article_id }}">Supprimer</button>
                     </div>
                 {% endfor %}
             </div>
@@ -40,13 +40,13 @@
                             <p>{{ item.description }}</p>
                             <p>Prix: {{ item.price }} €</p>
                         </div>
-                        <button>Ajouter au panier</button>
-                        <button>Retirer des favoris</button>
+                        <button class="favorite-btn" data-action="add_to_cart" data-article-id="{{ item.article_id }}">Ajouter au panier</button>
+                        <button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ item.article_id }}">Retirer des favoris</button>
                     </div>
                 {% endfor %}
             </div>
             <button>Continuer vos recherches</button>
-            <button>Tout ajouter au panier</button>
+            <button id="add-all-to-cart">Tout ajouter au panier</button>
         </div>
     {% elseif display == 'payment' %}
         <div class="payment">
@@ -78,5 +78,5 @@
 {% endblock %}
 
 {% block js %}
-    <script src="{{ base_path }}/assets/js/file.js"></script>
+    <script src="{{ base_path }}/assets/js/favcartManager.js"></script>
 {% endblock %}
