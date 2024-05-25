@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 21 mai 2024 à 04:21
+-- Généré le : sam. 25 mai 2024 à 19:38
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -314,7 +314,7 @@ CREATE TABLE `cart` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `article_id` int(10) UNSIGNED NOT NULL,
   `quantity` int(11) NOT NULL,
-  `date` datetime NOT NULL
+  `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -393,7 +393,8 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `favorites` (
   `user_id` int(10) UNSIGNED NOT NULL,
-  `article_id` int(10) UNSIGNED NOT NULL
+  `article_id` int(10) UNSIGNED NOT NULL,
+  `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -668,7 +669,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-21 02:46:03'),
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-25 18:26:46'),
 (2, 'test', 'random@gmail.com', '$2y$10$sGqFX3ZiA0Gh/KUTI0DqN.wTbJvW.lYCcAumiSNuHVFGSzJp1zH3u', '2024-05-20 13:16:11', 0, NULL),
 (3, 'EZAEZA', 'nawfelejziao@jieza.fr', '$2y$10$RzBTHGNDNFLx6JhIs/zwBeeNtq/bYN/.wg4WIhPS6IkAXSpb8ZobG', '2024-05-20 13:17:53', 0, NULL),
 (4, '6-Tadelle', 'mohamed.idaali@free.fr', '$2y$10$KoYQ8E3QPkjC4/JcBVygEuemgEVfWDjPA6RG4fJVREMl/LGfZbcUO', '2024-05-20 23:07:23', 0, NULL);
