@@ -50,11 +50,6 @@
     transform: translateY(0);
   }
 }
-
-* {
-  scrollbar-width: none;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
@@ -282,6 +277,7 @@ footer {
 
 .footer-content {
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Styles pour les icônes de volume */

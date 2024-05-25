@@ -1,62 +1,37 @@
-.theme-néolithique {
-  background-color: #3a4526;
-}
-
-.theme-antiquité {
-  background-color: #7d8790;
-}
-
-.theme-moyen-âge {
-  background-color: #533c2f;
-}
-
-.theme-renaissance {
-  background-color: #645f54;
-}
-
-.theme-époquemoderne {
-  background-color: #424e4c;
-}
-
-.theme-futur {
-  background-color: #463f5d;
-}
-
 .theme-néolithique #background-image {
   background-image: url("https://i.imgur.com/NOho5qq.jpg");
+  background-color: #3a4526;
 }
 
 .theme-antiquité #background-image {
   background-image: url("https://i.imgur.com/qYk0C49.jpg");
+  background-color: #7d8790;
 }
 
 .theme-moyen-âge #background-image {
   background-image: url("https://i.imgur.com/xPUXGRT.jpg");
+  background-color: #533c2f;
 }
 
 .theme-renaissance #background-image {
   background-image: url("https://i.imgur.com/IZfe0T5.jpg");
+  background-color: #645f54;
 }
 
 .theme-époquemoderne #background-image {
   background-image: url("https://i.imgur.com/ZSECm9u.jpg");
+  background-color: #424e4c;
 }
 
 .theme-futur #background-image {
   background-image: url("https://i.imgur.com/GViuh6q.jpg");
+  background-color: #463f5d;
 }
 
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap:5vh;
+  overflow-x: hidden;
 }
 
 #background-image {
@@ -98,18 +73,51 @@ main {
   pointer-events: none;
 }
 
-.grid-container {
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   box-sizing: border-box;
+}
+
+.grid-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 2vw;
+  width: calc(100% - 4vw);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 .grid {
   display: flex;
   gap: 1vw;
-  /* flex-wrap: nowrap; */
-  min-width: 100%;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  height: 50vh;
+}
+
+.grid-container::-webkit-scrollbar {
+    height: 7px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+    background-color: var(--gold);
+    border-radius: 100px;
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--brown);
+}
+
+.grid-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
 }
 
 .card-link {
@@ -228,5 +236,5 @@ main {
 }
 
 .epoch-switch a i {
-  padding:15px;
+  padding: 15px;
 }
