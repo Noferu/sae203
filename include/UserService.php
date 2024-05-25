@@ -1,7 +1,5 @@
 <?php
 
-namespace Services;
-
 require_once('data_access.php');
 
 class UserService
