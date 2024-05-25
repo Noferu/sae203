@@ -23,26 +23,6 @@ header,
   }
 }
 
-#toast-message {
-  visibility: hidden;
-  min-width: 250px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 10;
-  left: 50%;
-  top: 50px;
-  transform: translateX(-50%);
-}
-
-#toast-message.show {
-  visibility: visible;
-  animation: fadein 0.5s, fadeout 0.5s 3s;
-}
-
 @keyframes fadein {
   from {
     top: 0;

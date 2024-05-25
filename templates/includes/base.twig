@@ -30,7 +30,6 @@
 		{% if withFooter ?? true %}
 			{% include 'includes/footer.twig' %}
 		{% endif %}
-		{% block js %}{% endblock %}
 		<script src="{{ base_path }}/assets/js/headerVolumeToggle.js"></script>
 		<script>
 			const basePath = '{{ base_path }}';
@@ -38,5 +37,6 @@
 		<script src="{{ base_path }}/assets/js/dynamicFaviconAnimator.js"></script>
 		<script src="{{ base_path }}/assets/js/miscellaneousEffects.js"></script>
 		<script src="{{ base_path }}/assets/js/backButton.js"></script>
+		{% block js %}{% endblock %}
 	</body>
 </html>

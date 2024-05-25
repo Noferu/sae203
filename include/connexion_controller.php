@@ -4,9 +4,6 @@ require_once('connexion.php');
 require_once('data_access.php');
 require_once('UserService.php');
 
-// Utilisation de UserService
-use Services\UserService;
-
 $pdo = connexion();
 
 // Création d'une instance objet du service utilisateur.
