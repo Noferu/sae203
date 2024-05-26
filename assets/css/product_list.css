@@ -1,3 +1,10 @@
+header {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent), url('../images/banner/panoramic_sunset_landscape_blurred.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 main {
   display: flex;
 }
@@ -8,10 +15,10 @@ section {
 
 aside {
   background-color: rgb(66, 66, 66);
-  width: 30%;
+  width: 20%;
   padding: 2vw;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-bottom-right-radius: 20px;
 }
 
 aside h3 {
@@ -25,7 +32,7 @@ aside h3 {
 }
 
 aside > div:not(.pair-filter) {
-  margin-bottom: 3vh;
+  margin-bottom: 4vh;
 }
 
 aside > div > label {
@@ -38,15 +45,21 @@ aside > div > label {
 
 aside .checkbox-container {
   color: rgb(150, 150, 150);
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vh;
 }
 
 input[type="number"] {
-  width: 100%;
   padding: 0.5em;
   margin-top: 0.5em;
+  margin-bottom: 1.5em; /* Ajouté pour espacer les champs de formulaire */
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 110%;
+  font-weight: 400;
   transition: border-color 0.3s ease;
+  font-family: inherit;
 }
 
 input[type="number"]:focus {
@@ -54,16 +67,49 @@ input[type="number"]:focus {
   outline: none;
 }
 
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-right: 1vh;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: var(--brown);
+}
+
+.expandable::-webkit-scrollbar {
+  width: 7px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  display: initial;
+}
+
+.expandable::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 100px;
+}
+
+.expandable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--brown);
+}
+
+.expandable::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+}
+
 .expandable {
   max-height: 200px;
   overflow-y: auto;
+  margin-bottom: 4vh;
 }
 
 #article-count {
   text-align: center;
   font-family: "Nabla";
   font-size: 3rem;
-  margin: 10px;
+  margin: 2vw;
 }
 
 .article:first-child {
@@ -75,12 +121,40 @@ input[type="number"]:focus {
   width: 90%;
   height: 300px;
   display: flex;
-  background-color: grey;
-  margin-bottom: 1vh;
+  background-color: #ffffff; /* Fond blanc comme la page de détail */
+  margin-bottom: 2vh;
   animation: show-up-next 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  border-radius: 30px;
+  border-radius: 15px; /* Ajusté pour correspondre au style de la page de détail */
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article .image {
+  animation: jello-diagonal-1 0.8s both;
+}
+
+@keyframes jello-diagonal-1 {
+  0% {
+    transform: skew(0deg 0deg);
+  }
+  30% {
+    transform: skew(25deg 25deg);
+  }
+  40% {
+    transform: skew(-15deg, -15deg);
+  }
+  50% {
+    transform: skew(15deg, 15deg);
+  }
+  65% {
+    transform: skew(-5deg, -5deg);
+  }
+  75% {
+    transform: skew(5deg, 5deg);
+  }
+  100% {
+    transform: skew(0deg 0deg);
+  }
 }
 
 @keyframes show-up {
@@ -111,7 +185,7 @@ input[type="number"]:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(189, 189, 189);
+  background-color: #f0f0f0; /* Gris clair pour la section image */
 }
 
 .article .image:hover img {
@@ -140,6 +214,20 @@ input[type="number"]:focus {
   gap: 2vh;
 }
 
+.article .text-infos h2 {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 150%;
+}
+
+.article .text-infos a {
+  text-decoration: none;
+}
+
+.article .text-infos span {
+  font-weight: 600;
+}
+
 .article .btns {
   display: flex;
   flex-direction: column;
@@ -151,7 +239,7 @@ input[type="number"]:focus {
 
 .article .btns a {
   text-decoration: none;
-  background-color: var(--gold);
+  background-color: var(--gold); /* Couleur des boutons */
   border-radius: 100px;
   color: white;
   text-align: center;
@@ -162,6 +250,10 @@ input[type="number"]:focus {
 }
 
 .article .btns a:hover {
-  background-color: var(--brown);
+  background-color: var(--brown); /* Couleur des boutons au survol */
   color: white;
+}
+
+body {
+  background-color: #f9f9f9; /* Couleur de fond similaire à la page de détail */
 }
