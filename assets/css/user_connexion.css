@@ -233,40 +233,29 @@ i.fa-times:hover {
 
 button,
 .logout-btn,
-.wrapper form .field input[type="submit"] {
+.wrapper form .field input[type="submit"],
+.action-btn {
   appearance: button;
-  background: var(--button-gradient);
-  border: solid transparent;
-  border-radius: 100px;
-  border-width: 0 0 4px;
-  box-sizing: border-box;
+  background: var(--gold);
+  border: none;
+  border-radius: 50px;
   color: white;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  line-height: 20px;
+  font-family: inherit;
+  font-size: 1rem;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  transform: translateZ(0);
-  user-select: none;
-  -webkit-user-select: none;
-  transition: all 0.4s cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button:hover:not(:disabled),
 .logout-btn:hover:not(:disabled),
-.wrapper form .field input[type="submit"]:hover:not(:disabled) {
-  transform: scale(1.05);
-}
-
-button:active,
-.logout-btn:active,
-.wrapper form .field input[type="submit"]:active {
-  border-width: 4px 0 0;
-  background: none;
-  transform: scale(0.95);
+.wrapper form .field input[type="submit"]:hover:not(:disabled),
+.action-btn:hover:not(:disabled) {
+  background-color: var(--brown);
+  color: white;
 }
 
 .field.logout {
