@@ -1,32 +1,36 @@
 #back-link {
     background-color: var(--gold);
-    padding:10px 20px;
+    padding: 10px 20px;
     border-radius: 100px;
     text-decoration: none;
-    color:white;
+    color: white;
     font-weight: 600;
-    margin-left:5vw;
-    transition: all 0.3s ease-in-out;
+    margin-left: 5vw;
+    transition: all 0.1s ease-in-out;
 }
 
-#back-link:hover {    
+#back-link:hover {
     background-color: var(--brown);
 }
 
 h1 {
     text-align: center;
-    font-size: 500%;
+    font-size: 3rem;
+    margin-bottom: 20px;
 }
 
 .article-info {
-    background-color: red;
+    border: none;
     width: 70vw;
     margin: auto;
     display: flex;
     justify-content: center;
-    padding:5vw;
+    padding: 3vw;
     box-sizing: border-box;
-    gap:3vw;
+    gap: 2vw;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .zoom-container {
@@ -36,7 +40,7 @@ h1 {
 
 .zoom-image {
     width: 100%;
-    filter:drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.342));
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.1));
 }
 
 .zoom-lens {
@@ -47,112 +51,63 @@ h1 {
     cursor: none;
     width: 200px;
     height: 200px;
-    cursor:none;
     pointer-events: none;
-  }
-
-.article-details {
-    /* propriétés pour les détails de l'article */
 }
 
-.article-details h2 {
-    /* propriétés pour le nom de la catégorie */
+.article-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    width: 50%;
 }
 
 .article-details h3 {
-    /* propriétés pour le titre de l'article */
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
-.article-details p {
-    /* propriétés générales pour les paragraphes dans les détails de l'article */
+.article-action .price {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 10px;
 }
 
-.article-details .price {
-    /* propriétés pour le prix de l'article */
+.favorite-btn, .cart-btn {
+    text-decoration: none;
+    background-color: var(--gold);
+    font-family: inherit;
+    font-size: 1rem;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.buy-button {
-    /* propriétés pour le bouton acheter */
-}
-
-.heart-icon {
-    /* propriétés pour l'icône de cœur */
+.favorite-btn:hover, .cart-btn:hover {
+    background-color: var(--brown);
+    color: white;
 }
 
 .additional-info {
-    background-color: blue;
     width: 70vw;
     margin: auto;
+    margin-top: 20px;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.additional-info p {
-    /* propriétés pour les paragraphes dans la section d'information supplémentaire */
+.tags span {
+    display: inline-block;
+    background-color: #d1d1d1;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
 }
-
-.additional-info .tags {
-    /* propriétés pour le conteneur des tags */
-}
-
-.additional-info .tags span {
-    /* propriétés pour chaque tag */
-}
-
-.comments-section {
-    background-color: greenyellow;
-}
-
-.comments-section h3 {
-    /* propriétés pour le titre des commentaires */
-}
-
-.comments-section .comment {
-    /* propriétés pour chaque commentaire */
-}
-
-.comments-section .comment .username {
-    /* propriétés pour le nom d'utilisateur dans les commentaires */
-}
-
-.comments-section .comment .date {
-    /* propriétés pour la date des commentaires */
-}
-
-.add-comment {
-    /* propriétés pour la section d'ajout de commentaire */
-}
-
-.add-comment textarea {
-    /* propriétés pour la zone de texte pour ajouter un commentaire */
-}
-
-.add-comment button {
-    /* propriétés pour le bouton d'envoi de commentaire */
-}
-
-.suggested-articles {
-    background-color: orange;
-}
-
-.suggested-articles h3 {
-    /* propriétés pour le titre des articles suggérés */
-}
-
-.suggested-articles .articles-grid {
-    /* propriétés pour le conteneur en grille des articles suggérés */
-}
-
-.suggested-articles .article-card {
-    /* propriétés pour chaque carte d'article suggéré */
-}
-
-.suggested-articles .article-card img {
-    /* propriétés pour les images des articles suggérés */
-}
-
-.suggested-articles .article-card h4 {
-    /* propriétés pour les titres des articles suggérés */
-}
-
-.suggested-articles .article-card p {
-    /* propriétés pour les descriptions courtes des articles suggérés */
-}   

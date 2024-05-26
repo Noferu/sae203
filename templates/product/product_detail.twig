@@ -46,36 +46,38 @@
 		<div class="article-details">
 			<h3>{{ article.title }}</h3>
 			<p>{{ article.description }}</p>
-			<p class="price">
-				{{ article.price * current_category.currency_rate }}
-				{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
-				({{ article.price }}
-				€)
-			</p>
 
-			{# Formulaires pour ajouter/supprimer des favoris #}
-			{% if is_favorite %}
-				<button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ article.article_id }}">Retirer des favoris</button>
-			{% else %}
-				<button class="favorite-btn" data-action="add_favorite" data-article-id="{{ article.article_id }}">Ajouter aux favoris</button>
-			{% endif %}
+			<div class="article-action">
+				<p class="price">
+					{{ article.price * current_category.currency_rate }}
+					{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
+					({{ article.price }}
+					€)
+				</p>
+				{# Formulaires pour ajouter/supprimer des favoris #}
+				{% if is_favorite %}
+					<button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ article.article_id }}">Retirer des favoris</button>
+				{% else %}
+					<button class="favorite-btn" data-action="add_favorite" data-article-id="{{ article.article_id }}">Ajouter aux favoris</button>
+				{% endif %}
 
-			{# Formulaires pour ajouter au panier ou voir le panier #}
-			{% if in_cart %}
-				<a href="{{ base_path }}/pages/checkout" class="button">Voir le panier</a>
-			{% else %}
-				<button class="cart-btn" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</button>
-			{% endif %}
+				{# Formulaires pour ajouter au panier ou voir le panier #}
+				{% if in_cart %}
+					<a href="{{ base_path }}/pages/checkout" class="button cart-btn">Voir le panier</a>
+				{% else %}
+					<button class="cart-btn" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</button>
+				{% endif %}
+			</div>
 
 			<p>Vendu par :
-				{{ seller.name }}</p>
+				<a href="{{ base_path }}/pages/product?action=list&seller_id={{ seller.seller_id }}">{{ seller.name }}</a></p>
 			<p>Mise en vente en :
 				{{ article.sale_year }}</p>
 			<p>Stock :
 				{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
 			<p>Mots-clés :
 				{% for keyword in keywords %}
-					{{ keyword.name }}<i class="fa-regular fa-xmark"></i>
+					<a href="{{ base_path }}/pages/product?action=list&keyword_id={{ keyword.keyword_id }}">{{ keyword.name }}</a><i class="fa-regular fa-xmark"></i>
 					{{ not loop.last ? ',' }}
 				{% endfor %}
 				<i class="fa-solid fa-plus"></i>
@@ -94,36 +96,38 @@
 		</div>
 	</div>
 
-	<div class="comments-section">
-		<h3>Commentaires</h3>
-		<div class="comment">
-			<p class="username">@username</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-			<p class="date">Date de création</p>
+	<div class="lower-part">
+		<div class="comments-section">
+			<h3>Commentaires</h3>
+			<div class="comment">
+				<p class="username">@username</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				<p class="date">Date de création</p>
+			</div>
+			<div class="add-comment">
+				<textarea placeholder="Ajouter un commentaire..."></textarea>
+				<button>Envoyer</button>
+			</div>
 		</div>
-		<div class="add-comment">
-			<textarea placeholder="Ajouter un commentaire..."></textarea>
-			<button>Envoyer</button>
-		</div>
-	</div>
 
-	<div class="suggested-articles">
-		<h3>Autres articles pour vous</h3>
-		<div class="articles-grid">
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
-			</div>
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
-			</div>
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
+		<div class="suggested-articles">
+			<h3>Autres articles pour vous</h3>
+			<div class="articles-grid">
+				<div class="article-card">
+					<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
+					<h4>Titre</h4>
+					<p>Description courte</p>
+				</div>
+				<div class="article-card">
+					<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
+					<h4>Titre</h4>
+					<p>Description courte</p>
+				</div>
+				<div class="article-card">
+					<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
+					<h4>Titre</h4>
+					<p>Description courte</p>
+				</div>
 			</div>
 		</div>
 	</div>
