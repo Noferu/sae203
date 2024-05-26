@@ -75,12 +75,11 @@
 				{{ article.sale_year }}</p>
 			<p>Stock :
 				{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
-			<p>Mots-clés :
+			<p class="tags">Mots-clés :
 				{% for keyword in keywords %}
-					<a href="{{ base_path }}/pages/product?action=list&keyword_id={{ keyword.keyword_id }}">{{ keyword.name }}</a><i class="fa-regular fa-xmark"></i>
-					{{ not loop.last ? ',' }}
+					<span><a href="{{ base_path }}/pages/product?action=list&keyword_id={{ keyword.keyword_id }}">{{ keyword.name }}</a><i class="fa-regular fa-xmark"></i></span>
 				{% endfor %}
-				<i class="fa-solid fa-plus"></i>
+				<a><i class="fa-solid fa-plus"></i></a>
 			</p>
 		</div>
 	</div>
