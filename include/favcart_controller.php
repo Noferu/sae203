@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $user_id) {
                     'article_id' => $article_id,
                     'datetime' => $datetime
                 ]);
-                $response = ['status' => 'success', 'message' => 'Article ajouté aux favoris'];
+                $response = ['status' => 'success', 'message' => 'Cet article a été ajouté aux favoris'];
             } else {
-                $response = ['status' => 'info', 'message' => 'Article est déjà dans les favoris'];
+                $response = ['status' => 'info', 'message' => 'Cet article est déjà dans les favoris'];
             }
             break;
 
@@ -45,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $user_id) {
                     'user_id' => $user_id,
                     'article_id' => $article_id
                 ]);
-                $response = ['status' => 'success', 'message' => 'Article retiré des favoris'];
+                $response = ['status' => 'success', 'message' => 'Cet article a été retiré des favoris'];
             } else {
-                $response = ['status' => 'info', 'message' => 'Article n\'est pas dans les favoris'];
+                $response = ['status' => 'info', 'message' => 'Cet article n\'est pas dans les favoris'];
             }
             break;
 
@@ -65,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $user_id) {
                     'quantity' => 1,
                     'datetime' => $datetime
                 ]);
-                $response = ['status' => 'success', 'message' => 'Article ajouté au panier'];
+                $response = ['status' => 'success', 'message' => 'Cet article a été ajouté au panier'];
             } else {
-                $response = ['status' => 'info', 'message' => 'Article est déjà dans le panier'];
+                $response = ['status' => 'info', 'message' => 'Cet article est déjà dans le panier'];
             }
             break;
 
@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $user_id) {
                     'user_id' => $user_id,
                     'article_id' => $article_id
                 ]);
-                $response = ['status' => 'success', 'message' => 'Article retiré du panier'];
+                $response = ['status' => 'success', 'message' => 'Cet article a été retiré du panier'];
             } else {
-                $response = ['status' => 'info', 'message' => 'Article n\'est pas dans le panier'];
+                $response = ['status' => 'info', 'message' => 'Cet article n\'est pas dans le panier'];
             }
             break;
 

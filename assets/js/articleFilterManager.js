@@ -129,8 +129,8 @@ $(document).ready(function () {
                           <h2>${article.title}</h2>
                       </a>
                       <p>${article.description}</p>
-                      <p>Prix : ${article.price} €</p>
-                      <p>Année de vente : ${article.sale_year}</p>
+                      <p><span>Prix :</span> ${article.price} €</p>
+                      <p><span>Année de vente :</span> ${article.sale_year}</p>
                   </div>
                   <div class="btns">
                       <a class="learn-more" href="${article.url}">En savoir plus</a>

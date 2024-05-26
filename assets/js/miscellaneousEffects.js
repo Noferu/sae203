@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var x = document.getElementById("toast-message");
-  const title = document.querySelector("h1");
+  const title = document.querySelector("h1, .title-animation");
 
   // Message Toast
   if (x) {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3500);
   }
 
-  // Animtion du titre
+  // Animation du titre
   if (title) {
     const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
     title.innerHTML = letters
@@ -23,5 +23,4 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .join("");
   }
-
 });
