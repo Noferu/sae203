@@ -27,22 +27,6 @@
 			<div class="zoom-lens"></div>
 		</div>
 
-		{# Vérification si l'article est dans les favoris #}
-		{% set is_favorite = false %}
-		{% for fav in favorites %}
-			{% if fav.article_id == article.article_id %}
-				{% set is_favorite = true %}
-			{% endif %}
-		{% endfor %}
-
-		{# Vérification si l'article est dans le panier #}
-		{% set in_cart = false %}
-		{% for item in cart %}
-			{% if item.article_id == article.article_id %}
-				{% set in_cart = true %}
-			{% endif %}
-		{% endfor %}
-
 		<div class="article-details">
 			<h3>{{ article.title }}</h3>
 			<p>{{ article.description }}</p>
@@ -51,8 +35,9 @@
 				<p class="price">
 					{{ article.price * current_category.currency_rate }}
 					{{ article.price * current_category.currency_rate > 1 ? current_category.currency_name ~ 's' : current_category.currency_name }}
-					({{ article.price }}
-					€)
+					<span>(
+						{{ article.price|replace({'.': ','})}}
+						€ )</span>
 				</p>
 				{# Formulaires pour ajouter/supprimer des favoris #}
 				{% if is_favorite %}
@@ -62,78 +47,78 @@
 				{% endif %}
 
 				{# Formulaires pour ajouter au panier ou voir le panier #}
-				{% if in_cart %}
-					<a href="{{ base_path }}/pages/checkout" class="button cart-btn">Voir le panier</a>
+				{% if is_in_cart %}
+					{# <a href="{{ base_path }}/pages/checkout" class="button cart-btn">Voir le panier</a> #}
+					<button class="cart-btn" data-action="view_cart" data-article-id="{{ article.article_id }}">Voir le panier</button>
 				{% else %}
 					<button class="cart-btn" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</button>
 				{% endif %}
 			</div>
-
-			<p>Vendu par :
-				<a href="{{ base_path }}/pages/product?action=list&seller_id={{ seller.seller_id }}">{{ seller.name }}</a></p>
-			<p>Mise en vente en :
-				{{ article.sale_year }}</p>
-			<p>Stock :
+			<p>
+				<span>Vendu par :</span>
+				<a href="{{ base_path }}/pages/product?action=list&seller_id={{ seller.seller_id }}">{{ seller.name }}</a>
+			</p>
+			<p>
+				<span>Mise en vente en :</span>
+				{{ article.sale_year < 0 ? (article.sale_year|abs ~ ' avant J.C.') : article.sale_year }}</p>
+			<p>
+				<span>Stock :</span>
 				{{ article.stock == 0 ? 'Épuisé' : article.stock }}</p>
-			<p class="tags">Mots-clés :
+			<p class="tags">
 				{% for keyword in keywords %}
-					<span><a href="{{ base_path }}/pages/product?action=list&keyword_id={{ keyword.keyword_id }}">{{ keyword.name }}</a><i class="fa-regular fa-xmark"></i></span>
+					<span>
+						<a href="{{ base_path }}/pages/product?action=list&keyword_id={{ keyword.keyword_id }}">{{ keyword.name }}</a>
+					</span>
 				{% endfor %}
-				<a><i class="fa-solid fa-plus"></i></a>
+				<a href="">
+					<i class="fa-solid fa-plus"></i>
+				</a>
 			</p>
 		</div>
 	</div>
 
 	<div class="additional-info">
 		<p>Date de création :
-			{{ article.created_at }}, date de modification :
-			{{ article.updated_at }}</p>
-		<div class="tags">
-			{% for tag in article.tags %}
-				<span>{{ tag.name }}</span>
-			{% endfor %}
+			{{ article.created_at|date("d F Y à H\\hi") }}
+			~-~ Date de modification :
+			{{ article.updated_at|date("d F Y à H\\hi") }}</p>
+	</div>
+</div>
+
+<div class="lower-part">
+	<div class="comments-section">
+		<h3>Commentaires</h3>
+		<div class="comment">
+			<p class="username">@username</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			<p class="date">Date de création</p>
+		</div>
+		<div class="add-comment">
+			<textarea placeholder="Ajouter un commentaire..."></textarea>
+			<button>Envoyer</button>
 		</div>
 	</div>
 
-	<div class="lower-part">
-		<div class="comments-section">
-			<h3>Commentaires</h3>
-			<div class="comment">
-				<p class="username">@username</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-				<p class="date">Date de création</p>
+	<div class="suggested-articles">
+		<h3>Autres articles pour vous</h3>
+		<div class="articles-grid">
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
 			</div>
-			<div class="add-comment">
-				<textarea placeholder="Ajouter un commentaire..."></textarea>
-				<button>Envoyer</button>
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
 			</div>
-		</div>
-
-		<div class="suggested-articles">
-			<h3>Autres articles pour vous</h3>
-			<div class="articles-grid">
-				<div class="article-card">
-					<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
-					<h4>Titre</h4>
-					<p>Description courte</p>
-				</div>
-				<div class="article-card">
-					<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
-					<h4>Titre</h4>
-					<p>Description courte</p>
-				</div>
-				<div class="article-card">
-					<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
-					<h4>Titre</h4>
-					<p>Description courte</p>
-				</div>
+			<div class="article-card">
+				<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
+				<h4>Titre</h4>
+				<p>Description courte</p>
 			</div>
 		</div>
 	</div>
-
-{% endblock %}
-
-{% block js %}
-	<script src="{{ base_path }}/assets/js/articleLens.js"></script>
-	<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
-{% endblock %}
+</div>{% endblock %}{% block js %}
+<script src="{{ base_path }}/assets/js/articleLens.js"></script>
+<script src="{{ base_path }}/assets/js/favcartManager.js"></script>{% endblock %}
