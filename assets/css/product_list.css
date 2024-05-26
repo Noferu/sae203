@@ -1,168 +1,167 @@
 main {
-    display: flex;
+  display: flex;
+}
+
+section {
+  flex: 1;
+}
+
+aside {
+  background-color: rgb(66, 66, 66);
+  width: 30%;
+  padding: 2vw;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+aside h3 {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2vh 0;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 1vh;
+}
+
+aside > div:not(.pair-filter) {
+  margin-bottom: 3vh;
+}
+
+aside > div > label {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1vh;
+  display: block;
+}
+
+aside .checkbox-container {
+  color: rgb(150, 150, 150);
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #888;
+  outline: none;
+}
+
+.expandable {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#article-count {
+  text-align: center;
+  font-family: "Nabla";
+  font-size: 3rem;
+  margin: 10px;
+}
+
+.article:first-child {
+  animation: show-up 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.article {
+  margin: auto;
+  width: 90%;
+  height: 300px;
+  display: flex;
+  background-color: grey;
+  margin-bottom: 1vh;
+  animation: show-up-next 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes show-up {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
   }
-  
-  section {
-    flex: 1;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  aside {
-    background-color: rgb(66, 66, 66);
-    width: 30%;
-    padding: 2vw;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+}
+
+@keyframes show-up-next {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
   }
-  
-  aside h3 {
-    text-align: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 2vh 0;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 1vh;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  aside > div:not(.pair-filter) {
-    margin-bottom: 3vh;
-  }
-  
-  aside > div > label {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-bottom: 1vh;
-    display: block;
-  }
-  
-  aside .checkbox-container {
-    color: rgb(150, 150, 150);
-  }
-  
-  input[type="number"] {
-    width: 100%;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-  }
-  
-  input[type="number"]:focus {
-    border-color: #888;
-    outline: none;
-  }
-  
-  .expandable {
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
-  #article-count {
-    text-align: center;
-    font-family: "Nabla";
-    font-size: 3rem;
-    margin: 10px;
-  }
-  
-  .article:first-child {
-    animation: show-up 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-  
-  .article {
-    margin: auto;
-    width: 90%;
-    height: 300px;
-    display: flex;
-    background-color: grey;
-    margin-bottom: 1vh;
-    animation: show-up-next 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  @keyframes show-up {
-    0% {
-      transform: scale(0.7);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes show-up-next {
-    0% {
-      transform: scale(0.7);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  .article .image {
-    height: 100%;
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(189, 189, 189);
-  }
-  
-  .article .image:hover img {
-    transform: scale(1.2) rotate(15deg);
-    filter: drop-shadow(8px 12px 21px #000000a2);
-  }
-  
-  .article img {
-    height: 70%;
-    filter: drop-shadow(8px 12px 21px #0000004d);
-    transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
-  
-  .article .right-part {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    width: 60%;
-  }
-  
-  .article .text-infos {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 60%;
-    gap: 2vh;
-  }
-  
-  .article .btns {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    gap: 2vh;
-  }
-  
-  .article .btns a {
-    text-decoration: none;
-    background-color: var(--gold);
-    border-radius: 100px;
-    color: white;
-    text-align: center;
-    width: 150px;
-    padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .article .btns a:hover {
-    background-color: var(--brown);
-    color: white;
-  }
-  
+}
+
+.article .image {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(189, 189, 189);
+}
+
+.article .image:hover img {
+  transform: scale(1.2) rotate(15deg);
+  filter: drop-shadow(8px 12px 21px #000000a2);
+}
+
+.article img {
+  height: 70%;
+  filter: drop-shadow(8px 12px 21px #0000004d);
+  transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.article .right-part {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.article .text-infos {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  gap: 2vh;
+}
+
+.article .btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  gap: 2vh;
+}
+
+.article .btns a {
+  text-decoration: none;
+  background-color: var(--gold);
+  border-radius: 100px;
+  color: white;
+  text-align: center;
+  width: 150px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.article .btns a:hover {
+  background-color: var(--brown);
+  color: white;
+}
