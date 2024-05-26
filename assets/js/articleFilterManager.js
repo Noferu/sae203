@@ -2,35 +2,48 @@ $(document).ready(function () {
   var urlParams = new URLSearchParams(window.location.search);
   var preselectedCategoryId = urlParams.get("category_id");
   var preselectedSubcategoryId = urlParams.get("subcategory_id");
+  var preselectedKeywordId = urlParams.get("keyword_id");
+  var preselectedSellerId = urlParams.get("seller_id");
 
-  loadFilters(preselectedCategoryId, preselectedSubcategoryId);
+  loadFilters(preselectedCategoryId, preselectedSubcategoryId, preselectedKeywordId, preselectedSellerId);
 
-  function loadFilters(preselectedCategoryId, preselectedSubcategoryId) {
+  function loadFilters(preselectedCategoryId, preselectedSubcategoryId, preselectedKeywordId, preselectedSellerId) {
     $.ajax({
       url: "../include/fetch_articles",
       type: "GET",
       success: function (data) {
         const response = JSON.parse(data);
-        createCheckboxes(
-          "#category-checkboxes",
-          response.categories,
-          "category",
-          preselectedCategoryId
-        );
-        createCheckboxes(
-          "#subcategory-checkboxes",
-          response.subcategories,
-          "subcategory",
-          preselectedSubcategoryId
-        );
-        createCheckboxes("#seller-checkboxes", response.sellers, "seller");
-        createCheckboxes("#keyword-checkboxes", response.keywords, "keyword");
+        
+        if (preselectedCategoryId) {
+          createCheckboxes("#category-checkboxes", response.categories, "category", preselectedCategoryId);
+        } else {
+          createCheckboxes("#category-checkboxes", response.categories, "category");
+        }
+
+        if (preselectedSubcategoryId) {
+          createCheckboxes("#subcategory-checkboxes", response.subcategories, "subcategory", preselectedSubcategoryId);
+        } else {
+          createCheckboxes("#subcategory-checkboxes", response.subcategories, "subcategory");
+        }
+
+        if (preselectedSellerId) {
+          createCheckboxes("#seller-checkboxes", response.sellers, "seller", preselectedSellerId);
+        } else {
+          createCheckboxes("#seller-checkboxes", response.sellers, "seller");
+        }
+
+        if (preselectedKeywordId) {
+          createCheckboxes("#keyword-checkboxes", response.keywords, "keyword", preselectedKeywordId);
+        } else {
+          createCheckboxes("#keyword-checkboxes", response.keywords, "keyword");
+        }
+
         $("#minPrice").attr("placeholder", response.minPrice || "0");
         $("#maxPrice").attr("placeholder", response.maxPrice || "0");
         $("#minYear").attr("placeholder", response.minYear || null);
         $("#maxYear").attr("placeholder", response.maxYear || null);
 
-        fetchAllData(); // Fetch initial data after setup
+        fetchAllData();
       },
       error: function () {
         alert("Erreur lors de la récupération des données pour les filtres.");
@@ -62,11 +75,7 @@ $(document).ready(function () {
     });
   }
 
-  $("#filters").on(
-    "input",
-    'input[type="checkbox"], input[type="number"]',
-    fetchAllData
-  );
+  $("#filters").on("input", 'input[type="checkbox"], input[type="number"]', fetchAllData);
 
   function getFilterValues(selector) {
     var values = $(selector + ":checked")
@@ -112,39 +121,32 @@ $(document).ready(function () {
 
         html += `
         <div class="article">
-    <a class="image" href="${article.url}">
-        <img src="${imageUrl}" alt="${article.title}"/>
-    </a>
-    <div class="right-part">
-        <div class="text-infos">
-            <a href="${article.url}">
+          <a class="image" href="${article.url}">
+            <img src="${imageUrl}" alt="${article.title}"/>
+          </a>
+          <div class="right-part">
+            <div class="text-infos">
+              <a href="${article.url}">
                 <h2>${article.title}</h2>
-            </a>
-            <p>${article.description}</p>
-            <p>Prix : ${article.price} €</p>
-            <p>Année de vente : ${article.sale_year}</p>
+              </a>
+              <p>${article.description}</p>
+              <p>Prix : ${article.price} €</p>
+              <p>Année de vente : ${article.sale_year}</p>
+            </div>
+            <div class="btns">
+              <a class="learn-more" href="${article.url}">En savoir plus</a>
+              <a class="put-in-cart" href="#">Ajouter au panier</a>
+            </div>
+          </div>
         </div>
-        <div class="btns">
-            <a class="learn-more" href="${article.url}">En savoir plus</a>
-            <a class="put-in-cart" href="#">Ajouter au panier</a>
-        </div>
-    </div>
-</div>
         `;
       } else {
-        console.warn(
-          "L'article manque de propriétés 'image_url' ou 'title'",
-          article
-        );
+        console.warn("L'article manque de propriétés 'image_url' ou 'title'", article);
       }
     });
     $("#articles").html(html);
     $("#article-count").html(
-      articles.length +
-        " article" +
-        (articles.length > 1 ? "s" : "") +
-        " trouvé" +
-        (articles.length > 1 ? "s" : "")
+      articles.length + " article" + (articles.length > 1 ? "s" : "") + " trouvé" + (articles.length > 1 ? "s" : "")
     );
   }
 });
