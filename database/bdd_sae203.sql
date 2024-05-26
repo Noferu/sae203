@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 25 mai 2024 à 19:38
+-- Généré le : dim. 26 mai 2024 à 23:16
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -317,6 +317,14 @@ CREATE TABLE `cart` (
   `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cart`
+--
+
+INSERT INTO `cart` (`user_id`, `article_id`, `quantity`, `datetime`) VALUES
+(1, 1, 1, '2024-05-26 17:44:34'),
+(1, 31, 1, '2024-05-26 18:40:12');
+
 -- --------------------------------------------------------
 
 --
@@ -381,9 +389,75 @@ CREATE TABLE `comments` (
   `article_id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `rating_score` int(11) NOT NULL,
-  `content` varchar(255) DEFAULT NULL,
+  `content` text DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `rating_score`, `content`, `created_at`) VALUES
+(1, 1, 1, 5, 'Une arme exceptionnelle, très bien conçue. Parfaite pour la chasse.', '2024-05-26 23:16:25'),
+(2, 2, 1, 2, 'Collier sympa mais je crois que le loup était végétarien.', '2024-05-26 23:16:25'),
+(3, 3, 1, 5, 'Cape très chaude, parfaite pour les nuits froides.', '2024-05-26 23:16:25'),
+(4, 4, 1, 3, 'Pot pratique, mais un peu lourd. Mon dos s\'en souvient encore.', '2024-05-26 23:16:25'),
+(5, 5, 1, 4, 'Bonne lance, idéale pour la chasse.', '2024-05-26 23:16:25'),
+(6, 6, 1, 5, 'Flûte merveilleuse, le son est incroyable. Mes voisins moins.', '2024-05-26 23:16:25'),
+(7, 7, 1, 4, 'Sac solide, parfait pour les longues marches.', '2024-05-26 23:16:25'),
+(8, 8, 1, 5, 'Superbe peinture rupestre, très détaillée. Presque moderne !', '2024-05-26 23:16:25'),
+(9, 9, 1, 4, 'Kit d\'allumage efficace, très utile. Sauf sous la pluie.', '2024-05-26 23:16:25'),
+(10, 10, 1, 5, 'Bijoux magnifiques, très bien sculptés. Parfait pour les mammouths.', '2024-05-26 23:16:25'),
+(11, 11, 1, 3, 'Amphore belle, mais fragile. Elle a survécu deux fêtes.', '2024-05-26 23:16:25'),
+(12, 12, 1, 5, 'Tunique en lin légère et confortable. Parfaite pour les étés grecs.', '2024-05-26 23:16:25'),
+(13, 13, 1, 4, 'Lampe à huile très utile, éclaire bien. Mais l\'huile, ça coûte !', '2024-05-26 23:16:25'),
+(14, 14, 1, 5, 'Statuette de déesse impressionnante, très bien faite.', '2024-05-26 23:16:25'),
+(15, 15, 1, 2, 'Collier élégant, mais les perles se détachent. Dommage.', '2024-05-26 23:16:25'),
+(16, 16, 1, 3, 'Sandales confortables, mais usure rapide. Mes pieds n\'ont pas apprécié.', '2024-05-26 23:16:25'),
+(17, 17, 1, 5, 'Couronne de laurier magnifique, très symbolique. Idéale pour les selfies.', '2024-05-26 23:16:25'),
+(18, 18, 1, 4, 'Fresque murale très belle, mais chère. Parfait pour les riches.', '2024-05-26 23:16:25'),
+(19, 19, 1, 5, 'Parchemin écrit avec soin, très informatif. La meilleure lecture.', '2024-05-26 23:16:25'),
+(20, 20, 1, 4, 'Gladius robuste, parfait pour un légionnaire. Un peu lourd.', '2024-05-26 23:16:25'),
+(21, 21, 1, 5, 'Épée longue magnifique, très bien équilibrée. Prêt pour le cosplay.', '2024-05-26 23:16:25'),
+(22, 22, 1, 4, 'Broche en argent délicate, très belle. Mais se perd facilement.', '2024-05-26 23:16:25'),
+(23, 23, 1, 5, 'Robe médiévale somptueuse, très bien tissée. Parfaite pour les bals.', '2024-05-26 23:16:25'),
+(24, 24, 1, 4, 'Casque de chevalier solide, bonne protection. Mon crâne remercie.', '2024-05-26 23:16:25'),
+(25, 25, 1, 5, 'Chope en étain gravée, idéale pour les banquets. À la santé !', '2024-05-26 23:16:25'),
+(26, 26, 1, 4, 'Bouclier solide, bonne protection en combat. Moins contre les factures.', '2024-05-26 23:16:25'),
+(27, 27, 1, 5, 'Manuscrit enluminé magnifique, très bien conservé. Une vraie œuvre d\'art.', '2024-05-26 23:16:25'),
+(28, 28, 1, 4, 'Cape en laine brodée, très chaude et confortable. Parfaite pour l\'hiver.', '2024-05-26 23:16:25'),
+(29, 29, 1, 5, 'Herbier de plantes médicinales très utile et bien fait. Mon herboriste approuve.', '2024-05-26 23:16:25'),
+(30, 30, 1, 4, 'Luth en bois avec un son magnifique. Parfait pour les soirées mélancoliques.', '2024-05-26 23:16:25'),
+(31, 31, 1, 5, 'Globe terrestre décoratif très détaillé. Parfait pour les géographes.', '2024-05-26 23:16:25'),
+(32, 32, 1, 2, 'Un portrait magnifique, les détails sont incroyables. Un peu cher cependant.', '2024-05-26 23:16:25'),
+(33, 33, 1, 5, 'Robe en soie brodée magnifique, très élégante. Idéale pour les soirées de gala.', '2024-05-26 23:16:25'),
+(34, 34, 1, 4, 'Astrolabe en laiton, très bien fabriqué. Je me perds toujours.', '2024-05-26 23:16:25'),
+(35, 35, 1, 5, 'Collier en or et émeraude splendide, très luxueux. Un peu trop voyant.', '2024-05-26 23:16:25'),
+(36, 36, 1, 3, 'Livres de poésie bien imprimés, très inspirants. Certains poèmes sont trop tristes.', '2024-05-26 23:16:25'),
+(37, 37, 1, 5, 'Canne à pommeau sculpté, très élégante. Parfaite pour les promenades.', '2024-05-26 23:16:25'),
+(38, 38, 1, 4, 'Chapeau en velours avec plume, très stylé. Un peu trop extravagant.', '2024-05-26 23:16:25'),
+(39, 39, 1, 5, 'Viole de gambe, son magnifique. Presque trop parfait.', '2024-05-26 23:16:25'),
+(40, 40, 1, 4, 'Ensemble d\'échecs très bien sculpté. Les pions sont trop petits.', '2024-05-26 23:16:25'),
+(41, 41, 1, 5, 'Montre de poche en or, très précise et élégante. Parfaite pour les gentlemen.', '2024-05-26 23:16:25'),
+(42, 42, 1, 4, 'Chapeau haut-de-forme en feutre, très chic. Un peu trop rigide.', '2024-05-26 23:16:25'),
+(43, 43, 1, 5, 'Manteau en tweed, très bien fait et chaud. Idéal pour l\'hiver anglais.', '2024-05-26 23:16:25'),
+(44, 44, 1, 4, 'Lanterne à huile en cuivre, éclaire bien. Mais consomme beaucoup d\'huile.', '2024-05-26 23:16:25'),
+(45, 45, 1, 5, 'Machine à écrire portable, très pratique. Parfaite pour les écrivains itinérants.', '2024-05-26 23:16:25'),
+(46, 46, 1, 2, 'Bicyclette Penny-farthing, très originale. Pas très stable.', '2024-05-26 23:16:25'),
+(47, 47, 1, 5, 'Ensemble de thé en porcelaine, très élégant. Parfait pour les tea parties.', '2024-05-26 23:16:25'),
+(48, 48, 1, 4, 'Carte du monde encadrée, très détaillée. Les couleurs sont un peu ternes.', '2024-05-26 23:16:25'),
+(49, 49, 1, 5, 'Jumelles en cuir et laiton, très utiles. Idéales pour l\'observation des oiseaux.', '2024-05-26 23:16:25'),
+(50, 50, 1, 4, 'Canevas brodé, très bien fait. Un peu trop coloré à mon goût.', '2024-05-26 23:16:25'),
+(51, 51, 1, 5, 'Smartwatch holographique, très avancée. Comme dans un film de science-fiction.', '2024-05-26 23:16:25'),
+(52, 52, 1, 4, 'Lunettes de réalité augmentée, très pratiques. Sauf quand on les perd.', '2024-05-26 23:16:25'),
+(53, 53, 1, 5, 'Combinaison spatiale légère, très innovante. Parfaite pour les astronautes en herbe.', '2024-05-26 23:16:25'),
+(54, 54, 1, 4, 'Drone personnel de transport, très utile. Un peu bruyant.', '2024-05-26 23:16:25'),
+(55, 55, 1, 5, 'Panneau de commande domestique intelligent, très pratique. La maison du futur.', '2024-05-26 23:16:25'),
+(56, 56, 1, 4, 'Kit de jardinage hydroponique, très utile. Un peu cher.', '2024-05-26 23:16:25'),
+(57, 57, 1, 5, 'Robot assistant domestique, très avancé. J\'espère qu\'il ne se rebellera pas.', '2024-05-26 23:16:25'),
+(58, 58, 1, 4, 'Chargeur solaire portable, très pratique. Mais le soleil est capricieux.', '2024-05-26 23:16:25'),
+(59, 59, 1, 5, 'Lampe LED à contrôle gestuel, très innovante. Parfaite pour les geeks.', '2024-05-26 23:16:25'),
+(60, 60, 1, 4, 'Casque de musique à conduction osseuse, très confortable. Un peu bizarre au début.', '2024-05-26 23:16:25');
 
 -- --------------------------------------------------------
 
@@ -669,7 +743,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-25 18:26:46'),
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-26 16:38:07'),
 (2, 'test', 'random@gmail.com', '$2y$10$sGqFX3ZiA0Gh/KUTI0DqN.wTbJvW.lYCcAumiSNuHVFGSzJp1zH3u', '2024-05-20 13:16:11', 0, NULL),
 (3, 'EZAEZA', 'nawfelejziao@jieza.fr', '$2y$10$RzBTHGNDNFLx6JhIs/zwBeeNtq/bYN/.wg4WIhPS6IkAXSpb8ZobG', '2024-05-20 13:17:53', 0, NULL),
 (4, '6-Tadelle', 'mohamed.idaali@free.fr', '$2y$10$KoYQ8E3QPkjC4/JcBVygEuemgEVfWDjPA6RG4fJVREMl/LGfZbcUO', '2024-05-20 23:07:23', 0, NULL);
@@ -785,7 +859,7 @@ ALTER TABLE `category_styles`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT pour la table `keywords`
