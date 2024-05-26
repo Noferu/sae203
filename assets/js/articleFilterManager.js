@@ -13,7 +13,7 @@ $(document).ready(function () {
       type: "GET",
       success: function (data) {
         const response = JSON.parse(data);
-        
+
         if (preselectedCategoryId) {
           createCheckboxes("#category-checkboxes", response.categories, "category", preselectedCategoryId);
         } else {
@@ -75,7 +75,9 @@ $(document).ready(function () {
     });
   }
 
-  $("#filters").on("input", 'input[type="checkbox"], input[type="number"]', fetchAllData);
+  $("#filters").on("input", 'input[type="checkbox"], input[type="number"]', function() {
+    fetchAllData();
+  });
 
   function getFilterValues(selector) {
     var values = $(selector + ":checked")
@@ -111,34 +113,31 @@ $(document).ready(function () {
   }
 
   function updateArticles(articles) {
-    console.log("Mise à jour des articles", articles);
     let html = "";
     articles.forEach((article) => {
-      console.log("Article", article); // Ajout du log pour voir la structure de chaque article
-
       if (article.image_url && article.title) {
         const imageUrl = `../assets/images/articles/${article.image_url}`;
 
         html += `
-        <div class="article">
-          <a class="image" href="${article.url}">
-            <img src="${imageUrl}" alt="${article.title}"/>
-          </a>
-          <div class="right-part">
-            <div class="text-infos">
-              <a href="${article.url}">
-                <h2>${article.title}</h2>
+          <div class="article">
+              <a class="image" href="${article.url}">
+                  <img src="${imageUrl}" alt="${article.title}"/>
               </a>
-              <p>${article.description}</p>
-              <p>Prix : ${article.price} €</p>
-              <p>Année de vente : ${article.sale_year}</p>
-            </div>
-            <div class="btns">
-              <a class="learn-more" href="${article.url}">En savoir plus</a>
-              <a class="put-in-cart" href="#">Ajouter au panier</a>
-            </div>
+              <div class="right-part">
+                  <div class="text-infos">
+                      <a href="${article.url}">
+                          <h2>${article.title}</h2>
+                      </a>
+                      <p>${article.description}</p>
+                      <p>Prix : ${article.price} €</p>
+                      <p>Année de vente : ${article.sale_year}</p>
+                  </div>
+                  <div class="btns">
+                      <a class="learn-more" href="${article.url}">En savoir plus</a>
+                      <a class="put-in-cart cart-btn" href="#" data-action="add_to_cart" data-article-id="${article.article_id}">Ajouter au panier</a>
+                  </div>
+              </div>
           </div>
-        </div>
         `;
       } else {
         console.warn("L'article manque de propriétés 'image_url' ou 'title'", article);

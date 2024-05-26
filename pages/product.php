@@ -9,36 +9,44 @@ $twig = init_twig();
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
-if ($user_id) {
-    $favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], true);
-}
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 switch ($action) {
     case 'detail':
         $article_id = $_GET['article_id'];
-        $sql = "SELECT * FROM articles WHERE article_id = :article_id";
         $params = [':article_id' => $article_id];
-        $article = select_data($pdo, $sql, $params, false);
 
-        $sql = "SELECT c.* FROM categories c
-                JOIN subcategories s ON c.category_id = s.category_id
-                JOIN articles a ON s.subcategory_id = a.subcategory_id
-                WHERE a.article_id = :article_id";
-        $current_category = select_data($pdo, $sql, $params, false);
+        $article = select_data($pdo, "SELECT * FROM articles WHERE article_id = :article_id", $params, false);
 
-        $sql = "SELECT k.* FROM keywords k
-                JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id
-                JOIN articles a ON ak.article_id = a.article_id
-                WHERE a.article_id = :article_id";
-        $keywords = select_data($pdo, $sql, $params, true);
+        $current_category = select_data($pdo, "SELECT c.* FROM categories c
+                                                JOIN subcategories s ON c.category_id = s.category_id
+                                                JOIN articles a ON s.subcategory_id = a.subcategory_id
+                                                WHERE a.article_id = :article_id", $params, false);
 
-        $sql = "SELECT s.* FROM sellers s
-                JOIN articles a ON a.seller_id = s.seller_id
-                WHERE a.article_id = :article_id";
-        $seller = select_data($pdo, $sql, $params, false);
+        $keywords = select_data($pdo, "SELECT k.* FROM keywords k
+                                        JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id
+                                        JOIN articles a ON ak.article_id = a.article_id
+                                        WHERE a.article_id = :article_id", $params, true);
+
+        $seller = select_data($pdo, "SELECT s.* FROM sellers s
+                                      JOIN articles a ON a.seller_id = s.seller_id
+                                      WHERE a.article_id = :article_id", $params, false);
+
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+        $favorites = $cart = $is_favorite = $is_in_cart = false;
+
+        if ($user_id) {
+            $user_params = [':user_id' => $user_id, ':article_id' => $article_id];
+
+            $favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], false);
+
+            $is_favorite = select_data($pdo, "SELECT COUNT(*) as count FROM favorites WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
+
+            $cart = select_data($pdo, "SELECT article_id FROM cart WHERE user_id = :user_id", [':user_id' => $user_id], false);
+
+            $is_in_cart = select_data($pdo, "SELECT COUNT(*) as count FROM cart WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
+        }
 
         echo $twig->render('product/product_detail.twig', [
             'article' => $article,
@@ -47,7 +55,8 @@ switch ($action) {
             'current_category' => $current_category,
             'keywords' => $keywords,
             'seller' => $seller,
-            'favorites' => $favorites
+            'is_favorite' => $is_favorite,
+            'is_in_cart' => $is_in_cart
         ]);
         break;
 

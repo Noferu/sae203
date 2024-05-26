@@ -14,13 +14,18 @@ function showToast(message) {
 jQuery(document).ready(function() {
     // Fonction pour gérer les actions AJAX
     function handleAjaxAction(button, action, articleId) {
+        if (action === 'view_cart') {
+            // Redirection directe vers la page du panier
+            window.location.href = basePath + '/pages/checkout';
+            return;
+        }
+
         jQuery.ajax({
             url: '../include/favcart_controller.php?action=' + action,
             type: 'POST',
             data: { article_id: articleId },
             dataType: 'json',
             success: function(response) {
-                console.log('AJAX response:', response);
 
                 // Affiche le message toast
                 showToast(response.message);
@@ -31,21 +36,20 @@ jQuery(document).ready(function() {
                     } else if (action === 'remove_favorite') {
                         button.data('action', 'add_favorite').text('Ajouter aux favoris');
                     } else if (action === 'add_to_cart') {
-                        button.replaceWith('<a href="' + basePath + '/pages/checkout" class="button">Voir le panier</a>');
+                        button.data('action', 'view_cart').text('Voir le panier');
                     } else if (action === 'remove_from_cart') {
-                        button.closest('.item').remove();
+                        button.data('action', 'add_to_cart').text('Ajouter au panier');
                     }
                 }
             },
             error: function(xhr, status, error) {
-                console.log('AJAX error:', status, error);
                 showToast('Une erreur est survenue');
             }
         });
     }
 
     // Attacher les événements aux boutons
-    jQuery('.favorite-btn, .cart-btn').on('click', function() {
+    jQuery(document).on('click', '.favorite-btn, .cart-btn', function() {
         const button = jQuery(this);
         const action = button.data('action');
         const articleId = button.data('article-id');
@@ -59,20 +63,18 @@ jQuery(document).ready(function() {
             type: 'POST',
             dataType: 'json',
             success: function(response) {
-                console.log('AJAX response:', response);
 
                 // Affiche le message toast
                 showToast(response.message);
 
                 if (response.status === 'success') {
-                    jQuery('.favorite-btn[data-action="add_to_cart"]').each(function() {
+                    jQuery('.cart-btn[data-action="add_to_cart"]').each(function() {
                         const button = jQuery(this);
-                        button.replaceWith('<a href="' + basePath + '/pages/checkout" class="button">Voir le panier</a>');
+                        button.data('action', 'view_cart').text('Voir le panier');
                     });
                 }
             },
             error: function(xhr, status, error) {
-                console.log('AJAX error:', status, error);
                 showToast('Une erreur est survenue');
             }
         });
