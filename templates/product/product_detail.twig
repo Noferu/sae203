@@ -1,4 +1,4 @@
-{% set bodyclass = current_category.name|lower|replace({' ': '', '_': ''})|replace({'á': 'a', 'à': 'a', 'â': 'a', 'ä': 'a', 'ã': 'a', 'å': 'a', 'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e'}) %}
+{% set bodyclass = 'theme-' ~ current_category.name|lower|replace({' ': '', '_': ''}) %}
 
 {% extends "includes/base.twig" %}
 
@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block main %}
+	<div id="background-image"></div>
 
 	<a id="back-link" href="#">
 		<i class="fa-solid fa-arrow-left"></i>
@@ -78,9 +79,10 @@
 	</div>
 
 	<div class="additional-info">
-		<p>Date de création :
+		<p>Publié le :
 			{{ article.created_at|date("d F Y à H\\hi") }}
-			~-~ Date de modification :
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						Modifié le :
 			{{ article.updated_at|date("d F Y à H\\hi") }}</p>
 	</div>
 </div>
@@ -88,14 +90,14 @@
 <div class="lower-part">
 	<div class="comments-section">
 		<h3>Commentaires</h3>
+		<div class="add-comment">
+			<textarea placeholder="Ajouter un commentaire..."></textarea>
+			<button>Envoyer</button>
+		</div>
 		<div class="comment">
 			<p class="username">@username</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 			<p class="date">Date de création</p>
-		</div>
-		<div class="add-comment">
-			<textarea placeholder="Ajouter un commentaire..."></textarea>
-			<button>Envoyer</button>
 		</div>
 	</div>
 
