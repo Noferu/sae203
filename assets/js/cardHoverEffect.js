@@ -9,7 +9,6 @@
         maxGlare: 0.3,
         scale: 1.07,
     });
-    console.log("Tilt.js initialized");
 }(jQuery));
 
 $(document).ready(function() {

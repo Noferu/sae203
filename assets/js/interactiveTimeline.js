@@ -68,13 +68,10 @@ function updateCurrentEpoch(epochs, container) {
 function updateLinkAndTheme(epoch) {
   const link = document.getElementById("epoch-link");
   const categoryId = epoch.dataset.id;
-  console.log("Category ID:", categoryId); // Ajoutez ceci pour le débogage
 
   if (categoryId) {
       // Utiliser base_path pour construire correctement l'URL
       link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
-  } else {
-      console.error("Category ID is missing");
   }
 
   const body = document.body;
