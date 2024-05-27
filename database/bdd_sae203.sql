@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 26 mai 2024 à 23:16
+-- Généré le : lun. 27 mai 2024 à 03:26
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -352,31 +352,6 @@ INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`,
 (4, 'Renaissance', 'Vivez la splendeur de la Renaissance où l\'art et la découverte renaissent sous un jour nouveau. Venez échanger vos florins contre des œuvres d\'art, inestimables, des instruments scientifiques avancés ou des vêtements brodés de soie qui ont charmé les cours européennes. Laissez-vous séduire par le génie de notre époque et enrichissez votre monde avec nos trésors.', 'florin', 0.50, 'thumbnail-renaissance.webp', 'currency_icons/florin.webp'),
 (5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation et du progrès durant l\'Époque Moderne. Avec quelques livres, vous pouvez vous procurer des merveilles de la technologie comme des machines à écrire portables ou des bicyclettes qui ont révolutionné nos transports. Participez au grand élan vers la modernité et laissez-vous emporter par l\'élégance et le dynamisme de notre temps.', 'livre', 1.50, 'thumbnail-moderne.webp', 'currency_icons/livre.webp'),
 (6, 'Futur', 'Plongez dans le futur, un monde où la technologie et l\'innovation redéfinissent les limites du possible. Utilisez vos crédits pour acquérir des gadgets révolutionnaires tels que des smartwatches holographiques ou des robots assistants domestiques. Explorez avec nous les nouvelles frontières de l\'univers et les avancées qui transforment notre quotidien.', 'crédit', 0.20, 'thumbnail-futur.webp', 'currency_icons/credit.webp');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category_styles`
---
-
-CREATE TABLE `category_styles` (
-  `style_id` int(11) NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `music_url` text DEFAULT NULL,
-  `background_image_url` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `category_styles`
---
-
-INSERT INTO `category_styles` (`style_id`, `category_id`, `music_url`, `background_image_url`) VALUES
-(1, 1, 'https://www.youtube.com/watch?v=8myYyMg1fFE', 'https://images.unsplash.com/photo-1436657640247-282c9abfb832?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-(2, 2, 'https://www.youtube.com/watch?v=tAKAkhwEf0M', 'https://image.jimcdn.com/app/cms/image/transf/dimension=2080x10000:format=jpg/path/s2217cd0bb1220415/image/i6a8db93d0691e189/version/1695812958/classical-athens-and-acropolis.jpg'),
-(3, 3, 'https://www.youtube.com/watch?v=vyg5jJrZ42s', 'https://images.nightcafe.studio/jobs/bonIgRNoUWvHZo2bUlZs/bonIgRNoUWvHZo2bUlZs--1--bf3hn.jpg?tr=w-1600,c-at_max'),
-(4, 4, 'https://www.youtube.com/watch?v=VeS7PxGeJJI', 'https://www.connollycove.com/wp-content/uploads/2024/03/image-1956.jpeg'),
-(5, 5, 'https://www.youtube.com/watch?v=J6qIzKxmW8Y', 'https://cdn.vox-cdn.com/thumbor/N8oPhh9ueroPPQWjfN9ibvMTCEM=/0x0:1200x615/2400x1356/filters:focal(600x307:601x308)/cdn.vox-cdn.com/uploads/chorus_asset/file/13080163/V5.0.0.1447176373.jpg'),
-(6, 6, 'https://www.youtube.com/watch?v=tCGQLAhhF5I', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bbaa048a-5807-4dc1-b2d3-766796da9c8f/d83vjqq-1ec3205a-3bc5-4739-a703-075489395d4c.jpg/v1/fill/w_1024,h_547,q_75,strp/cyberpunk_cityscape_by_klauspillon_d83vjqq-fullview.jpg?token=eyJ0eXAiOiJKV1QiLC');
 
 -- --------------------------------------------------------
 
@@ -743,10 +718,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-26 16:38:07'),
-(2, 'test', 'random@gmail.com', '$2y$10$sGqFX3ZiA0Gh/KUTI0DqN.wTbJvW.lYCcAumiSNuHVFGSzJp1zH3u', '2024-05-20 13:16:11', 0, NULL),
-(3, 'EZAEZA', 'nawfelejziao@jieza.fr', '$2y$10$RzBTHGNDNFLx6JhIs/zwBeeNtq/bYN/.wg4WIhPS6IkAXSpb8ZobG', '2024-05-20 13:17:53', 0, NULL),
-(4, '6-Tadelle', 'mohamed.idaali@free.fr', '$2y$10$KoYQ8E3QPkjC4/JcBVygEuemgEVfWDjPA6RG4fJVREMl/LGfZbcUO', '2024-05-20 23:07:23', 0, NULL);
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-26 16:38:07');
 
 --
 -- Index pour les tables déchargées
@@ -781,13 +753,6 @@ ALTER TABLE `cart`
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`),
   ADD UNIQUE KEY `name` (`name`),
-  ADD KEY `idx_category_id` (`category_id`);
-
---
--- Index pour la table `category_styles`
---
-ALTER TABLE `category_styles`
-  ADD PRIMARY KEY (`style_id`),
   ADD KEY `idx_category_id` (`category_id`);
 
 --
@@ -850,12 +815,6 @@ ALTER TABLE `categories`
   MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT pour la table `category_styles`
---
-ALTER TABLE `category_styles`
-  MODIFY `style_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
@@ -909,12 +868,6 @@ ALTER TABLE `articles_keywords`
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`);
-
---
--- Contraintes pour la table `category_styles`
---
-ALTER TABLE `category_styles`
-  ADD CONSTRAINT `fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `comments`
