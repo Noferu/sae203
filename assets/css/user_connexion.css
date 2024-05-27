@@ -5,6 +5,10 @@
   --button-gradient: linear-gradient(135deg, #f1c40f, #e67e22);
 }
 
+body {
+  overflow: hidden;
+}
+
 ::selection {
   background: #4c58cf;
   color: white;
@@ -32,42 +36,37 @@ i.fa-times:hover {
   color: rgb(63, 63, 63);
 }
 
-.slideshow-container {
-  width: 30%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0px -20px 60px #0000005b;
-}
-
-.slideshow {
-  display: flex;
-  width: 600%;
-  height: 105%;
-  margin: -2.5% 0; /* Correction des bords blancs */
-  animation: slide 30s infinite alternate;
-}
-
-.slide {
-  width: 16.66%;
-  height: 100%;
-}
-
-.slide img {
+.wave-container {
+  position: absolute;
+  top: 40vh;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(10px);
+  height: 60vh;
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+  background-color: var(--brown);
+  animation: slide-in-bottom 6s cubic-bezier(0,.91,0,1) both;
 }
 
-@keyframes slide {
-  0% { transform: translateX(0%); }
-  16.66% { transform: translateX(0%); }
-  33.32% { transform: translateX(-16.66%); }
-  49.98% { transform: translateX(-33.32%); }
-  66.64% { transform: translateX(-50%); }
-  83.30% { transform: translateX(-66.64%); }
-  100% { transform: translateX(-83.30%); }
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wave-svg {
+  transform: rotateZ(180deg);
+  width: 100%;
+  height: 200px;
+}
+
+.wave-svg path {
+  transition: fill 300ms ease-in-out;
 }
 
 .wrapper-container {
@@ -76,12 +75,29 @@ i.fa-times:hover {
   align-items: center;
   width: 40%;
   padding: 0 2%;
+  animation: slide-in-blurred-top 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+@keyframes slide-in-blurred-top {
+  0% {
+    transform: translateY(-1000px) scaleY(2.5) scaleX(0.2);
+    transform-origin: 50% 0%;
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    filter: blur(0);
+    opacity: 1;
+  }
 }
 
 .wrapper {
-  width: 380px; /* Taille d'origine du formulaire */
+  width: 380px;
   border-radius: 30px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .wrapper .title {
