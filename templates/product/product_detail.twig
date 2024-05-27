@@ -113,6 +113,7 @@
 		<div class="comment">
 			<p class="username">@{{ comment.username }} <span>Le {{ comment.created_at|date("d F à H\\hi") }}</span></p>
 			<p>{{ comment.content }}</p>
+			<p>{{ comment.rating_score }}/5</p>
 		</div>
 		{% endfor %}
 	</div>
