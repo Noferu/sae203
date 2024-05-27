@@ -428,8 +428,6 @@ h1 {
 
 .login-prompt, .add-comment {
   margin-bottom: 3vh!important;
-  position: -webkit-sticky;
-  position: sticky;
 }
 
 .login-prompt a {
