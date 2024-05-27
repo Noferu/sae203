@@ -353,6 +353,18 @@ h1 {
   justify-content: space-evenly;
 }
 
+.lower-part::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  border-radius: 100px;
+  transform: translate(-50%, -50%);
+}
+
 .wave-container {
   position: absolute;
   top: -150px;
@@ -397,18 +409,6 @@ h1 {
   fill: #463f5d;
 }
 
-.lower-part::before {
-  content: "";
-  position: absolute;
-  width: 3px;
-  background-color: rgba(0, 0, 0, 0.2);
-  height: 70%;
-  top: 50%;
-  left: 50%;
-  border-radius: 100px;
-  transform: translate(-50%, -50%);
-}
-
 .lower-part h3 {
   margin: 2vw;
   font-weight: 600;
@@ -416,15 +416,20 @@ h1 {
   text-align: center;
 }
 
-.comments-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.lower-part section {
   width: 40%;
 }
 
-.login-prompt {
-  margin-bottom: 3vh;
+.lower-part .section {
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.login-prompt, .add-comment {
+  margin-bottom: 3vh!important;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 .login-prompt a {
@@ -436,18 +441,12 @@ h1 {
   text-decoration: underline;
 }
 
-.comments-area,
-.articles-grid {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
 .add-comment {
-  width: 27vw;
+  width: 80%;
+  margin:auto;
   padding:3vh 1vw;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin-bottom: 5vh;
   position:relative;
 }
 
@@ -461,9 +460,6 @@ h1 {
   resize: none;
   background: none;
   font-family: inherit;
-  position: relative;
-  overflow: hidden;
-  resize: none;
 }
 
 .add-comment textarea::placeholder {
@@ -477,7 +473,7 @@ h1 {
   padding:0;
   position: absolute;
   top:50%;
-  right:7%;
+  right:8%;
   transform: translate(0, -50%);
   font-size: 160%;
   transition: all 300ms ease;  
@@ -488,15 +484,10 @@ h1 {
   color: white;
 }
 
-.star-rating {
-  display: flex;
-  gap: 5px;
-}
-
 .star-rating i {
   font-size: 20px;
   color: white;
-  transition: color 0.3s;
+  transition: color 0.15s;
   cursor: pointer;
 }
 
@@ -505,7 +496,8 @@ h1 {
 }
 
 .comment {
-  width: 27vw;
+  width: 70%;
+  margin: auto;
   background-color: rgba(0, 0, 0, 0.2);
   padding: 3vh 1vw;
   border-radius: 15px;
@@ -524,7 +516,7 @@ h1 {
   margin-left:5%;
   font-style: italic;
   font-weight: 300;
-  color:rgba(255, 255, 255, 0.8);
+  color:rgba(255, 255, 255, 0.5);
 }
 
 .rate-score {
@@ -540,9 +532,7 @@ h1 {
 }
 
 #delete-comment-form {
-  width: fit-content;
-  display: inline-block;
-  vertical-align: middle;
+  display: inline;
 }
 
 #delete-comment-form button {
@@ -555,29 +545,25 @@ h1 {
 }
 
 #delete-comment-form button:hover {
-  color:rgba(255, 0, 0, 0.7);
-}
-
-.suggested-articles {
-  width: 40%;
+  color:rgba(223, 82, 58, 0.795);
 }
 
 .articles-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7vw;
-  align-items: center;
+  margin: 0 auto;
   justify-content: center;
 }
 
 .card {
   width: 150px;
   height: 200px;
-  border-radius: 30px;
+  border-radius: 15px;
   background-color: rgba(0, 0, 0, 0.3);
-  overflow: hidden;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   align-items: center;
   position: relative;
   transition: all 500ms ease;
@@ -587,7 +573,7 @@ h1 {
   object-fit: cover;
   height: 60%;
   width: auto;
-  filter: drop-shadow(5px 5px 10px #000000de) blur(0);
+  filter: drop-shadow(5px 5px 10px #000000de);
   transition: all 200ms ease-in-out;
 }
 
@@ -604,7 +590,6 @@ h1 {
   color: white;
   font-size: 120%;
   font-weight: 700;
-  z-index: 2;
   opacity: 0;
   width: 90%;
   filter: blur(5px);
@@ -620,7 +605,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 200%;
+  font-size: 180%;
   gap: 5px;
 }
 
