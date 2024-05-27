@@ -22,9 +22,8 @@ if (isset($_SESSION['message']) && isset($_SESSION['username'])) {
     unset($_SESSION['message']);
 }
 
-// Requête pour obtenir les deux articles les mieux notés
 $top_articles = select_data($pdo, '
-    SELECT a.title, AVG(c.rating_score) AS moyenne_note
+    SELECT a.*, AVG(c.rating_score) AS moyenne_note
     FROM articles a
     JOIN comments c ON a.article_id = c.article_id
     GROUP BY a.article_id

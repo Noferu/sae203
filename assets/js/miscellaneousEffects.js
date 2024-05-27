@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var x = document.getElementById("toast-message");
-  const title = document.querySelector("h1, .title-animation");
+  const titles = document.querySelectorAll("h1, .title-animation");
 
   // Message Toast
   if (x) {
@@ -11,16 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 3500);
   }
 
-  // Animation du titre
-  if (title) {
-    const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
-    title.innerHTML = letters
-      .map((letter, index) => {
-        const delay = Math.random() * 2; // Délai aléatoire entre 0 et 2 secondes
-        return `<span class="title-letter" style="animation-delay: ${delay}s;">${
-          letter === " " ? "&nbsp;" : letter
-        }</span>`;
-      })
-      .join("");
-  }
+  // Animation des titres
+  titles.forEach(title => {
+    if (title) {
+      const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
+      title.innerHTML = letters
+        .map((letter, index) => {
+          const delay = Math.random() * 2; // Délai aléatoire entre 0 et 2 secondes
+          return `<span class="title-letter" style="animation-delay: ${delay}s;">${
+            letter === " " ? "&nbsp;" : letter
+          }</span>`;
+        })
+        .join("");
+    }
+  });
 });

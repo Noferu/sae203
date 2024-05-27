@@ -4,6 +4,11 @@
   --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
 }
 
+::selection {  
+  color: white;
+  background: var(--gold);
+}
+
 @font-face {
   font-family: "Antiquite";
   src: url("../fonts/antiquite.ttf") format("truetype");
@@ -114,6 +119,34 @@ header .umc {
 
 header .umc a {
   font-size: 150%;
+}
+
+header .control-icons .volume-control a {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+}
+
+header .control-icons .volume-control i {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
+header .volume-control .fa-volume-high {
+  animation: pulsate-fwd 1s ease-in-out infinite both;
+}
+
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .umc .fa-solid,
@@ -243,74 +276,88 @@ nav ul {
   display: block;
 }
 
-.wave-shape {
-  transform: rotate(180deg) translateY(-1px);
-}
-
-.wave-shape svg {
-  display: block;
-  width: calc(129% + 1.3px);
-  height: 133px;
-}
-
-.wave-shape .shape-fill {
-  fill: rgb(202, 202, 202);
-}
-
-@keyframes waveAnimation {
-  0% {
-    d: path(
-      "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-    );
-  }
-  25% {
-    d: path(
-      "M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z"
-    );
-  }
-  50% {
-    d: path(
-      "M321.39,66.44c62-6.79,122.16-22.13,180-31.86,88.39-8.72,172.19-9.73,260.45,3.39C837.78,37,918.67,78,997.66,98.83c76.05,10.48,154.53,18.09,222.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,66.44Z"
-    );
-  }
-  75% {
-    d: path(
-      "M321.39,61.44c60-8.79,118.16-26.13,176-35.86,85.39-12.72,170.19-13.73,255.45,1.39C830.78,34,912.67,75,991.66,95.83c73.05,14.48,150.53,22.09,218.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,61.44Z"
-    );
-  }
-  100% {
-    d: path(
-      "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-    );
-  }
-}
-
-.wave-shape path {
-  animation: waveAnimation 10s infinite linear;
-}
-
 .footer-wrapped {
+  position: relative;
   width: 100%;
+}
+
+.footer-wave-container {
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-wave-svg {
+  width: 100%;
+  height: 100%;
 }
 
 footer {
-  background-color: rgb(202, 202, 202);
-}
-
-.footer-content {
-  padding: 20px;
+  padding: 5vh;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  color:white;
 }
 
-/* Styles pour les icônes de volume */
-header .control-icons .volume-control a {
-  display: inline-block;
-  width: 24px; /* Ajustez cette valeur selon la taille de vos icônes */
-  text-align: center;
+footer ul {
+  display: flex;
+  flex-direction: column;
+  gap:1vw;
 }
 
-header .control-icons .volume-control i {
-  width: 100%;
-  text-align: center;
-  font-size: 20px; /* Ajustez cette valeur selon la taille souhaitée */
+footer li {
+  vertical-align: middle;
+}
+
+footer a {
+  color:white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer a i {
+  margin-right:0.7vw;
+}
+
+.theme-néolithique .footer-wave-svg path,
+.theme-néolithique footer {
+  fill: #2e361d; /* Assombri de #3a4526 */
+  background-color: #2e361d;
+}
+
+.theme-antiquité .footer-wave-svg path,
+.theme-antiquité footer {
+  fill: #636a72; /* Assombri de #7d8790 */
+  background-color: #636a72;
+}
+
+.theme-moyen-âge .footer-wave-svg path,
+.theme-moyen-âge footer {
+  fill: #432e26; /* Assombri de #533c2f */
+  background-color: #432e26;
+}
+
+.theme-renaissance .footer-wave-svg path,
+.theme-renaissance footer {
+  fill: #4f4a43; /* Assombri de #645f54 */
+  background-color: #4f4a43;
+}
+
+.theme-époque-moderne .footer-wave-svg path,
+.theme-époque-moderne footer {
+  fill: #323838; /* Assombri de #424e4c */
+  background-color: #323838;
+}
+
+.theme-futur .footer-wave-svg path,
+.theme-futur footer {
+  fill: #3a324c; /* Assombri de #463f5d */
+  background-color: #3a324c;
 }
