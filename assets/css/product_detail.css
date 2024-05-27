@@ -160,6 +160,31 @@ h1 {
   width: 50%;
 }
 
+.article-details > * {
+  animation: slide-in-left 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(10px);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .article-details h3 {
   font-weight: 800;
   font-size: 250%;
@@ -299,6 +324,7 @@ h1 {
 }
 
 .lower-part {
+  color:white;
   position: relative;
   margin-top: 15vh;
   width: 100%;
@@ -308,7 +334,7 @@ h1 {
 
 .wave-container {
   position: absolute;
-  top:-50%;
+  top:-150px;
   width: 100%;
   height: 200px;
   z-index: -1;
@@ -341,7 +367,7 @@ h1 {
   fill: #645f54;
 }
 
-.theme-époque-moderne .wave-svg path {
+.theme-époque-moderne .wave-svg path, .theme-époquemoderne .wave-svg path {
   fill: #424e4c;
 }
 
@@ -382,6 +408,7 @@ h1 {
 }
 
 .add-comment textarea {
+  color:white;
     width: 100%;
     font-size: 105%;
     border: none;
@@ -400,10 +427,93 @@ h1 {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     transition: width 0.4s ease;
 }
 
 .add-comment button {
     display: none;
+}
+
+.articles-grid {
+  display: flex;
+  gap: 1vw;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  height: 50vh;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 500ms ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.card:hover::before {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card img.article {
+  object-fit: cover;
+  height: 70%;
+  width: auto;
+  filter: drop-shadow(5px 5px 10px #000000de) blur(0);
+  transition: all 200ms ease-in-out;
+}
+
+.card:hover img.article {
+  filter: drop-shadow(5px 5px 10px #000000de) blur(5px);
+}
+
+.card .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 150%;
+  font-weight: 700;
+  z-index: 2;
+  opacity: 0;
+  filter: blur(5px);
+  transition: all 500ms ease-in-out;
+}
+
+.card:hover .text {
+  filter: blur(0px);
+  opacity: 1;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 300%;
+  gap: 5px;
+}
+
+.card .cur-icon {
+  width: 60px;
 }
