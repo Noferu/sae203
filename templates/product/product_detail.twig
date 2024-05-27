@@ -109,33 +109,42 @@
 			<textarea placeholder="Ajouter un commentaire..."></textarea>
 			<button>Envoyer</button>
 		</div>
+		{% for comment in comments %}
 		<div class="comment">
-			<p class="username">@username</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-			<p class="date">Date de création</p>
+			<p class="username">@{{ comment.username }} <span>Le {{ comment.created_at|date("d F à H\\hi") }}</span></p>
+			<p>{{ comment.content }}</p>
 		</div>
+		{% endfor %}
 	</div>
 
 	<div class="suggested-articles">
 		<h3>Autres articles pour vous</h3>
 		<div class="articles-grid">
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample1.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
-			</div>
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample2.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
-			</div>
-			<div class="article-card">
-				<img src="{{ base_path }}/assets/images/articles/sample3.jpg" alt="Titre">
-				<h4>Titre</h4>
-				<p>Description courte</p>
-			</div>
+		{% for article in suggested_articles %}
+			<a class="card-link" href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">
+					<div class="card" data-tilt>
+						<img class="article" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
+						<div class="text">
+							<div class="price-container">
+								<p>{{ article.price * current_category.currency_rate }}</p>
+								<img class="cur-icon" src="{{ base_path}}/assets/images/{{ current_category.currency_icon }}" alt="{{ current_category.currency_name }}">
+							</div>
+							<h2>{{ article.title }}</h2>
+						</div>
+						<div class="bg"></div>
+					</div>
+				</a>
+			{% endfor %}
 		</div>
 	</div>
 </div>{% endblock %}{% block js %}
 <script src="{{ base_path }}/assets/js/articleLens.js"></script>
-<script src="{{ base_path }}/assets/js/favcartManager.js"></script>{% endblock %}
+<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
+<script>
+$(document).ready(function () {
+  $(".article-details > *").each(function (index) {
+    $(this).css("animation-delay", `${index * 0.2}s`);
+  });
+});
+</script>
+{% endblock %}
