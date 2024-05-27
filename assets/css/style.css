@@ -77,6 +77,10 @@
   animation: fadein 0.5s, fadeout 0.5s 3s;
 }
 
+body.preload {
+  transition: all 0ms;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;

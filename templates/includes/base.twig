@@ -30,6 +30,9 @@
 		{% if withFooter ?? true %}
 			{% include 'includes/footer.twig' %}
 		{% endif %}
+		<script>
+		document.addEventListener('DOMContentLoaded', () => setTimeout(() => document.body.classList.remove('preload'), 500));
+		</script>
 		<script src="{{ base_path }}/assets/js/headerVolumeToggle.js"></script>
 		<script>
 			const basePath = '{{ base_path }}';
