@@ -74,8 +74,6 @@ foreach ($articles as &$article) {
 
 $categories = select_data($pdo, "SELECT category_id AS id, name FROM categories");
 $subcategories = select_data($pdo, "SELECT subcategory_id AS id, name FROM subcategories");
-// $sellers = select_data($pdo, "SELECT seller_id AS id, name FROM sellers");
-// $keywords = select_data($pdo, "SELECT keyword_id AS id, name FROM keywords");
 
 $keywords = select_data($pdo, "
     SELECT k.keyword_id AS id, k.name 

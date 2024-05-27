@@ -4,32 +4,26 @@ body {
 
 .theme-néolithique #background-image {
   background-image: url("https://i.imgur.com/NOho5qq.jpg");
-  background-color: #3a4526;
 }
 
 .theme-antiquité #background-image {
   background-image: url("https://i.imgur.com/qYk0C49.jpg");
-  background-color: #7d8790;
 }
 
 .theme-moyen-âge #background-image {
   background-image: url("https://i.imgur.com/xPUXGRT.jpg");
-  background-color: #533c2f;
 }
 
 .theme-renaissance #background-image {
   background-image: url("https://i.imgur.com/IZfe0T5.jpg");
-  background-color: #645f54;
 }
 
 .theme-époquemoderne #background-image {
   background-image: url("https://i.imgur.com/ZSECm9u.jpg");
-  background-color: #424e4c;
 }
 
 .theme-futur #background-image {
   background-image: url("https://i.imgur.com/GViuh6q.jpg");
-  background-color: #463f5d;
 }
 
 #background-image {
@@ -229,6 +223,33 @@ h1 {
   color: white;
 }
 
+.favorite-btn.clicked, .cart-btn.clicked {
+  animation: wobble-hor-bottom 0.8s both;
+} 
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+
 .article-details > p > span {
   font-weight: 600;
 }
@@ -324,7 +345,7 @@ h1 {
 }
 
 .lower-part {
-  color:white;
+  color: white;
   position: relative;
   margin-top: 15vh;
   width: 100%;
@@ -334,7 +355,7 @@ h1 {
 
 .wave-container {
   position: absolute;
-  top:-150px;
+  top: -150px;
   width: 100%;
   height: 200px;
   z-index: -1;
@@ -367,7 +388,8 @@ h1 {
   fill: #645f54;
 }
 
-.theme-époque-moderne .wave-svg path, .theme-époquemoderne .wave-svg path {
+.theme-époque-moderne .wave-svg path,
+.theme-époquemoderne .wave-svg path {
   fill: #424e4c;
 }
 
@@ -378,8 +400,8 @@ h1 {
 .lower-part::before {
   content: "";
   position: absolute;
-  width: 2px;
-  background-color: rgba(255, 255, 255, 0.486);
+  width: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
   height: 70%;
   top: 50%;
   left: 50%;
@@ -391,64 +413,167 @@ h1 {
   margin: 2vw;
   font-weight: 600;
   font-size: 150%;
+  text-align: center;
 }
 
 .comments-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40%;
+}
+
+.login-prompt {
+  margin-bottom: 3vh;
+}
+
+.login-prompt a {
+  text-decoration: none;
+  color:var(--gold);
+}
+
+.login-prompt a:hover {
+  text-decoration: underline;
+}
+
+.comments-area,
+.articles-grid {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .add-comment {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 27vw;
+  padding:3vh 1vw;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin-bottom: 5vh;
+  position:relative;
 }
 
 .add-comment textarea {
-  color:white;
-    width: 100%;
-    font-size: 105%;
-    border: none;
-    outline: none;
-    padding: 0;
-    resize: none;
-    background: none;
-    font-family: inherit;
-    position: relative;
+  color: white;
+  width: 85%;
+  font-size: 105%;
+  border: none;
+  outline: none;
+  padding: 0;
+  resize: none;
+  background: none;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  resize: none;
 }
 
-.add-comment::after {
-    content: '';
-    position: absolute;
-    bottom: 20%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-    transition: width 0.4s ease;
+.add-comment textarea::placeholder {
+  color:rgba(255, 255, 255, 0.7);
 }
 
 .add-comment button {
-    display: none;
+  background: none;
+  border:none;
+  color: rgba(255, 255, 255, 0.2);
+  padding:0;
+  position: absolute;
+  top:50%;
+  right:7%;
+  transform: translate(0, -50%);
+  font-size: 160%;
+  transition: all 300ms ease;  
+  cursor: pointer;
+}
+
+.add-comment button:hover {
+  color: white;
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star-rating i {
+  font-size: 20px;
+  color: white;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.star-rating .fa-solid {
+  color: var(--gold);
+}
+
+.comment {
+  width: 27vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 3vh 1vw;
+  border-radius: 15px;
+  margin-bottom: 2vh;
+}
+
+.comment p.username, .comment p.content {
+  margin-bottom: 2.5vh;
+}
+
+.comment .username {
+  font-weight: 600;
+}
+
+.comment .username span {
+  margin-left:5%;
+  font-style: italic;
+  font-weight: 300;
+  color:rgba(255, 255, 255, 0.8);
+}
+
+.rate-score {
+  user-select: none;
+  pointer-events: none;
+  font-size: 120%;
+  width: fit-content;
+  display: inline-block;
+}
+
+.rate.fa-star {
+  color: var(--gold);
+}
+
+#delete-comment-form {
+  width: fit-content;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#delete-comment-form button {
+  background:none;
+  border:none;
+  font-size: 120%;
+  color:rgba(255, 255, 255, 0.2);
+  transition: color 300ms ease;
+  cursor: pointer;
+}
+
+#delete-comment-form button:hover {
+  color:rgba(255, 0, 0, 0.7);
+}
+
+.suggested-articles {
+  width: 40%;
 }
 
 .articles-grid {
   display: flex;
-  gap: 1vw;
-  width: 100%;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 0.7vw;
   align-items: center;
-  height: 50vh;
+  justify-content: center;
 }
 
 .card {
-  width: 300px;
-  height: 400px;
-  backdrop-filter: blur(10px);
-  border-radius: 40px;
+  width: 150px;
+  height: 200px;
+  border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: flex;
@@ -458,25 +583,9 @@ h1 {
   transition: all 500ms ease;
 }
 
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  z-index: 1;
-  transition: all 500ms ease-in-out;
-}
-
-.card:hover::before {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
 .card img.article {
   object-fit: cover;
-  height: 70%;
+  height: 60%;
   width: auto;
   filter: drop-shadow(5px 5px 10px #000000de) blur(0);
   transition: all 200ms ease-in-out;
@@ -493,10 +602,11 @@ h1 {
   transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  font-size: 150%;
+  font-size: 120%;
   font-weight: 700;
   z-index: 2;
   opacity: 0;
+  width: 90%;
   filter: blur(5px);
   transition: all 500ms ease-in-out;
 }
@@ -510,10 +620,10 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 300%;
+  font-size: 200%;
   gap: 5px;
 }
 
 .card .cur-icon {
-  width: 60px;
+  width: 50px;
 }

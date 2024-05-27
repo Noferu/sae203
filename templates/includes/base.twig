@@ -33,6 +33,20 @@
 		<script>
 			const basePath = '{{ base_path }}';
 		</script>
+		<script>
+		function showToast(message) {
+    var toastMessage = document.createElement("div");
+    toastMessage.id = "toast-message";
+    toastMessage.className = "show";
+    toastMessage.innerText = message;
+    document.body.appendChild(toastMessage);
+
+    setTimeout(function () {
+        toastMessage.className = toastMessage.className.replace("show", "");
+        document.body.removeChild(toastMessage);
+    }, 3500);
+}
+</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 		<script src="{{ base_path }}/assets/js/cardHoverEffect.js"></script>
 		<script>

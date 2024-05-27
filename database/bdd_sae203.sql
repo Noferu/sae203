@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 27 mai 2024 à 03:26
+-- Généré le : lun. 27 mai 2024 à 20:14
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -302,7 +302,28 @@ INSERT INTO `articles_keywords` (`article_id`, `keyword_id`) VALUES
 (59, 138),
 (60, 58),
 (60, 14),
-(60, 139);
+(60, 139),
+(25, 140),
+(25, 141),
+(11, 142),
+(21, 38),
+(20, 143),
+(12, 144),
+(17, 145),
+(14, 146),
+(19, 147),
+(19, 148),
+(45, 149),
+(45, 150),
+(51, 151),
+(59, 152),
+(55, 153),
+(41, 154),
+(41, 155),
+(35, 156),
+(37, 13),
+(26, 9),
+(3, 38);
 
 -- --------------------------------------------------------
 
@@ -322,8 +343,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`user_id`, `article_id`, `quantity`, `datetime`) VALUES
-(1, 1, 1, '2024-05-26 17:44:34'),
-(1, 31, 1, '2024-05-26 18:40:12');
+(1, 1, 1, '2024-05-27 16:26:45');
 
 -- --------------------------------------------------------
 
@@ -395,7 +415,6 @@ INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `rating_score`, `
 (20, 20, 1, 4, 'Gladius robuste, parfait pour un légionnaire. Un peu lourd.', '2024-05-26 23:16:25'),
 (21, 21, 1, 5, 'Épée longue magnifique, très bien équilibrée. Prêt pour le cosplay.', '2024-05-26 23:16:25'),
 (22, 22, 1, 4, 'Broche en argent délicate, très belle. Mais se perd facilement.', '2024-05-26 23:16:25'),
-(23, 23, 1, 5, 'Robe médiévale somptueuse, très bien tissée. Parfaite pour les bals.', '2024-05-26 23:16:25'),
 (24, 24, 1, 4, 'Casque de chevalier solide, bonne protection. Mon crâne remercie.', '2024-05-26 23:16:25'),
 (25, 25, 1, 5, 'Chope en étain gravée, idéale pour les banquets. À la santé !', '2024-05-26 23:16:25'),
 (26, 26, 1, 4, 'Bouclier solide, bonne protection en combat. Moins contre les factures.', '2024-05-26 23:16:25'),
@@ -432,7 +451,8 @@ INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `rating_score`, `
 (57, 57, 1, 5, 'Robot assistant domestique, très avancé. J\'espère qu\'il ne se rebellera pas.', '2024-05-26 23:16:25'),
 (58, 58, 1, 4, 'Chargeur solaire portable, très pratique. Mais le soleil est capricieux.', '2024-05-26 23:16:25'),
 (59, 59, 1, 5, 'Lampe LED à contrôle gestuel, très innovante. Parfaite pour les geeks.', '2024-05-26 23:16:25'),
-(60, 60, 1, 4, 'Casque de musique à conduction osseuse, très confortable. Un peu bizarre au début.', '2024-05-26 23:16:25');
+(60, 60, 1, 4, 'Casque de musique à conduction osseuse, très confortable. Un peu bizarre au début.', '2024-05-26 23:16:25'),
+(69, 25, 1, 5, 'Il est bien goulu.', '2024-05-27 19:31:16');
 
 -- --------------------------------------------------------
 
@@ -445,6 +465,13 @@ CREATE TABLE `favorites` (
   `article_id` int(10) UNSIGNED NOT NULL,
   `datetime` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `favorites`
+--
+
+INSERT INTO `favorites` (`user_id`, `article_id`, `datetime`) VALUES
+(1, 46, '2024-05-27 16:24:08');
 
 -- --------------------------------------------------------
 
@@ -600,7 +627,24 @@ INSERT INTO `keywords` (`keyword_id`, `name`) VALUES
 (136, 'lampe'),
 (137, 'LED'),
 (138, 'contrôle gestuel'),
-(139, 'conduction osseuse');
+(139, 'conduction osseuse'),
+(140, 'boire'),
+(141, 'clenche'),
+(142, 'beige'),
+(143, 'rouille'),
+(144, 'léger'),
+(145, 'tête'),
+(146, 'association'),
+(147, 'fragile'),
+(148, 'encre'),
+(149, 'touches'),
+(150, 'papier'),
+(151, 'poignet'),
+(152, 'lumière'),
+(153, 'domestique'),
+(154, 'cher'),
+(155, 'heure'),
+(156, 'collier');
 
 -- --------------------------------------------------------
 
@@ -718,7 +762,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `last_connexion`) VALUES
-(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-26 16:38:07');
+(1, 'nawfel', 'nawfel.idaali@free.fr', '$2y$10$bQuKCibaLN6Crelr66Qtoe7nEBWzmEXDMf1E.J3dA3EBJmkYnO/za', '2024-05-18 02:07:28', 1, '2024-05-27 18:15:50');
 
 --
 -- Index pour les tables déchargées
@@ -818,13 +862,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT pour la table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `keyword_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `keyword_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT pour la table `sellers`

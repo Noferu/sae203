@@ -51,4 +51,4 @@ function magnify(imgID, zoom) {
     }
 }
 
-magnify("myimage", 3);
+magnify("myimage", 1.5);

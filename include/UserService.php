@@ -86,4 +86,21 @@ class UserService
         $conditions = ['user_id' => $userId];
         return update_data($this->pdo, 'users', $data, $conditions);
     }
+
+    public function addComment($articleId, $userId, $content, $rating)
+    {
+        $commentData = [
+            'article_id' => $articleId,
+            'user_id' => $userId,
+            'content' => $content,
+            'rating_score' => $rating,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        return insert_data($this->pdo, 'comments', $commentData);
+    }
+
+    public function deleteComment($comment_id)
+    {
+        return delete_data($this->pdo, 'comments', ['comment_id' => $comment_id]);
+    }
 }

@@ -7,6 +7,12 @@ include('../include/twig.php');
 $pdo = connexion();
 $twig = init_twig();
 
+if (isset($_SESSION['toast_message'])) {
+    $toast_message = $_SESSION['toast_message'];
+    echo "<script>showToast('$toast_message');</script>";
+    unset($_SESSION['toast_message']);
+}
+
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
@@ -14,6 +20,7 @@ $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 switch ($action) {
     case 'detail':
+
         $article_id = $_GET['article_id'];
         $params = [':article_id' => $article_id];
 
@@ -39,6 +46,7 @@ switch ($action) {
         WHERE a.article_id = :article_id", $params, true);
 
         $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
+        $username = isset($_SESSION['username']) ? $_SESSION['username'] : false;
         $favorites = $cart = $is_favorite = $is_in_cart = false;
 
         if ($user_id) {
@@ -90,7 +98,8 @@ switch ($action) {
             'is_favorite' => $is_favorite,
             'is_in_cart' => $is_in_cart,
             'suggested_articles' => $suggested_articles,
-            'comments' => $comments
+            'comments' => $comments,
+            'current_user' => ['id' => $user_id, 'name' => $username]
         ]);
         break;
 

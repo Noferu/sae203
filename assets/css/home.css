@@ -57,29 +57,6 @@ main {
     opacity: 0;
   }
 }
-.theme-néolithique {
-  background-color: #3a4526;
-}
-
-.theme-antiquité {
-  background-color: #7d8790;
-}
-
-.theme-moyen-âge {
-  background-color: #533c2f;
-}
-
-.theme-renaissance {
-  background-color: #645f54;
-}
-
-.theme-époque-moderne {
-  background-color: #424e4c;
-}
-
-.theme-futur {
-  background-color: #463f5d;
-}
 
 #background-image {
   position: absolute;
