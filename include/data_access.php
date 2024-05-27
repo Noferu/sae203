@@ -1,7 +1,7 @@
 <?php
 
 // Cette fonction récupère toutes les lignes résultant d'une requête SQL donnée et les retourne sous forme d'un tableau associatif.
-function select_data(PDO $pdo, $sql, array $params = [], $fetchAll = true)
+function select_data(PDO $pdo, $sql, array $params = [], $multiple = true)
 {
     $query = $pdo->prepare($sql);
 
@@ -18,7 +18,7 @@ function select_data(PDO $pdo, $sql, array $params = [], $fetchAll = true)
 
     $query->execute();
 
-    if ($fetchAll) {
+    if ($multiple) {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     } else {
         return $query->fetch(PDO::FETCH_ASSOC);

@@ -126,8 +126,6 @@ main {
   height: 50vh;
 }
 
-
-
 .card-link {
   animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
   animation-delay: 2s;

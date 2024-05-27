@@ -180,6 +180,7 @@ main {
 
 .timeline {
   text-align: center;
+  height: 60vh;
 }
 
 .timeline h1 {
