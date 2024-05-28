@@ -1,32 +1,28 @@
-// Fonction qui permet de rendre un élément HTML défilable par glissement avec la souris
 function enableDragScroll(element) {
   let isDown = false;
   let startX;
   let scrollLeft;
 
-  // Ajout d'un gestionnaire d'événements pour quand l'utilisateur clique sur l'élément
   element.addEventListener("mousedown", (e) => {
     isDown = true;
-    startX = e.clientX; // Position horizontale initiale de la souris
+    startX = e.clientX;
     scrollLeft = element.scrollLeft;
     element.style.cursor = "grabbing";
     e.preventDefault();
   });
 
-  // Ajout d'un gestionnaire pour quand l'utilisateur relâche la souris n'importe où dans le document
   document.addEventListener("mouseup", () => {
     if (!isDown) return;
     isDown = false;
     element.style.cursor = "grab";
   });
 
-  // Ajout d'un gestionnaire pour le mouvement de la souris sur tout le document
   document.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
-    const x = e.clientX; // Position horizontale actuelle de la souris
-    const walk = x - startX; // Calcul du déplacement fait par la souris
-    element.scrollLeft = scrollLeft - walk; // Met à jour la position du scroll en fonction du déplacement
+    const x = e.clientX;
+    const walk = x - startX;
+    element.scrollLeft = scrollLeft - walk;
   });
 }
 
@@ -64,40 +60,59 @@ function updateCurrentEpoch(epochs, container) {
   }
 }
 
-// Fonction pour mettre à jour le lien et le thème basés sur l'époque
 function updateLinkAndTheme(epoch) {
   const link = document.getElementById("epoch-link");
   const categoryId = epoch.dataset.id;
 
   if (categoryId) {
-      // Utiliser base_path pour construire correctement l'URL
-      link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
+    link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`;
   }
 
   const body = document.body;
-  body.className = "";
-  body.classList.add(
-      `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`
-  );
+  const newClass = `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`;
+  if (!body.classList.contains(newClass)) {
+    body.className = "";
+    body.classList.add(newClass);
+    fadeOutAudio(newClass);
+  }
 }
 
-// Gestionnaire pour l'événement de chargement du contenu du document
+function fadeOutAudio(newClass) {
+  const audio = document.getElementById('myAudio');
+  const fadeOutInterval = setInterval(() => {
+    if (audio.volume > 0.1) {
+      audio.volume -= 0.1;
+    } else {
+      clearInterval(fadeOutInterval);
+      audio.volume = 0;
+      updateAudioSource(newClass);
+    }
+  }, 100);
+}
+
+function updateAudioSource(newClass) {
+  const audio = document.getElementById('myAudio');
+  const audioSource = document.getElementById('audioSource');
+  const musicLinks = {
+    "theme-néolithique": "https://dl.dropboxusercontent.com/scl/fi/yqo7f1iir57xxr550sk7j/stone_world.mp3?rlkey=00m1p3ngrbahfcqdm8f91yn89&st=9qircazs",
+    "theme-antiquité": "https://dl.dropboxusercontent.com/scl/fi/cttsenqi2ia5dg8p3tao7/ac_theflight.mp3?rlkey=9wsgb7ah6gxs6jytvvnjss6ph&st=08xlj5gy",
+    "theme-futur": "https://dl.dropboxusercontent.com/scl/fi/dvxrmbfymb7lnw56c3ukk/cyberpunk_spoiler.mp3?rlkey=l0tt2knbzj3t4od6f867xtlz9&st=2j8xqkxd",
+    "theme-moyen-âge": "https://dl.dropboxusercontent.com/scl/fi/t7xc6he771v59gmt93n0w/medieval_tavern.mp3?rlkey=exbc97mr0a2rwf32hlrwgaw0b&st=bl13shb3",
+    "theme-époque-moderne": "https://dl.dropboxusercontent.com/scl/fi/kdp7d9y8xsa40tgrxckva/howls_movingcastle.mp3?rlkey=dc461wk883n4yrhk0qb9yhq1l&st=kmelccqp",
+    "theme-renaissance": "https://dl.dropboxusercontent.com/scl/fi/sulqbspaeerwtvz7ulgfv/kingdom_dance.mp3?rlkey=ftq10tuw4c0gyjxjqkydezrgj&st=uhke63bx",
+  };
+
+  if (musicLinks[newClass]) {
+    audioSource.src = musicLinks[newClass];
+    audio.load();
+    audio.volume = 1;
+    audio.play();
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("timeline-container");
   const epochs = document.querySelectorAll(".epoch");
-
-  const title = document.querySelector("h1");
-  if (title) {
-    const letters = title.innerText.split(/(?!$)/u); // Split en conservant les espaces
-    title.innerHTML = letters
-      .map((letter, index) => {
-        const delay = Math.random() * 2; // Délai aléatoire entre 0 et 2 secondes
-        return `<span class="title-letter" style="animation-delay: ${delay}s;">${
-          letter === " " ? "&nbsp;" : letter
-        }</span>`;
-      })
-      .join("");
-  }
 
   epochs.forEach((epoch) => {
     const imageUrl = epoch.getAttribute("data-image");
@@ -106,25 +121,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  enableDragScroll(container); // Activation du défilement par glissement
-  updateCurrentEpoch(epochs, container); // Mise à jour initiale de l'époque courante
-  container.addEventListener("scroll", () =>
-    updateCurrentEpoch(epochs, container)
-  ); // Ajout d'un gestionnaire de scroll pour mettre à jour l'époque
+  enableDragScroll(container);
+  updateCurrentEpoch(epochs, container);
+  container.addEventListener("scroll", () => updateCurrentEpoch(epochs, container));
 
-  // Calcul initial pour centrer une époque spécifique dans le conteneur au chargement
   centerEpochOnLoad(epochs, container, "Moyen-Âge");
 });
 
-// Fonction pour centrer une époque spécifique au chargement de la page
 function centerEpochOnLoad(epochs, container, epochName) {
   const targetEpoch = Array.from(epochs).find((epoch) =>
     epoch.dataset.name.includes(epochName)
   );
   if (targetEpoch) {
-    const leftOffset = targetEpoch.offsetLeft; // Position horizontale de l'époque ciblée
+    const leftOffset = targetEpoch.offsetLeft;
     const centerOffset =
-      leftOffset - container.offsetWidth / 2 + targetEpoch.offsetWidth / 2; // Calcul pour centrer l'époque
-    container.scrollLeft = centerOffset; // Application du défilement pour centrer
+      leftOffset - container.offsetWidth / 2 + targetEpoch.offsetWidth / 2;
+    container.scrollLeft = centerOffset;
   }
 }
