@@ -28,7 +28,7 @@
   background-color: #463f5d;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -42,8 +42,7 @@ body {
 #background-image {
   position: absolute;
   top: -10px;
-  left: -20px;
-  width: 105vw;
+  width: 100%;
   height: 115vh;
   background-size: cover;
   background-position: center;
@@ -223,7 +222,7 @@ main {
 .epoch-switch {
   color:white;
   font-size: 150%;
-  width: 50vw;
+  width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,4 +244,66 @@ main {
 
 .epoch-switch a i {
   padding: 15px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 960px) {
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+
+  .grid-container {
+    overflow: hidden;
+    width: 100vw;
+    margin:0;
+    padding:5vw;
+  }
+
+  .grid {
+    flex-wrap: wrap;
+    height: fit-content;
+    justify-content: center;
+  }
+
+  .card {
+    width: 270px;
+    height: 360px;
+  }
+
+  .card img.article {
+    filter: drop-shadow(5px 5px 10px #000000de) blur(1px);
+  }
+  
+  .card .text {
+    top: 70%;
+    filter: blur(0px);
+    opacity: 1;
+    text-shadow: 1px 7px 20px rgba(0,0,0,0.98);
+  }
+
+  .epoch-switch h1 {
+    font-size: 200%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 220px;
+    height: 300px;
+  }
+
+  .card .text {
+    font-size: 100%;
+  }
+
+  .epoch-switch h1 {
+    font-size: 200%;
+  }
+  
+  .epoch-switch a span {
+    display: none;
+  }
 }
