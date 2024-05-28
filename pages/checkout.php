@@ -13,7 +13,10 @@ $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 $step = isset($_GET['step']) ? $_GET['step'] : 'cart';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: user_connexion.php?action=show_login_form");
+    echo '<script>
+        window.open("user_connexion.php?action=show_login_form", "_blank");
+        window.history.back();
+    </script>';
     exit();
 }
 
