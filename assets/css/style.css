@@ -2,14 +2,30 @@
   --brown: #e75511;
   --gold: #f1ab28;
   --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
+  
+  --theme-main-néolithique: #3a4526;
+  --theme-dark-néolithique: #2e361d;
+  
+  --theme-main-antiquité: #7d8790;
+  --theme-dark-antiquité: #636a72;
+  
+  --theme-main-moyen-âge: #533c2f;
+  --theme-dark-moyen-âge: #432e26;
+  
+  --theme-main-renaissance: #645f54;
+  --theme-dark-renaissance: #4f4a43;
+  
+  --theme-main-époque-moderne: #424e4c;
+  --theme-dark-époque-moderne: #323838;
+  
+  --theme-main-futur: #463f5d;
+  --theme-dark-futur: #3a324c;
 }
 
 ::selection {  
   color: white;
   background: var(--gold);
 }
-
-
 
 ::-webkit-scrollbar {
   width: 7px;

@@ -1,3 +1,34 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById("timeline-container");
+  const epochs = document.querySelectorAll(".epoch");
+  
+
+  epochs.forEach((epoch) => {
+    const imageUrl = epoch.getAttribute("data-image");
+    if (imageUrl) {
+      epoch.style.backgroundImage = `url(${imageUrl})`;
+    }
+  });
+
+  enableDragScroll(container);
+  updateCurrentEpoch(epochs, container);
+  container.addEventListener("scroll", () => updateCurrentEpoch(epochs, container));
+
+  centerEpochOnLoad(epochs, container, "Moyen-Âge");
+});
+
+function centerEpochOnLoad(epochs, container, epochName) {
+  const targetEpoch = Array.from(epochs).find((epoch) =>
+    epoch.dataset.name.includes(epochName)
+  );
+  if (targetEpoch) {
+    const leftOffset = targetEpoch.offsetLeft;
+    const centerOffset =
+      leftOffset - container.offsetWidth / 2 + targetEpoch.offsetWidth / 2;
+    container.scrollLeft = centerOffset;
+  }
+}
+
 function enableDragScroll(element) {
   let isDown = false;
   let startX;
@@ -107,35 +138,5 @@ function updateAudioSource(newClass) {
     audio.load();
     audio.volume = 1;
     audio.play();
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("timeline-container");
-  const epochs = document.querySelectorAll(".epoch");
-
-  epochs.forEach((epoch) => {
-    const imageUrl = epoch.getAttribute("data-image");
-    if (imageUrl) {
-      epoch.style.backgroundImage = `url(${imageUrl})`;
-    }
-  });
-
-  enableDragScroll(container);
-  updateCurrentEpoch(epochs, container);
-  container.addEventListener("scroll", () => updateCurrentEpoch(epochs, container));
-
-  centerEpochOnLoad(epochs, container, "Moyen-Âge");
-});
-
-function centerEpochOnLoad(epochs, container, epochName) {
-  const targetEpoch = Array.from(epochs).find((epoch) =>
-    epoch.dataset.name.includes(epochName)
-  );
-  if (targetEpoch) {
-    const leftOffset = targetEpoch.offsetLeft;
-    const centerOffset =
-      leftOffset - container.offsetWidth / 2 + targetEpoch.offsetWidth / 2;
-    container.scrollLeft = centerOffset;
   }
 }

@@ -1,13 +1,12 @@
 body {
   position: relative;
-  scrollbar-width: none;  
+  scrollbar-width: none;
   transition: background-color 300ms ease-in-out;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
 
 #timeline-container,
 header,
@@ -33,28 +32,6 @@ main {
   100% {
     transform: translateZ(0);
     opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: 50px;
-    opacity: 1;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    top: 50px;
-    opacity: 1;
-  }
-  to {
-    top: 0;
-    opacity: 0;
   }
 }
 
@@ -228,7 +205,6 @@ main {
 
 .button-19 {
   appearance: button;
-  background: var(--brown);
   border: solid transparent;
   border-radius: 100px;
   border-width: 0 0 4px;
@@ -247,6 +223,7 @@ main {
   transition: filter 0.2s;
   user-select: none;
   -webkit-user-select: none;
+  transition: all 300ms ease-in-out;
 }
 
 .button-19:after {
@@ -262,6 +239,29 @@ main {
   right: 0;
   top: 0;
   z-index: -1;
+  transition: all 300ms ease-in-out;
+}
+
+.theme-futur .button-19:after {
+  animation-delay: 3s;
+  animation: hard-hb 0.666s infinite;
+}
+
+@keyframes hard-hb {
+  0% {
+    transform: scale(1);
+    filter:brightness(1);
+  }
+  90% {
+    transform: scale(1);
+    filter:brightness(1.5);
+    border-radius: 20px;
+  }
+  95% {
+    transform: scale(1.3);
+    filter:brightness(1.5);
+    border-radius: 20px;
+  }
 }
 
 .button-19:hover:not(:disabled) {
