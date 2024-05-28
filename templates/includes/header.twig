@@ -1,7 +1,7 @@
-<header>
+<!-- Header pour les ordinateurs -->
+<header class="desktop-header">
 	<div
 		class="umc">
-
 		<!-- Boutons utilitaires -->
 		<ul class="control-icons">
 			<li class="home-icon">
@@ -39,22 +39,29 @@
 			{% for icon in icons %}
 				<li>
 					<a class="otherPages" href="{{ base_path ~ icon.url }}" aria-label="{{ icon.regular | capitalize }}">
-                        {% if isLogged and icon.regular == 'fa-user' %}
-                            <i class="fa-regular fa-user-check simple logged-in"></i>
-                            <i class="fa-solid fa-user-check simple logged-in"></i>
-                        {% else %}
-                            <i class="fa-regular {{ icon.regular }} simple"></i>
-                            <i class="fa-solid {{ icon.solid }} simple"></i>
-                        {% endif %}
-                    </a>
+						{% if isLogged and icon.regular == 'fa-user' %}
+							<i class="fa-regular fa-user-check simple logged-in"></i>
+							<i class="fa-solid fa-user-check simple logged-in"></i>
+						{% else %}
+							<i class="fa-regular {{ icon.regular }} simple"></i>
+							<i class="fa-solid {{ icon.solid }} simple"></i>
+						{% endif %}
+					</a>
 				</li>
 			{% endfor %}
 		</ul>
+
+		<!-- Menu burger -->
+		<div class="burger-menu">
+			<div class="burger-icon" aria-label="Toggle navigation">
+				<i class="fa-solid fa-bars"></i>
+			</div>
+		</div>
 	</div>
 
 	<!-- Menu de navigation -->
 	<nav>
-		<ul>
+		<ul class="nav-links">
 			{% for category in categories %}
 				<li class="dropdown">
 					<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
@@ -69,4 +76,70 @@
 			{% endfor %}
 		</ul>
 	</nav>
+</header>
+
+<!-- Header pour les tablettes et mobiles -->
+<header
+	class="mobile-header">
+	<!-- Barre de recherche -->
+	<form class="search-bar" action="{{ base_path }}/pages/product" method="GET">
+		<input type="hidden" name="action" value="searching">
+		<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Search">
+		<button type="submit" aria-label="Search Button"></button>
+	</form>
+
+	<!-- Boutons d'utilisateur -->
+	<ul class="user-interaction-icons">
+		{% set icons = [
+            {'url': '/index', 'type': 'fa-house'},
+            {'url': '/pages/user_connexion', 'type': 'fa-user'},
+            {'url': '/pages/checkout?step=favorites', 'type': 'fa-heart'},
+            {'url': '/pages/checkout?step=cart', 'type': 'fa-cart-shopping'}
+        ] %}
+		{% for icon in icons %}
+			<li>
+				<a class="icons-menu" href="{{ base_path ~ icon.url }}" aria-label="{{ icon.type | capitalize }}">
+					{% if isLogged and icon.type == 'fa-user' %}
+						<i class="fa-regular fa-user-check simple logged-in"></i>
+					{% else %}
+						<i class="fa-regular {{ icon.type }} simple"></i>
+					{% endif %}
+				</a>
+			</li>
+		{% endfor %}
+
+		<!-- Menu burger pour mobile -->
+		<li
+			class="burger-menu">
+
+			<input type="checkbox" id="menu-toggle">
+			<label for="menu-toggle" class="burger-icon" aria-label="Afficher la navigation">
+				<i class="fa-solid fa-bars"></i>
+			</label>
+
+			<div id="fullpage-menu" class="fullpage-menu">
+				<label for="menu-toggle" class="close-icon" aria-label="Fermer la navigation">
+					<i class="fa-solid fa-xmark"></i>
+				</label>
+				<nav>
+					<ul class="nav-links">
+						{% for category in categories %}
+							<li class="dropdown">
+								<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+		</li>
+	</ul>
+
+	<!-- Menu de navigation pour tablettes -->
+	<ul class="nav-links tablet-size">
+		{% for category in categories %}
+			<li class="dropdown">
+				<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+			</li>
+		{% endfor %}
+	</ul>
 </header>
