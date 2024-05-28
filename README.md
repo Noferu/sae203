@@ -1,4 +1,3 @@
-
 # SAE 203 - Era Explorer
 
 ## Description
@@ -20,12 +19,19 @@ Le projet est principalement destiné à être évalué par les professeurs. Il 
 - **Base de Données** : MySQL (InnoDB)
 
 ## Fonctionnalités Principales
-- Navigation temporelle immersive à travers différentes époques
+- Navigation temporelle immersive à travers différentes époques (néolithique, antiquité, moyen âge, renaissance, époque moderne, futur, féodal, islamique, western)
 - Affichage des produits sous forme de vignettes ou de listes
 - Possibilité de consulter et d'acheter des articles fictifs
 - Système de notation et de commentaires des articles
 - Connexion et inscription des utilisateurs
-- Ajout et suppression de mots-clés
+- Ajout de mots-clés
+- Suppression de ses propres commentaires
+- Affichage détaillé des produits
+- Musiques d'ambiance selon les époques
+- Affichage des articles les mieux notés sur la page d'accueil
+- Filtres sur la vue en liste
+- Ajout d'articles au panier et/ou aux favoris
+- Interaction avec le panier et les favoris
 
 ## Prérequis
 - Serveur web avec support PHP (ex : XAMPP, WAMP)
@@ -63,46 +69,116 @@ Ce projet est principalement un projet scolaire. Toutefois, les contributions so
 ## Arborescence des fichiers
 ```
 sae203/
+├── .gitignore
+├── .htaccess
+├── README.md
+├── LICENSE
+├── composer.json
+├── composer.lock
+├── index.php
 ├── assets/
 │   ├── audio/
+│   │   └── sfx/
+│   │       ├── boing.mp3
+│   │       └── click.mp3
 │   ├── css/
+│   │   ├── favcart.css
+│   │   ├── home.css
+│   │   ├── product_detail.css
+│   │   ├── product_grid.css
+│   │   ├── product_list.css
+│   │   ├── reset.css
+│   │   ├── style.css
+│   │   └── user_connexion.css
 │   ├── images/
 │   │   ├── articles/
-│   │   ├── icons/
-│   │   └── timeline_images/
+│   │   │   ├── antiquite/
+│   │   │   │   ├── amphore-en-ceramique.webp
+│   │   │   │   ├── collier-en-perles-de-verre.webp
+│   │   │   │   ├── couronne-de-laurier-en-metal-dore.webp
+│   │   │   │   ├── fresque-murale-portable.webp
+│   │   │   │   ├── gladius(epee-romaine).webp
+│   │   │   │   ├── lampe-a-huile-en-terre-cuite.webp
+│   │   │   │   ├── parchemin-ecrit-a-la-main.webp
+│   │   │   │   ├── sandales-en-cuir.webp
+│   │   │   │   ├── statuette-de-deesse-en-bronze.webp
+│   │   │   │   └── tunique-en-lin.webp
+│   │   │   ├── epoque-moderne/
+│   │   │   ├── futur/
+│   │   │   ├── moyen-age/
+│   │   │   ├── neolithique/
+│   │   │   ├── renaissance/
+│   │   │   ├── feodal/
+│   │   │   ├── islamique/
+│   │   │   └── western/
+│   ├── banner/
+│   │   ├── panoramic_sunset_landscape.webp
+│   │   └── panoramic_sunset_landscape_blurred.webp
+│   ├── currency_icons/
+│   ├── icons/
 │   └── js/
+│       ├── articleFilterManager.js
+│       ├── articleLens.js
+│       ├── articleListAnimation.js
+│       ├── backButton.js
+│       ├── cardHoverEffect.js
+│       ├── commentRatingManager.js
+│       ├── dynamicFaviconAnimator.js
+│       ├── favcartManager.js
+│       ├── homeEffects.js
+│       ├── interactiveTimeline.js
+│       ├── keywordAdder.js
+│       ├── loginFormHandler.js
+│       ├── miscellaneousEffects.js
+│       └── soundsEffectManager.js
 ├── config/
 │   └── config.php
 ├── database/
 │   ├── bdd_sae203.sql
 │   └── MCD_BDD.png
 ├── include/
+│   ├── add_keyword.php
+│   ├── comment_controller.php
 │   ├── connexion.php
 │   ├── connexion_controller.php
-│   ├── security_gate.php
 │   ├── data_access.php
+│   ├── favcart_controller.php
 │   ├── fetch_articles.php
 │   ├── twig.php
 │   └── UserService.php
 ├── pages/
+│   ├── 403.php
+│   ├── 404.php
 │   ├── checkout.php
-│   ├── not_found_page.html
 │   ├── product.php
 │   └── user_connexion.php
 ├── templates/
+│   ├── cart_and_favorites.twig
+│   ├── error.twig
+│   ├── home.twig
+│   ├── payment_and_order.twig
+│   ├── user_connexion.twig
 │   ├── includes/
+│   │   ├── base.twig
+│   │   ├── footer.twig
+│   │   └── header.twig
 │   └── product/
+│       ├── product_detail.twig
+│       ├── product_grid.twig
+│       └── product_list.twig
 ├── vendor/
-│   └── autoload.php
+│   ├── autoload.php
+│   └── bin/
 ├── wireframes/
-│   └── *.png
-├── .htaccess
-├── .gitignore
-├── README.md
-├── LICENSE
-├── composer.json
-├── composer.lock
-└── index.php
+│   ├── article_page.png
+│   ├── cart_confirmation_page.png
+│   ├── checkout_page.png
+│   ├── favorites_page.png
+│   ├── grid_page.png
+│   ├── home_page.png
+│   ├── list_page.png
+│   ├── login_page.png
+│   └── maquettes.pdf
 ```
 
 ## Modèle Conceptuel de Données (MCD)
