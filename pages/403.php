@@ -10,7 +10,7 @@ $pdo = connexion();
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
-$message = 'Erreur 404, tu t\'es trompé de temporalité !';
+$message = 'Erreur 403, tu n\'as pas le droit d\'être ici';
 
 echo $twig->render('error.twig', [
     'message' => $message
