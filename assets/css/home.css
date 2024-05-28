@@ -26,11 +26,9 @@ main {
 
 @keyframes fade-in-bck {
   0% {
-    transform: translateZ(80px);
     opacity: 0;
   }
   100% {
-    transform: translateZ(0);
     opacity: 1;
   }
 }
@@ -445,11 +443,21 @@ section > h2 {
 
 @media only screen and (max-width: 600px) {
   .timeline h1 {
-    font-size: 400%;
+    font-size: calc(10vw + 16px);
   }
+  
 
   #timeline-container {
     width: 1000px;
+  }
+
+  section > h2 {
+    font-size: 8.5vw;
+  }
+
+  .wave-container {
+    top: 110vh;
+    height: 100px;
   }
 
   .featured-articles .grid {

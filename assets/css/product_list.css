@@ -1,6 +1,11 @@
+body {
+  background-color: #f9f9f9;
+}
+
 header {
-  background-image:none;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent), url('../images/banner/panoramic_sunset_landscape_blurred.webp');
+  background-image: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent),
+    url("../images/banner/panoramic_sunset_landscape_blurred.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,28 +57,35 @@ aside .checkbox-container {
   margin-bottom: 1vh;
 }
 
+aside .checkbox-container input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  margin-right: 1vh;
+  flex-shrink: 0;
+}
+
+aside .checkbox-container label {
+  line-height: 1.5;
+  display: block;
+}
+
 input[type="number"] {
   padding: 0.5em;
   margin-top: 0.5em;
-  margin-bottom: 1.5em; /* Ajouté pour espacer les champs de formulaire */
+  margin-bottom: 1.5em;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 110%;
   font-weight: 400;
   transition: border-color 0.3s ease;
   font-family: inherit;
+  width: 50%;
 }
 
 input[type="number"]:focus {
   border-color: #888;
   outline: none;
-}
-
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  border: none;
-  margin-right: 1vh;
 }
 
 input[type="checkbox"]:checked {
@@ -123,10 +135,10 @@ input[type="checkbox"]:checked {
   width: 90%;
   height: 300px;
   display: flex;
-  background-color: #ffffff; /* Fond blanc comme la page de détail */
+  background-color: #ffffff;
   margin-bottom: 2vh;
   animation: show-up-next 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  border-radius: 15px; /* Ajusté pour correspondre au style de la page de détail */
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -187,7 +199,7 @@ input[type="checkbox"]:checked {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* Gris clair pour la section image */
+  background-color: #f0f0f0;
 }
 
 .article .image:hover img {
@@ -241,21 +253,131 @@ input[type="checkbox"]:checked {
 
 .article .btns a {
   text-decoration: none;
-  background-color: var(--gold); /* Couleur des boutons */
+  background-color: var(--gold);
   border-radius: 100px;
   color: white;
   text-align: center;
-  width: 150px;
+  width: 9vw;
   padding: 15px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .article .btns a:hover {
-  background-color: var(--brown); /* Couleur des boutons au survol */
+  background-color: var(--brown);
   color: white;
 }
 
-body {
-  background-color: #f9f9f9; /* Couleur de fond similaire à la page de détail */
+/* MEDIA QUERIES */
+
+.menu-icon {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 960px) {
+  .article img {
+    height: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .article {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .article .image {
+    width: 100%;
+    height: auto;
+    animation: none;
+  }
+
+  .article img {
+    height: auto;
+    animation: jello-diagonal-1 0.8s both;
+    width: 50%;
+  }
+
+  .article .right-part {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .article .text-infos {
+    width: 100%;
+    padding: 25px;
+    padding-right:0;
+  }
+
+  .article .btns {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  .article .btns a {
+    min-width: 80px;
+  }
+
+  .menu-icon {
+    display: block;
+    font-size: 220%;
+    z-index: 1001;
+    cursor: pointer;
+  }
+
+  .menu-icon.burger {
+    position: absolute;
+    color: var(--gold);
+    top: 22.3vh;
+    left: 2.5vh;
+  }
+
+  .menu-icon.xmark {
+    display: none;
+  }
+
+  .menu-toggle:checked ~ .menu-icon.burger {
+    display: none;
+  }
+
+  .menu-toggle:checked ~ #filters .menu-icon.xmark {
+    display: block;
+  }
+
+  .menu-toggle:checked ~ #filters {
+    display: block;
+  }
+
+  .menu-toggle:checked ~ #filters {
+    display: block;
+  }
+
+  #filters {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  #filters h3,
+  #filters label {
+    color: white;
+  }
+
+  aside {
+    width: 100%; /* Assure que le filtre prenne toute la largeur en mode mobile */
+  }
 }

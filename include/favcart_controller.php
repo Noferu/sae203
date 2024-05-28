@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $user_id) {
             break;
 
         case 'add_all_to_cart':
-            // Ajouter tous les articles des favoris au panier
+
             $favorites = select_data($pdo, 'SELECT article_id FROM favorites WHERE user_id = :user_id', [
                 ':user_id' => $user_id
             ], true);

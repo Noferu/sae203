@@ -23,7 +23,6 @@
 	<div class="article-info">
 		<div
 			class="zoom-container">
-			<!-- Image de l'article avec effet zoom -->
 			<img id="myimage" src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}" class="zoom-image">
 			<div class="zoom-lens"></div>
 		</div>
@@ -40,16 +39,14 @@
 						{{ article.price|replace({'.': ','})}}
 						€ )</span>
 				</p>
-				{# Formulaires pour ajouter/supprimer des favoris #}
+
 				{% if is_favorite %}
 					<button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ article.article_id }}">Retirer des favoris</button>
 				{% else %}
 					<button class="favorite-btn" data-action="add_favorite" data-article-id="{{ article.article_id }}">Ajouter aux favoris</button>
 				{% endif %}
 
-				{# Formulaires pour ajouter au panier ou voir le panier #}
 				{% if is_in_cart %}
-					{# <a href="{{ base_path }}/pages/checkout" class="button cart-btn">Voir le panier</a> #}
 					<button class="cart-btn" data-action="view_cart" data-article-id="{{ article.article_id }}">Voir le panier</button>
 				{% else %}
 					<button class="cart-btn" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</button>

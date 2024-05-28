@@ -127,6 +127,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .theme-néolithique {
@@ -164,12 +165,14 @@ h1 {
 
 header {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
   height: 25vh;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
   color: white;
   z-index: 999;
+  width: 100vw;
 }
 
 header a {
@@ -306,8 +309,27 @@ header .umc ul li a {
 
 nav ul {
   display: flex;
-  justify-content: center;
-  gap: 5vw;
+  width: 90vw;
+  justify-content: space-around;
+  font-size: 0, 8vw;
+}
+
+@media (max-width: 1440px) {
+  nav ul {
+    font-size: 1.1vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  nav ul {
+    font-size: 1.15vw;
+  }
+}
+
+@media (max-width: 1000px) {
+  nav ul {
+    font-size: 1.2vw;
+  }
 }
 
 .dropbtn {
@@ -346,7 +368,7 @@ nav ul {
 
 .footer-wrapped {
   position: relative;
-  width: 100%;
+  width: 100vw;
 }
 
 .footer-wave-container {
@@ -356,6 +378,7 @@ nav ul {
   pointer-events: none;
   position: relative;
   overflow: hidden;
+  transform: translate(0, 2px);
 }
 
 .footer-wave-svg {
@@ -482,18 +505,18 @@ footer a i {
     display: flex;
     gap: 5vw;
     overflow-x: auto;
+    scrollbar-width: none;
     white-space: nowrap;
     box-sizing: border-box;
     padding: 0 5vw;
-  }  
+  }
 
   footer {
-    font-size: 150%;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:5vh;
+    gap: 5vh;
   }
 
   footer ul:not(:last-child) {
@@ -550,6 +573,7 @@ footer a i {
     list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 110%;
   }
 
   .fullpage-menu .nav-links a {
@@ -562,5 +586,9 @@ footer a i {
     top: 20px;
     right: 20px;
     cursor: pointer;
+  }
+
+  .footer-wave-container {
+    height: 100px;
   }
 }

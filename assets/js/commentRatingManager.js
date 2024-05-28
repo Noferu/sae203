@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Script pour ajuster la hauteur de la textarea
     const textarea = document.getElementById('comment-textarea');
     
     textarea.addEventListener('input', function() {
