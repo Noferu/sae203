@@ -19,14 +19,16 @@ switch ($action) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $articleId = filter_input(INPUT_POST, 'article_id', FILTER_VALIDATE_INT);
             $userId = $_SESSION['user_id'];
-            $content = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $content = $_POST['comment'];
             $rating = filter_input(INPUT_POST, 'rating', FILTER_VALIDATE_INT);
 
             if (empty($content) || empty($rating)) {
                 $_SESSION['toast_message'] = 'Veuillez écrire un commentaire et sélectionner une note.';
-                header("Location: ../pages/product?action=detail&article_id=$articleId#lower-part");
+                header("Location: ../pages/product?action=detail&article_id=$articleId");
                 exit();
             }
+
+            $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
 
             $result = $userService->addComment($articleId, $userId, $content, $rating);
 
@@ -35,7 +37,7 @@ switch ($action) {
             } else {
                 $_SESSION['toast_message'] = 'Erreur lors de l\'ajout du commentaire.';
             }
-            header("Location: ../pages/product?action=detail&article_id=$articleId#lower-part");
+            header("Location: ../pages/product?action=detail&article_id=$articleId");
             exit();
         }
         break;
@@ -50,7 +52,7 @@ switch ($action) {
 
             if ($author_id != $userId) {
                 $_SESSION['toast_message'] = 'Vous n\'êtes pas l\'auteur de ce commentaire.';
-                header("Location: ../pages/product?action=detail&article_id=$articleId#lower-part");
+                header("Location: ../pages/product?action=detail&article_id=$articleId");
                 exit();
             } else {
                 $result = $userService->deleteFromViewComment($comment_id);
@@ -61,7 +63,7 @@ switch ($action) {
             } else {
                 $_SESSION['toast_message'] = 'Erreur lors de la suppression du commentaire.';
             }
-            header("Location: ../pages/product?action=detail&article_id=$articleId#lower-part");
+            header("Location: ../pages/product?action=detail&article_id=$articleId");
             exit();
         }
         break;
