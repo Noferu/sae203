@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const bodyClass = document.body.className;
-    let frames;
+    const bodyClass = document.body.className; // Récupère la classe du body pour déterminer le thème
+    let frames; // Déclare la variable qui contiendra les chemins des icônes pour l'animation
 
     switch(bodyClass) {
         case 'theme-néolithique':
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
         case 'theme-antiquité':
             frames = [
-                `${basePath}/assets/images/icons/classical_building.ico`
+                `${basePath}/assets/images/icons/classical_building.ico`,
                 `${basePath}/assets/images/icons/amphora.ico`,
                 `${basePath}/assets/images/icons/crossed_swords.ico`,
             ];
@@ -57,18 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
     }
 
+    // Fonction pour changer le favicon
     function changeFavicon(src) {
-        const link = document.getElementById('favicon');
-        link.href = src;
+        const link = document.getElementById('favicon'); // Sélectionne l'élément du favicon par son ID
+        link.href = src; // Change l'URL du favicon
     }
 
+    // Fonction pour animer le favicon
     function animateFavicon(frames, interval) {
-        let frameIndex = 0;
+        let frameIndex = 0; // Initialise l'index du frame
         setInterval(() => {
-            changeFavicon(frames[frameIndex]);
-            frameIndex = (frameIndex + 1) % frames.length;
+            changeFavicon(frames[frameIndex]); // Change le favicon à chaque intervalle
+            frameIndex = (frameIndex + 1) % frames.length; // Passe au frame suivant, boucle au début si nécessaire
         }, interval);
     }
 
-    animateFavicon(frames, 2000);
+    animateFavicon(frames, 2000); // Lance l'animation avec les frames et un intervalle de 2000ms
 });

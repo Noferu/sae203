@@ -1,59 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>
-			{% block title %}Era Explorer{% endblock %}
-		</title>
-		<link rel="stylesheet" href="{{ base_path }}/assets/css/reset.css">
-		<link rel="stylesheet" href="{{ base_path }}/assets/css/style.css"> 
-		{% block css %}{% endblock %}
-		<link id="favicon" rel="icon" type="image/x-icon" href="{{ base_path }}/assets/images/icons/wave.ico"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-		<link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400..900;1,400..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-	</head>
-	<body class="{{ bodyclass }}">
-		{% if withHeader ?? true %}
-			{% include 'includes/header.twig' %}
-		{% endif %}
-		<main role="main">
-			{% if login_msg != null %}
-				<div id="toast-message">{{login_msg}}</div>
-			{% endif %}
-			{% block main %}{% endblock %}
-		</main>
-		{% if withFooter ?? true %}
-			{% include 'includes/footer.twig' %}
-		{% endif %}
-		<script>
-			const basePath = '{{ base_path }}';
-			function showToast(message) {
-				var toastMessage = document.createElement("div");
-				toastMessage.id = "toast-message";
-				toastMessage.className = "show";
-				toastMessage.innerText = message;
-				document.body.appendChild(toastMessage);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}Era Explorer{% endblock %} <!-- Titre de la page, peut être redéfini dans les blocs Twig -->
+    </title>
+    <!-- Inclusion des feuilles de style -->
+    <link rel="stylesheet" href="{{ base_path }}/assets/css/reset.css">
+    <link rel="stylesheet" href="{{ base_path }}/assets/css/style.css">
+    {% block css %}{% endblock %} <!-- Bloc CSS pour inclure des styles supplémentaires -->
+    <link id="favicon" rel="icon" type="image/x-icon" href="{{ base_path }}/assets/images/icons/wave.ico"/> <!-- Favicon du site -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- Inclusion de jQuery -->
+    <!-- Préchargement des fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css"> <!-- Inclusion de Font Awesome -->
+    <!-- Inclusion de différentes fonts Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Elite&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400..900;1,400..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body class="{{ bodyclass }}"> <!-- Classe du body définie dynamiquement -->
 
-				setTimeout(function () {
-					toastMessage.className = toastMessage.className.replace("show", "");
-					document.body.removeChild(toastMessage);
-				}, 3500);
-			}
-		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
-		<script src="{{ base_path }}/assets/js/cardHoverEffect.js"></script>
-		<script>
-			document.addEventListener('DOMContentLoaded', () => setTimeout(() => document.body.classList.remove('preload'), 500));
-		</script>
-		<script src="{{ base_path }}/assets/js/soundsEffectManager.js"></script>
-		<script src="{{ base_path }}/assets/js/dynamicFaviconAnimator.js"></script>
-		<script src="{{ base_path }}/assets/js/miscellaneousEffects.js"></script>
-		<script src="{{ base_path }}/assets/js/backButton.js"></script>
-		{% block js %}{% endblock %}
-	</body>
+    {% if withHeader ?? true %}
+        {% include 'includes/header.twig' %} <!-- Inclusion de l'en-tête si spécifié -->
+    {% endif %}
+
+    <main role="main">
+        {% if login_msg != null %}
+            <div id="toast-message">{{ login_msg }}</div> <!-- Affichage du message de connexion sous forme de toast -->
+        {% endif %}
+        {% block main %}{% endblock %} <!-- Bloc principal pour inclure le contenu de la page -->
+    </main>
+
+    {% if withFooter ?? true %}
+        {% include 'includes/footer.twig' %} <!-- Inclusion du pied de page si spécifié -->
+    {% endif %}
+
+    <script>
+        const basePath = '{{ base_path }}'; // Définition de la variable basePath pour les scripts
+        // Fonction pour afficher un message toast
+        function showToast(message) {
+            var toastMessage = document.createElement("div");
+            toastMessage.id = "toast-message";
+            toastMessage.className = "show";
+            toastMessage.innerText = message;
+            document.body.appendChild(toastMessage);
+
+            setTimeout(function () {
+                toastMessage.className = toastMessage.className.replace("show", "");
+                document.body.removeChild(toastMessage);
+            }, 3500); // Le toast disparait après 3,5 secondes
+        }
+    </script>
+
+    <!-- Inclusion de bibliothèques et scripts supplémentaires -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script src="{{ base_path }}/assets/js/cardHoverEffect.js"></script>
+    <script>
+        // Retire la classe 'preload' après 500ms pour activer les animations CSS
+        document.addEventListener('DOMContentLoaded', () => setTimeout(() => document.body.classList.remove('preload'), 500));
+    </script>
+    <script src="{{ base_path }}/assets/js/soundsEffectManager.js"></script>
+    <script src="{{ base_path }}/assets/js/dynamicFaviconAnimator.js"></script>
+    <script src="{{ base_path }}/assets/js/miscellaneousEffects.js"></script>
+    <script src="{{ base_path }}/assets/js/backButton.js"></script>
+    {% block js %}{% endblock %} <!-- Bloc JS pour inclure des scripts supplémentaires -->
+
+</body>
 </html>

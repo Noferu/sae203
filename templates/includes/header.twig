@@ -1,21 +1,20 @@
 <!-- Header pour les ordinateurs -->
 <header class="desktop-header" role="banner">
-	<div
-		class="umc">
+	<div class="umc">
 		<!-- Boutons utilitaires -->
 		<ul class="control-icons">
 			<li class="home-icon">
 				<a href="{{ base_path }}/index" aria-label="Accueil">
 					<i class="fa-regular fa-house simple"></i>
-					<i class="fa-solid fa-house simple"></i>
+					<i class="fa-solid fa-house simple"></i> <!-- Icônes pour l'accueil -->
 				</a>
 			</li>
 			<li class="volume-control">
 				<a href="#" aria-label="Basculer le son">
 					<i class="fa-regular fa-volume-high"></i>
-					<i class="fa-solid fa-volume-high"></i>
+					<i class="fa-solid fa-volume-high"></i> <!-- Icône pour activer le son -->
 					<i class="fa-regular fa-volume-xmark"></i>
-					<i class="fa-solid fa-volume-xmark"></i>
+					<i class="fa-solid fa-volume-xmark"></i> <!-- Icône pour désactiver le son -->
 				</a>
 			</li>
 		</ul>
@@ -25,7 +24,7 @@
 			<input type="hidden" name="action" value="searching">
 			<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Recherche">
 			<button type="submit">
-				<i class="fa-solid fa-magnifying-glass"></i>
+				<i class="fa-solid fa-magnifying-glass"></i> <!-- Icône de la loupe pour la recherche -->
 			</button>
 		</form>
 
@@ -41,10 +40,10 @@
 					<a class="otherPages" href="{{ base_path ~ icon.url }}" aria-label="{{ icon.regular | capitalize }}">
 						{% if isLogged and icon.regular == 'fa-user' %}
 							<i class="fa-regular fa-user-check simple logged-in"></i>
-							<i class="fa-solid fa-user-check simple logged-in"></i>
+							<i class="fa-solid fa-user-check simple logged-in"></i> <!-- Icônes pour utilisateur connecté -->
 						{% else %}
 							<i class="fa-regular {{ icon.regular }} simple"></i>
-							<i class="fa-solid {{ icon.solid }} simple"></i>
+							<i class="fa-solid {{ icon.solid }} simple"></i> <!-- Icônes par défaut -->
 						{% endif %}
 					</a>
 				</li>
@@ -54,7 +53,7 @@
 		<!-- Menu burger -->
 		<div class="burger-menu">
 			<div class="burger-icon" aria-label="Basculer la navigation">
-				<i class="fa-solid fa-bars"></i>
+				<i class="fa-solid fa-bars"></i> <!-- Icône du menu burger -->
 			</div>
 		</div>
 	</div>
@@ -79,13 +78,12 @@
 </header>
 
 <!-- Header pour les tablettes et mobiles -->
-<header
-	class="mobile-header" role="banner">
+<header class="mobile-header" role="banner">
 	<!-- Barre de recherche -->
 	<form class="search-bar" action="{{ base_path }}/pages/product" method="GET" role="search">
 		<input type="hidden" name="action" value="searching">
 		<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Recherche">
-		<button type="submit" aria-label="Boutton de recherche"></button>
+		<button type="submit" aria-label="Boutton de recherche"></button> <!-- Bouton de soumission de la recherche -->
 	</form>
 
 	<!-- Boutons d'utilisateur -->
@@ -100,32 +98,30 @@
 			<li>
 				<a class="icons-menu" href="{{ base_path ~ icon.url }}" aria-label="{{ icon.type | capitalize }}">
 					{% if isLogged and icon.type == 'fa-user' %}
-						<i class="fa-regular fa-user-check simple logged-in"></i>
+						<i class="fa-regular fa-user-check simple logged-in"></i> <!-- Icône utilisateur connecté -->
 					{% else %}
-						<i class="fa-regular {{ icon.type }} simple"></i>
+						<i class="fa-regular {{ icon.type }} simple"></i> <!-- Icône par défaut -->
 					{% endif %}
 				</a>
 			</li>
 		{% endfor %}
 
 		<!-- Menu burger pour mobile -->
-		<li
-			class="burger-menu">
-
+		<li class="burger-menu">
 			<input type="checkbox" id="menu-toggle">
 			<label for="menu-toggle" class="burger-icon" aria-label="Afficher la navigation">
-				<i class="fa-solid fa-bars"></i>
+				<i class="fa-solid fa-bars"></i> <!-- Icône du menu burger -->
 			</label>
 
 			<div id="fullpage-menu" class="fullpage-menu">
 				<label for="menu-toggle" class="close-icon" aria-label="Fermer la navigation">
-					<i class="fa-solid fa-xmark"></i>
+					<i class="fa-solid fa-xmark"></i> <!-- Icône pour fermer le menu -->
 				</label>
 				<nav role="navigation">
 					<ul class="nav-links">
 						{% for category in categories %}
 							<li class="dropdown">
-								<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+								<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a> <!-- Lien vers les catégories -->
 							</li>
 						{% endfor %}
 					</ul>
@@ -138,7 +134,7 @@
 	<ul class="nav-links tablet-size">
 		{% for category in categories %}
 			<li class="dropdown">
-				<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a>
+				<a href="{{ base_path }}/pages/product?action=list&category_id={{ category.category_id }}" class="dropbtn">{{ category.name }}</a> <!-- Lien vers les catégories -->
 			</li>
 		{% endfor %}
 	</ul>

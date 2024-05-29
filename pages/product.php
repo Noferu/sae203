@@ -7,49 +7,57 @@ include('../include/twig.php');
 $pdo = connexion();
 $twig = init_twig();
 
+// Affichage d'un message toast s'il existe dans la session
 if (isset($_SESSION['toast_message'])) {
     $toast_message = $_SESSION['toast_message'];
     echo "<script>showToast('$toast_message');</script>";
-    unset($_SESSION['toast_message']);
+    unset($_SESSION['toast_message']); // Suppression du message de la session après affichage
 }
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'list';
+$action = isset($_GET['action']) ? $_GET['action'] : 'list'; // Récupère l'action à effectuer, par défaut 'list'
 
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 switch ($action) {
     case 'detail':
-
+        // Récupère les détails d'un article spécifique
         $article_id = $_GET['article_id'];
         $params = [':article_id' => $article_id];
 
+        // Sélection des informations de l'article
         $article = select_data($pdo, "SELECT * FROM articles WHERE article_id = :article_id", $params, false);
 
+        // Sélection de la catégorie actuelle de l'article
         $current_category = select_data($pdo, "SELECT c.* FROM categories c
                                                 JOIN subcategories s ON c.category_id = s.category_id
                                                 JOIN articles a ON s.subcategory_id = a.subcategory_id
                                                 WHERE a.article_id = :article_id", $params, false);
 
+        // Sélection des mots-clés associés à l'article
         $keywords = select_data($pdo, "SELECT k.* FROM keywords k
                                         JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id
                                         JOIN articles a ON ak.article_id = a.article_id
                                         WHERE a.article_id = :article_id", $params, true);
 
+        // Sélection du vendeur de l'article
         $seller = select_data($pdo, "SELECT s.* FROM sellers s
                                       JOIN articles a ON a.seller_id = s.seller_id
                                       WHERE a.article_id = :article_id", $params, false);
 
+        // Sélection des commentaires associés à l'article
         $comments = select_data($pdo, "SELECT c.*, u.username FROM comments c
         JOIN articles a ON a.article_id = c.article_id
         JOIN users u ON u.user_id = c.user_id
         WHERE a.article_id = :article_id", $params, true);
 
+        // Récupération des informations de l'utilisateur actuel
         $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
         $username = isset($_SESSION['username']) ? $_SESSION['username'] : false;
         $favorites = $cart = $is_favorite = $is_in_cart = false;
 
         if ($user_id) {
+            // Vérifie si l'article est dans les favoris ou le panier de l'utilisateur
             $user_params = [':user_id' => $user_id, ':article_id' => $article_id];
             $favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], false);
             $is_favorite = select_data($pdo, "SELECT COUNT(*) as count FROM favorites WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
@@ -57,6 +65,7 @@ switch ($action) {
             $is_in_cart = select_data($pdo, "SELECT COUNT(*) as count FROM cart WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
         }
 
+        // Préparation des mots-clés pour la suggestion d'articles
         $keyword_ids = [];
 
         foreach ($keywords as $keyword) {
@@ -69,7 +78,7 @@ switch ($action) {
         }
         $placeholders_str = implode(',', $placeholders);
 
-
+        // Sélection des articles suggérés en fonction des mots-clés communs et d'autres critères
         $sql = "SELECT a.*, COUNT(ak.keyword_id) as common_keywords, AVG(c.rating_score) as avg_rating
         FROM articles a
         LEFT JOIN articles_keywords ak ON a.article_id = ak.article_id
@@ -87,7 +96,7 @@ switch ($action) {
 
         $suggested_articles = select_data($pdo, $sql, array_merge($keyword_ids, [$article_id, $article['sale_year']]), true);
 
-
+        // Affichage de la page de détail de l'article avec les informations récupérées
         echo $twig->render('product/product_detail.twig', [
             'article' => $article,
             'categories' => $categories,
@@ -104,7 +113,7 @@ switch ($action) {
         break;
 
     case 'list':
-
+        // Affiche la liste des produits (l'affichage est géré par JavaScript)
         echo $twig->render('product/product_list.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories
@@ -112,7 +121,7 @@ switch ($action) {
         break;
 
     case 'grid':
-
+        // Affiche les produits sous forme de grille pour une catégorie donnée
         $category_id = $_GET['category_id'];
         $sql = "SELECT * 
                 FROM articles 
@@ -124,11 +133,11 @@ switch ($action) {
         $params = [':category_id' => $category_id];
         $articles = select_data($pdo, $sql, $params, true);
 
+        // Sélection de la catégorie actuelle, précédente et suivante
         $sql = "SELECT * FROM categories WHERE category_id = :category_id";
         $current_category = select_data($pdo, $sql, $params, false);
 
         if ($current_category) {
-
             $sql = "SELECT * FROM categories WHERE category_id < :category_id ORDER BY category_id DESC LIMIT 1";
             $previous_category = select_data($pdo, $sql, $params, false);
 
@@ -139,6 +148,7 @@ switch ($action) {
             $next_category = null;
         }
 
+        // Affichage de la page de grille de produits avec les informations récupérées
         echo $twig->render('product/product_grid.twig', [
             'articles' => $articles,
             'categories' => $categories,
@@ -150,12 +160,12 @@ switch ($action) {
         break;
 
     case 'searching':
-
+        // Recherche d'articles en fonction des mots-clés saisis
         $search = $_GET['search'] ?? '';
         $search_safe = htmlspecialchars($search);
 
         if (empty($search_safe)) {
-
+            // Affiche un message d'erreur si aucun mot-clé n'a été saisi
             echo $twig->render('error.twig', [
                 'message' => 'Veuillez entrer des mots-clés pour la recherche.',
                 'categories' => $categories,
@@ -164,9 +174,11 @@ switch ($action) {
             break;
         }
 
+        // Préparation des termes de recherche
         $search_terms = array_slice(explode(' ', $search_safe), 0, 5);
         $search_query = implode(' ', $search_terms);
 
+        // Requête pour trouver les articles correspondant aux mots-clés
         $sql = "SELECT a.*, 
                        MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE) AS score_fulltext,
                        (CASE
@@ -193,6 +205,7 @@ switch ($action) {
         $article = select_data($pdo, $sql, $params, false);
 
         if ($article) {
+            // Si un article correspondant est trouvé, récupère les informations détaillées
             $article_id = $article['article_id'];
             $params = [':article_id' => $article_id];
 
@@ -220,6 +233,7 @@ switch ($action) {
             $favorites = $cart = $is_favorite = $is_in_cart = false;
 
             if ($user_id) {
+                // Vérifie si l'article est dans les favoris ou le panier de l'utilisateur
                 $user_params = [':user_id' => $user_id, ':article_id' => $article_id];
                 $favorites = select_data($pdo, "SELECT article_id FROM favorites WHERE user_id = :user_id", [':user_id' => $user_id], false);
                 $is_favorite = select_data($pdo, "SELECT COUNT(*) as count FROM favorites WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
@@ -227,6 +241,7 @@ switch ($action) {
                 $is_in_cart = select_data($pdo, "SELECT COUNT(*) as count FROM cart WHERE user_id = :user_id AND article_id = :article_id", $user_params, false)['count'] > 0;
             }
 
+            // Préparation des mots-clés pour la suggestion d'articles
             $keyword_ids = [];
 
             foreach ($keywords as $keyword) {
@@ -239,6 +254,7 @@ switch ($action) {
             }
             $placeholders_str = implode(',', $placeholders);
 
+            // Sélection des articles suggérés en fonction des mots-clés communs et d'autres critères
             $sql = "SELECT a.*, COUNT(ak.keyword_id) as common_keywords, AVG(c.rating_score) as avg_rating
         FROM articles a
         LEFT JOIN articles_keywords ak ON a.article_id = ak.article_id
@@ -256,6 +272,7 @@ switch ($action) {
 
             $suggested_articles = select_data($pdo, $sql, array_merge($keyword_ids, [$article_id, $article['sale_year']]), true);
 
+            // Affichage de la page de détail de l'article avec les informations récupérées
             echo $twig->render('product/product_detail.twig', [
                 'article' => $article,
                 'categories' => $categories,
@@ -270,6 +287,7 @@ switch ($action) {
             ]);
             break;
         } else {
+            // Affiche un message d'erreur si aucun article correspondant n'est trouvé
             echo $twig->render('error.twig', [
                 'message' => 'Aucun article trouvé pour: ' . $search
             ]);
@@ -277,6 +295,7 @@ switch ($action) {
         break;
 
     default:
+        // Affiche un message d'erreur pour une action inconnue
         echo $twig->render('error.twig', [
             'message' => 'Action inconnue',
             'categories' => $categories,
