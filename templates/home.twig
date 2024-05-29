@@ -28,9 +28,10 @@
 		<h1>Era Explorer</h1>
 		<div id="timeline-container">
 			{% for category in categories %}
-				<div class="epoch" data-id="{{ category.category_id }}" data-name="{{ category.name }}" data-image="{{ base_path }}/assets/images/timeline_images/{{ category.tltn_image_filename }}" data-music="{{ category.music_url }}"></div>
+				<div class="epoch" data-id="{{ category.category_id }}" data-name="{{ category.name }}" data-image="{{ base_path }}/assets/images/timeline_images/{{ category.tltn_image_filename }}" data-music="{{ category.music_url }}" data-desc="{{ category.description }}"></div>
 			{% endfor %}
 		</div>
+		<div class="epoch-desc"></div>
 		<div class="btn-animation">
 			<a id="epoch-link" href="" class="button-19">Rejoindre</a>
 		</div>

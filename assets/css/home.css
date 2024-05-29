@@ -13,7 +13,8 @@ header,
 .footer-wrapped,
 .btn-animation,
 .featured-articles,
-.about-us {
+.about-us,
+.epoch-desc {
   animation: fade-in-bck 2s cubic-bezier(0.39, 0.575, 0.565, 1) 2s both;
 }
 
@@ -162,6 +163,7 @@ main {
   overflow-x: auto;
   white-space: nowrap;
   margin: 5vh auto;
+  margin-bottom: 2.5vh;
   position: relative;
   user-select: none;
   overflow-y: hidden;
@@ -200,6 +202,15 @@ main {
 
 .epoch:last-child {
   margin-right: 252px;
+}
+
+.epoch-desc {
+  margin: 2.5vh;  
+  font-size: 150%;
+  font-weight: 600;
+  padding: 0 10vw 0 10vw;
+  text-shadow: 0 2px 5px black  ;
+  color:white;
 }
 
 .button-19 {

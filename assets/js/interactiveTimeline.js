@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const epochs = document.querySelectorAll(".epoch");
   const epochLink = document.getElementById("epoch-link");
   const boingSound = document.getElementById("boingSound");
+  const epochDesc = document.querySelector(".epoch-desc");
 
   // Définit l'image de fond pour chaque élément d'époque
   epochs.forEach((epoch) => {
@@ -176,6 +177,10 @@ function updateLinkAndTheme(epoch) {
     var clickSound = document.getElementById("clickSound");
     clickSound.play();
   }
+
+  // Mettre à jour la description
+  const epochDesc = document.querySelector(".epoch-desc");
+  epochDesc.textContent = epoch.dataset.desc;
 }
 
 function fadeOutAudio(newMusicUrl) {
