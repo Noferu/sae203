@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 29 mai 2024 à 23:27
+-- Généré le : mer. 29 mai 2024 à 21:37
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -117,7 +117,7 @@ INSERT INTO `articles` (`article_id`, `subcategory_id`, `seller_id`, `title`, `d
 (69, 21, 51, 'Peinture sur rouleau de soie', 'Peinture détaillée sur rouleau de soie, représentant des paysages et des scènes mythologiques du Japon féodal.', 120.00, 1560, 6, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/peinture-sur-rouleau-de-soie.webp'),
 (70, 21, 52, 'Poupées Hina', 'Poupées traditionnelles utilisées lors du festival Hinamatsuri. Fabriquées à la main avec des vêtements traditionnels.', 50.00, 1590, 20, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/poupees-hina.webp'),
 (71, 22, 53, 'Tapis persan', 'Un tapis persan richement décoré, parfait pour embellir votre maison.', 300.00, 900, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/tapis-persan.webp'),
-(72, 22, 53, 'Vase en céramique', 'Un vase en céramique délicatement peint, idéal pour les fleurs ou comme pièce décorative.', 150.00, 910, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/vase-en-ceramique.webp'),
+(72, 22, 54, 'Vase en céramique', 'Un vase en céramique délicatement peint, idéal pour les fleurs ou comme pièce décorative.', 150.00, 910, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/vase-en-ceramique.webp'),
 (73, 22, 55, 'Bijou en or', 'Un bijou en or finement ciselé, symbole de richesse et de beauté.', 500.00, 920, 3, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/bijou-en-or.webp'),
 (74, 23, 56, 'Astrolabe en laiton', 'Un astrolabe en laiton utilisé pour les observations astronomiques.', 250.00, 930, 7, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/astrolabe-en-laiton.webp'),
 (75, 23, 57, 'Manuscrit médical', 'Un manuscrit médical détaillant les découvertes en médecine de l\'époque.', 400.00, 940, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/manuscrit-medical.webp'),
@@ -125,17 +125,15 @@ INSERT INTO `articles` (`article_id`, `subcategory_id`, `seller_id`, `title`, `d
 (77, 24, 59, 'Robe en soie', 'Une robe en soie luxueuse, parfaite pour les occasions spéciales.', 200.00, 960, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/robe-en-soie.webp'),
 (78, 24, 60, 'Turban en soie', 'Un turban en soie élégamment tissé, symbole de statut et de raffinement.', 180.00, 970, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/turban-en-soie.webp'),
 (79, 24, 61, 'Tunique brodée', 'Une tunique brodée avec des motifs complexes, représentant l\'artisanat raffiné de l\'époque.', 220.00, 980, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/tunique-brodee.webp'),
-(80, 23, 56, 'Lanterne en laiton', 'Lanterne en laiton finement gravée, utilisée pour illuminer les espaces intérieurs et extérieurs. Symbole de l\'artisanat raffiné de l\'époque.', 100.00, 970, 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'age-dor-islamique/tunique-brodee.webp'),
-(81, 25, 62, 'Selle de cheval', 'Une selle de cheval robuste et confortable, parfaite pour les longs trajets.', 120.00, 1880, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/selle-de-cheval.webp'),
-(82, 25, 63, 'Bottes en cuir', 'Des bottes en cuir durables, idéales pour les cowboys et les aventuriers.', 90.00, 1885, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/bottes-en-cuir.webp'),
-(83, 25, 64, 'Ceinture à revolver', 'Une ceinture à revolver en cuir, pratique pour garder votre arme à portée de main.', 60.00, 1890, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/ceinture-a-revolver.webp'),
-(84, 26, 65, 'Revolver', 'Un revolver fiable, essentiel pour la défense personnelle dans le Far West.', 250.00, 1895, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/revolver.webp'),
-(85, 26, 65, 'Fusil à levier', 'Un fusil à levier puissant, utilisé pour la chasse et la protection.', 300.00, 1887, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/fusil-a-levier.webp'),
-(86, 26, 67, 'Couteau de chasse', 'Un couteau de chasse robuste, indispensable pour les tâches quotidiennes et la survie.', 50.00, 1892, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/couteau-de-chasse.webp'),
-(87, 27, 68, 'Chapeau de cowboy', 'Un chapeau de cowboy emblématique, protégeant du soleil et ajoutant du style.', 40.00, 1888, 20, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/chapeau-de-cowboy.webp'),
-(88, 27, 69, 'Lanterne à pétrole', 'Une lanterne à pétrole, essentielle pour l\'éclairage des camps et des maisons.', 30.00, 1883, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/lanterne-a-petrole.webp'),
-(89, 27, 70, 'Harmonica', 'Un harmonica en métal, parfait pour les soirées autour du feu de camp.', 20.00, 1889, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/harmonica.webp'),
-(90, 26, 67, 'Corde de lasso', 'Une corde de lasso de haute qualité, idéale pour les travaux de ranch et les compétitions de rodéo.', 35.00, 1886, 7, '2024-05-29 10:00:00', '2024-05-29 10:00:00', 'periode-western/corde-de-lasso.webp');
+(80, 25, 62, 'Selle de cheval', 'Une selle de cheval robuste et confortable, parfaite pour les longs trajets.', 120.00, 1880, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/selle-de-cheval.webp'),
+(81, 25, 63, 'Bottes en cuir', 'Des bottes en cuir durables, idéales pour les cowboys et les aventuriers.', 90.00, 1885, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/bottes-en-cuir.webp'),
+(82, 25, 64, 'Ceinture à revolver', 'Une ceinture à revolver en cuir, pratique pour garder votre arme à portée de main.', 60.00, 1890, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/ceinture-a-revolver.webp'),
+(83, 26, 65, 'Revolver', 'Un revolver fiable, essentiel pour la défense personnelle dans le Far West.', 250.00, 1895, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/revolver.webp'),
+(84, 26, 66, 'Fusil à levier', 'Un fusil à levier puissant, utilisé pour la chasse et la protection.', 300.00, 1887, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/fusil-a-levier.webp'),
+(85, 26, 67, 'Couteau de chasse', 'Un couteau de chasse robuste, indispensable pour les tâches quotidiennes et la survie.', 50.00, 1892, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/couteau-de-chasse.webp'),
+(86, 27, 68, 'Chapeau de cowboy', 'Un chapeau de cowboy emblématique, protégeant du soleil et ajoutant du style.', 40.00, 1888, 20, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/chapeau-de-cowboy.webp'),
+(87, 27, 69, 'Lanterne à pétrole', 'Une lanterne à pétrole, essentielle pour l\'éclairage des camps et des maisons.', 30.00, 1883, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/lanterne-a-petrole.webp'),
+(88, 27, 70, 'Harmonica', 'Un harmonica en métal, parfait pour les soirées autour du feu de camp.', 20.00, 1889, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/harmonica.webp');
 
 --
 -- Déclencheurs `articles`
@@ -549,9 +547,9 @@ INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`,
 (4, 'Renaissance', 'Vivez la splendeur de la Renaissance, où l\'art et la découverte illuminent notre monde.', 'florin', 0.50, 'thumbnail-renaissance.webp', 'currency_icons/florin.webp', 1544, 'https://dl.dropboxusercontent.com/scl/fi/sulqbspaeerwtvz7ulgfv/kingdom_dance.mp3?rlkey=ftq10tuw4c0gyjxjqkydezrgj&st=uhke63bx'),
 (5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation avec ses merveilles technologiques et son dynamisme.', 'livre', 1.50, 'thumbnail-moderne.webp', 'currency_icons/livre.webp', 1871, 'https://dl.dropboxusercontent.com/scl/fi/kdp7d9y8xsa40tgrxckva/howls_movingcastle.mp3?rlkey=dc461wk883n4yrhk0qb9yhq1l&st=kmelccqp'),
 (6, 'Futur', 'Plongez dans le futur, un monde où technologie et innovation redéfinissent les possibles.', 'crédit', 0.20, 'thumbnail-futur.webp', 'currency_icons/credit.webp', 2048, 'https://dl.dropboxusercontent.com/scl/fi/dvxrmbfymb7lnw56c3ukk/cyberpunk_spoiler.mp3?rlkey=l0tt2knbzj3t4od6f867xtlz9&st=2j8xqkxd'),
-(7, 'Hōken-seido', 'Explorez le pays du Soleil levant, où traditions et histoires légendaires forgent chaque artefact.', 'mon', 1.25, 'thumbnail-hoken-seido.webp', 'currency_icons/mon.webp', 1558, 'https://dl.dropboxusercontent.com/scl/fi/z5qhvjte7s2lb21466gq/'),
-(8, 'Islamique', 'Plongez dans l\'Âge d\'Or Islamique, une ère de grandes avancées et de richesse culturelle.', 'dirham', 0.30, 'thumbnail-islamique.webp', 'currency_icons/dirham.webp', 940, 'https://dl.dropboxusercontent.com/scl/fi/lka7it99g91mpsc45gsz/'),
-(9, 'Western', 'Revivez l\'épopée du Western américain, où cowboys et pionniers forgent une nouvelle nation.', 'dollar', 1.20, 'thumbnail-western.webp', 'currency_icons/dollar.webp', 1888, 'https://dl.dropboxusercontent.com/scl/fi/m2pios2wr3revnk32kq/');
+(7, 'Shiden', 'Explorez l\'Orient ancien, où traditions et histoires légendaires forgent chaque artefact.', 'mon', 1.25, 'thumbnail-shiden.webp', 'currency_icons/mon.webp', 1558, NULL),
+(8, 'Islamique', 'Plongez dans l\'Âge d\'Or Islamique, une ère de grandes avancées et de richesse culturelle.', 'dirham', 0.30, 'thumbnail-islamique.webp', 'currency_icons/dirham.webp', 940, NULL),
+(9, 'Western', 'Revivez l\'épopée du Western américain, où cowboys et pionniers forgent une nouvelle nation.', 'dollar', 1.20, 'thumbnail-western.webp', 'currency_icons/dollar.webp', 1888, NULL);
 
 -- --------------------------------------------------------
 
@@ -859,7 +857,12 @@ INSERT INTO `comments` (`comment_id`, `article_id`, `user_id`, `rating_score`, `
 (292, 82, 6, 3, 'Ceinture pratique, mais qui porte encore des revolvers ?', '2024-05-28 15:30:00', 1),
 (293, 82, 7, 5, 'La ceinture à revolver est super pratique et bien faite!', '2024-05-28 15:30:00', 1),
 (296, 31, 1, 5, 'Le globe tourne et a tourné !', '2024-05-29 04:29:41', 0),
-(300, 31, 1, 5, 'Globe terrestre d&eacute;coratif tr&egrave;s d&eacute;taill&eacute;. Parfait pour les g&eacute;ographes.', '2024-05-29 05:04:25', 0);
+(300, 31, 1, 5, 'Globe terrestre d&eacute;coratif tr&egrave;s d&eacute;taill&eacute;. Parfait pour les g&eacute;ographes.', '2024-05-29 05:04:25', 0),
+(301, 22, 1, 4, 'test', '2024-05-29 19:18:23', 0),
+(302, 22, 1, 5, 'éééééé', '2024-05-29 19:18:37', 0),
+(303, 22, 1, 3, 'ééééééé', '2024-05-29 19:20:14', 0),
+(304, 22, 1, 2, 'test', '2024-05-29 19:23:18', 0),
+(305, 22, 1, 4, 'test', '2024-05-29 19:26:05', 0);
 
 -- --------------------------------------------------------
 
@@ -1304,7 +1307,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `article_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
@@ -1316,7 +1319,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+  MODIFY `comment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
 
 --
 -- AUTO_INCREMENT pour la table `keywords`
