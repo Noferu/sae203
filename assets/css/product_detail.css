@@ -275,27 +275,27 @@ h1 {
 }
 
 .theme-néolithique .tags span {
-  background-color: #3a4526;
+  background-color: var(--m-néo);
 }
 
 .theme-antiquité .tags span {
-  background-color: #7d8790;
+  background-color: var(--m-ant);
 }
 
 .theme-moyen-âge .tags span {
-  background-color: #533c2f;
+  background-color: var(--m-moy);
 }
 
 .theme-renaissance .tags span {
-  background-color: #645f54;
+  background-color: var(--m-ren);
 }
 
 .theme-époquemoderne .tags span {
-  background-color: #424e4c;
+  background-color: var(--m-émod);
 }
 
 .theme-futur .tags span {
-  background-color: #463f5d;
+  background-color: var(--m-fut);
 }
 
 .tags span:hover {
@@ -322,27 +322,27 @@ h1 {
 }
 
 .theme-néolithique .lower-part {
-  background-color: #3a4526;
+  background-color: var(--m-néo);
 }
 
 .theme-antiquité .lower-part {
-  background-color: #7d8790;
+  background-color: var(--m-ant);
 }
 
 .theme-moyen-âge .lower-part {
-  background-color: #533c2f;
+  background-color: var(--m-moy);
 }
 
 .theme-renaissance .lower-part {
-  background-color: #645f54;
+  background-color: var(--m-ren);
 }
 
 .theme-époquemoderne .lower-part {
-  background-color: #424e4c;
+  background-color: var(--m-émod);
 }
 
 .theme-futur .lower-part {
-  background-color: #463f5d;
+  background-color: var(--m-fut);
 }
 
 .lower-part {
@@ -386,28 +386,28 @@ h1 {
 }
 
 .theme-néolithique .wave-svg path {
-  fill: #3a4526;
+  fill: var(--m-néo);
 }
 
 .theme-antiquité .wave-svg path {
-  fill: #7d8790;
+  fill: var(--m-ant);
 }
 
 .theme-moyen-âge .wave-svg path {
-  fill: #533c2f;
+  fill: var(--m-moy);
 }
 
 .theme-renaissance .wave-svg path {
-  fill: #645f54;
+  fill: var(--m-ren);
 }
 
 .theme-époque-moderne .wave-svg path,
 .theme-époquemoderne .wave-svg path {
-  fill: #424e4c;
+  fill: var(--m-émod);
 }
 
 .theme-futur .wave-svg path {
-  fill: #463f5d;
+  fill: var(--m-fut);
 }
 
 .lower-part h3 {

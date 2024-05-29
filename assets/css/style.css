@@ -3,23 +3,23 @@
   --gold: #f1ab28;
   --gradient: linear-gradient(-135deg, var(--gold), var(--brown));
 
-  --theme-main-néolithique: #3a4526;
-  --theme-dark-néolithique: #2e361d;
+  --m-néo: #3a4526;
+  --d-néo: #2e361d;
 
-  --theme-main-antiquité: #7d8790;
-  --theme-dark-antiquité: #636a72;
+  --m-ant: #7d8790;
+  --d-ant: #636a72;
 
-  --theme-main-moyen-âge: #533c2f;
-  --theme-dark-moyen-âge: #432e26;
+  --m-moy: #533c2f;
+  --d-moy: #432e26;
 
-  --theme-main-renaissance: #645f54;
-  --theme-dark-renaissance: #4f4a43;
+  --m-ren: #645f54;
+  --d-ren: #4f4a43;
 
-  --theme-main-époque-moderne: #424e4c;
-  --theme-dark-époque-moderne: #323838;
+  --m-émod: #424e4c;
+  --d-émod: #323838;
 
-  --theme-main-futur: #463f5d;
-  --theme-dark-futur: #3a324c;
+  --m-fut: #463f5d;
+  --d-fut: #3a324c;
 }
 
 ::selection {
@@ -101,28 +101,28 @@ body {
 }
 
 .theme-néolithique {
-  background-color: #3a4526;
+  background-color: var(--m-néo);
 }
 
 .theme-antiquité {
-  background-color: #7d8790;
+  background-color: var(--m-ant);
 }
 
 .theme-moyen-âge {
-  background-color: #533c2f;
+  background-color: var(--m-moy);
 }
 
 .theme-renaissance {
-  background-color: #645f54;
+  background-color: var(--m-ren);
 }
 
 .theme-époque-moderne,
 .theme-époquemoderne {
-  background-color: #424e4c;
+  background-color: var(--m-émod);
 }
 
 .theme-futur {
-  background-color: #463f5d;
+  background-color: var(--m-fut);
 }
 
 main {
@@ -394,40 +394,40 @@ footer a i {
 
 .theme-néolithique .footer-wave-svg path,
 .theme-néolithique footer {
-  fill: #2e361d;
-  background-color: #2e361d;
+  fill: var(--d-néo);
+  background-color: var(--d-néo);
 }
 
 .theme-antiquité .footer-wave-svg path,
 .theme-antiquité footer {
-  fill: #636a72;
-  background-color: #636a72;
+  fill: var(--d-ant);
+  background-color: var(--d-ant);
 }
 
 .theme-moyen-âge .footer-wave-svg path,
 .theme-moyen-âge footer {
-  fill: #432e26;
-  background-color: #432e26;
+  fill: var(--d-moy);
+  background-color: var(--d-moy);
 }
 
 .theme-renaissance .footer-wave-svg path,
 .theme-renaissance footer {
-  fill: #4f4a43;
-  background-color: #4f4a43;
+  fill: var(--d-ren);
+  background-color: var(--d-ren);
 }
 
 .theme-époque-moderne .footer-wave-svg path,
 .theme-époque-moderne footer,
 .theme-époquemoderne .footer-wave-svg path,
 .theme-époquemoderne footer {
-  fill: #323838;
-  background-color: #323838;
+  fill: var(--d-émod);
+  background-color: var(--d-émod);
 }
 
 .theme-futur .footer-wave-svg path,
 .theme-futur footer {
-  fill: #3a324c;
-  background-color: #3a324c;
+  fill: var(--d-fut);
+  background-color: var(--d-fut);
 }
 
 /* MEDIA QUERIES */

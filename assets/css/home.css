@@ -107,27 +107,27 @@ main {
 }
 
 .theme-néolithique .wave-svg path {
-  fill: #3a4526;
+  fill: var(--m-néo);
 }
 
 .theme-antiquité .wave-svg path {
-  fill: #7d8790;
+  fill: var(--m-ant);
 }
 
 .theme-moyen-âge .wave-svg path {
-  fill: #533c2f;
+  fill: var(--m-moy);
 }
 
 .theme-renaissance .wave-svg path {
-  fill: #645f54;
+  fill: var(--m-ren);
 }
 
 .theme-époque-moderne .wave-svg path {
-  fill: #424e4c;
+  fill: var(--m-émod);
 }
 
 .theme-futur .wave-svg path {
-  fill: #463f5d;
+  fill: var(--m-fut);
 }
 
 .timeline {
