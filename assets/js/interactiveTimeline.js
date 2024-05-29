@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 function centerEpochOnLoad(epochs, container, epochName) {
   const targetEpoch = Array.from(epochs).find((epoch) =>
     epoch.dataset.name.includes(epochName)
@@ -114,7 +113,7 @@ function updateLinkAndTheme(epoch) {
   const categoryId = epoch.dataset.id;
 
   if (categoryId) {
-    link.href = `pages/product?action=grid&category_id=${epoch.dataset.id}`; // Met à jour le lien avec l'ID de catégorie
+    link.href = `pages/product?action=grid&category_id=${categoryId}`; // Met à jour le lien avec l'ID de catégorie
   }
 
   const body = document.body;
@@ -122,13 +121,13 @@ function updateLinkAndTheme(epoch) {
   if (!body.classList.contains(newClass)) {
     body.className = ""; // Réinitialise les classes du body
     body.classList.add(newClass); // Ajoute la nouvelle classe au body
-    fadeOutAudio(newClass); // Lance le fondu audio
+    fadeOutAudio(epoch.dataset.music); // Lance le fondu audio avec l'URL de la musique
     var clickSound = document.getElementById("clickSound");
     clickSound.play(); // Joue le son de clic
   }
 }
 
-function fadeOutAudio(newClass) {
+function fadeOutAudio(newMusicUrl) {
   const audio = document.getElementById('myAudio');
   const fadeOutInterval = setInterval(() => {
     if (audio.volume > 0.1) {
@@ -136,25 +135,17 @@ function fadeOutAudio(newClass) {
     } else {
       clearInterval(fadeOutInterval);
       audio.volume = 0;
-      updateAudioSource(newClass); // Met à jour la source audio une fois le fondu terminé
+      updateAudioSource(newMusicUrl); // Met à jour la source audio une fois le fondu terminé
     }
   }, 100); // Intervalle de 100ms pour chaque réduction de volume
 }
 
-function updateAudioSource(newClass) {
+function updateAudioSource(newMusicUrl) {
   const audio = document.getElementById('myAudio');
   const audioSource = document.getElementById('audioSource');
-  const musicLinks = {
-    "theme-néolithique": "https://dl.dropboxusercontent.com/scl/fi/yqo7f1iir57xxr550sk7j/stone_world.mp3?rlkey=00m1p3ngrbahfcqdm8f91yn89&st=9qircazs",
-    "theme-antiquité": "https://dl.dropboxusercontent.com/scl/fi/cttsenqi2ia5dg8p3tao7/ac_theflight.mp3?rlkey=9wsgb7ah6gxs6jytvvnjss6ph&st=08xlj5gy",
-    "theme-futur": "https://dl.dropboxusercontent.com/scl/fi/dvxrmbfymb7lnw56c3ukk/cyberpunk_spoiler.mp3?rlkey=l0tt2knbzj3t4od6f867xtlz9&st=2j8xqkxd",
-    "theme-moyen-âge": "https://dl.dropboxusercontent.com/scl/fi/t7xc6he771v59gmt93n0w/medieval_tavern.mp3?rlkey=exbc97mr0a2rwf32hlrwgaw0b&st=bl13shb3",
-    "theme-époque-moderne": "https://dl.dropboxusercontent.com/scl/fi/kdp7d9y8xsa40tgrxckva/howls_movingcastle.mp3?rlkey=dc461wk883n4yrhk0qb9yhq1l&st=kmelccqp",
-    "theme-renaissance": "https://dl.dropboxusercontent.com/scl/fi/sulqbspaeerwtvz7ulgfv/kingdom_dance.mp3?rlkey=ftq10tuw4c0gyjxjqkydezrgj&st=uhke63bx",
-  };
 
-  if (musicLinks[newClass]) {
-    audioSource.src = musicLinks[newClass]; // Met à jour la source audio avec le nouveau lien
+  if (newMusicUrl) {
+    audioSource.src = newMusicUrl; // Met à jour la source audio avec le nouveau lien
     audio.load(); // Recharge l'audio
     audio.volume = 1;
     audio.play(); // Joue la nouvelle piste audio
