@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("timeline-container"); // Sélectionne le conteneur de la timeline par son ID
   const epochs = document.querySelectorAll(".epoch"); // Sélectionne tous les éléments d'époque
+  const epochLink = document.getElementById("epoch-link"); // Sélectionne le bouton epoch-link
+  const boingSound = document.getElementById("boingSound"); // Sélectionne le son boingSound
 
   // Définit l'image de fond pour chaque élément d'époque
   epochs.forEach((epoch) => {
@@ -15,7 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
   container.addEventListener("scroll", () => updateCurrentEpoch(epochs, container)); // Met à jour l'époque actuelle lors du défilement
 
   centerEpochOnLoad(epochs, container, "Moyen-Âge"); // Centre l'époque spécifiée au chargement
+
+  // Ajoute l'événement pour jouer le son au survol avec un délai
+  let boingTimeout;
+
+  epochLink.addEventListener("mouseover", () => {
+    boingTimeout = setTimeout(() => {
+      boingSound.play();
+    }, 270);
+  });
+
+  epochLink.addEventListener("mouseleave", () => {
+    clearTimeout(boingTimeout); // Annule le timeout si la souris quitte avant la fin du délai
+    boingSound.pause();
+    boingSound.currentTime = 0; // Remet la position de lecture à zéro
+  });
 });
+
 
 function centerEpochOnLoad(epochs, container, epochName) {
   const targetEpoch = Array.from(epochs).find((epoch) =>
@@ -105,6 +123,8 @@ function updateLinkAndTheme(epoch) {
     body.className = ""; // Réinitialise les classes du body
     body.classList.add(newClass); // Ajoute la nouvelle classe au body
     fadeOutAudio(newClass); // Lance le fondu audio
+    var clickSound = document.getElementById("clickSound");
+    clickSound.play(); // Joue le son de clic
   }
 }
 
