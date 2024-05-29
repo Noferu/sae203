@@ -48,36 +48,6 @@
   border-radius: 100px;
 }
 
-@font-face {
-  font-family: "Antiquite";
-  src: url("../fonts/antiquite.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "EpoqueModerne";
-  src: url("../fonts/epoque-moderne.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Futur";
-  src: url("../fonts/futur.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "MoyenAge";
-  src: url("../fonts/moyen-age.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Neolithique";
-  src: url("../fonts/neolithique.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Renaissance";
-  src: url("../fonts/renaissance.TTF") format("truetype");
-}
-
 .title-letter {
   display: inline-block;
   animation: float 2s infinite ease-in-out;
