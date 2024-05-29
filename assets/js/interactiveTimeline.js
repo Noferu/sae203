@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("timeline-container"); // Sélectionne le conteneur de la timeline par son ID
-  const epochs = document.querySelectorAll(".epoch"); // Sélectionne tous les éléments d'époque
-  const epochLink = document.getElementById("epoch-link"); // Sélectionne le bouton epoch-link
-  const boingSound = document.getElementById("boingSound"); // Sélectionne le son boingSound
+  const container = document.getElementById("timeline-container");
+  const epochs = document.querySelectorAll(".epoch");
+  const epochLink = document.getElementById("epoch-link");
+  const boingSound = document.getElementById("boingSound");
 
   // Définit l'image de fond pour chaque élément d'époque
   epochs.forEach((epoch) => {
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Ajoute l'événement pour jouer le son au survol avec un délai
   let boingTimeout;
-
   epochLink.addEventListener("mouseover", () => {
     boingTimeout = setTimeout(() => {
       boingSound.play();
@@ -28,54 +27,106 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   epochLink.addEventListener("mouseleave", () => {
-    clearTimeout(boingTimeout); // Annule le timeout si la souris quitte avant la fin du délai
+    clearTimeout(boingTimeout);
     boingSound.pause();
-    boingSound.currentTime = 0; // Remet la position de lecture à zéro
+    boingSound.currentTime = 0;
   });
 });
 
 function centerEpochOnLoad(epochs, container, epochName) {
   const targetEpoch = Array.from(epochs).find((epoch) =>
     epoch.dataset.name.includes(epochName)
-  ); // Trouve l'époque cible par son nom
+  );
   if (targetEpoch) {
     const leftOffset = targetEpoch.offsetLeft;
     const centerOffset =
       leftOffset - container.offsetWidth / 2 + targetEpoch.offsetWidth / 2;
-    container.scrollLeft = centerOffset; // Centre l'époque cible dans le conteneur
+    container.scrollLeft = centerOffset;
   }
 }
 
 function enableDragScroll(element) {
   let isDown = false;
-  let startX;
+  let isDragging = false;
+  let startX, startY;
   let scrollLeft;
+  let clickTimeout;
 
   element.addEventListener("mousedown", (e) => {
     isDown = true;
-    startX = e.clientX; // Enregistre la position X de départ
-    scrollLeft = element.scrollLeft; // Enregistre la position de défilement de départ
+    startX = e.clientX;
+    startY = e.clientY;
+    scrollLeft = element.scrollLeft;
     element.style.cursor = "grabbing";
-    e.preventDefault(); // Empêche le comportement par défaut
+    e.preventDefault();
+
+    // Vérification du clic après un délai
+    clickTimeout = setTimeout(() => {
+      if (!isDragging) {
+        // Vérifier si le clic est maintenu sans déplacement significatif
+        element.addEventListener("mouseup", onClick);
+      }
+    }, 150); // Délai pour différencier clic court et long
   });
 
-  document.addEventListener("mouseup", () => {
+  document.addEventListener("mouseup", (e) => {
     if (!isDown) return;
     isDown = false;
     element.style.cursor = "grab";
+
+    // Si la distance est inférieure à 4px, considérer comme un clic
+    if (!isDragging && Math.abs(e.clientX - startX) < 4 && Math.abs(e.clientY - startY) < 4) {
+      // Exécuter l'action de clic
+      const targetEpoch = document.elementFromPoint(e.clientX, e.clientY);
+      if (targetEpoch && targetEpoch.classList.contains("epoch")) {
+        centerEpochOnClick(targetEpoch, element);
+      }
+    }
+
+    isDragging = false;
+    clearTimeout(clickTimeout);
   });
 
   document.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.clientX;
-    const walk = x - startX; // Calcule la distance de déplacement
-    element.scrollLeft = scrollLeft - walk; // Met à jour la position de défilement
+    const y = e.clientY;
+
+    // Si la distance dépasse 4 pixels, considérer comme un glissement
+    if (Math.abs(x - startX) > 4 || Math.abs(y - startY) > 4) {
+      isDragging = true;
+      element.removeEventListener("mouseup", onClick); // Supprimer l'écouteur de clic
+    }
+
+    const walk = x - startX;
+    element.scrollLeft = scrollLeft - walk;
   });
+
+  function onClick(e) {
+    // Si c'est un clic, centrer l'époque
+    const targetEpoch = document.elementFromPoint(e.clientX, e.clientY);
+    if (targetEpoch && targetEpoch.classList.contains("epoch")) {
+      centerEpochOnClick(targetEpoch, element);
+    }
+    element.removeEventListener("mouseup", onClick);
+  }
+}
+
+function centerEpochOnClick(epoch, container) {
+  const leftOffset = epoch.offsetLeft;
+  const centerOffset =
+    leftOffset - container.offsetWidth / 2 + epoch.offsetWidth / 2;
+  container.scrollTo({
+    left: centerOffset,
+    behavior: 'smooth'
+  });
+
+  updateCurrentEpoch(Array.from(document.querySelectorAll(".epoch")), container);
 }
 
 function updateCurrentEpoch(epochs, container) {
-  const centerPoint = container.offsetWidth / 2 + container.scrollLeft; // Calcule le point central du conteneur
+  const centerPoint = container.offsetWidth / 2 + container.scrollLeft;
   let closestEpoch = null;
   let minDistance = Infinity;
 
@@ -85,26 +136,26 @@ function updateCurrentEpoch(epochs, container) {
 
     if (distance < minDistance) {
       minDistance = distance;
-      closestEpoch = epoch; // Met à jour l'époque la plus proche du centre
+      closestEpoch = epoch;
     }
   });
 
   if (closestEpoch) {
     epochs.forEach((epoch) => {
-      epoch.classList.remove("center", "adjacent"); // Retire les classes actuelles
+      epoch.classList.remove("center", "adjacent");
     });
 
-    closestEpoch.classList.add("center"); // Ajoute la classe 'center' à l'époque la plus proche
+    closestEpoch.classList.add("center");
 
     const closestEpochIndex = Array.from(epochs).indexOf(closestEpoch);
     if (closestEpochIndex > 0) {
-      epochs[closestEpochIndex - 1].classList.add("adjacent"); // Ajoute la classe 'adjacent' à l'époque précédente
+      epochs[closestEpochIndex - 1].classList.add("adjacent");
     }
     if (closestEpochIndex < epochs.length - 1) {
-      epochs[closestEpochIndex + 1].classList.add("adjacent"); // Ajoute la classe 'adjacent' à l'époque suivante
+      epochs[closestEpochIndex + 1].classList.add("adjacent");
     }
 
-    updateLinkAndTheme(closestEpoch); // Met à jour le lien et le thème
+    updateLinkAndTheme(closestEpoch);
   }
 }
 
@@ -113,17 +164,17 @@ function updateLinkAndTheme(epoch) {
   const categoryId = epoch.dataset.id;
 
   if (categoryId) {
-    link.href = `pages/product?action=grid&category_id=${categoryId}`; // Met à jour le lien avec l'ID de catégorie
+    link.href = `pages/product?action=grid&category_id=${categoryId}`;
   }
 
   const body = document.body;
   const newClass = `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`;
   if (!body.classList.contains(newClass)) {
-    body.className = ""; // Réinitialise les classes du body
-    body.classList.add(newClass); // Ajoute la nouvelle classe au body
-    fadeOutAudio(epoch.dataset.music); // Lance le fondu audio avec l'URL de la musique
+    body.className = "";
+    body.classList.add(newClass);
+    fadeOutAudio(epoch.dataset.music);
     var clickSound = document.getElementById("clickSound");
-    clickSound.play(); // Joue le son de clic
+    clickSound.play();
   }
 }
 
@@ -131,13 +182,13 @@ function fadeOutAudio(newMusicUrl) {
   const audio = document.getElementById('myAudio');
   const fadeOutInterval = setInterval(() => {
     if (audio.volume > 0.1) {
-      audio.volume -= 0.1; // Réduit progressivement le volume
+      audio.volume -= 0.1;
     } else {
       clearInterval(fadeOutInterval);
       audio.volume = 0;
-      updateAudioSource(newMusicUrl); // Met à jour la source audio une fois le fondu terminé
+      updateAudioSource(newMusicUrl);
     }
-  }, 100); // Intervalle de 100ms pour chaque réduction de volume
+  }, 100);
 }
 
 function updateAudioSource(newMusicUrl) {
@@ -145,9 +196,9 @@ function updateAudioSource(newMusicUrl) {
   const audioSource = document.getElementById('audioSource');
 
   if (newMusicUrl) {
-    audioSource.src = newMusicUrl; // Met à jour la source audio avec le nouveau lien
-    audio.load(); // Recharge l'audio
+    audioSource.src = newMusicUrl;
+    audio.load();
     audio.volume = 1;
-    audio.play(); // Joue la nouvelle piste audio
+    audio.play();
   }
 }
