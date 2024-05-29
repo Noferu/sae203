@@ -1,31 +1,31 @@
 .theme-néolithique #background-image {
   background-image: url("https://i.imgur.com/NOho5qq.jpg");
-  background-color: #3a4526;
+  background-color: var(--m-néo);
 }
 
 .theme-antiquité #background-image {
   background-image: url("https://i.imgur.com/qYk0C49.jpg");
-  background-color: #7d8790;
+  background-color: var(--m-ant);
 }
 
 .theme-moyen-âge #background-image {
   background-image: url("https://i.imgur.com/xPUXGRT.jpg");
-  background-color: #533c2f;
+  background-color: var(--m-moy);
 }
 
 .theme-renaissance #background-image {
   background-image: url("https://i.imgur.com/IZfe0T5.jpg");
-  background-color: #645f54;
+  background-color: var(--m-ren);
 }
 
 .theme-époquemoderne #background-image {
   background-image: url("https://i.imgur.com/ZSECm9u.jpg");
-  background-color: #424e4c;
+  background-color: var(--m-émod);
 }
 
 .theme-futur #background-image {
   background-image: url("https://i.imgur.com/GViuh6q.jpg");
-  background-color: #463f5d;
+  background-color: var(--m-fut);
 }
 
 html, body {
@@ -33,6 +33,31 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   scrollbar-width: none;
+}
+
+.theme-néolithique {
+  background: linear-gradient(to right, var(--m-néo) 0%, var(--m-néo) 20%, white 40%, white 60%, var(--m-néo) 80%, var(--m-néo) 100%);
+}
+
+.theme-antiquité {
+  background: linear-gradient(to right, var(--m-ant) 0%, var(--m-ant) 20%, white 40%, white 60%, var(--m-ant) 80%, var(--m-ant) 100%);
+}
+
+.theme-moyen-âge {
+  background: linear-gradient(to right, var(--m-moy) 0%, var(--m-moy) 20%, white 40%, white 60%, var(--m-moy) 80%, var(--m-moy) 100%);
+}
+
+.theme-renaissance {
+  background: linear-gradient(to right, var(--m-ren) 0%, var(--m-ren) 20%, white 40%, white 60%, var(--m-ren) 80%, var(--m-ren) 100%);
+}
+
+.theme-époque-moderne,
+.theme-époquemoderne {
+  background: linear-gradient(to right, var(--m-émod) 0%, var(--m-émod) 20%, white 40%, white 60%, var(--m-émod) 80%, var(--m-émod) 100%);
+}
+
+.theme-futur {
+  background: linear-gradient(to right, var(--m-fut) 0%, var(--m-fut) 20%, white 40%, white 60%, var(--m-fut) 80%, var(--m-fut) 100%);
 }
 
 ::-webkit-scrollbar {

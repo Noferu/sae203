@@ -53,6 +53,10 @@
 	{% for i in 1..7 %}
 		<audio id="card-audio-{{i}}" src="{{ base_path }}/assets/audio/sfx/whoosh{{i}}.mp3"></audio>
 	{% endfor %}
+	<audio id="myAudio" autoplay loop>
+                <source id="audioSource" src="{{ current_category.music_url }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 {% endblock %}
 {% block js %}
 {% endblock %}
