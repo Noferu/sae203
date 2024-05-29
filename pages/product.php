@@ -10,10 +10,17 @@ $twig = init_twig();
 // Affichage d'un message toast s'il existe dans la session
 if (isset($_SESSION['toast_message'])) {
     $toast_message = $_SESSION['toast_message'];
-    echo "<script>showToast('$toast_message');</script>";
+    echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof showToast === 'function') {
+                showToast(" . json_encode($toast_message) . ");
+            } else {
+                console.error('La fonction showToast n\'est pas définie.');
+            }
+        });
+    </script>";
     unset($_SESSION['toast_message']); // Suppression du message de la session après affichage
 }
-
 $action = isset($_GET['action']) ? $_GET['action'] : 'list'; // Récupère l'action à effectuer, par défaut 'list'
 
 // Récupération des catégories et sous-catégories depuis la base de données
