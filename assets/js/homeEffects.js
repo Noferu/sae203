@@ -15,19 +15,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }, 100); // Intervalle de 100ms pour chaque incrément de volume
   }, 500); // Délai de 500ms avant de démarrer la lecture de l'audio
-
-  const button = document.getElementById("epoch-link"); // Sélectionne le bouton par son ID
-  const hoverSound = document.getElementById("hoverSound"); // Sélectionne le son de survol par son ID
-
-  // Ajoute un événement de survol (mouseenter) au bouton
-  button.addEventListener("mouseenter", function () {
-    hoverSound.muted = false; // Désactive le mode muet pour le son de survol
-    setTimeout(() => hoverSound.play(), 150); // Joue le son de survol après un délai de 150ms
-  });
-
-  // Ajoute un événement de sortie de survol (mouseleave) au bouton
-  button.addEventListener("mouseleave", function () {
-    hoverSound.pause(); // Met en pause le son de survol
-    hoverSound.currentTime = 0; // Réinitialise le temps de lecture du son de survol à 0
-  });
 });
