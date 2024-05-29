@@ -1,7 +1,7 @@
 {% extends "includes/base.twig" %}
 
 {% block title %}
-    {{ message|slice(0, 10) }}
+    {{ title }}
 {% endblock %}
 
 {% set withFooter = false %}
@@ -502,8 +502,8 @@ p {
 {% block main %}
     <div id="background-image"></div>
     <div class="error-container">
-        <h1>{{ message|slice(0, 10) }}</h1>
-		<h2>{{ message|slice(11, 100) }}</h2>
+        <h1>{{ title }}</h1>
+        <h2>{{ detail_message }}</h2>
         <p>Il semble que vous ayez rencontré un problème. Vous pouvez retourner à la page d'accueil ou utiliser le menu ci-dessus pour continuer votre exploration.</p>
         <a class="button" href="index">Retour à l'accueil</a>
     </div>

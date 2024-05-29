@@ -9,7 +9,7 @@ $twig = init_twig();
 $pdo = connexion();
 
 // Récupération des catégories et sous-catégories depuis la base de données
-$categories = select_data($pdo, 'SELECT * FROM categories', [], true);
+$categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 $login_msg = null; // Initialisation du message de connexion à null

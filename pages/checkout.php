@@ -7,7 +7,8 @@ include('../include/twig.php');
 $pdo = connexion();
 $twig = init_twig();
 
-$categories = select_data($pdo, 'SELECT * FROM categories', [], true);
+// Récupération des catégories et sous-catégories depuis la base de données
+$categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 $step = isset($_GET['step']) ? $_GET['step'] : 'cart'; // Récupère l'étape du processus, par défaut 'cart'

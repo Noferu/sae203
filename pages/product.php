@@ -16,7 +16,8 @@ if (isset($_SESSION['toast_message'])) {
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list'; // Récupère l'action à effectuer, par défaut 'list'
 
-$categories = select_data($pdo, 'SELECT * FROM categories', [], true);
+// Récupération des catégories et sous-catégories depuis la base de données
+$categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
 function renderListView($pdo, $twig, $article_id, $categories, $subcategories) {
