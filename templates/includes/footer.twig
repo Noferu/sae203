@@ -17,33 +17,33 @@
         <ul>
             <li>
                 <a href="https://www.ida.etu.mmi-unistra.fr/">
-                    <i class="fas fa-briefcase"></i>Portfolio</a> <!-- Lien vers le portfolio -->
+                    <i class="fas fa-briefcase"></i>Portfolio</a> {# Lien vers le portfolio #}
             </li>
             <li>
                 <a href="https://github.com/Noferu/sae203">
-                    <i class="fab fa-github"></i>GitHub de la SAE</a> <!-- Lien vers le GitHub de la SAE -->
+                    <i class="fab fa-github"></i>GitHub de la SAE</a> {# Lien vers le GitHub de la SAE #}
             </li>
             <li>
                 <a href="https://www.linkedin.com/in/nawfel-idaalioulahsen">
-                    <i class="fab fa-linkedin"></i>LinkedIn</a> <!-- Lien vers LinkedIn -->
+                    <i class="fab fa-linkedin"></i>LinkedIn</a> {# Lien vers LinkedIn #}
             </li>
             <li>
                 <a href="https://www.instagram.com/nawfel.idl/?hl=fr">
-                    <i class="fab fa-instagram"></i>Instagram</a> <!-- Lien vers Instagram -->
+                    <i class="fab fa-instagram"></i>Instagram</a> {# Lien vers Instagram #}
             </li>
         </ul>
         <ul>
             {% for category in categories %}
                 <li>
                     <span>~</span>
-                    <a href="{{ base_path }}/pages/product?action=grid&category_id={{ category.category_id }}">{{ category.name }}</a> <!-- Lien vers les catégories de produits -->
+                    <a href="{{ base_path }}/pages/product?action=grid&category_id={{ category.category_id }}">{{ category.name }}</a> {# Lien vers les catégories de produits #}
                 </li>
             {% endfor %}
         </ul>
         <ul>
-            <li>&copy; {{ "now"|date("Y") }} Era Explorer. All rights reserved.</li> <!-- Copyright -->
-            <li>Politique de confidentialités</li> <!-- Lien vers la politique de confidentialité -->
-            <li>Conditions d'utilisation</li> <!-- Lien vers les conditions d'utilisation -->
+            <li>&copy; {{ "now"|date("Y") }} Era Explorer. All rights reserved.</li> {# Copyright #}
+            <li>Politique de confidentialités</li> {# Lien vers la politique de confidentialité #}
+            <li>Conditions d'utilisation</li> {# Lien vers les conditions d'utilisation #}
         </ul>
     </footer>
 </div>
