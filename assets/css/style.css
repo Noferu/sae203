@@ -20,6 +20,15 @@
 
   --m-fut: #463f5d;
   --d-fut: #3a324c;
+  
+  --m-isl: #7c5b49;
+  --d-isl: #5e4535;
+
+  --m-hsei: #6B352D;
+  --d-hsei: #51271f;
+
+  --m-wes: #6b6257;
+  --d-wes: #524c45;
 }
 
 ::selection {
@@ -123,6 +132,18 @@ body {
 
 .theme-futur {
   background-color: var(--m-fut);
+}
+
+.theme-hōken-seido {
+  background-color: var(--m-hsei);
+}
+
+.theme-western {
+  background-color: var(--m-wes);
+}
+
+.theme-islamique {
+  background-color: var(--m-isl);
 }
 
 main {
@@ -424,11 +445,25 @@ footer a i {
   background-color: var(--d-émod);
 }
 
-.theme-futur .footer-wave-svg path,
-.theme-futur footer {
-  fill: var(--d-fut);
-  background-color: var(--d-fut);
+.theme-hōken-seido .footer-wave-svg path,
+.theme-hōken-seido footer {
+  fill: var(--d-hsei);
+  background-color: var(--d-hsei);
 }
+
+.theme-western .footer-wave-svg path,
+.theme-western footer {
+  fill: var(--d-wes);
+  background-color: var(--d-wes);
+}
+
+
+.theme-islamique .footer-wave-svg path,
+.theme-islamique footer {
+  fill: var(--d-isl);
+  background-color: var(--d-isl);
+}
+
 
 /* MEDIA QUERIES */
 

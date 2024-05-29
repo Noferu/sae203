@@ -28,6 +28,22 @@
   background-color: var(--m-fut);
 }
 
+.theme-hōken-seido #background-image {
+  background-image: url("https://i.imgur.com/TYq9WRN.jpg");
+  background-color: var(--m-hsei);
+}
+
+.theme-western #background-image {
+  background-image: url("https://i.imgur.com/9GpUGC1.jpg");
+  background-color: var(--m-wes);
+}
+
+.theme-islamique #background-image {
+  background-image: url("https://i.imgur.com/hV8CtA0.jpg");
+  background-color: var(--m-isl);
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -58,6 +74,18 @@ html, body {
 
 .theme-futur {
   background: linear-gradient(to right, var(--m-fut) 0%, var(--m-fut) 20%, white 40%, white 60%, var(--m-fut) 80%, var(--m-fut) 100%);
+}
+
+.theme-hōken-seido {
+  background: linear-gradient(to right, var(--m-hsei) 0%, var(--m-hsei) 20%, white 40%, white 60%, var(--m-hsei) 80%, var(--m-hsei) 100%);
+}
+
+.theme-western {
+  background: linear-gradient(to right, var(--m-wes) 0%, var(--m-wes) 20%, white 40%, white 60%, var(--m-wes) 80%, var(--m-wes) 100%);
+}
+
+.theme-islamique {
+  background: linear-gradient(to right, var(--m-isl) 0%, var(--m-isl) 20%, white 40%, white 60%, var(--m-isl) 80%, var(--m-isl) 100%);
 }
 
 ::-webkit-scrollbar {
@@ -153,6 +181,7 @@ main {
 .card-link {
   animation: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
   animation-delay: 2s;
+  user-select: none;
 }
 
 .card {

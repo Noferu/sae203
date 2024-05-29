@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 29 mai 2024 à 23:27
+-- Généré le : jeu. 30 mai 2024 à 01:21
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -106,36 +106,36 @@ INSERT INTO `articles` (`article_id`, `subcategory_id`, `seller_id`, `title`, `d
 (58, 18, 40, 'Chargeur solaire portable', 'Ce chargeur solaire portable, à la fois écologique et efficace, vous permet de recharger vos appareils où que vous soyez, utilisant uniquement l\'énergie solaire. Une solution durable pour une mobilité totale.', 750.00, 2047, 20, '2024-05-20 05:17:00', '2024-05-20 05:17:00', 'futur/chargeur-solaire-portable.webp'),
 (59, 17, 38, 'Lampe LED à contrôle gestuel', 'Contrôlez l\'illumination de votre environnement avec cette lampe LED révolutionnaire. Ajustez l\'éclairage par de simples gestes, sans contact, pour une ambiance totalement adaptée à vos besoins.', 600.00, 2046, 25, '2024-05-19 18:54:00', '2024-05-19 18:54:00', 'futur/lampe-led-a-controle-gestuel.webp'),
 (60, 17, 42, 'Casque de musique à conduction osseuse', 'Révolutionnez votre manière d\'écouter de la musique avec ce casque à conduction osseuse, transmettant le son directement via les os de votre crâne. Profitez d\'une clarté sonore incomparable sans isoler vos oreilles du monde extérieur.', 1250.00, 2051, 10, '2024-05-19 09:14:00', '2024-05-19 09:14:00', 'futur/casque-de-musique-a-conduction-osseuse.webp'),
-(61, 19, 43, 'Katana forgé à la main', 'Lame tranchante forgée par les meilleurs artisans du Japon féodal. Parfait pour les samouraïs cherchant l\'excellence au combat.', 300.00, 1550, 5, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/katana-forge-a-la-main.webp'),
-(62, 19, 44, 'Armure de samouraï', 'Armure imposante en cuir et métal, portée par les guerriers nobles. Elle offre une protection supérieure et incarne l\'honneur du samouraï.', 500.00, 1600, 3, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/armure-de-samourai.webp'),
-(63, 19, 45, 'Yumi (arc japonais)', 'Arc traditionnel utilisé par les samouraïs pour le tir à l\'arc à longue distance. Fait de bambou et de bois, il est à la fois puissant et élégant.', 150.00, 1580, 10, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/yumi-arc-japonais.webp'),
-(64, 19, 46, 'Tanto (dague)', 'Dague courte et tranchante utilisée par les samouraïs pour le combat rapproché et les cérémonies. Lame en acier, manche orné.', 100.00, 1570, 8, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/tanto-dague.webp'),
-(65, 20, 47, 'Théière en fonte', 'Théière traditionnelle utilisée pour les cérémonies du thé au Japon féodal. Fait de fonte robuste avec des motifs élégants.', 75.00, 1500, 15, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/theiere-en-fonte.webp'),
-(66, 20, 48, 'Kimono en soie', 'Vêtement traditionnel en soie porté lors des cérémonies et des festivals. Orné de motifs floraux délicats.', 200.00, 1540, 12, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/kimono-en-soie.webp'),
-(67, 20, 49, 'Éventail pliant en papier', 'Éventail délicatement peint à la main, utilisé par les nobles pour se rafraîchir et pour des performances artistiques.', 20.00, 1530, 30, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/eventail-pliant-en-papier.webp'),
-(68, 20, 50, 'Lanternes en papier', 'Lanternes traditionnelles illuminant les festivals et les rues du Japon féodal. Papier coloré, structure en bambou.', 30.00, 1555, 25, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/lanternes-en-papier.webp'),
-(69, 21, 51, 'Peinture sur rouleau de soie', 'Peinture détaillée sur rouleau de soie, représentant des paysages et des scènes mythologiques du Japon féodal.', 120.00, 1560, 6, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/peinture-sur-rouleau-de-soie.webp'),
-(70, 21, 52, 'Poupées Hina', 'Poupées traditionnelles utilisées lors du festival Hinamatsuri. Fabriquées à la main avec des vêtements traditionnels.', 50.00, 1590, 20, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'japon_feodal/poupees-hina.webp'),
-(71, 22, 53, 'Tapis persan', 'Un tapis persan richement décoré, parfait pour embellir votre maison.', 300.00, 900, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/tapis-persan.webp'),
-(72, 22, 53, 'Vase en céramique', 'Un vase en céramique délicatement peint, idéal pour les fleurs ou comme pièce décorative.', 150.00, 910, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/vase-en-ceramique.webp'),
-(73, 22, 55, 'Bijou en or', 'Un bijou en or finement ciselé, symbole de richesse et de beauté.', 500.00, 920, 3, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/bijou-en-or.webp'),
-(74, 23, 56, 'Astrolabe en laiton', 'Un astrolabe en laiton utilisé pour les observations astronomiques.', 250.00, 930, 7, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/astrolabe-en-laiton.webp'),
-(75, 23, 57, 'Manuscrit médical', 'Un manuscrit médical détaillant les découvertes en médecine de l\'époque.', 400.00, 940, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/manuscrit-medical.webp'),
-(76, 23, 58, 'Globe terrestre', 'Un globe terrestre illustrant les connaissances géographiques de l\'époque.', 350.00, 950, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/globe-terrestre.webp'),
-(77, 24, 59, 'Robe en soie', 'Une robe en soie luxueuse, parfaite pour les occasions spéciales.', 200.00, 960, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/robe-en-soie.webp'),
-(78, 24, 60, 'Turban en soie', 'Un turban en soie élégamment tissé, symbole de statut et de raffinement.', 180.00, 970, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/turban-en-soie.webp'),
-(79, 24, 61, 'Tunique brodée', 'Une tunique brodée avec des motifs complexes, représentant l\'artisanat raffiné de l\'époque.', 220.00, 980, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'age-dor-islamique/tunique-brodee.webp'),
-(80, 23, 56, 'Lanterne en laiton', 'Lanterne en laiton finement gravée, utilisée pour illuminer les espaces intérieurs et extérieurs. Symbole de l\'artisanat raffiné de l\'époque.', 100.00, 970, 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'age-dor-islamique/tunique-brodee.webp'),
-(81, 25, 62, 'Selle de cheval', 'Une selle de cheval robuste et confortable, parfaite pour les longs trajets.', 120.00, 1880, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/selle-de-cheval.webp'),
-(82, 25, 63, 'Bottes en cuir', 'Des bottes en cuir durables, idéales pour les cowboys et les aventuriers.', 90.00, 1885, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/bottes-en-cuir.webp'),
-(83, 25, 64, 'Ceinture à revolver', 'Une ceinture à revolver en cuir, pratique pour garder votre arme à portée de main.', 60.00, 1890, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/ceinture-a-revolver.webp'),
-(84, 26, 65, 'Revolver', 'Un revolver fiable, essentiel pour la défense personnelle dans le Far West.', 250.00, 1895, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/revolver.webp'),
-(85, 26, 65, 'Fusil à levier', 'Un fusil à levier puissant, utilisé pour la chasse et la protection.', 300.00, 1887, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/fusil-a-levier.webp'),
-(86, 26, 67, 'Couteau de chasse', 'Un couteau de chasse robuste, indispensable pour les tâches quotidiennes et la survie.', 50.00, 1892, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/couteau-de-chasse.webp'),
-(87, 27, 68, 'Chapeau de cowboy', 'Un chapeau de cowboy emblématique, protégeant du soleil et ajoutant du style.', 40.00, 1888, 20, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/chapeau-de-cowboy.webp'),
-(88, 27, 69, 'Lanterne à pétrole', 'Une lanterne à pétrole, essentielle pour l\'éclairage des camps et des maisons.', 30.00, 1883, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/lanterne-a-petrole.webp'),
-(89, 27, 70, 'Harmonica', 'Un harmonica en métal, parfait pour les soirées autour du feu de camp.', 20.00, 1889, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'periode-western/harmonica.webp'),
-(90, 26, 67, 'Corde de lasso', 'Une corde de lasso de haute qualité, idéale pour les travaux de ranch et les compétitions de rodéo.', 35.00, 1886, 7, '2024-05-29 10:00:00', '2024-05-29 10:00:00', 'periode-western/corde-de-lasso.webp');
+(61, 19, 43, 'Katana forgé à la main', 'Lame tranchante forgée par les meilleurs artisans du Japon féodal. Parfait pour les samouraïs cherchant l\'excellence au combat.', 300.00, 1550, 5, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/katana-forge-a-la-main.webp'),
+(62, 19, 44, 'Armure de samouraï', 'Armure imposante en cuir et métal, portée par les guerriers nobles. Elle offre une protection supérieure et incarne l\'honneur du samouraï.', 500.00, 1600, 3, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/armure-de-samourai.webp'),
+(63, 19, 45, 'Yumi (arc japonais)', 'Arc traditionnel utilisé par les samouraïs pour le tir à l\'arc à longue distance. Fait de bambou et de bois, il est à la fois puissant et élégant.', 150.00, 1580, 10, '2024-05-27 21:22:46', '2024-05-29 23:40:29', 'hoken-seido/yumi-(arc-japonais).webp'),
+(64, 19, 46, 'Tanto (dague)', 'Dague courte et tranchante utilisée par les samouraïs pour le combat rapproché et les cérémonies. Lame en acier, manche orné.', 100.00, 1570, 8, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/tanto-(dague).webp'),
+(65, 20, 47, 'Théière en fonte', 'Théière traditionnelle utilisée pour les cérémonies du thé au Japon féodal. Fait de fonte robuste avec des motifs élégants.', 75.00, 1500, 15, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/theiere-en-fonte.webp'),
+(66, 20, 48, 'Kimono en soie', 'Vêtement traditionnel en soie porté lors des cérémonies et des festivals. Orné de motifs floraux délicats.', 200.00, 1540, 12, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/kimono-en-soie.webp'),
+(67, 20, 49, 'Éventail pliant en papier', 'Éventail délicatement peint à la main, utilisé par les nobles pour se rafraîchir et pour des performances artistiques.', 20.00, 1530, 30, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/eventail-pliant-en-papier.webp'),
+(68, 20, 50, 'Lanternes en papier', 'Lanternes traditionnelles illuminant les festivals et les rues du Japon féodal. Papier coloré, structure en bambou.', 30.00, 1555, 25, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/lanternes-en-papier.webp'),
+(69, 21, 51, 'Peinture sur rouleau de soie', 'Peinture détaillée sur rouleau de soie, représentant des paysages et des scènes mythologiques du Japon féodal.', 120.00, 1560, 6, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/peinture-sur-rouleau-de-soie.webp'),
+(70, 21, 52, 'Poupées Hina', 'Poupées traditionnelles utilisées lors du festival Hinamatsuri. Fabriquées à la main avec des vêtements traditionnels.', 50.00, 1590, 20, '2024-05-27 21:22:46', '2024-05-27 21:22:46', 'hoken-seido/poupees-hina.webp'),
+(71, 22, 53, 'Tapis persan', 'Un tapis persan richement décoré, parfait pour embellir votre maison.', 300.00, 900, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/tapis-persan.webp'),
+(72, 22, 53, 'Vase en céramique', 'Un vase en céramique délicatement peint, idéal pour les fleurs ou comme pièce décorative.', 150.00, 910, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/vase-en-ceramique.webp'),
+(73, 22, 55, 'Bijou en or', 'Un bijou en or finement ciselé, symbole de richesse et de beauté.', 500.00, 920, 3, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/bijou-en-or.webp'),
+(74, 23, 56, 'Astrolabe en laiton', 'Un astrolabe en laiton utilisé pour les observations astronomiques.', 250.00, 930, 7, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/astrolabe-en-laiton.webp'),
+(75, 23, 57, 'Manuscrit médical', 'Un manuscrit médical détaillant les découvertes en médecine de l\'époque.', 400.00, 940, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/manuscrit-medical.webp'),
+(76, 23, 58, 'Globe terrestre', 'Un globe terrestre illustrant les connaissances géographiques de l\'époque.', 350.00, 950, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/globe-terrestre.webp'),
+(77, 24, 59, 'Robe en soie', 'Une robe en soie luxueuse, parfaite pour les occasions spéciales.', 200.00, 960, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/robe-en-soie.webp'),
+(78, 24, 60, 'Turban en soie', 'Un turban en soie élégamment tissé, symbole de statut et de raffinement.', 180.00, 970, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/turban-en-soie.webp'),
+(79, 24, 61, 'Tunique brodée', 'Une tunique brodée avec des motifs complexes, représentant l\'artisanat raffiné de l\'époque.', 220.00, 980, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'islamique/tunique-brodee.webp'),
+(80, 23, 56, 'Lanterne en laiton', 'Lanterne en laiton finement gravée, utilisée pour illuminer les espaces intérieurs et extérieurs. Symbole de l\'artisanat raffiné de l\'époque.', 100.00, 970, 8, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'islamique/lanterne-en-laiton.webp'),
+(81, 25, 62, 'Selle de cheval', 'Une selle de cheval robuste et confortable, parfaite pour les longs trajets.', 120.00, 1880, 5, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/selle-de-cheval.webp'),
+(82, 25, 63, 'Bottes en cuir', 'Des bottes en cuir durables, idéales pour les cowboys et les aventuriers.', 90.00, 1885, 8, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/bottes-en-cuir.webp'),
+(83, 25, 64, 'Ceinture à revolver', 'Une ceinture à revolver en cuir, pratique pour garder votre arme à portée de main.', 60.00, 1890, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/ceinture-a-revolver.webp'),
+(84, 26, 65, 'Revolver', 'Un revolver fiable, essentiel pour la défense personnelle dans le Far West.', 250.00, 1895, 6, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/revolver.webp'),
+(85, 26, 65, 'Fusil à levier', 'Un fusil à levier puissant, utilisé pour la chasse et la protection.', 300.00, 1887, 4, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/fusil-a-levier.webp'),
+(86, 26, 67, 'Couteau de chasse', 'Un couteau de chasse robuste, indispensable pour les tâches quotidiennes et la survie.', 50.00, 1892, 12, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/couteau-de-chasse.webp'),
+(87, 27, 68, 'Chapeau de cowboy', 'Un chapeau de cowboy emblématique, protégeant du soleil et ajoutant du style.', 40.00, 1888, 20, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/chapeau-de-cowboy.webp'),
+(88, 27, 69, 'Lanterne à pétrole', 'Une lanterne à pétrole, essentielle pour l\'éclairage des camps et des maisons.', 30.00, 1883, 10, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/lanterne-a-petrole.webp'),
+(89, 27, 70, 'Harmonica', 'Un harmonica en métal, parfait pour les soirées autour du feu de camp.', 20.00, 1889, 15, '2024-05-28 14:43:10', '2024-05-28 14:43:10', 'western/harmonica.webp'),
+(90, 26, 67, 'Corde de lasso', 'Une corde de lasso de haute qualité, idéale pour les travaux de ranch et les compétitions de rodéo.', 35.00, 1886, 7, '2024-05-29 10:00:00', '2024-05-29 10:00:00', 'western/corde-de-lasso.webp');
 
 --
 -- Déclencheurs `articles`
@@ -498,7 +498,10 @@ INSERT INTO `articles_keywords` (`article_id`, `keyword_id`) VALUES
 (87, 30),
 (88, 14),
 (88, 15),
-(31, 163);
+(31, 163),
+(63, 13),
+(63, 164),
+(63, 162);
 
 -- --------------------------------------------------------
 
@@ -535,23 +538,24 @@ CREATE TABLE `categories` (
   `tltn_image_filename` varchar(255) DEFAULT NULL,
   `currency_icon` varchar(255) DEFAULT NULL,
   `date` int(11) DEFAULT NULL,
-  `music_url` text DEFAULT NULL
+  `music_url` text DEFAULT NULL,
+  `ambiant_music_url` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
-INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`, `currency_rate`, `tltn_image_filename`, `currency_icon`, `date`, `music_url`) VALUES
-(1, 'Néolithique', 'Revivez les premiers pas de l\'humanité, où la terre et la pierre façonnent notre quotidien.', 'coquillage', 10.00, 'thumbnail-neolithique.webp', 'currency_icons/coquillage.webp', -3473, 'https://dl.dropboxusercontent.com/scl/fi/yqo7f1iir57xxr550sk7j/stone_world.mp3?rlkey=00m1p3ngrbahfcqdm8f91yn89&st=9qircazs'),
-(2, 'Antiquité', 'Plongez dans l\'éclat de l\'Antiquité avec ses philosophes, poètes et guerriers légendaires.', 'denier', 2.00, 'thumbnail-antiquite.webp', 'currency_icons/denier.webp', -417, 'https://dl.dropboxusercontent.com/scl/fi/cttsenqi2ia5dg8p3tao7/ac_theflight.mp3?rlkey=9wsgb7ah6gxs6jytvvnjss6ph&st=08xlj5gy'),
-(3, 'Moyen-Âge', 'Entrez dans le majestueux Moyen-Âge, une époque de chevaliers et de légendes mystérieuses.', 'écu', 1.00, 'thumbnail-moyenage.webp', 'currency_icons/ecu.webp', 1275, 'https://dl.dropboxusercontent.com/scl/fi/t7xc6he771v59gmt93n0w/medieval_tavern.mp3?rlkey=exbc97mr0a2rwf32hlrwgaw0b&st=bl13shb3'),
-(4, 'Renaissance', 'Vivez la splendeur de la Renaissance, où l\'art et la découverte illuminent notre monde.', 'florin', 0.50, 'thumbnail-renaissance.webp', 'currency_icons/florin.webp', 1544, 'https://dl.dropboxusercontent.com/scl/fi/sulqbspaeerwtvz7ulgfv/kingdom_dance.mp3?rlkey=ftq10tuw4c0gyjxjqkydezrgj&st=uhke63bx'),
-(5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation avec ses merveilles technologiques et son dynamisme.', 'livre', 1.50, 'thumbnail-moderne.webp', 'currency_icons/livre.webp', 1871, 'https://dl.dropboxusercontent.com/scl/fi/kdp7d9y8xsa40tgrxckva/howls_movingcastle.mp3?rlkey=dc461wk883n4yrhk0qb9yhq1l&st=kmelccqp'),
-(6, 'Futur', 'Plongez dans le futur, un monde où technologie et innovation redéfinissent les possibles.', 'crédit', 0.20, 'thumbnail-futur.webp', 'currency_icons/credit.webp', 2048, 'https://dl.dropboxusercontent.com/scl/fi/dvxrmbfymb7lnw56c3ukk/cyberpunk_spoiler.mp3?rlkey=l0tt2knbzj3t4od6f867xtlz9&st=2j8xqkxd'),
-(7, 'Hōken-seido', 'Explorez le pays du Soleil levant, où traditions et histoires légendaires forgent chaque artefact.', 'mon', 1.25, 'thumbnail-hoken-seido.webp', 'currency_icons/mon.webp', 1558, 'https://dl.dropboxusercontent.com/scl/fi/z5qhvjte7s2lb21466gq/'),
-(8, 'Islamique', 'Plongez dans l\'Âge d\'Or Islamique, une ère de grandes avancées et de richesse culturelle.', 'dirham', 0.30, 'thumbnail-islamique.webp', 'currency_icons/dirham.webp', 940, 'https://dl.dropboxusercontent.com/scl/fi/lka7it99g91mpsc45gsz/'),
-(9, 'Western', 'Revivez l\'épopée du Western américain, où cowboys et pionniers forgent une nouvelle nation.', 'dollar', 1.20, 'thumbnail-western.webp', 'currency_icons/dollar.webp', 1888, 'https://dl.dropboxusercontent.com/scl/fi/m2pios2wr3revnk32kq/');
+INSERT INTO `categories` (`category_id`, `name`, `description`, `currency_name`, `currency_rate`, `tltn_image_filename`, `currency_icon`, `date`, `music_url`, `ambiant_music_url`) VALUES
+(1, 'Néolithique', 'Revivez les premiers pas de l\'humanité, où la terre et la pierre façonnent notre quotidien.', 'coquillage', 10.00, 'thumbnail-neolithique.webp', 'currency_icons/coquillage.webp', -3473, 'https://dl.dropboxusercontent.com/scl/fi/yqo7f1iir57xxr550sk7j/stone_world.mp3?rlkey=00m1p3ngrbahfcqdm8f91yn89&st=9qircazs', NULL),
+(2, 'Antiquité', 'Plongez dans l\'éclat de l\'Antiquité avec ses philosophes, poètes et guerriers légendaires.', 'denier', 2.00, 'thumbnail-antiquite.webp', 'currency_icons/denier.webp', -417, 'https://dl.dropboxusercontent.com/scl/fi/cttsenqi2ia5dg8p3tao7/ac_theflight.mp3?rlkey=9wsgb7ah6gxs6jytvvnjss6ph&st=08xlj5gy', NULL),
+(3, 'Moyen-Âge', 'Entrez dans le majestueux Moyen-Âge, une époque de chevaliers et de légendes mystérieuses.', 'écu', 1.00, 'thumbnail-moyenage.webp', 'currency_icons/ecu.webp', 1275, 'https://dl.dropboxusercontent.com/scl/fi/t7xc6he771v59gmt93n0w/medieval_tavern.mp3?rlkey=exbc97mr0a2rwf32hlrwgaw0b&st=bl13shb3', NULL),
+(4, 'Renaissance', 'Vivez la splendeur de la Renaissance, où l\'art et la découverte illuminent notre monde.', 'florin', 0.50, 'thumbnail-renaissance.webp', 'currency_icons/florin.webp', 1544, 'https://dl.dropboxusercontent.com/scl/fi/sulqbspaeerwtvz7ulgfv/kingdom_dance.mp3?rlkey=ftq10tuw4c0gyjxjqkydezrgj&st=uhke63bx', NULL),
+(5, 'Époque Moderne', 'Rejoignez l\'ère de l\'innovation avec ses merveilles technologiques et son dynamisme.', 'livre', 1.50, 'thumbnail-moderne.webp', 'currency_icons/livre.webp', 1871, 'https://dl.dropboxusercontent.com/scl/fi/kdp7d9y8xsa40tgrxckva/howls_movingcastle.mp3?rlkey=dc461wk883n4yrhk0qb9yhq1l&st=kmelccqp', NULL),
+(6, 'Futur', 'Plongez dans le futur, un monde où technologie et innovation redéfinissent les possibles.', 'crédit', 0.20, 'thumbnail-futur.webp', 'currency_icons/credit.webp', 2048, 'https://dl.dropboxusercontent.com/scl/fi/dvxrmbfymb7lnw56c3ukk/cyberpunk_spoiler.mp3?rlkey=l0tt2knbzj3t4od6f867xtlz9&st=2j8xqkxd', NULL),
+(7, 'Hōken-seido', 'Explorez le pays du Soleil levant, où traditions et histoires légendaires forgent chaque artefact.', 'mon', 1.25, 'thumbnail-hoken-seido.webp', 'currency_icons/mon.webp', 1558, 'https://dl.dropboxusercontent.com/scl/fi/z5qhvjte7s2lb21466gsx/rapid-as-wildfire.mp3?rlkey=5312jyzxr1ppsnly6fjcopm10&st=3bsfaa2w', NULL),
+(8, 'Islamique', 'Plongez dans l\'Âge d\'Or Islamique, une ère de grandes avancées et de richesse culturelle.', 'dirham', 0.30, 'thumbnail-islamique.webp', 'currency_icons/dirham.webp', 940, 'https://dl.dropboxusercontent.com/scl/fi/lka7it99g91mpsc45gsu4/the_great_fortress.mp3?rlkey=snh6hbls3fgzku7kp9ik9vuiu&st=jqdqol3v', NULL),
+(9, 'Western', 'Revivez l\'épopée du Western américain, où cowboys et pionniers forgent une nouvelle nation.', 'dollar', 1.20, 'thumbnail-western.webp', 'currency_icons/dollar.webp', 1888, 'https://dl.dropboxusercontent.com/scl/fi/m2pios2wr3revnk32kq8z/american_venom.mp3?rlkey=m1gvtav2ivqpv4vry8xe30doy&st=ejyjxw8g', NULL);
 
 -- --------------------------------------------------------
 
@@ -1058,7 +1062,8 @@ INSERT INTO `keywords` (`keyword_id`, `name`) VALUES
 (160, 'brodée'),
 (161, 'ramage'),
 (162, 'ficelle'),
-(163, 'Terre');
+(163, 'Terre'),
+(164, 'arc');
 
 -- --------------------------------------------------------
 
@@ -1322,7 +1327,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT pour la table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `keyword_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `keyword_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT pour la table `sellers`
