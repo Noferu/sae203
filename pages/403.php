@@ -1,17 +1,19 @@
 <?php
 
-include(__DIR__ . '/include/connexion.php');
-include(__DIR__ . '/include/data_access.php');
-include(__DIR__ . '/include/twig.php');
+include('../include/connexion.php');
+include('../include/data_access.php');
+include('../include/twig.php');
 
-$twig = init_twig();
 $pdo = connexion();
+$twig = init_twig();
 
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
-$message = 'Erreur 403, tu n\'as pas le droit d\'être ici';
+$message = 'Erreur 403 Accès interdit ! Vous ne possédez pas les droits nécessaires pour explorer cette époque.';
 
 echo $twig->render('error.twig', [
-    'message' => $message
+    'message' => $message,
+    'categories' => $categories,
+    'subcategories' => $subcategories
 ]);

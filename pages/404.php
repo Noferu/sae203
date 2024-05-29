@@ -1,17 +1,19 @@
 <?php
 
-include(__DIR__ . '/include/connexion.php');
-include(__DIR__ . '/include/data_access.php');
-include(__DIR__ . '/include/twig.php');
+include('../include/connexion.php');
+include('../include/data_access.php');
+include('../include/twig.php');
 
-$twig = init_twig();
 $pdo = connexion();
+$twig = init_twig();
 
 $categories = select_data($pdo, 'SELECT * FROM categories', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
-$message = 'Erreur 404, tu t\'es trompé de temporalité !';
+$message = 'Erreur 404 Page non trouvée ! Vous semblez perdu dans le temps.';
 
 echo $twig->render('error.twig', [
-    'message' => $message
+    'message' => $message,
+    'categories' => $categories,
+    'subcategories' => $subcategories
 ]);
