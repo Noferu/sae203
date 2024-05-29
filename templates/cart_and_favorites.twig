@@ -4,92 +4,131 @@
     <link rel="stylesheet" href="{{ base_path }}/assets/css/favcart.css">
 {% endblock %}
 
-{% if display == 'cart' %}
-    {% set titlePage = 'Panier' %}
-{% elseif display == 'favorites' %}
-    {% set titlePage = 'Favoris' %}
-{% elseif display == 'payment' %}
-    {% set titlePage = 'Paiement' %}
-{% elseif display == 'command_finished' %}
-    {% set titlePage = 'Commande réussie' %}
-{% else %}
-    {% set titlePage = 'Era Explorer' %}
-{% endif %}
+{% set withFooter = false %}
+
+{% set titlePage = {
+    'cart': 'Panier',
+    'favorites': 'Favoris',
+    'payment': 'Paiement',
+    'command_finished': 'Commande réussie'
+}[step] | default('Era Explorer') %}
 
 {% block title %}
     {{ titlePage }}
 {% endblock %}
 
 {% block main %}
-    {% if display == 'cart' %}
-        <div class="cart">  
+    {% if step == 'cart' %}
+        {% if cart_items|length > 0 %}
             <h1>Panier</h1>
-            <div class="items">
-                {% for item in cart_items %}
-                    <div class="item">
-                        <img src="{{ item.image }}" alt="{{ item.title }}">
-                        <div>
-                            <h2>{{ item.title }}</h2>
-                            <p>{{ item.description }}</p>
-                            <p>Qté: {{ item.quantity }}</p>
-                            <p>Prix: {{ item.price }} €</p>
-                        </div>
-                        <button class="cart-btn" data-action="remove_from_cart" data-article-id="{{ item.article_id }}">Supprimer</button>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="total">
-                <p>Total : {{ cart_total }} €</p>
-            </div>
-            <button>Continuer vos achats</button>
-            <button>Passer au paiement</button>
-        </div>
-    {% elseif display == 'favorites' %}
-        <div class="favorites">
+        {% endif %}
+        <section class="cart">
+            {% if cart_items|length == 0 %}
+                <p class="empty-message">Votre panier est vide.</p>
+            {% else %}
+                <div class="items">
+                    {% for item in cart_items %}
+                        <article class="item">
+                            <img src="{{ base_path }}/assets/images/articles/{{ item.image_url }}" alt="{{ item.title }}">
+                            <div>
+                                <a href="product?action=detail&article_id={{ item.article_id }}"><h2>{{ item.title }}</h2></a>
+                                <p>{{ item.description }}</p>
+                                <form method="post" action="checkout?step=quantity_change" class="quantity-controls">
+                                    <button type="submit" name="decrease_quantity" value="{{ item.article_id }}">-</button>
+                                    <span>Qté : {{ item.quantity }}</span>
+                                    <button type="submit" name="increase_quantity" value="{{ item.article_id }}">+</button>
+                                </form>
+                                <p><span>Prix :</span> {{ item.price }} €</p>
+                            </div>
+                            <button class="cart-btn" data-action="remove_from_cart" data-article-id="{{ item.article_id }}">Supprimer</button>
+                        </article>
+                    {% endfor %}
+                </div>
+                <div class="actions">
+                    <p><span>Total :</span> {{ cart_total }} €</p>
+                    <a href="" onclick="location.reload()">Actualiser le panier</a>
+                    <a id="back-link" href="../index">Continuer les achats</a>
+                    <a href="checkout?step=payment">Passer au paiement</a>
+                </div>
+            {% endif %}
+        </section>
+    {% elseif step == 'favorites' %}
+        {% if favorite_items|length > 0 %}
             <h1>Favoris</h1>
-            <div class="items">
-                {% for item in favorite_items %}
-                    <div class="item">
-                        <img src="{{ item.image }}" alt="{{ item.title }}">
-                        <div>
-                            <h2>{{ item.title }}</h2>
-                            <p>{{ item.description }}</p>
-                            <p>Prix: {{ item.price }} €</p>
-                        </div>
-                        <button class="favorite-btn" data-action="add_to_cart" data-article-id="{{ item.article_id }}">Ajouter au panier</button>
-                        <button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ item.article_id }}">Retirer des favoris</button>
-                    </div>
-                {% endfor %}
-            </div>
-            <button>Continuer vos recherches</button>
-            <button id="add-all-to-cart">Tout ajouter au panier</button>
-        </div>
-    {% elseif display == 'payment' %}
-        <div class="payment">
+        {% endif %}
+        <section class="favorites">
+            {% if favorite_items|length == 0 %}
+                <p class="empty-message">Vous n'avez aucun article dans vos favoris.</p>
+            {% else %}
+                <div class="items">
+                    {% for item in favorite_items %}
+                        <article class="item">
+                            <img src="{{ base_path }}/assets/images/articles/{{ item.image_url }}" alt="{{ item.title }}">
+                            <div>
+                                <a href="product?action=detail&article_id={{ item.article_id }}"><h2>{{ item.title }}</h2></a>
+                                <p>{{ item.description }}</p>
+                                <p><span>Prix :</span> {{ item.price }} €</p>
+                            </div>
+                            <button class="favorite-btn" data-action="add_to_cart" data-article-id="{{ item.article_id }}">Ajouter au panier</button>
+                            <button class="favorite-btn" data-action="remove_favorite" data-article-id="{{ item.article_id }}">Retirer des favoris</button>
+                        </article>
+                    {% endfor %}
+                </div>
+                <div class="actions">
+                    <a href="" onclick="location.reload()">Actualiser les favoris</a>
+                    <a id="back-link" href="../index">Continuer les achats</a>
+                    <button id="add-all-to-cart">Tout ajouter au panier</button>
+                </div>
+            {% endif %}
+        </section>
+    {% elseif step == 'payment' %}
+        <section class="payment">
             <h1>Paiement</h1>
             <form action="process_payment.php" method="post">
-                <label>Nom</label>
-                <input type="text" name="nom">
-                <label>Prénom</label>
-                <input type="text" name="prenom">
-                <label>Adresse</label>
-                <input type="text" name="adresse">
-                <label>Code postal</label>
-                <input type="text" name="code_postal">
-                <label>Téléphone</label>
-                <input type="text" name="telephone">
-                <label>Méthode de paiement</label>
-                <input type="radio" name="payment_method" value="paypal"> Paypal
-                <input type="radio" name="payment_method" value="carte_bancaire"> Carte bancaire
-                <input type="radio" name="payment_method" value="paysafecard"> PaySafeCard
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <div>
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" id="nom" required>
+                </div>
+                <div>
+                    <label for="prenom">Prénom</label>
+                    <input type="text" name="prenom" id="prenom" required>
+                </div>
+                <div>
+                    <label for="adresse">Adresse</label>
+                    <input type="text" name="adresse" id="adresse" required>
+                </div>
+                <div>
+                    <label for="code_postal">Code postal</label>
+                    <input type="text" name="code_postal" id="code_postal" required pattern="\d{5}">
+                </div>
+                <div>
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" name="telephone" id="telephone" required pattern="^\+?\d{10,15}$">
+                </div>
+                <fieldset>
+                    <legend>Méthode de paiement</legend>
+                    <div>
+                        <input type="radio" name="payment_method" value="paypal" id="paypal" required>
+                        <label for="paypal">Paypal</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment_method" value="carte_bancaire" id="carte_bancaire">
+                        <label for="carte_bancaire">Carte bancaire</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="payment_method" value="paysafecard" id="paysafecard">
+                        <label for="paysafecard">PaySafeCard</label>
+                    </div>
+                </fieldset>
                 <button type="submit">Confirmer la commande</button>
             </form>
-        </div>
-    {% elseif display == 'command_finished' %}
-        <div class="order-complete">
+        </section>
+    {% elseif step == 'command_finished' %}
+        <section class="order-complete">
             <h1>La commande a été réussie</h1>
             <p>Date de livraison prévue : 29 février 2025</p>
-        </div>
+        </section>
     {% endif %}
 {% endblock %}
 

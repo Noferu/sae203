@@ -1,7 +1,274 @@
+body {
+  overflow-x: hidden;
+}
+
 header {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent), url('../images/banner/panoramic_sunset_landscape_blurred.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent),
+    url("../images/banner/panoramic_sunset_landscape_blurred.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+main {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}
+
+section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2%;
+  display: flex;
+  gap: 7vw;
+}
+
+section.favorites {
+  align-items: center;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 2%;
+}
+
+.items {
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 2%;
+}
+
+.items .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2%;
+  padding-bottom: 2%;
+}
+
+.items .item:not(:last-child) {
+  border-bottom: 2px solid var(--gold);
+}
+
+.items .item:not(:first-child) {
+  margin-top: 5%;
+}
+
+.items .item img {
+  width: 10vw;
+  max-height: 10vw;
+  object-fit: contain;
+  margin-right: 2%;
+}
+
+.items .item div {
+  flex: 1;
+}
+
+.items .item a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--gold);
+}
+
+.items .item a:hover {
+  text-decoration: underline;
+}
+
+.items .item p {
+  margin: 0.5% 0;
+}
+
+.quantity-controls {
+  margin: 2% 0 2% 0;
+  display: flex;
+  gap: 0.7vw;
+  align-items: center;
+}
+
+button {
+  background-color: var(--gold);
+  border: none;
+  padding: 1%;
+  color: white;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: inherit;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+button:hover {
+  background-color: var(--brown);
+}
+
+.item span {
+  font-weight: 600;
+}
+
+.cart-btn,
+.favorite-btn {
+  background-color: var(--gold);
+  font-family: inherit;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  color: white;
+  margin-left: 5%;
+  transition: all 200ms ease;
+}
+
+.cart-btn:hover,
+.favorite-btn:hover {
+  background-color: var(--brown);
+}
+
+.favorites button#add-all-to-cart {
+  padding:9px 20px
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 20vw;
+}
+
+.actions p {
+  font-size: 2rem;
+  margin-bottom: 2vh;
+}
+
+.actions p span {
+  font-weight: 700;
+}
+
+.actions a {
+  text-align: center;
+  margin-bottom: 1vh;
+  background-color: var(--gold);
+  padding: 10px 20px;
+  color: white;
+  font-weight: 500;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.actions a:hover {
+  background-color: var(--brown);
+}
+
+.empty-message {
+  font-size: 190%;
+  color: var(--gold);
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 960px) {
+  main {
+    padding: 5%;
   }
-  
+
+  section {
+    flex-direction: column;
+    gap: 5vw;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .items .item img {
+    width: 15vw;
+    max-height: 15vw;
+  }
+
+  .actions {
+    width: 100%;
+    align-items: center;
+  }
+
+  .actions p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .actions a {
+    width: 80%;
+    margin: 1vh auto;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .items {
+    max-height: none;
+  }
+
+  .items .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .items .item img {
+    width: 25vw;
+    max-height: 25vw;
+    margin: 0 0 2% 0;
+  }
+
+  .items .item div {
+    width: 100%;
+  }
+
+  .items .item a {
+    font-size: 1rem;
+  }
+
+  .items .item p,
+  .quantity-controls {
+    font-size: 1rem;
+  }
+
+  .cart-btn,
+  .favorite-btn {
+    width: 100%;
+    text-align: center;
+    margin: 2% 0;
+  }
+
+  .actions {
+    width: 100%;
+    align-items: center;
+  }
+
+  .actions p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .actions a {
+    width: 100%;
+    margin: 1vh 0;
+  }
+}
