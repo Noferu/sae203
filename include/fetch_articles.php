@@ -86,7 +86,7 @@ foreach ($articles as &$article) {
 }
 
 // Récupération des catégories, sous-catégories, mots-clés et vendeurs pour les filtres
-$categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
+$categories = select_data($pdo, 'SELECT category_id AS id, name FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, "SELECT subcategory_id AS id, name FROM subcategories");
 
 $keywords = select_data($pdo, "
@@ -95,6 +95,7 @@ $keywords = select_data($pdo, "
     JOIN articles_keywords ak ON k.keyword_id = ak.keyword_id 
     GROUP BY k.keyword_id, k.name 
     HAVING COUNT(DISTINCT ak.article_id) >= 2
+    ORDER BY k.name
 ");
 
 $sellers = select_data($pdo, "
@@ -103,6 +104,7 @@ $sellers = select_data($pdo, "
     JOIN articles a ON s.seller_id = a.seller_id 
     GROUP BY s.seller_id, s.name 
     HAVING COUNT(DISTINCT a.article_id) >= 2
+    ORDER BY s.name
 ");
 
 // Récupération des prix minimum et maximum, et des années de vente
