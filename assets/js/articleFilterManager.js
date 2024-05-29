@@ -113,7 +113,7 @@ function generateArticleHtml(article) {
 
   return `
       <div class="article">
-          <a class="image" href="${article.url}">
+          <a class="image" href="${article.url}" aria-label="${article.title}">
               <img src="${imageUrl}" alt="${article.title}"/>
           </a>
           <div class="right-part">

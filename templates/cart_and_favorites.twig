@@ -4,6 +4,22 @@
     <link rel="stylesheet" href="{{ base_path }}/assets/css/favcart.css">
 {% endblock %}
 
+{% if display == 'cart' %}
+    {% set titlePage = 'Panier' %}
+{% elseif display == 'favorites' %}
+    {% set titlePage = 'Favoris' %}
+{% elseif display == 'payment' %}
+    {% set titlePage = 'Paiement' %}
+{% elseif display == 'command_finished' %}
+    {% set titlePage = 'Commande réussie' %}
+{% else %}
+    {% set titlePage = 'Era Explorer' %}
+{% endif %}
+
+{% block title %}
+    {{ titlePage }}
+{% endblock %}
+
 {% block main %}
     {% if display == 'cart' %}
         <div class="cart">  

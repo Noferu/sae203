@@ -8,6 +8,20 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 {% endblock %}
 
+{% if mode == '1' %}
+    {% set titlePage = 'Connexion' %}
+{% elseif mode == '2' %}
+    {% set titlePage = 'Inscription' %}
+{% elseif mode == '3' %}
+    {% set titlePage = 'Compte' %}
+{% else %}
+    {% set titlePage = 'Era Explorer' %}
+{% endif %}
+
+{% block title %}
+    {{ titlePage }}
+{% endblock %}
+
 {% block main %}
 	<a id="back-link" href="../index">
 		<i class="fa-regular fa-times"></i>

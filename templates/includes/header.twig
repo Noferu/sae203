@@ -1,17 +1,17 @@
 <!-- Header pour les ordinateurs -->
-<header class="desktop-header">
+<header class="desktop-header" role="banner">
 	<div
 		class="umc">
 		<!-- Boutons utilitaires -->
 		<ul class="control-icons">
 			<li class="home-icon">
-				<a href="{{ base_path }}/index" aria-label="Home">
+				<a href="{{ base_path }}/index" aria-label="Accueil">
 					<i class="fa-regular fa-house simple"></i>
 					<i class="fa-solid fa-house simple"></i>
 				</a>
 			</li>
 			<li class="volume-control">
-				<a href="#" aria-label="Toggle Sound">
+				<a href="#" aria-label="Basculer le son">
 					<i class="fa-regular fa-volume-high"></i>
 					<i class="fa-solid fa-volume-high"></i>
 					<i class="fa-regular fa-volume-xmark"></i>
@@ -21,9 +21,9 @@
 		</ul>
 
 		<!-- Barre de recherche -->
-		<form class="search-bar" action="{{ base_path }}/pages/product" method="GET">
+		<form class="search-bar" action="{{ base_path }}/pages/product" method="GET" role="search">
 			<input type="hidden" name="action" value="searching">
-			<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Search">
+			<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Recherche">
 			<button type="submit">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
@@ -53,14 +53,14 @@
 
 		<!-- Menu burger -->
 		<div class="burger-menu">
-			<div class="burger-icon" aria-label="Toggle navigation">
+			<div class="burger-icon" aria-label="Basculer la navigation">
 				<i class="fa-solid fa-bars"></i>
 			</div>
 		</div>
 	</div>
 
 	<!-- Menu de navigation -->
-	<nav>
+	<nav role="navigation">
 		<ul class="nav-links">
 			{% for category in categories %}
 				<li class="dropdown">
@@ -80,12 +80,12 @@
 
 <!-- Header pour les tablettes et mobiles -->
 <header
-	class="mobile-header">
+	class="mobile-header" role="banner">
 	<!-- Barre de recherche -->
-	<form class="search-bar" action="{{ base_path }}/pages/product" method="GET">
+	<form class="search-bar" action="{{ base_path }}/pages/product" method="GET" role="search">
 		<input type="hidden" name="action" value="searching">
-		<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Search">
-		<button type="submit" aria-label="Search Button"></button>
+		<input type="text" name="search" placeholder="Rechercher un article..." aria-label="Recherche">
+		<button type="submit" aria-label="Boutton de recherche"></button>
 	</form>
 
 	<!-- Boutons d'utilisateur -->
@@ -121,7 +121,7 @@
 				<label for="menu-toggle" class="close-icon" aria-label="Fermer la navigation">
 					<i class="fa-solid fa-xmark"></i>
 				</label>
-				<nav>
+				<nav role="navigation">
 					<ul class="nav-links">
 						{% for category in categories %}
 							<li class="dropdown">

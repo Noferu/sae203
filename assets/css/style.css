@@ -311,7 +311,7 @@ nav ul {
   display: flex;
   width: 90vw;
   justify-content: space-around;
-  font-size: 0, 8vw;
+  font-size: 0.8vw;
 }
 
 @media (max-width: 1440px) {

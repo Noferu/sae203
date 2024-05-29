@@ -21,7 +21,7 @@
 		{% if withHeader ?? true %}
 			{% include 'includes/header.twig' %}
 		{% endif %}
-		<main>
+		<main role="main">
 			{% if login_msg != null %}
 				<div id="toast-message">{{login_msg}}</div>
 			{% endif %}
