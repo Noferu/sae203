@@ -2,6 +2,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{{ base_path }}/assets/css/favcart.css">
+    <link rel="stylesheet" href="{{ base_path }}/assets/css/command.css">
 {% endblock %}
 
 {% set withFooter = false %}
@@ -84,7 +85,7 @@
     {% elseif step == 'payment' %}
         <section class="payment">
             <h1>Paiement</h1>
-            <form action="process_payment.php" method="post">
+            <form action="checkout.php?step=command_finished" method="post">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
                 <div>
                     <label for="nom">Nom</label>

@@ -37,7 +37,7 @@ switch ($step) {
         $articles = select_data($pdo, $sql, [':identifiant' => $user_id]);
 
         // Rend la vue pour les favoris avec les articles récupérés
-        echo $twig->render('cart_and_favorites.twig', [
+        echo $twig->render('checkout.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'step' => 'favorites',
@@ -63,7 +63,7 @@ switch ($step) {
         }, 0);
 
         // Rend la vue pour le panier avec les articles et le total du panier
-        echo $twig->render('cart_and_favorites.twig', [
+        echo $twig->render('checkout.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'step' => 'cart',
@@ -127,7 +127,7 @@ switch ($step) {
         }
 
         // Rend la vue pour le panier avec les articles et le total du panier
-        echo $twig->render('cart_and_favorites.twig', [
+        echo $twig->render('checkout.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'step' => 'cart',
@@ -138,7 +138,7 @@ switch ($step) {
 
     case 'payment':
         // Affiche la page de paiement
-        echo $twig->render('payment_and_order.twig', [
+        echo $twig->render('checkout.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'step' => 'payment'
@@ -147,7 +147,7 @@ switch ($step) {
 
     case 'command_finished':
         // Affiche la page de confirmation de commande terminée
-        echo $twig->render('payment_and_order.twig', [
+        echo $twig->render('checkout.twig', [
             'categories' => $categories,
             'subcategories' => $subcategories,
             'step' => 'command_finished'

@@ -1,0 +1,194 @@
+/* Styles pour la page de paiement (payment) */
+.payment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+  }
+  
+  .payment h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2%;
+    color: var(--gold);
+  }
+  
+  .payment form {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment form div {
+    margin-bottom: 1.5rem;
+  }
+  
+  .payment form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--brown);
+  }
+  
+  .payment form input,
+  .payment form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .payment form input:focus,
+  .payment form select:focus {
+    border-color: var(--brown);
+  }
+  
+  .payment form fieldset {
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .payment form fieldset legend {
+    padding: 0 0.5rem;
+    font-weight: 600;
+    color: var(--brown);
+  }
+  
+  .payment form fieldset div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .payment form fieldset div label {
+    margin-left: 0.5rem;
+  }
+  
+  .payment form button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--gold);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .payment form button[type="submit"]:hover {
+    background: var(--brown);
+  }
+  
+  /* Styles pour la page de commande réussie (command_finished) */
+  .order-complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    text-align: center;
+  }
+  
+  .order-complete h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2%;
+    color: var(--gold);
+  }
+  
+  .order-complete p {
+    font-size: 1.5rem;
+    color: var(--brown);
+    margin-top: 1rem;
+  }
+  
+  /* Media Queries pour 960px et moins */
+  @media (max-width: 960px) {
+    .payment h1,
+    .order-complete h1 {
+      font-size: 3rem;
+    }
+  
+    .payment form {
+      padding: 4%;
+    }
+  
+    .order-complete p {
+      font-size: 1.3rem;
+    }
+  }
+  
+  /* Media Queries pour 600px et moins */
+  @media (max-width: 600px) {
+    .payment h1,
+    .order-complete h1 {
+      font-size: 2.5rem;
+    }
+  
+    .payment form {
+      padding: 6%;
+    }
+  
+    .payment form div {
+      margin-bottom: 1rem;
+    }
+  
+    .payment form input,
+    .payment form select {
+      padding: 0.5rem;
+    }
+  
+    .payment form fieldset {
+      padding: 0.5rem;
+    }
+  
+    .payment form button[type="submit"] {
+      padding: 0.5rem;
+    }
+  
+    .order-complete p {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Additional styles to match the cart page design */
+  .payment,
+  .order-complete {
+    margin: 2% auto;
+    padding: 2%;
+    max-width: 1200px;
+    box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+    border-radius: 50px;
+  }
+  
+  .payment form {
+    box-shadow: none;
+    border-radius: 0;
+  }
+  
+  .payment form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .payment form label {
+    margin-bottom: 0.2rem;
+  }
+  
+  .payment form input,
+  .payment form select {
+    margin-bottom: 1rem;
+  }
+  
+  .payment form fieldset {
+    margin-bottom: 1rem;
+  }
+  
+  .payment form button[type="submit"] {
+    margin-top: 1rem;
+  }
+  
