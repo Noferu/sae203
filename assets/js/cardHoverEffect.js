@@ -31,12 +31,26 @@
     // Code exécuté lorsque le document est prêt
     $(document).ready(function() {
         const cards = document.querySelectorAll(".card-link"); // Sélectionne tous les éléments avec la classe "card-link"
+        const audioIds = ['card-audio-1', 'card-audio-2', 'card-audio-3', 'card-audio-4', 'card-audio-5', 'card-audio-6', 'card-audio-7']; // Liste des identifiants audio
+  
         cards.forEach((card, index) => {
             card.style.animationDelay = `${index * 0.2}s`; // Applique un délai d'animation basé sur l'index de la carte
+            card.addEventListener('animationstart', function() {
+                const randomAudioId = audioIds[Math.floor(Math.random() * audioIds.length)]; // Sélectionne un ID audio aléatoire
+                const audioElement = document.getElementById(randomAudioId);
+                if (audioElement) {
+                    const clonedAudio = audioElement.cloneNode(true); // Clone l'élément audio sélectionné
+                    clonedAudio.play(); // Joue l'audio cloné
+                    clonedAudio.onended = function() {
+                        clonedAudio.remove(); // Supprime l'élément audio cloné après la fin de la lecture
+                    };
+                } else {
+                    console.error(`L'élément audio avec l'ID ${randomAudioId} est introuvable.`);
+                }
+            });
         });
         checkTiltActivation(); // Vérifie si l'effet Tilt doit être activé au chargement
         $(window).resize(checkTiltActivation); // Réapplique la vérification lors du redimensionnement de la fenêtre
     });
   
-  }(jQuery));
-  
+}(jQuery));

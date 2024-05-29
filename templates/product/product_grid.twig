@@ -35,25 +35,24 @@
 		{% if previous_category.name %}
 			<a href="product?action=grid&category_id={{ previous_category.category_id }}">
 				<i class="fa-solid fa-arrow-left"></i>
-				<span>{{ previous_category.name }}</span></a>
+				<span>{{ previous_category.name }}</span>
+			</a>
 		{% else %}
 			<div class="spacer"></div>
 		{% endif %}
 		<h1 class="title-letter">{{ current_category.name|upper }}</h1>
 		{% if next_category.name %}
 			<a href="product?action=grid&category_id={{ next_category.category_id }}">
-				<span>{{ next_category.name }}</span><i class="fa-solid fa-arrow-right"></i>
+				<span>{{ next_category.name }}</span>
+				<i class="fa-solid fa-arrow-right"></i>
 			</a>
 		{% else %}
 			<div class="spacer"></div>
 		{% endif %}
 	</div>
+	{% for i in 1..7 %}
+		<audio id="card-audio-{{i}}" src="{{ base_path }}/assets/audio/sfx/whoosh{{i}}.mp3"></audio>
+	{% endfor %}
 {% endblock %}
 {% block js %}
-	<script>
-	document.addEventListener('DOMContentLoaded', (event) => {
-            const gridContainer = document.querySelector('.grid-container');
-            gridContainer.scrollLeft = (gridContainer.scrollWidth - gridContainer.clientWidth) / 2;
-        });
-	</script>
 {% endblock %}
