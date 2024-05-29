@@ -94,7 +94,8 @@ class UserService
             'user_id' => $userId,
             'content' => $content,
             'rating_score' => $rating,
-            'created_at' => date('Y-m-d H:i:s')
+            'created_at' => date('Y-m-d H:i:s'),
+            'display' => 1
         ];
         return insert_data($this->pdo, 'comments', $commentData);
     }
