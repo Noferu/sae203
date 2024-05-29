@@ -240,9 +240,8 @@ main {
   z-index: -1;
   transition: all 300ms ease-in-out;
 }
-
 .theme-futur .button-19:after {
-  animation-delay: 3s;
+  animation-delay: calc(3s - 0.666s);
   animation: hard-hb 0.666s infinite;
 }
 
@@ -250,18 +249,30 @@ main {
   0% {
     transform: scale(1);
     filter: brightness(1);
+    border-radius: 10px;
   }
-  90% {
-    transform: scale(1);
+  30% {
+    transform: scale(1.2);
+    filter: brightness(1.3);
+    border-radius: 15px;
+  }
+  60% {
+    transform: scale(1.5);
     filter: brightness(1.5);
     border-radius: 20px;
   }
-  95% {
+  80% {
     transform: scale(1.3);
-    filter: brightness(1.5);
-    border-radius: 20px;
+    filter: brightness(1.3);
+    border-radius: 15px;
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+    border-radius: 10px;
   }
 }
+
 
 .button-19:hover:not(:disabled) {
   animation: jello-horizontal 0.9s both;
