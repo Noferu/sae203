@@ -53,7 +53,7 @@ switch ($action) {
                 header("Location: ../pages/product?action=detail&article_id=$articleId#lower-part");
                 exit();
             } else {
-                $result = $userService->deleteComment($comment_id);
+                $result = $userService->deleteFromViewComment($comment_id);
             }
 
             if ($result) {

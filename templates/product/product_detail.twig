@@ -102,7 +102,7 @@
 		<div class="section">
 			{% if current_user %}
 				<div class="add-comment">
-					<form id="comment-form" method="POST" action="{{ base_path }}/include/comment_controller.php?action=submit_comment">
+					<form accept-charset="UTF-8" id="comment-form" method="POST" action="{{ base_path }}/include/comment_controller.php?action=submit_comment">
 						<textarea id="comment-textarea" name="comment" placeholder="Ajouter un commentaire en tant que {{ current_user.name }}..." maxlength="300" required></textarea>
 						<input type="hidden" name="rating" id="rating" value="0">
 						<input type="hidden" name="article_id" value="{{ article.article_id }}">
