@@ -45,11 +45,12 @@ switch ($action) {
                                       JOIN articles a ON a.seller_id = s.seller_id
                                       WHERE a.article_id = :article_id", $params, false);
 
-        // Sélection des commentaires associés à l'article
+        // Sélection des commentaires afficheable en ordre dé-chronologique associés à l'article
         $comments = select_data($pdo, "SELECT c.*, u.username FROM comments c
         JOIN articles a ON a.article_id = c.article_id
         JOIN users u ON u.user_id = c.user_id
-        WHERE a.article_id = :article_id", $params, true);
+        WHERE c.display = 1 AND a.article_id = :article_id
+        ORDER BY c.created_at DESC", $params, true);
 
         // Récupération des informations de l'utilisateur actuel
         $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false;
