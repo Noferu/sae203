@@ -74,6 +74,9 @@ if (!empty($whereConditions)) {
     $sql_articles .= " WHERE " . implode(' AND ', $whereConditions);
 }
 
+// Ajout de la clause ORDER BY pour trier par date de vente (ou sale_year)
+$sql_articles .= " ORDER BY a.sale_year ASC";
+
 // Exécution de la requête pour récupérer les articles
 $articles = select_data($pdo, $sql_articles, $params);
 
@@ -83,7 +86,7 @@ foreach ($articles as &$article) {
 }
 
 // Récupération des catégories, sous-catégories, mots-clés et vendeurs pour les filtres
-$categories = select_data($pdo, "SELECT category_id AS id, name FROM categories");
+$categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, "SELECT subcategory_id AS id, name FROM subcategories");
 
 $keywords = select_data($pdo, "

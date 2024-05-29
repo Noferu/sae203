@@ -20,7 +20,8 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'list'; // Récupère l'act
 $categories = select_data($pdo, 'SELECT * FROM categories ORDER BY date ASC', [], true);
 $subcategories = select_data($pdo, 'SELECT * FROM subcategories', [], true);
 
-function renderListView($pdo, $twig, $article_id, $categories, $subcategories) {
+function renderListView($pdo, $twig, $article_id, $categories, $subcategories)
+{
     $params = [':article_id' => $article_id];
 
     // Sélection des informations de l'article
@@ -126,25 +127,36 @@ switch ($action) {
 
     case 'grid':
         $category_id = $_GET['category_id'];
+
+        // Requête pour récupérer les articles de la catégorie, triés par sale_year du plus petit au plus grand
         $sql = "SELECT * 
                 FROM articles 
                 WHERE subcategory_id IN (
                     SELECT subcategory_id 
                     FROM subcategories 
                     WHERE category_id = :category_id
-                )";
+                )
+                ORDER BY sale_year ASC";
         $params = [':category_id' => $category_id];
         $articles = select_data($pdo, $sql, $params, true);
 
+        // Requête pour récupérer la catégorie actuelle
         $sql = "SELECT * FROM categories WHERE category_id = :category_id";
         $current_category = select_data($pdo, $sql, $params, false);
 
         if ($current_category) {
-            $sql = "SELECT * FROM categories WHERE category_id < :category_id ORDER BY category_id DESC LIMIT 1";
-            $previous_category = select_data($pdo, $sql, $params, false);
+            // Récupération de la date de la catégorie actuelle pour comparaison
+            $current_category_date = $current_category['date'];
 
-            $sql = "SELECT * FROM categories WHERE category_id > :category_id ORDER BY category_id ASC LIMIT 1";
-            $next_category = select_data($pdo, $sql, $params, false);
+            // Requête pour récupérer la catégorie précédente basée sur la colonne `date`
+            $sql = "SELECT * FROM categories WHERE date < :current_date ORDER BY date DESC LIMIT 1";
+            $previous_params = [':current_date' => $current_category_date];
+            $previous_category = select_data($pdo, $sql, $previous_params, false);
+
+            // Requête pour récupérer la catégorie suivante basée sur la colonne `date`
+            $sql = "SELECT * FROM categories WHERE date > :current_date ORDER BY date ASC LIMIT 1";
+            $next_params = [':current_date' => $current_category_date];
+            $next_category = select_data($pdo, $sql, $next_params, false);
         } else {
             $previous_category = null;
             $next_category = null;
