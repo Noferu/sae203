@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Bascule le mode muet de l'audio
             audio.muted = !audio.muted;
         });
+
+        // Ajoute un événement pour ajuster le volume au défilement de la molette de la souris
+        volumeControl.addEventListener('wheel', function(event) {
+            event.preventDefault(); // Empêche le comportement par défaut du défilement
+
+            // Ajuste le volume de l'élément audio de manière plus progressive
+            let newVolume = audio.volume - (event.deltaY * 0.0016667); // Ajuste par des incréments plus petits
+            audio.volume = Math.min(Math.max(newVolume, 0), 1); // Limite le volume entre 0 et 1
+        });
     }
 
     // Ajoute un événement pour jouer l'audio au premier clic sur le body
