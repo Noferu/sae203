@@ -158,10 +158,15 @@ main {
 .timeline {
   text-align: center;
   height: 60vh;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap:3vw;
 }
 
 .timeline h1 {
-  margin: 3vw;
   font-size: 600%;
   user-select: none;
   animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
@@ -186,8 +191,6 @@ main {
   height: 100px;
   overflow-x: auto;
   white-space: nowrap;
-  margin: 5vh auto;
-  margin-bottom: 2.5vh;
   position: relative;
   user-select: none;
   overflow-y: hidden;
@@ -229,7 +232,6 @@ main {
 }
 
 .epoch-desc {
-  margin: 2.5vh;  
   font-size: 150%;
   font-weight: 600;
   padding: 0 10vw 0 10vw;
@@ -237,11 +239,18 @@ main {
   color:white;
 }
 
+.btn-animation {
+  width: 206px;
+  height: 54px;
+}
+
 .button-19 {
+  width: 100%;
+  height: 100%;
   appearance: button;
   border: solid transparent;
   border-radius: 100px;
-  border-width: 0 0 4px;
+  border-width: 0 0 5px;
   box-sizing: border-box;
   color: white;
   cursor: pointer;
@@ -275,6 +284,7 @@ main {
   z-index: -1;
   transition: all 300ms ease-in-out;
 }
+
 .theme-futur .button-19:after {
   animation-delay: calc(3s - 0.666s);
   animation: hard-hb 0.666s infinite;
@@ -458,8 +468,13 @@ section > h2 {
     margin-top: 5vh;
   }
 
+  .btn-animation {
+    width: 400px;
+    height: 100px;
+  }
+
   .button-19 {
-    padding: 30px 40px;
+    line-height: 70px;
     font-size: 250%;
   }
 
