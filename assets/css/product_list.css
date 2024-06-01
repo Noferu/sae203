@@ -126,11 +126,11 @@ input[type="checkbox"]:checked {
   margin: 2vw;
 }
 
-.article:first-child {
+article:first-child {
   animation: show-up 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-.article {
+article {
   margin: auto;
   width: 90%;
   height: 300px;
@@ -143,7 +143,7 @@ input[type="checkbox"]:checked {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.article .image {
+article .image {
   animation: jello-diagonal-1 0.8s both;
 }
 
@@ -193,7 +193,7 @@ input[type="checkbox"]:checked {
   }
 }
 
-.article .image {
+article .image {
   height: 100%;
   width: 25%;
   display: flex;
@@ -202,25 +202,25 @@ input[type="checkbox"]:checked {
   background-color: #f0f0f0;
 }
 
-.article .image:hover img {
+article .image:hover img {
   transform: scale(1.2) rotate(15deg);
   filter: drop-shadow(8px 12px 21px #000000a2);
 }
 
-.article img {
+article img {
   height: 70%;
   filter: drop-shadow(8px 12px 21px #0000004d);
   transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
-.article .right-part {
+article .right-part {
   display: flex;
   flex: 1;
   justify-content: space-around;
   width: 60%;
 }
 
-.article .text-infos {
+article .text-infos {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -228,21 +228,21 @@ input[type="checkbox"]:checked {
   gap: 2vh;
 }
 
-.article .text-infos h2 {
+article .text-infos h2 {
   color: var(--gold);
   font-weight: 800;
   font-size: 150%;
 }
 
-.article .text-infos a {
+article .text-infos a {
   text-decoration: none;
 }
 
-.article .text-infos span {
+article .text-infos span {
   font-weight: 600;
 }
 
-.article .btns {
+article .btns {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -251,7 +251,7 @@ input[type="checkbox"]:checked {
   gap: 2vh;
 }
 
-.article .btns a {
+article .btns a {
   text-decoration: none;
   background-color: var(--gold);
   border-radius: 100px;
@@ -263,7 +263,7 @@ input[type="checkbox"]:checked {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.article .btns a:hover {
+article .btns a:hover {
   background-color: var(--brown);
   color: white;
 }
@@ -279,49 +279,49 @@ input[type="checkbox"]:checked {
 }
 
 @media only screen and (max-width: 960px) {
-  .article img {
+  article img {
     height: 50%;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .article {
+  article {
     flex-direction: column;
     align-items: center;
     height: auto;
   }
 
-  .article .image {
+  article .image {
     width: 100%;
     height: auto;
     animation: none;
   }
 
-  .article img {
+  article img {
     height: auto;
     animation: jello-diagonal-1 0.8s both;
     width: 50%;
   }
 
-  .article .right-part {
+  article .right-part {
     width: 100%;
     justify-content: center;
   }
 
-  .article .text-infos {
+  article .text-infos {
     width: 100%;
     padding: 25px;
     padding-right:0;
   }
 
-  .article .btns {
+  article .btns {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
     padding: 10px;
   }
 
-  .article .btns a {
+  article .btns a {
     min-width: 80px;
   }
 

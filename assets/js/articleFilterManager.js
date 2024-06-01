@@ -163,7 +163,7 @@ function generateArticleHtml(article) {
       : article.description; // Tronque la description si elle est trop longue
 
   return `
-        <div class="article">
+        <article>
             <a class="image" href="${article.url}" aria-label="${article.title}">
                 <img src="${imageUrl}" alt="${article.title}"/>
             </a>
@@ -181,7 +181,7 @@ function generateArticleHtml(article) {
                     <a class="put-in-cart cart-btn" href="#" data-action="add_to_cart" data-article-id="${article.article_id}">Ajouter au panier</a>
                 </div>
             </div>
-        </div>
+        </article>
     `;
 }
 
