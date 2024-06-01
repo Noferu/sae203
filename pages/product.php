@@ -174,65 +174,67 @@ switch ($action) {
         ]);
         break;
 
-        case 'searching':
-            $search = $_GET['search'] ?? '';
-            $search_safe = htmlspecialchars($search);
-        
-            if (empty($search_safe)) {
-                echo $twig->render('product/product_search.twig', [
-                    'error' => true,
-                    'message' => 'Veuillez entrer des mots-clés pour la recherche.',
-                    'categories' => $categories,
-                    'subcategories' => $subcategories
-                ]);
-                break;
-            }
-        
-            $search_terms = array_slice(explode(' ', $search_safe), 0, 5);
-            $search_query = implode(' ', $search_terms);
-        
-            $sql = "SELECT a.*, 
-                           MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE) AS score_fulltext,
-                           (CASE
-                                WHEN a.title LIKE :like_query THEN 1
-                                WHEN a.description LIKE :like_query THEN 2
-                                WHEN k.name LIKE :like_query THEN 3
-                                ELSE 4
-                            END) AS score_partial_match
-                    FROM articles a
-                    LEFT JOIN articles_keywords ak ON a.article_id = ak.article_id
-                    LEFT JOIN keywords k ON ak.keyword_id = k.keyword_id
-                    WHERE MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE)
-                       OR a.title LIKE :like_query
-                       OR a.description LIKE :like_query
-                       OR k.name LIKE :like_query
-                    ORDER BY score_fulltext DESC, score_partial_match, LENGTH(a.description) ASC
-                    LIMIT 10";
-        
-            $params = [
-                ':search_query' => $search_query,
-                ':like_query' => '%' . $search_safe . '%'
-            ];
-        
-            $articles = select_data($pdo, $sql, $params, false);
-        
-            if ($articles) {
-                echo $twig->render('product/product_search.twig', [
-                    'article_count' => count($articles),
-                    'articles' => $articles,
-                    'categories' => $categories,
-                    'subcategories' => $subcategories
-                ]);
-            } else {
-                echo $twig->render('product/product_search.twig', [
-                    'error' => true,
-                    'message' => 'Aucun article trouvé pour: ' . $search_safe,
-                    'categories' => $categories,
-                    'subcategories' => $subcategories
-                ]);
-            }
+    case 'searching':
+        $search = $_GET['search'] ?? '';
+        $search_safe = htmlspecialchars($search);
+
+        if (empty($search_safe)) {
+            echo $twig->render('product/product_search.twig', [
+                'error' => true,
+                'message' => 'Veuillez entrer des mots-clés pour la recherche.',
+                'categories' => $categories,
+                'subcategories' => $subcategories
+            ]);
             break;
-        
+        }
+
+        $search_terms = array_slice(explode(' ', $search_safe), 0, 5);
+        $search_query = implode(' ', $search_terms);
+
+        $sql = "SELECT DISTINCT a.*, 
+                MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE) AS score_fulltext,
+                (CASE
+                    WHEN a.title LIKE :like_query THEN 1
+                    WHEN a.description LIKE :like_query THEN 2
+                    WHEN k.name LIKE :like_query THEN 3
+                    ELSE 4
+                END) AS score_partial_match
+FROM articles a
+LEFT JOIN articles_keywords ak ON a.article_id = ak.article_id
+LEFT JOIN keywords k ON ak.keyword_id = k.keyword_id
+WHERE MATCH(a.title, a.description) AGAINST(:search_query IN NATURAL LANGUAGE MODE)
+   OR a.title LIKE :like_query
+   OR a.description LIKE :like_query
+   OR k.name LIKE :like_query
+ORDER BY score_fulltext DESC, score_partial_match, LENGTH(a.description) ASC
+LIMIT 10";
+
+
+        $params = [
+            ':search_query' => $search_query,
+            ':like_query' => '%' . $search_safe . '%'
+        ];
+
+        $articles = select_data($pdo, $sql, $params, true);
+
+        if ($articles) {
+            echo $twig->render('product/product_search.twig', [
+                'article_count' => count($articles),
+                'articles' => $articles,
+                'categories' => $categories,
+                'subcategories' => $subcategories
+            ]);
+        } else {
+            echo $twig->render('product/product_search.twig', [
+                'error' => true,
+                'message' => 'Aucun article trouvé pour: ' . $search_safe,
+                'categories' => $categories,
+                'subcategories' => $subcategories
+            ]);
+        }
+        break;
+
+
 
     default:
         echo $twig->render('error.twig', [

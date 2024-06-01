@@ -12,14 +12,6 @@ header {
   background-color: var(--brown);
 }
 
-main {
-  display: flex;
-}
-
-section {
-  flex: 1;
-}
-
 h1 {
   text-align: center;
   font-family: "Nabla";
@@ -29,6 +21,7 @@ h1 {
 
 main > p {
   font-weight: 600;
+  text-align: center;
 }
 
 article:first-child {

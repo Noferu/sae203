@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const applyAnimationDelay = () => {
-    // Sélectionne tous les articles dans le conteneur avec l'ID "articles"
-    document.querySelectorAll("#articles .article").forEach((article, index) => {
+    // Sélectionne tous les éléments article dans le document
+    document.querySelectorAll("article").forEach((article, index) => {
       // Applique un délai d'animation pour chaque article basé sur son index
       article.style.animationDelay = `${index * 0.2}s`;
       const image = article.querySelector('.image'); // Sélectionne l'image à l'intérieur de l'article

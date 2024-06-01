@@ -5,13 +5,18 @@
 {% endblock %}
 
 {% block title %}
-	{{ article_count }}
-	{% if article_count > 1 %}
-		résultats de la recherche
-	{% else %}
-		résultat de la recherche
-	{% endif %}
+    {% if error %}
+        Bug temporel
+    {% else %}
+        {{ article_count }}
+        {% if article_count > 1 %}
+            résultats de la recherche
+        {% else %}
+            résultat de la recherche
+        {% endif %}
+    {% endif %}
 {% endblock %}
+
 
 {% block main %}
 	{% if error %}
@@ -29,7 +34,7 @@
 			{% for article in articles %}
 				<article>
 					<a class="image" href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}" aria-label="{{ article.title }}">
-						<img src="{{ article.image_url }}" alt="{{ article.title }}"/>
+						<img src="{{ base_path }}/assets/images/articles/{{ article.image_url }}" alt="{{ article.title }}"/>
 					</a>
 					<div class="right-part">
 						<div class="text-infos">
