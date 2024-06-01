@@ -1,0 +1,63 @@
+{% extends "includes/base.twig" %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ base_path }}/assets/css/product_search.css">
+{% endblock %}
+
+{% block title %}
+	{{ article_count }}
+	{% if article_count > 1 %}
+		résultats de la recherche
+	{% else %}
+		résultat de la recherche
+	{% endif %}
+{% endblock %}
+
+{% block main %}
+	{% if error %}
+		<h1>Bug temporel</h1>
+		<p>{{ message }}</p>
+	{% else %}
+		<h1>{{ article_count }}
+			{% if article_count > 1 %}
+				articles trouvés
+			{% else %}
+				article trouvé
+			{% endif %}
+		</h1>
+		<section>
+			{% for article in articles %}
+				<article>
+					<a class="image" href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}" aria-label="{{ article.title }}">
+						<img src="{{ article.image_url }}" alt="{{ article.title }}"/>
+					</a>
+					<div class="right-part">
+						<div class="text-infos">
+							<a href="href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}"">
+								<h2>{{ article.title }}</h2>
+							</a>
+							<p>{{ article.description }}</p>
+							<p>
+								<span>Prix :</span>
+								{{ article.price }}
+								€</p>
+							<p>
+								<span>Année de vente :</span>
+								{{ article.sale_year }}</p>
+						</div>
+						<div class="btns">
+							<a class="learn-more" href="{{ base_path }}/pages/product?action=detail&article_id={{ article.article_id }}">En savoir plus</a>
+							<a class="put-in-cart cart-btn" href="#" data-action="add_to_cart" data-article-id="{{ article.article_id }}">Ajouter au panier</a>
+						</div>
+					</div>
+				</article>
+			{% endfor %}
+		</section>
+	{% endif %}
+{% endblock %}
+
+{% block js %}
+	<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
+	<script src="{{ base_path }}/assets/js/articleFilterManager.js"></script>
+	<script src="{{ base_path }}/assets/js/articleListAnimation.js"></script>
+{% endblock %}

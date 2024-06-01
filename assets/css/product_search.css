@@ -1,0 +1,224 @@
+body {
+  background-color: #f9f9f9;
+}
+
+header {
+  background-image: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent),
+    url("../images/banner/panoramic_sunset_landscape_blurred.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--brown);
+}
+
+main {
+  display: flex;
+}
+
+section {
+  flex: 1;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Nabla";
+  font-size: 3rem;
+  margin: 2vw;
+}
+
+main > p {
+  font-weight: 600;
+}
+
+article:first-child {
+  animation: show-up 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+article {
+  margin: auto;
+  width: 90%;
+  height: 300px;
+  display: flex;
+  background-color: #ffffff;
+  margin-bottom: 2vh;
+  animation: show-up-next 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+article .image {
+  animation: jello-diagonal-1 0.8s both;
+}
+
+@keyframes jello-diagonal-1 {
+  0% {
+    transform: skew(0deg, 0deg);
+  }
+  30% {
+    transform: skew(25deg, 25deg);
+  }
+  40% {
+    transform: skew(-15deg, -15deg);
+  }
+  50% {
+    transform: skew(15deg, 15deg);
+  }
+  65% {
+    transform: skew(-5deg, -5deg);
+  }
+  75% {
+    transform: skew(5deg, 5deg);
+  }
+  100% {
+    transform: skew(0deg, 0deg);
+  }
+}
+
+@keyframes show-up {
+  0% {
+    transform: scale(0.7);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes show-up-next {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+article .image {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+}
+
+article .image:hover img {
+  transform: scale(1.2) rotate(15deg);
+  filter: drop-shadow(8px 12px 21px #000000a2);
+}
+
+article img {
+  height: 70%;
+  filter: drop-shadow(8px 12px 21px #0000004d);
+  transition: all 0.4s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+article .right-part {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  width: 60%;
+}
+
+article .text-infos {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 60%;
+  gap: 2vh;
+}
+
+article .text-infos h2 {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 150%;
+}
+
+article .text-infos a {
+  text-decoration: none;
+}
+
+article .text-infos span {
+  font-weight: 600;
+}
+
+article .btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  gap: 2vh;
+}
+
+article .btns a {
+  text-decoration: none;
+  background-color: var(--gold);
+  border-radius: 100px;
+  color: white;
+  text-align: center;
+  width: 9vw;
+  padding: 15px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+article .btns a:hover {
+  background-color: var(--brown);
+  color: white;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 960px) {
+  article img {
+    height: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  article {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  article .image {
+    width: 100%;
+    height: auto;
+    animation: none;
+  }
+
+  article img {
+    height: auto;
+    animation: jello-diagonal-1 0.8s both;
+    width: 50%;
+  }
+
+  article .right-part {
+    width: 100%;
+    justify-content: center;
+  }
+
+  article .text-infos {
+    width: 100%;
+    padding: 25px;
+    padding-right: 0;
+  }
+
+  article .btns {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+  }
+
+  article .btns a {
+    min-width: 80px;
+  }
+}
