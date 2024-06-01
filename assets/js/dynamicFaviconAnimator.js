@@ -5,62 +5,86 @@ document.addEventListener('DOMContentLoaded', () => {
     switch(bodyClass) {
         case 'theme-néolithique':
             frames = [
-                `${basePath}/assets/images/icons/ear_of_rice.ico`,
-                `${basePath}/assets/images/icons/meat_on_bone.ico`,
-                `${basePath}/assets/images/icons/fire.ico`
+                '🪨',
+                '🛖',
+                '🔥'
             ];
             break;
         case 'theme-antiquité':
             frames = [
-                `${basePath}/assets/images/icons/classical_building.ico`,
-                `${basePath}/assets/images/icons/amphora.ico`,
-                `${basePath}/assets/images/icons/crossed_swords.ico`,
+                '🏛️',
+                '🏺',
+                '⚔️',
             ];
             break;
         case 'theme-moyen-âge':
             frames = [
-                `${basePath}/assets/images/icons/european_castle.ico`,
-                `${basePath}/assets/images/icons/shield.ico`,
-                `${basePath}/assets/images/icons/scroll.ico`
+                '🏰',
+                '🛡️',
+                '📜'
             ];
             break;
         case 'theme-renaissance':
             frames = [
-                `${basePath}/assets/images/icons/art.ico`,
-                `${basePath}/assets/images/icons/books.ico`,
-                `${basePath}/assets/images/icons/classical_building.ico`
+                '🎨',
+                '📚',
+                '🏛️'
             ];
             break;
         case 'theme-époque-moderne':
             frames = [
-                `${basePath}/assets/images/icons/bike.ico`,
-                `${basePath}/assets/images/icons/printer.ico`,
-                `${basePath}/assets/images/icons/airplane.ico`
+                '🚲',
+                '🖨️',
+                '✈️'
             ];
             break;
         case 'theme-futur':
             frames = [
-                `${basePath}/assets/images/icons/robot_face.ico`,
-                `${basePath}/assets/images/icons/flying_saucer.ico`,
-                `${basePath}/assets/images/icons/diamond_shape_with_a_dot_inside.ico`
+                '🚀',
+                '🤖',
+                '🌌'
+            ];
+            break;
+        case 'theme-islamique':
+            frames = [
+                '🕌',
+                '🕋',
+                '🧭'
+            ];
+            break;
+        case 'theme-hōken-seidō':
+            frames = [
+                '🏯',
+                '🎎',
+                '🍣'
+            ];
+            break;
+        case 'theme-western':
+            frames = [
+                '🏜️',
+                '🔫',
+                '🐎'
             ];
             break;
         default:
             frames = [
-                `${basePath}/assets/images/icons/ear_of_rice.ico`,
-                `${basePath}/assets/images/icons/classical_building.ico`,
-                `${basePath}/assets/images/icons/european_castle.ico`,
-                `${basePath}/assets/images/icons/art.ico`,
-                `${basePath}/assets/images/icons/bike.ico`,
-                `${basePath}/assets/images/icons/robot_face.ico`
+                '🪨',
+                '🏛️',
+                '🕌',
+                '🛡️',
+                '🎨',
+                '🍣',
+                '🖨️',
+                '🐎',
+                '🌌'
             ];
             break;
     }
 
     // Fonction pour changer le favicon
-    function changeFavicon(src) {
+    function changeFavicon(emoji) {
         const link = document.getElementById('favicon'); // Sélectionne l'élément du favicon par son ID
-        link.href = src; // Change l'URL du favicon
+        link.href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2214%22 font-size=%2214%22>${emoji}</text></svg>`;
     }
 
     // Fonction pour animer le favicon

@@ -182,17 +182,38 @@
 	</div>
 {% endblock %}
 {% block js %}
-	<script src="{{ base_path }}/assets/js/articleLens.js"></script>
-	<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
-	<script src="{{ base_path }}/assets/js/commentRatingManager.js"></script>
-	<script>
-		$(document).ready(function () {
-$(".article-details > *").each(function (index) {
-$(this).css("animation-delay", `${
-index * 0.2
-}s`);
-});
-});
-	</script>
-	<script src="{{ base_path }}/assets/js/keywordAdder.js"></script>
+<script src="{{ base_path }}/assets/js/articleLens.js"></script>
+<script src="{{ base_path }}/assets/js/favcartManager.js"></script>
+<script src="{{ base_path }}/assets/js/commentRatingManager.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Preload sounds
+        const favoriteSound = new Audio('{{ base_path }}/assets/sounds/favorite-sound.mp3');
+        const cartSound = new Audio('{{ base_path }}/assets/sounds/cart-sound.mp3');
+        const whooshSound = new Audio('{{ base_path }}/assets/sounds/whoosh-sound.mp3');
+
+        // Play sound on favorite button click
+        document.querySelectorAll('.favorite-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                favoriteSound.cloneNode(true).play();
+            });
+        });
+
+        // Play sound on cart button click
+        document.querySelectorAll('.cart-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                cartSound.cloneNode(true).play();
+            });
+        });
+
+        // Play sound on page element animations
+        $(".article-details > *").each(function (index) {
+            $(this).css("animation-delay", `${index * 0.2}s`);
+            $(this).on('animationstart', () => {
+                whooshSound.cloneNode(true).play();
+            });
+        });
+    });
+</script>
+<script src="{{ base_path }}/assets/js/keywordAdder.js"></script>
 {% endblock %}
