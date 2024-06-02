@@ -197,7 +197,6 @@ h1 {
 }
 
 .article-action .price {
-  
   display: flex;
   align-items: center;
   gap: 5px;
@@ -322,16 +321,13 @@ h1 {
   background-color: var(--m-hsei);
 }
 
-
 .theme-western .tags span {
   background-color: var(--m-wes);
 }
 
-
 .theme-islamique .tags span {
   background-color: var(--m-isl);
 }
-
 
 .tags span:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -713,10 +709,12 @@ h1 {
     margin-bottom: 1vh;
   }
 
-  p.tags { width: 100%;}
+  p.tags {
+    width: 100%;
+  }
 
   .wave-container {
-    top:-150px;
+    top: -150px;
   }
 
   .lower-part {
@@ -749,8 +747,8 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
-
-  .article-info, .additional-info {
+  .article-info,
+  .additional-info {
     width: 90vw;
   }
 
@@ -761,7 +759,7 @@ h1 {
   .lower-part section {
     width: 100%;
   }
-  
+
   .lower-part h3 {
     margin: 0 0 5vh 0;
   }
@@ -771,8 +769,7 @@ h1 {
   }
 
   .wave-container {
-    top:-100px;
+    top: -100px;
     height: 100px;
   }
-
 }

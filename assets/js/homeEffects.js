@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let audio = document.getElementById("myAudio"); // Sélectionne l'élément audio par son ID
-  audio.volume = 0; // Initialise le volume de l'audio à 0
-  audio.pause(); // Met l'audio en pause
+  let audio = document.getElementById("myAudio");
+  audio.volume = 0;
+  audio.pause();
 
   // Attend 500ms avant de commencer la lecture et l'augmentation progressive du volume
   setTimeout(() => {

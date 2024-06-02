@@ -133,7 +133,7 @@ button:hover {
 }
 
 .favorites button#add-all-to-cart {
-  padding:9px 20px
+  padding: 9px 20px;
 }
 
 .actions {
@@ -172,13 +172,12 @@ button:hover {
 .empty-message {
   font-size: 190%;
   color: var(--gold);
-  position:absolute;
-  top:50%;
-  left:50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
 
 /* MEDIA QUERIES */
 

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const addKeywordBtn = $("#add-keyword-btn"); // Sélectionne le bouton pour ajouter un mot-clé
+  const addKeywordBtn = $("#add-keyword-btn");
   const articleId = addKeywordBtn.data("article-id"); // Récupère l'ID de l'article depuis les données du bouton
 
   addKeywordBtn.on("click", function (event) {

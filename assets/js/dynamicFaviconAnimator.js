@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fonction pour changer le favicon
     function changeFavicon(emoji) {
-        const link = document.getElementById('favicon'); // Sélectionne l'élément du favicon par son ID
+        const link = document.getElementById('favicon');
         link.href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2214%22 font-size=%2214%22>${emoji}</text></svg>`;
     }
 
     // Fonction pour animer le favicon
     function animateFavicon(frames, interval) {
-        let frameIndex = 0; // Initialise l'index du frame
+        let frameIndex = 0;
         setInterval(() => {
             changeFavicon(frames[frameIndex]); // Change le favicon à chaque intervalle
             frameIndex = (frameIndex + 1) % frames.length; // Passe au frame suivant, boucle au début si nécessaire

@@ -43,8 +43,8 @@
   background-color: var(--m-isl);
 }
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -52,40 +52,112 @@ html, body {
 }
 
 .theme-néolithique {
-  background: linear-gradient(to right, var(--m-néo) 0%, var(--m-néo) 20%, white 40%, white 60%, var(--m-néo) 80%, var(--m-néo) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-néo) 0%,
+    var(--m-néo) 20%,
+    white 40%,
+    white 60%,
+    var(--m-néo) 80%,
+    var(--m-néo) 100%
+  );
 }
 
 .theme-antiquité {
-  background: linear-gradient(to right, var(--m-ant) 0%, var(--m-ant) 20%, white 40%, white 60%, var(--m-ant) 80%, var(--m-ant) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-ant) 0%,
+    var(--m-ant) 20%,
+    white 40%,
+    white 60%,
+    var(--m-ant) 80%,
+    var(--m-ant) 100%
+  );
 }
 
 .theme-moyen-âge {
-  background: linear-gradient(to right, var(--m-moy) 0%, var(--m-moy) 20%, white 40%, white 60%, var(--m-moy) 80%, var(--m-moy) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-moy) 0%,
+    var(--m-moy) 20%,
+    white 40%,
+    white 60%,
+    var(--m-moy) 80%,
+    var(--m-moy) 100%
+  );
 }
 
 .theme-renaissance {
-  background: linear-gradient(to right, var(--m-ren) 0%, var(--m-ren) 20%, white 40%, white 60%, var(--m-ren) 80%, var(--m-ren) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-ren) 0%,
+    var(--m-ren) 20%,
+    white 40%,
+    white 60%,
+    var(--m-ren) 80%,
+    var(--m-ren) 100%
+  );
 }
 
 .theme-époque-moderne,
 .theme-époquemoderne {
-  background: linear-gradient(to right, var(--m-émod) 0%, var(--m-émod) 20%, white 40%, white 60%, var(--m-émod) 80%, var(--m-émod) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-émod) 0%,
+    var(--m-émod) 20%,
+    white 40%,
+    white 60%,
+    var(--m-émod) 80%,
+    var(--m-émod) 100%
+  );
 }
 
 .theme-futur {
-  background: linear-gradient(to right, var(--m-fut) 0%, var(--m-fut) 20%, white 40%, white 60%, var(--m-fut) 80%, var(--m-fut) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-fut) 0%,
+    var(--m-fut) 20%,
+    white 40%,
+    white 60%,
+    var(--m-fut) 80%,
+    var(--m-fut) 100%
+  );
 }
 
 .theme-hōken-seido {
-  background: linear-gradient(to right, var(--m-hsei) 0%, var(--m-hsei) 20%, white 40%, white 60%, var(--m-hsei) 80%, var(--m-hsei) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-hsei) 0%,
+    var(--m-hsei) 20%,
+    white 40%,
+    white 60%,
+    var(--m-hsei) 80%,
+    var(--m-hsei) 100%
+  );
 }
 
 .theme-western {
-  background: linear-gradient(to right, var(--m-wes) 0%, var(--m-wes) 20%, white 40%, white 60%, var(--m-wes) 80%, var(--m-wes) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-wes) 0%,
+    var(--m-wes) 20%,
+    white 40%,
+    white 60%,
+    var(--m-wes) 80%,
+    var(--m-wes) 100%
+  );
 }
 
 .theme-islamique {
-  background: linear-gradient(to right, var(--m-isl) 0%, var(--m-isl) 20%, white 40%, white 60%, var(--m-isl) 80%, var(--m-isl) 100%);
+  background: linear-gradient(
+    to right,
+    var(--m-isl) 0%,
+    var(--m-isl) 20%,
+    white 40%,
+    white 60%,
+    var(--m-isl) 80%,
+    var(--m-isl) 100%
+  );
 }
 
 ::-webkit-scrollbar {
@@ -149,15 +221,15 @@ main {
 }
 
 .grid-container::-webkit-scrollbar {
-    height: 7px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 100px;
-    display: initial;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  display: initial;
 }
 
 .grid-container::-webkit-scrollbar-thumb {
-    background-color: var(--gold);
-    border-radius: 100px;
+  background-color: var(--gold);
+  border-radius: 100px;
 }
 
 .grid-container::-webkit-scrollbar-thumb:hover {
@@ -166,7 +238,7 @@ main {
 
 .grid-container::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.15);
-    border-radius: 100px;
+  border-radius: 100px;
 }
 
 .grid {
@@ -274,7 +346,7 @@ main {
 }
 
 .epoch-switch {
-  color:white;
+  color: white;
   font-size: 150%;
   width: 80vw;
   display: flex;
@@ -289,7 +361,7 @@ main {
 
 .epoch-switch a {
   font-size: 100%;
-  color:inherit;
+  color: inherit;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -303,7 +375,6 @@ main {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 960px) {
-
   body,
   html {
     overflow-x: hidden;
@@ -312,8 +383,8 @@ main {
   .grid-container {
     overflow: hidden;
     width: 100vw;
-    margin:0;
-    padding:5vw;
+    margin: 0;
+    padding: 5vw;
   }
 
   .grid {
@@ -330,12 +401,12 @@ main {
   .card img.article {
     filter: drop-shadow(5px 5px 10px #000000de) blur(1px);
   }
-  
+
   .card .text {
     top: 70%;
     filter: blur(0px);
     opacity: 1;
-    text-shadow: 1px 7px 20px rgba(0,0,0,0.98);
+    text-shadow: 1px 7px 20px rgba(0, 0, 0, 0.98);
   }
 
   .epoch-switch h1 {
@@ -356,7 +427,7 @@ main {
   .epoch-switch h1 {
     font-size: 200%;
   }
-  
+
   .epoch-switch a span {
     display: none;
   }

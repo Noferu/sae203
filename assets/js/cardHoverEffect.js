@@ -4,13 +4,13 @@
     // Fonction pour initialiser l'effet Tilt sur les éléments avec la classe "card"
     function initializeTilt() {
         $(".card").tilt({
-            maxTilt: 20, // Inclinaison maximale
-            perspective: 1400, // Perspective utilisée pour l'effet 3D
-            easing: "cubic-bezier(.03,.98,.52,.99)", // Courbe de Bézier pour l'animation
-            speed: 1200, // Durée de l'animation en ms
-            glare: true, // Active l'effet d'éblouissement
-            maxGlare: 0.3, // Éblouissement maximal
-            scale: 1.07, // Facteur de mise à l'échelle
+            maxTilt: 20,
+            perspective: 1400,
+            easing: "cubic-bezier(.03,.98,.52,.99)",
+            speed: 1200,
+            glare: true,
+            maxGlare: 0.3,
+            scale: 1.07,
         });
     }
   

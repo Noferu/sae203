@@ -163,7 +163,7 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap:3vw;
+  gap: 3vw;
 }
 
 .timeline h1 {
@@ -235,8 +235,8 @@ main {
   font-size: 150%;
   font-weight: 600;
   padding: 0 10vw 0 10vw;
-  text-shadow: 0 2px 5px black  ;
-  color:white;
+  text-shadow: 0 2px 5px black;
+  color: white;
 }
 
 .btn-animation {
@@ -317,7 +317,6 @@ main {
     border-radius: 10px;
   }
 }
-
 
 .button-19:hover:not(:disabled) {
   animation: jello-horizontal 0.9s both;
@@ -506,7 +505,6 @@ section > h2 {
   .timeline h1 {
     font-size: calc(10vw + 16px);
   }
-  
 
   #timeline-container {
     width: 1000px;
@@ -524,7 +522,7 @@ section > h2 {
   .featured-articles .grid {
     flex-wrap: wrap;
     justify-content: center;
-    gap:5vw;
+    gap: 5vw;
     width: 95vw;
   }
 

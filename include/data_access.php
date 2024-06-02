@@ -87,8 +87,8 @@ function insert_data($pdo, $table, $data)
     }
 
     if ($query->execute()) {
-        return $pdo->lastInsertId(); // Retourne l'ID de la dernière insertion
+        return $pdo->lastInsertId();
     }
 
-    return false; // Retourne false si l'insertion échoue
+    return false;
 }

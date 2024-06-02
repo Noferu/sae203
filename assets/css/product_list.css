@@ -151,21 +151,27 @@ article .image {
   0% {
     transform: skew(0deg, 0deg);
   }
+
   30% {
     transform: skew(25deg, 25deg);
   }
+
   40% {
     transform: skew(-15deg, -15deg);
   }
+
   50% {
     transform: skew(15deg, 15deg);
   }
+
   65% {
     transform: skew(-5deg, -5deg);
   }
+
   75% {
     transform: skew(5deg, 5deg);
   }
+
   100% {
     transform: skew(0deg, 0deg);
   }
@@ -176,6 +182,7 @@ article .image {
     transform: scale(0.7);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -187,6 +194,7 @@ article .image {
     transform: scale(0.7);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -311,7 +319,7 @@ article .btns a:hover {
   article .text-infos {
     width: 100%;
     padding: 25px;
-    padding-right:0;
+    padding-right: 0;
   }
 
   article .btns {
@@ -378,6 +386,6 @@ article .btns a:hover {
   }
 
   aside {
-    width: 100%; /* Assure que le filtre prenne toute la largeur en mode mobile */
+    width: 100%;
   }
 }
