@@ -19,7 +19,10 @@ switch ($action) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $articleId = filter_input(INPUT_POST, 'article_id', FILTER_VALIDATE_INT);
             $userId = $_SESSION['user_id'];
-            $content = $_POST['comment'];
+            $content = htmlspecialchars($_POST['comment'], ENT_QUOTES, 'UTF-8');
+            $search = ['&#039;', '&quot;', '&amp;', '&lt;', '&gt;'];
+            $replace = ["'", '"', '&', '', ''];
+            $content = str_replace($search, $replace, $content);
             $rating = filter_input(INPUT_POST, 'rating', FILTER_VALIDATE_INT);
 
             if (empty($content) || empty($rating)) {
@@ -28,7 +31,7 @@ switch ($action) {
                 exit();
             }
 
-            $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+
 
             $result = $userService->addComment($articleId, $userId, $content, $rating);
 
