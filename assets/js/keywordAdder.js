@@ -14,7 +14,8 @@ $(document).ready(function () {
       });
 
       input.on("keydown", function (event) {
-        if (event.key === "Enter") { // Vérifie si la touche "Enter" est pressée
+        if (event.key === "Enter") {
+          // Vérifie si la touche "Enter" est pressée
           event.preventDefault(); // Empêche le comportement par défaut de l'input
           addKeywordToDatabase(input.val(), articleId); // Appelle la fonction pour ajouter le mot-clé à la base de données
           input.remove(); // Supprime l'input après l'ajout
@@ -27,7 +28,8 @@ $(document).ready(function () {
 
   // Fonction pour ajouter le mot-clé à la base de données
   function addKeywordToDatabase(keyword, articleId) {
-    if (keyword.trim() !== "") { // Vérifie si le mot-clé n'est pas vide
+    if (keyword.trim() !== "") {
+      // Vérifie si le mot-clé n'est pas vide
       $.ajax({
         url: "../include/add_keyword.php", // URL de l'endpoint pour ajouter un mot-clé
         method: "POST",
@@ -36,7 +38,8 @@ $(document).ready(function () {
         success: function (response) {
           let data;
           try {
-            data = typeof response === "string" ? JSON.parse(response) : response; // Parse la réponse JSON
+            data =
+              typeof response === "string" ? JSON.parse(response) : response; // Parse la réponse JSON
           } catch (e) {
             console.error("Parsing error:", e); // Affiche une erreur si le parsing échoue
             return;
@@ -45,7 +48,10 @@ $(document).ready(function () {
           if (data && data.success) {
             location.reload(); // Recharge la page si l'ajout est un succès
           } else {
-            console.error("Error:", data ? data.message : "No message returned"); // Affiche un message d'erreur si l'ajout échoue
+            console.error(
+              "Error:",
+              data ? data.message : "No message returned"
+            ); // Affiche un message d'erreur si l'ajout échoue
           }
         },
         error: function (xhr, status, error) {

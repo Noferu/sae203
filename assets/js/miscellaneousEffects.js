@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Animation des titres
-  titles.forEach(title => {
+  titles.forEach((title) => {
     if (title) {
       const letters = title.innerText.split(/(?!$)/u); // Sépare le texte du titre en conservant les espaces
       title.innerHTML = letters
