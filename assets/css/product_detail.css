@@ -491,6 +491,10 @@ h1 {
   margin-bottom: 3vh !important;
 }
 
+.login-prompt p {
+  text-align: center;
+}
+
 .login-prompt a {
   text-decoration: none;
   color: var(--gold);
