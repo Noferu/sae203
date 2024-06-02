@@ -225,6 +225,72 @@ Ce projet vise à valider plusieurs compétences clés :
 - Produire des pages fluides, valides et accessibles en respectant les normes du W3C.
 - Mettre en ligne une application Web en utilisant une solution d’hébergement standard.
 
+## Détails Techniques et Réflexions Personnelles
+
+### Conformité aux Standards du Web et Accessibilité
+
+Pour garantir la qualité de l'intégration, j'ai suivi les standards HTML5 et CSS3 et utilisé JavaScript pour les fonctionnalités interactives. J'ai vérifié la conformité de mon code avec le W3C Validator et Site24x7. J'ai intégré des textes alternatifs pour les images et appliqué les recommandations d'accessibilité d'AcceDeWeb pour assurer que mon site est accessible à tous les utilisateurs, y compris ceux ayant des handicaps.
+
+### Modélisation de la Base de Données
+
+Ma base de données, nommée bdd_sae203, supporte le site e-commerce avec des tables principales comme articles, categories, subcategories, sellers, users, etc. Les relations entre les tables sont établies avec des clés étrangères pour une meilleure organisation et gestion efficace des données.
+
+Exemple de création de la table `articles` :
+```sql
+CREATE TABLE `articles` (
+  `article_id` INT(10) UNSIGNED NOT NULL,
+  `subcategory_id` INT(10) UNSIGNED NOT NULL,
+  `seller_id` INT(10) UNSIGNED NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `price` DOUBLE(8,2) DEFAULT NULL,
+  `sale_year` INT(11) NOT NULL,
+  `stock` INT(11) DEFAULT NULL,
+  `created_at` DATETIME NOT NULL,
+  `updated_at` DATETIME NOT NULL,
+  `image_url` VARCHAR(255) DEFAULT NULL
+);
+
+ALTER TABLE `articles`
+  ADD PRIMARY KEY (`article_id`);
+
+ALTER TABLE `articles`
+  ADD INDEX (`subcategory_id`),
+  ADD INDEX (`seller_id`);
+```
+
+### Qualité et Réutilisabilité du Code
+
+Produire du code fonctionnel, sobre et réutilisable signifie écrire du code correct, efficace, et facile à comprendre, maintenir et étendre. J'ai utilisé des classes modulaires comme UserService et des fonctions personnalisées pour les requêtes SQL. J'ai relu mon code, testé les modifications, et utilisé des outils de validation pour assurer la qualité.
+
+Exemple de fonction pour exécuter des requêtes SQL :
+```php
+function select_data(PDO $pdo, $sql, array $params = [], $fetchAll = true) {
+    $query = $pdo->prepare($sql);
+    foreach ($params as $key => $value) {
+        $query->bindValue($key, $value);
+    }
+    $query->execute();
+    return $fetchAll ? $query->fetchAll(PDO::FETCH_ASSOC) : $query->fetch(PDO::FETCH_ASSOC);
+}
+```
+
+### Autonomie et Environnement de Développement
+
+J'ai utilisé Visual Studio Code avec des extensions comme Prettier, Error Lens, et des extensions spécifiques à PHP et Twig. J'ai géré les versions avec GitHub et documenté le projet avec un fichier README. J'ai développé et testé localement sur XAMPP avant de mettre en ligne sur le serveur de l'IUT et Plesk.
+
+### Fluidité et Sémantique des Pages Web
+
+J'ai utilisé HTML5, CSS3, et JavaScript pour produire des pages fluides avec un balisage sémantique. Twig a été utilisé pour le rendu côté serveur et AJAX pour le chargement dynamique des données, améliorant l'expérience utilisateur.
+
+### Sécurité et Hébergement
+
+Pour la sécurité, j'ai utilisé HTTPS, haché les mots de passe, et nettoyé les entrées utilisateur pour éviter les injections SQL. J'ai configuré des fichiers .htaccess pour restreindre l'accès direct et mis en place des restrictions sur les noms d'utilisateur pour maintenir un environnement respectueux.
+
+### Recommandations et Apprentissage
+
+Je recommande de bien planifier la base de données dès le début et de documenter méthodiquement. Je suis fier de la frise chronologique interactive et des filtres dynamiques avec AJAX, ainsi que de la gestion de la connexion avec UserService. J'ai documenté le projet avec des commentaires détaillés et utilisé GitHub pour le contrôle de version pour suivre les bugs et les améliorations.
+
 ## Portfolio
 
 Découvrez mes autres projets sur mon [portfolio](https://www.ida.etu.mmi-unistra.fr/).
