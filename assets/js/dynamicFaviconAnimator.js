@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 '🧭'
             ];
             break;
-        case 'theme-hōken-seidō':
+        case 'theme-hōken-seido':
             frames = [
                 '🏯',
                 '🎎',
