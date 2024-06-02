@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   enableDragScroll(container); // Active le défilement par glissement pour le conteneur
   updateCurrentEpoch(epochs, container); // Met à jour l'époque actuelle au chargement
-  container.addEventListener("scroll", () => updateCurrentEpoch(epochs, container)); // Met à jour l'époque actuelle lors du défilement
+  container.addEventListener("scroll", () =>
+    updateCurrentEpoch(epochs, container)
+  ); // Met à jour l'époque actuelle lors du défilement
 
   centerEpochOnLoad(epochs, container, "Moyen-Âge"); // Centre l'époque spécifiée au chargement
 
@@ -76,7 +78,11 @@ function enableDragScroll(element) {
     element.style.cursor = "grab";
 
     // Si la distance est inférieure à 4px, considérer comme un clic
-    if (!isDragging && Math.abs(e.clientX - startX) < 4 && Math.abs(e.clientY - startY) < 4) {
+    if (
+      !isDragging &&
+      Math.abs(e.clientX - startX) < 4 &&
+      Math.abs(e.clientY - startY) < 4
+    ) {
       // Exécuter l'action de clic
       const targetEpoch = document.elementFromPoint(e.clientX, e.clientY);
       if (targetEpoch && targetEpoch.classList.contains("epoch")) {
@@ -120,10 +126,13 @@ function centerEpochOnClick(epoch, container) {
     leftOffset - container.offsetWidth / 2 + epoch.offsetWidth / 2;
   container.scrollTo({
     left: centerOffset,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 
-  updateCurrentEpoch(Array.from(document.querySelectorAll(".epoch")), container);
+  updateCurrentEpoch(
+    Array.from(document.querySelectorAll(".epoch")),
+    container
+  );
 }
 
 function updateCurrentEpoch(epochs, container) {
@@ -169,7 +178,9 @@ function updateLinkAndTheme(epoch) {
   }
 
   const body = document.body;
-  const newClass = `theme-${epoch.dataset.name.toLowerCase().replace(/\s+/g, "-")}`;
+  const newClass = `theme-${epoch.dataset.name
+    .toLowerCase()
+    .replace(/\s+/g, "-")}`;
   if (!body.classList.contains(newClass)) {
     body.className = "";
     body.classList.add(newClass);
@@ -178,13 +189,15 @@ function updateLinkAndTheme(epoch) {
     clickSound.play();
   }
 
-  // Mettre à jour la description
+  // Mettre à jour la description avec l'année de destination
   const epochDesc = document.querySelector(".epoch-desc");
-  epochDesc.textContent = epoch.dataset.desc;
+  epochDesc.innerHTML =
+    epoch.dataset.desc +
+    ` <span>Année de destination : <span>${epoch.dataset.date}</span></span>`;
 }
 
 function fadeOutAudio(newMusicUrl) {
-  const audio = document.getElementById('myAudio');
+  const audio = document.getElementById("myAudio");
   const fadeOutInterval = setInterval(() => {
     if (audio.volume > 0.1) {
       audio.volume -= 0.1;
@@ -197,8 +210,8 @@ function fadeOutAudio(newMusicUrl) {
 }
 
 function updateAudioSource(newMusicUrl) {
-  const audio = document.getElementById('myAudio');
-  const audioSource = document.getElementById('audioSource');
+  const audio = document.getElementById("myAudio");
+  const audioSource = document.getElementById("audioSource");
 
   if (newMusicUrl) {
     audioSource.src = newMusicUrl;

@@ -239,6 +239,14 @@ main {
   color: white;
 }
 
+.epoch-desc > span {
+  display: block;
+}
+
+.epoch-desc > span > span {
+  color:var(--gold);
+}
+
 .btn-animation {
   width: 206px;
   height: 54px;
